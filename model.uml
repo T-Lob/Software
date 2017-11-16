@@ -251,6 +251,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_v7mZQMrBEee9EJtdmQ6Vlw" name="generatedPatients" isStatic="true"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_-bcG8MrBEee9EJtdmQ6Vlw" name="arrivedPatients" isStatic="true"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_uoTv8MrCEee9EJtdmQ6Vlw" name="registeredPatients" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8htCsMsEEee9EJtdmQ6Vlw" name="waitingForTransportPatients" isStatic="true"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UrWJwMrlEee9EJtdmQ6Vlw" name="Room" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_YLKfkMrlEee9EJtdmQ6Vlw" general="_Fw17YMoLEee9OPNNLRHemQ"/>

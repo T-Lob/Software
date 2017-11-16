@@ -1024,6 +1024,10 @@
         <element xmi:type="uml:Property" href="model.uml#_uoTv8MrCEee9EJtdmQ6Vlw"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_uo3JkcrCEee9EJtdmQ6Vlw"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_8iE2IMsEEee9EJtdmQ6Vlw" type="Property_ClassAttributeLabel">
+        <element xmi:type="uml:Property" href="model.uml#_8htCsMsEEee9EJtdmQ6Vlw"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_8iE2IcsEEee9EJtdmQ6Vlw"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_or-w4crBEee9EJtdmQ6Vlw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_or-w4srBEee9EJtdmQ6Vlw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_or-w48rBEee9EJtdmQ6Vlw"/>
