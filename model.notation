@@ -946,10 +946,6 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hbpzmcohEee9OPNNLRHemQ"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_hbpzmsohEee9OPNNLRHemQ" type="Class_OperationCompartment">
-      <children xmi:type="notation:Shape" xmi:id="_5itBMMojEee9OPNNLRHemQ" type="Operation_ClassOperationLabel">
-        <element xmi:type="uml:Operation" href="model.uml#_5iRjYMojEee9OPNNLRHemQ"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_5itBMcojEee9OPNNLRHemQ"/>
-      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_hbpzm8ohEee9OPNNLRHemQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_hbpznMohEee9OPNNLRHemQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_hbpzncohEee9OPNNLRHemQ"/>
@@ -1107,11 +1103,6 @@
     </children>
     <element xmi:type="uml:Class" href="model.uml#_OCSVoMrmEee9EJtdmQ6Vlw"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OCTjwcrmEee9EJtdmQ6Vlw" x="195" y="733"/>
-  </children>
-  <children xmi:type="notation:Shape" xmi:id="___OWoMr9Eee9EJtdmQ6Vlw" type="NamedElement_DefaultShape">
-    <children xmi:type="notation:DecorationNode" xmi:id="___O9sMr9Eee9EJtdmQ6Vlw" type="NamedElement_NameLabel"/>
-    <element xmi:type="uml:Operation" href="model.uml#_5iRjYMojEee9OPNNLRHemQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="___OWocr9Eee9EJtdmQ6Vlw" x="916" y="1550"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_csA0ocU_EeecsefrduevSA" name="diagram_compatibility_version" stringValue="1.2.0"/>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_csA0osU_EeecsefrduevSA"/>
