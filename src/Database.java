@@ -12,6 +12,7 @@ public class Database {
 	private static ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>(2);
 	private static ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
 	private static ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
+	private static int time;
 	
 	
 	
@@ -20,6 +21,12 @@ public class Database {
 	
 	
 	
+	public static int getTime() {
+		return time;
+	}
+	public static void setTime(int time) {
+		Database.time = time;
+	}
 	public static ArrayList<Patient> getGeneratedPatients() {
 		return generatedPatients;
 	}
@@ -63,7 +70,7 @@ public class Database {
 		return transporterList;
 	}
 	
-	public static void addToWaitingForTranportPatients(Patient patient) {
+	public static void addToWaitingForTransportPatients(Patient patient) {
 		Database.waitingForTransportPatients.add(patient);
 	}
 	

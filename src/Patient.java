@@ -10,9 +10,9 @@ public class Patient {
 	private int ID;
 	private String healthInsurance="None";
 	private String severityLevel;
-	private String state = null;
+	private String state = "arrived";
 	private Room location = null;
-	private ArrayList<ArrayList<String>> history = new ArrayList<ArrayList<String>> () ;
+	private ArrayList<String[]> history = new ArrayList<String[]> () ;
 	private int arrivalTime;
 	private Physician physician = null;
 	private int bill;
@@ -21,30 +21,12 @@ public class Patient {
 	
 	
 
-	public Patient(String name, String surname, String healthInsurance, String severityLevel, String state,
-			Room location, ArrayList<ArrayList<String>> history, int arrivalTime, Physician physician) {
-		super();
-		this.name = name;
-		this.surname = surname;
-		this.ID = IDGenerator.getInstance().getNextID();
-		this.healthInsurance = healthInsurance;
-		this.severityLevel = severityLevel;
-		this.state = state;
-		this.location = location;
-		this.history = history;
-		this.arrivalTime = arrivalTime;
-		this.physician = physician;
-		Database.addToGeneratedPatients(this);
-	}
-
 	public Patient(String name,String surname,String severityLevel,int arrivalTime) {
 		this.name=name;
 		this.surname=surname;
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.severityLevel = severityLevel;
-		this.state = "arrived";
-		// this.location = WaitingRoom;  peut-etre un singleton waiting room ?
-		this.physician=null;
+		this.arrivalTime=arrivalTime;
 		Database.addToGeneratedPatients(this);
 		
 	}	
@@ -88,10 +70,10 @@ public class Patient {
 	public void setLocation(Room location) {
 		this.location = location;
 	}
-	public ArrayList<ArrayList<String>> getHistory() {
+	public ArrayList<String[]> getHistory() {
 		return history;
 	}
-	public void addEventToHistory(ArrayList<String> event) {
+	public void addEventToHistory(String[] event) {
 		this.history.add(event);
 	}
 	public int getArrivalTime() {
@@ -138,5 +120,23 @@ public class Patient {
 		return 0;
 	}
 	
+public void changeState(String state) {
+		this.state=state;
+		String [] event= {state,String.valueOf(Database.getTime())};
+		this.addEventToHistory(event);
+		
+		if (state.equalsIgnoreCase("registered")){
+			Database.addToRegisteredPatients(this);
+			
+		} else if (state.equalsIgnoreCase("waitingForTransport")){
+			Database.addToWaitingForTransportPatients(this);
+			
+		} else if (state.equalsIgnoreCase("waitingForVerdict")) {
+			Database.addToWaitingForVerdictPatients(this);
+			
+		} else if (state.equalsIgnoreCase("released")){
+			Database.addToReleasedPatients(this);}
 	
+	
+}
 }
