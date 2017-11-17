@@ -275,6 +275,37 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_uRfZsMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingForVerdictPatients()" isStatic="true"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_06RrkMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getBoxRoomList()" isStatic="true"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_FblhwMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getShockRoomList" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_j0Me8Ms3Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getReleasedPatients" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_l0kbQMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Nurse>> getNurseList" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_oc-A4Ms3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Physician>> getPhysicianList" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rDxEAMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Transporter>> getTransporterList" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_BAuYoMs6Eee9EJtdmQ6Vlw" name="void addToWaitingForTranportPatients" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EAk08Ms6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MEvfsMs6Eee9EJtdmQ6Vlw" name="void addToWaitingForVerdictPatients" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PDS7gMs6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_P1KdUMs6Eee9EJtdmQ6Vlw" name="void addToReleasedPatients" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_YaWKcMs6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_gh_nAMs6Eee9EJtdmQ6Vlw" name="void addToBoxRoomList" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kuYH4Ms6Eee9EJtdmQ6Vlw" name="room" type="_eOQbwMVFEeecsefrduevSA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_72QCYMs6Eee9EJtdmQ6Vlw" name="void addToShockRoomList" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="__bm_gMs6Eee9EJtdmQ6Vlw" name="room" type="_efhx8MVFEeecsefrduevSA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_GAAgoMs7Eee9EJtdmQ6Vlw" name="void addToNurseList" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JOxisMs7Eee9EJtdmQ6Vlw" name="nurse" type="_QV4BkMVDEeecsefrduevSA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_PYq5IMs7Eee9EJtdmQ6Vlw" name="void addToPhysicianList" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Si9D0Ms7Eee9EJtdmQ6Vlw" name="phys" type="_LxkI4MVDEeecsefrduevSA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_bQ2BAMs7Eee9EJtdmQ6Vlw" name="void addToTransporterList" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_eT2fAMs7Eee9EJtdmQ6Vlw" name="transporter" type="_RQzYwMVDEeecsefrduevSA"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_gkJGoMs7Eee9EJtdmQ6Vlw" name="void sortBySelection" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kh5VoMs7Eee9EJtdmQ6Vlw" name="rooms"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UrWJwMrlEee9EJtdmQ6Vlw" name="Room" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_YLKfkMrlEee9EJtdmQ6Vlw" general="_Fw17YMoLEee9OPNNLRHemQ"/>

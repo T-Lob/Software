@@ -7,11 +7,11 @@ public class Database {
 	private static ArrayList<Patient> waitingForTransportPatients = new ArrayList<Patient> ();
 	private static ArrayList<Patient> waitingForVerdictPatients = new ArrayList<Patient>();
 	private static ArrayList<ArrayList<Room>> boxRoomList = new ArrayList<ArrayList<Room>>(3);
-	private static ArrayList<ArrayList<Room>> shockRoomList = new ArrayList<ArrayList<Room>>();
+	private static ArrayList<ArrayList<Room>> shockRoomList = new ArrayList<ArrayList<Room>>(3);
 	private static ArrayList<Patient> releasedPatients = new ArrayList<Patient> ();
-	private static ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>();
-	private static ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>();
-	private static ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>();
+	private static ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>(2);
+	private static ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
+	private static ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
 	
 	
 	
@@ -74,20 +74,20 @@ public class Database {
 	public static void addToReleasedPatients(Patient patient) {
 		Database.releasedPatients.add(patient);
 	}
-	public static void addToBoxRoomList(ArrayList<Room> categories) {
-		Database.boxRoomList.add(categories);
+	public static void addToBoxRoomList(BoxRoom room) {
+		Database.boxRoomList.get(0).add(room);
 	}
-	public static void addToShockRoomList(ArrayList<Room> categories) {
-		Database.shockRoomList.add(categories);
+	public static void addToShockRoomList(ShockRoom room) {
+		Database.shockRoomList.get(0).add(room);
 	}
-	public static void addToNurseList(ArrayList<Nurse> categories) {
-		Database.nurseList.add(categories);
+	public static void addToNurseList(Nurse nurse) {
+		Database.nurseList.get(0).add(nurse);
 	}
-	public static void addToPhysicianList(ArrayList<Physician> categories) {
-		Database.physicianList.add(categories);
+	public static void addToPhysicianList(Physician phys) {
+		Database.physicianList.get(0).add(phys);
 	}
-	public static void addToTransporterList(ArrayList<Transporter> categories) {
-		Database.transporterList.add(categories);
+	public static void addToTransporterList(Transporter transporter) {
+		Database.transporterList.get(0).add(transporter);
 	}
 	
 	public void sortBySelection(ArrayList<Room> rooms) {
