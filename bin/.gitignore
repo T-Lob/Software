@@ -15,4 +15,13 @@
 /others/
 /HealthServices.class
 /Consultation.class
+<<<<<<< HEAD
 /ShockRoom.class
+=======
+/RoomFactory.class
+/ShockRoom.class
+/WaitingRoom.class
+/RadioRoom.class
+/MRIRoom.class
+/BloodTestRoom.class
+>>>>>>> fb5e7faddf514d8abe25bfd1c2979e509b109316
