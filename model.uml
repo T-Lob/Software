@@ -252,6 +252,25 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_-bcG8MrBEee9EJtdmQ6Vlw" name="arrivedPatients" isStatic="true"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_uoTv8MrCEee9EJtdmQ6Vlw" name="registeredPatients" isStatic="true"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_8htCsMsEEee9EJtdmQ6Vlw" name="waitingForTransportPatients" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_zPtO4MswEee9EJtdmQ6Vlw" name="waitingForVerdictPatients" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3Zl1YMswEee9EJtdmQ6Vlw" name="boxRoomList" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6fNigMswEee9EJtdmQ6Vlw" name="shockRoomList" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_9LHvIMswEee9EJtdmQ6Vlw" name="releasedPatients" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="__XccwMswEee9EJtdmQ6Vlw" name="nurseList" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Blhd4MsxEee9EJtdmQ6Vlw" name="physicianList" isStatic="true"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Do9VQMsxEee9EJtdmQ6Vlw" name="transporterList" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_hseMMMsxEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getGeneratedPatients" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lrPH0MsxEee9EJtdmQ6Vlw" name="void addToGeneratedPatients" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_o2bRcMsxEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_BqpZAMsyEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getArrivedPatients" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_D4WmsMsyEee9EJtdmQ6Vlw" name="void addToArrivedPatients" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_H0XwUMsyEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_MOOsgMsyEee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Patient>> getRegisteredPatients" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FFCm0MszEee9EJtdmQ6Vlw" name="void addToRegisteredPatients" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_50cxcMs0Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UrWJwMrlEee9EJtdmQ6Vlw" name="Room" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_YLKfkMrlEee9EJtdmQ6Vlw" general="_Fw17YMoLEee9OPNNLRHemQ"/>
