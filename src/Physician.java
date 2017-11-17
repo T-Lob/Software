@@ -14,6 +14,7 @@ public class Physician extends HumanResource {
 	
 	public Physician() {
 		this.ID = IDGenerator.getInstance().getNextID();
+		Database.addToPhysicianList(this);
 		
 	}
 
@@ -23,6 +24,7 @@ public class Physician extends HumanResource {
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.username = username;
+		Database.addToPhysicianList(this);
 	}
 	
 	public String getUsername() {

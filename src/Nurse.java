@@ -7,11 +7,13 @@ public class Nurse extends HumanResource {
 	
 	public Nurse() {
 		this.ID = IDGenerator.getInstance().getNextID();
+		Database.addToNurseList(this);
 	}
 	public Nurse(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
+		Database.addToNurseList(this);
 	}
 	public Patient getCurrentPatient() {
 		return currentPatient;
