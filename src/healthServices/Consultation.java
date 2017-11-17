@@ -16,7 +16,7 @@ public class Consultation extends HealthServices {
 		this.duration=this.probabilityDistribution.getSample();
 	}
 	
-	public void result (Patient patient) {
+	public static void result (Patient patient) {
 		
 		Uniform U = new Uniform(0,100);
 		int x = U.getSample();

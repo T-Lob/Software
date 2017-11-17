@@ -11,5 +11,29 @@ public abstract class HealthServices extends Resource {
 	protected int cost;
 	protected String outcome;
 	protected int duration;
+	public ArrayList<Patient> getWaitingQueue() {
+		return WaitingQueue;
+	}
+	public void addToWaitingQueue(Patient patient) {
+		this.WaitingQueue.add(patient);
+	}
+	public ProbabilityDistribution getProbabilityDistribution() {
+		return probabilityDistribution;
+	}
+	public void setProbabilityDistribution(ProbabilityDistribution probabilityDistribution) {
+		this.probabilityDistribution = probabilityDistribution;
+	}
+	public String getOutcome() {
+		return outcome;
+	}
+	public void setOutcome(String outcome) {
+		this.outcome = outcome;
+	}
+	public int getCost() {
+		return cost;
+	}
+	public int getDuration() {
+		return duration;
+	}
 
 }

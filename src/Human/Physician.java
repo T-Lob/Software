@@ -2,7 +2,7 @@ package Human;
 
 import java.util.ArrayList;
 
-import Resources.HumanResource;
+import healthServices.Consultation;
 import others.Database;
 import others.IDGenerator;
 
@@ -13,6 +13,7 @@ public class Physician extends HumanResource {
 	private ArrayList<Patient> currentPatients = new ArrayList<Patient>();
 	private ArrayList<Patient> historyPatients = new ArrayList<Patient>();
 	private ArrayList<String> messageBox = new ArrayList<String>();
+	
 	
 	
 	public Physician() {
@@ -66,34 +67,32 @@ public class Physician extends HumanResource {
 	}
 	
 	public void consultation (Patient patient) {
-		this.addToHistoryPatients(patient);
-		this.addToCurrentPatients(patient);
-		patient.setState("visited");
-		
-		
+		if (this.timeOfAvailability <= Database.getTime()) { // The physician can be idle for several minutes if no patient shows up
+			this.setTimeOfAvailability(Database.getTime()); // We set the time to the time of the beginning of the consultation
+			this.setState("visiting");
+			Consultation consultation = new Consultation(); 
+			this.addToHistoryPatients(patient);
+			this.addToCurrentPatients(patient);
+			patient.setState("visited");
+			this.timeOfAvailability += consultation.getDuration();
+		}
+	
+	
+		else {
+			/* The patient is being visited by the physician, nothing to do
+			unless a High severity patient comes and takes his place => To implement */
+			
+		}
 	}
 	
-	/*
-	public void takeDecision(Patient patient) {
-		Uniform U = new Uniform(0,100);
-		double x = U.sample();
-		if(0<=(double)x && (double)x<35) {
-			Message newMessage = new Message("you have no test to take",this,patient,timestamp);
-			patient.messageBox.addNewMessage(newMessage);
-			Event.Transportation(Patient patient, Resource)
+	public void endconsultation (Patient patient) {
+		if (this.timeOfAvailability == Database.getTime()) {
+			Consultation.result(patient);
+			this.setState("idle");
+			
 		}
-		if(35<=(double)x && (double)x<55) {
-			Message newMessage = new Message("you have to take a radiography exam",this,patient,timestamp);
-			patient.messageBox.addNewMessage(newMessage);
-		}
-		if(55<=(double)x && (double)x<95) {
-			Message newMessage = new Message("you have to take a blood-test exam",this,patient,timestamp);
-			patient.messageBox.addNewMessage(newMessage);
-		}
-		if(95<=(double)x && (double)x<=100) {
-			Message newMessage = new Message("you have to take a blood-test exam",this,patient,timestamp);
-			patient.messageBox.addNewMessage(newMessage);
-		}
-		return;
-		*/	
+		
+	
+	
+	}
 }

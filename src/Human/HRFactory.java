@@ -1,7 +1,4 @@
-package Resources;
-import Human.Nurse;
-import Human.Physician;
-import Human.Transporter;
+package Human;
 
 public class HRFactory {
 	public HumanResource createHR(String HRType) {

@@ -1,16 +1,9 @@
 package others;
 import java.util.ArrayList;
 
-import Human.Nurse;
-import Human.Patient;
-import Human.Physician;
-import Human.Transporter;
-import Resources.BloodTestRoom;
-import Resources.BoxRoom;
-import Resources.MRIRoom;
-import Resources.RadioRoom;
-import Resources.Room;
-import Resources.ShockRoom;
+import Human.*;
+import Resources.*;
+
 
 public class Database {
 	private static ArrayList<Patient> generatedPatients = new ArrayList<Patient>();
@@ -18,27 +11,37 @@ public class Database {
 	private static ArrayList<ArrayList<Patient>> registeredPatients = new ArrayList<ArrayList<Patient>>(5);
 	private static ArrayList<Patient> waitingForTransportPatients = new ArrayList<Patient> ();
 	private static ArrayList<Patient> waitingForVerdictPatients = new ArrayList<Patient>();
-	private static ArrayList<ArrayList<Room>> boxRoomList = new ArrayList<ArrayList<Room>>(3);
-	private static ArrayList<ArrayList<Room>> shockRoomList = new ArrayList<ArrayList<Room>>(3);
+	private static ArrayList<ArrayList<BoxRoom>> boxRoomList = new ArrayList<ArrayList<BoxRoom>>(3);
+	private static ArrayList<ArrayList<ShockRoom>> shockRoomList = new ArrayList<ArrayList<ShockRoom>>(3);
 	private static ArrayList<Patient> releasedPatients = new ArrayList<Patient> ();
 	private static ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>(2);
 	private static ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
 	private static ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
 	private static int time;
+	private static String EDname;
 	public static final RadioRoom radioRoom = new RadioRoom();
 	public static final MRIRoom mriRoom = new MRIRoom();
 	public static final BloodTestRoom bloodTestRoom = new BloodTestRoom();
 	
 	
+	public static void createED(String EDname) {
+		Database.EDname=EDname;
+		for (int i=0 ; i<3; i++) {
+			Database.physicianList.add(new ArrayList<Physician>());
+			Database.nurseList.add(new ArrayList<Nurse>());
+			Database.transporterList.add(new ArrayList<Transporter>());
+			Database.shockRoomList.add(new ArrayList<ShockRoom>());
+			Database.boxRoomList.add(new ArrayList<BoxRoom> ());
+			Database.registeredPatients.add(generatedPatients);
+		}
+		Database.registeredPatients.add(generatedPatients);
+		Database.registeredPatients.add(generatedPatients);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static String getEDname() {
+		return EDname;
+	}
+
 	public static int getTime() {
 		return time;
 	}
@@ -69,10 +72,10 @@ public class Database {
 	public static ArrayList<Patient> getWaitingForVerdictPatients() {
 		return waitingForVerdictPatients;
 	}
-	public static ArrayList<ArrayList<Room>> getBoxRoomList() {
+	public static ArrayList<ArrayList<BoxRoom>> getBoxRoomList() {
 		return boxRoomList;
 	}
-	public static ArrayList<ArrayList<Room>> getShockRoomList() {
+	public static ArrayList<ArrayList<ShockRoom>> getShockRoomList() {
 		return shockRoomList;
 	}
 	public static ArrayList<Patient> getReleasedPatients() {

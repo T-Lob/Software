@@ -1,7 +1,6 @@
 package Human;
 
 
-import Resources.HumanResource;
 import others.Database;
 import others.IDGenerator;
 
