@@ -1,5 +1,4 @@
 package Human;
-import others.*;
 
 public class HRFactory {
 	public HumanResource createHR(String EDname,String HRType) {

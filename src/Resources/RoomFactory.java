@@ -1,7 +1,5 @@
 package Resources;
 
-import others.ED;
-
 public class RoomFactory {
 	
 	public Room createRoom(String EDname, String roomType) {

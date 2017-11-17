@@ -3,7 +3,6 @@ import Human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
 import others.Database;
-import others.ED;
 
 
 public class Consultation extends HealthServices {

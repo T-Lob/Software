@@ -1,6 +1,5 @@
 package Resources;
 import others.Database;
-import others.ED;
 import others.IDGenerator;
 
 public class ShockRoom extends Room {
