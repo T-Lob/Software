@@ -5,11 +5,13 @@ private Patient currentPatient;
 	
 	public Transporter() {
 		this.ID = IDGenerator.getInstance().getNextID();
+		Database.addToTransporterList(this);
 	}
 	public Transporter(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
+		Database.addToTransporterList(this);
 	}
 	public Patient getCurrentPatient() {
 		return currentPatient;

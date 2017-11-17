@@ -61,9 +61,6 @@ public class Patient {
 		return state;
 	}
 
-	public void setState(String state) {
-		this.state = state;
-	}
 	public Room getLocation() {
 		return location;
 	}
@@ -120,7 +117,7 @@ public class Patient {
 		return 0;
 	}
 	
-public void changeState(String state) {
+public void setState(String state) {
 		this.state=state;
 		String [] event= {state,String.valueOf(Database.getTime())};
 		this.addEventToHistory(event);

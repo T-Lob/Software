@@ -13,6 +13,12 @@ public class Database {
 	private static ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
 	private static ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
 	private static int time;
+	public static final RadioRoom radioRoom = new RadioRoom();
+	public static final MRIRoom mriRoom = new MRIRoom();
+	public static final BloodTestRoom bloodTestRoom = new BloodTestRoom();
+	
+	
+	
 	
 	
 	
