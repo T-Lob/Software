@@ -11,6 +11,8 @@ public abstract class HealthServices extends Resource {
 	protected int cost;
 	protected String outcome;
 	protected int duration;
+	protected int timeOfAvailability;
+	
 	public ArrayList<Patient> getWaitingQueue() {
 		return WaitingQueue;
 	}
@@ -35,5 +37,9 @@ public abstract class HealthServices extends Resource {
 	public int getDuration() {
 		return duration;
 	}
+	public void setTimeOfAvailability(int t) {
+		this.timeOfAvailability = t;
+	}
+	
 
 }

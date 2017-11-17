@@ -6,7 +6,7 @@ import others.Database;
 public abstract class HumanResource extends Resource {
 	protected String surname;
 	protected String state="idle";
-	public int timeOfAvailability;
+	protected int timeOfAvailability;
 	
 	public String getSurname() {
 		return surname;
@@ -17,8 +17,8 @@ public abstract class HumanResource extends Resource {
 	public int getTimeOfAvailability() {
 		return timeOfAvailability;
 	}
-	public void setTimeOfAvailability(int timestamp) {
-		this.timeOfAvailability = timestamp;
+	public void setTimeOfAvailability(int t) {
+		this.timeOfAvailability = t;
 	}
 	
 	public void setState(String state) {

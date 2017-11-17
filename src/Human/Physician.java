@@ -78,6 +78,7 @@ public class Physician extends HumanResource {
 			Consultation consultation = new Consultation(); 
 			this.addToHistoryPatients(patient);
 			this.addToCurrentPatients(patient);
+			patient.setPhysician(this);
 			patient.setState("visited");
 			this.timeOfAvailability += consultation.getDuration();
 		}
