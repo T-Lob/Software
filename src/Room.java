@@ -1,7 +1,8 @@
 
 public abstract class Room extends Resource {
 
-	private Patient patient;
+	protected Patient patient;
+	protected String state="empty";
 
 	public Patient getPatient() {
 		return patient;
@@ -10,6 +11,15 @@ public abstract class Room extends Resource {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 
 
 }

@@ -1,8 +1,8 @@
 public abstract class Resource {
 	
-	private String name;
-	private int ID;
-	private String state;
+	protected String name;
+	protected int ID;
+	protected String state;
 	
 	public String getName() {
 		return name;
@@ -20,7 +20,7 @@ public abstract class Resource {
 		return ID;
 	}
 	
-	public boolean isAvailable(Resource resource){
-		return false;
+	public boolean isAvailable(){
+		return this.state == "empty" || this.state =="idle";
 	}
 }

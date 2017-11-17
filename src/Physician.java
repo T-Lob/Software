@@ -41,12 +41,6 @@ public class Physician extends Resource {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	@Override
-	public boolean isAvailable(Resource resource) {
-		// TODO Auto-generated method stub
-		return this.state == "idle";
-	}
 
 	public ArrayList<Patient> getCurrentPatients() {
 		return currentPatients;
