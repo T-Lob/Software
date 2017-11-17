@@ -63,14 +63,6 @@
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_6MKGgMVEEeecsefrduevSA" name="RoomFactory">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_GQWDUMrmEee9EJtdmQ6Vlw" name="room" type="_UrWJwMrlEee9EJtdmQ6Vlw" association="_GQUOIMrmEee9EJtdmQ6Vlw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TNyuYMssEee9EJtdmQ6Vlw" name="Room createRoom">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CFAt4Ms_Eee9EJtdmQ6Vlw" name="roomType">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-      </ownedParameter>
-    </ownedOperation>
-  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_eOQbwMVFEeecsefrduevSA" name="BoxRoom">
     <generalization xmi:type="uml:Generalization" xmi:id="_Y1JQsMrlEee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_4QD34MrDEee9EJtdmQ6Vlw" name="physician" visibility="private" type="_LxkI4MVDEeecsefrduevSA"/>
@@ -90,32 +82,6 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_03igUMVGEeecsefrduevSA" name="BloodTestRoom">
     <generalization xmi:type="uml:Generalization" xmi:id="_pk3OUMs9Eee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_ialmAMnqEee9OPNNLRHemQ" name="HealthServices">
-    <generalization xmi:type="uml:Generalization" xmi:id="_4B8AwModEee9OPNNLRHemQ" general="_Fw17YMoLEee9OPNNLRHemQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_FUxv0MoeEee9OPNNLRHemQ" name="waitingQueue" visibility="protected"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_o4m0sMoeEee9OPNNLRHemQ" name="probaDistribution" visibility="protected" type="_zHeKgMogEee9OPNNLRHemQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_6H7AYMoeEee9OPNNLRHemQ" name="cost" visibility="protected">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_HRSqYMofEee9OPNNLRHemQ" name="outcome" visibility="protected">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_cGnHMMtCEee9EJtdmQ6Vlw" name="duration" visibility="protected">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_69nP4MnqEee9OPNNLRHemQ" name="MRIScan">
-    <generalization xmi:type="uml:Generalization" xmi:id="_QawG4MnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_7sGGgMnqEee9OPNNLRHemQ" name="BloodTest">
-    <generalization xmi:type="uml:Generalization" xmi:id="_RnCT0MnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_HGj-sMnrEee9OPNNLRHemQ" name="XRay">
-    <generalization xmi:type="uml:Generalization" xmi:id="_Q13VkMnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Ij3DIMnrEee9OPNNLRHemQ" name="Consultation">
-    <generalization xmi:type="uml:Generalization" xmi:id="_ROnMwMnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_WFe_oMnsEee9OPNNLRHemQ" name="Patient">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_M2Qg4Mn1Eee9OPNNLRHemQ" name="name" visibility="private">
@@ -370,6 +336,63 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YPyEYcrmEee9EJtdmQ6Vlw" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_YPyrcMrmEee9EJtdmQ6Vlw" name="hrfactory" type="_LScHcMVEEeecsefrduevSA" association="_YPxdUMrmEee9EJtdmQ6Vlw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="__B2sAMuYEee9EJtdmQ6Vlw" name="healthServices">
+    <packagedElement xmi:type="uml:Class" xmi:id="_ialmAMnqEee9OPNNLRHemQ" name="HealthServices">
+      <generalization xmi:type="uml:Generalization" xmi:id="_4B8AwModEee9OPNNLRHemQ" general="_Fw17YMoLEee9OPNNLRHemQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FUxv0MoeEee9OPNNLRHemQ" name="waitingQueue" visibility="protected"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_o4m0sMoeEee9OPNNLRHemQ" name="probaDistribution" visibility="protected" type="_zHeKgMogEee9OPNNLRHemQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6H7AYMoeEee9OPNNLRHemQ" name="cost" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_HRSqYMofEee9OPNNLRHemQ" name="outcome" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cGnHMMtCEee9EJtdmQ6Vlw" name="duration" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3GGg8MuZEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingQueue"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_336YYMuZEee9EJtdmQ6Vlw" name="void addToWaitingQueue">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_9-HhoMuZEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DO4QoMuaEee9EJtdmQ6Vlw" name="ProbabilityDistribution getProbabilityDistribution"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_F9cIoMuaEee9EJtdmQ6Vlw" name="void setProbabilityDistribution">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_SCsqQMuaEee9EJtdmQ6Vlw" name="probabilityDistribution" type="_zHeKgMogEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ajzvsMuaEee9EJtdmQ6Vlw" name="String getOutcome"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_bZLRcMuaEee9EJtdmQ6Vlw" name="void setOutcome">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_nR39wMuaEee9EJtdmQ6Vlw" name="outcome">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_izfcAMucEee9EJtdmQ6Vlw" name="int getCost"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_kYcAkMucEee9EJtdmQ6Vlw" name="int getDuration"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_oL-joMucEee9EJtdmQ6Vlw" name="void setTimeOfAvailability">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ttC_gMucEee9EJtdmQ6Vlw" name="t">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_69nP4MnqEee9OPNNLRHemQ" name="MRIScan">
+      <generalization xmi:type="uml:Generalization" xmi:id="_QawG4MnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HGj-sMnrEee9OPNNLRHemQ" name="XRay">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Q13VkMnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ij3DIMnrEee9OPNNLRHemQ" name="Consultation">
+      <generalization xmi:type="uml:Generalization" xmi:id="_ROnMwMnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7sGGgMnqEee9OPNNLRHemQ" name="BloodTest">
+      <generalization xmi:type="uml:Generalization" xmi:id="_RnCT0MnrEee9OPNNLRHemQ" general="_ialmAMnqEee9OPNNLRHemQ"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6MKGgMVEEeecsefrduevSA" name="RoomFactory">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_GQWDUMrmEee9EJtdmQ6Vlw" name="room" type="_UrWJwMrlEee9EJtdmQ6Vlw" association="_GQUOIMrmEee9EJtdmQ6Vlw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TNyuYMssEee9EJtdmQ6Vlw" name="Room createRoom">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CFAt4Ms_Eee9EJtdmQ6Vlw" name="roomType">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_DyYsoMn1Eee9OPNNLRHemQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DyZ6wMn1Eee9OPNNLRHemQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
