@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import others.IDGenerator;
 
 
-public class Physician extends Resource {
-	
-	public String name = "";
-	public String surname = "";
-	public int ID;
-	public String state = "idle";
-	public String username = "";
-	public ArrayList<Patient> currentPatients;
-	public ArrayList<Patient> historyPatients;
-	public ArrayList<String> messageBox;
+public class Physician extends HumanResource {
 	
 	
+	public ArrayList<Patient> currentPatients = new ArrayList<Patient>();
+	public ArrayList<Patient> historyPatients = new ArrayList<Patient>();
+	public ArrayList<String> messageBox = new ArrayList<String>();
 	
+	
+	public Physician() {
+		this.ID = IDGenerator.getInstance().getNextID();
+		
+	}
 
 	public Physician(String name, String surname, String username) {
 		super();
@@ -24,24 +23,9 @@ public class Physician extends Resource {
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.username = username;
-		this.currentPatients = new ArrayList<Patient>();
-		this.historyPatients = new ArrayList<Patient>();
-		this.messageBox = new ArrayList<String>();
 	}
 	
-	public String getSurname() {
-		return surname;
-	}
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
+	
 	public ArrayList<Patient> getCurrentPatients() {
 		return currentPatients;
 	}
@@ -71,7 +55,7 @@ public class Physician extends Resource {
 	}
 	
 	/*
-	public void takedecision(Patient patient) {
+	public void takeDecision(Patient patient) {
 		Uniform U = new Uniform(0,100);
 		double x = U.sample();
 		if(0<=(double)x && (double)x<35) {
