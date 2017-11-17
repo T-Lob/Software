@@ -96,9 +96,24 @@ public class Physician extends HumanResource {
 			Consultation.result(patient);
 			this.setState("idle");
 			
+			}
 		}
+	public void setState(String state) {
+		this.state=state;
+		if (state.equalsIgnoreCase("visiting")){
+			Database.getPhysicianList().get(1).add(this);
+			Database.getPhysicianList().get(0).remove(this);
+			Database.getPhysicianList().get(2).remove(this);
+		} else if (state.equalsIgnoreCase("idle")) {
+			Database.getPhysicianList().get(0).add(this);
+			Database.getPhysicianList().get(1).remove(this);
+			Database.getPhysicianList().get(2).remove(this);
+		}
+		else if (state.equalsIgnoreCase("offduty")){
+			Database.getPhysicianList().get(2).add(this);
+			Database.getPhysicianList().get(1).remove(this);
+			Database.getPhysicianList().get(0).remove(this);
+			}
 		
-	
-	
-	}
 }
+	}

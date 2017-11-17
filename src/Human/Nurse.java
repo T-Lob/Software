@@ -31,6 +31,24 @@ public class Nurse extends HumanResource {
 	public void setCurrentPatient(Patient currentPatient) {
 		this.currentPatient = currentPatient;
 	}
+	public void setState(String state) {
+		this.state=state;
+		if (state.equalsIgnoreCase("visiting")){
+			Database.getNurseList().get(1).add(this);
+			Database.getNurseList().get(0).remove(this);
+			Database.getNurseList().get(2).remove(this);
+		} else if (state.equalsIgnoreCase("busy")) {
+			Database.getNurseList().get(0).add(this);
+			Database.getNurseList().get(1).remove(this);
+			Database.getNurseList().get(2).remove(this);
+		}
+		else if (state.equalsIgnoreCase("offduty")){
+			Database.getNurseList().get(2).add(this);
+			Database.getNurseList().get(1).remove(this);
+			Database.getNurseList().get(0).remove(this);
+			}
+		
+}
 	
 	public void registration (Patient patient) {
 		patient.setState("registrated");
