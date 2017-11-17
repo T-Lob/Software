@@ -80,8 +80,12 @@ public class Patient {
 			}
 		this.location=location;
 	}
-	public ArrayList<String[]> getHistory() {
-		return history;
+	public void getHistory() {
+		for (String[] L: this.history) {
+			System.out.println("State: " + L[0] + " - Time: "  + L[1]);
+			
+		}
+		
 	}
 	public void addEventToHistory(String[] event) {
 		this.history.add(event);
