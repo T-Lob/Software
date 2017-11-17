@@ -53,6 +53,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6MKGgMVEEeecsefrduevSA" name="RoomFactory">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_GQWDUMrmEee9EJtdmQ6Vlw" name="room" type="_UrWJwMrlEee9EJtdmQ6Vlw" association="_GQUOIMrmEee9EJtdmQ6Vlw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TNyuYMssEee9EJtdmQ6Vlw" name="Room createRoom"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_eOQbwMVFEeecsefrduevSA" name="BoxRoom">
     <generalization xmi:type="uml:Generalization" xmi:id="_Y1JQsMrlEee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
