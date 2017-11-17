@@ -6,10 +6,10 @@ import others.IDGenerator;
 
 public class Physician extends HumanResource {
 	
-	
-	public ArrayList<Patient> currentPatients = new ArrayList<Patient>();
-	public ArrayList<Patient> historyPatients = new ArrayList<Patient>();
-	public ArrayList<String> messageBox = new ArrayList<String>();
+	private String username;
+	private ArrayList<Patient> currentPatients = new ArrayList<Patient>();
+	private ArrayList<Patient> historyPatients = new ArrayList<Patient>();
+	private ArrayList<String> messageBox = new ArrayList<String>();
 	
 	
 	public Physician() {
@@ -25,6 +25,12 @@ public class Physician extends HumanResource {
 		this.username = username;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	
 	public ArrayList<Patient> getCurrentPatients() {
 		return currentPatients;
@@ -52,6 +58,14 @@ public class Physician extends HumanResource {
 	}
 	public void  addToMessageBox(String message) {
 		this.messageBox.add(message);
+	}
+	
+	public void consultation (Patient patient) {
+		this.addToHistoryPatients(patient);
+		this.addToCurrentPatients(patient);
+		patient.setState("visited");
+		
+		
 	}
 	
 	/*

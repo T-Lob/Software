@@ -6,11 +6,10 @@ private Patient currentPatient;
 	public Transporter() {
 		this.ID = IDGenerator.getInstance().getNextID();
 	}
-	public Transporter(String name, String surname, String username) {
+	public Transporter(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.username = username;
 	}
 	public Patient getCurrentPatient() {
 		return currentPatient;

@@ -1,9 +1,8 @@
 
 public class HumanResource extends Resource {
 	protected String surname;
-	protected String username;
 	protected String state="idle";
-	public int timestamp;
+	public int timeOfAvailability;
 	
 	public String getSurname() {
 		return surname;
@@ -11,17 +10,11 @@ public class HumanResource extends Resource {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public String getUsername() {
-		return username;
+	public int getTimeOFAvailability() {
+		return timeOfAvailability;
 	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public int getTimestamp() {
-		return timestamp;
-	}
-	public void setTimestamp(int timestamp) {
-		this.timestamp = timestamp;
+	public void setTimeOfAvailability(int timestamp) {
+		this.timeOfAvailability = timestamp;
 	}
 
 	
