@@ -11,15 +11,4 @@ public abstract class Room extends Resource {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-	
-
-
 }

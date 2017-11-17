@@ -8,12 +8,6 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_LUwzwMoHEee9OPNNLRHemQ" name="currentPatients" visibility="private"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_b1f60MoKEee9OPNNLRHemQ" name="historyPatients" visibility="private"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_5wIikMoKEee9OPNNLRHemQ" name="messageBox" visibility="private"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZkeOIMrgEee9EJtdmQ6Vlw" name="String getSurname"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_clGGgMrgEee9EJtdmQ6Vlw" name="void setSurname">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gl1YEMrgEee9EJtdmQ6Vlw" name="surname">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-      </ownedParameter>
-    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_wWBBYMriEee9EJtdmQ6Vlw" name="String getUsername"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_yZLL8MriEee9EJtdmQ6Vlw" name="void setUsername">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_2-7PEMriEee9EJtdmQ6Vlw" name="username">
@@ -41,12 +35,25 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_jxQpQMtDEee9EJtdmQ6Vlw" name="void consultation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_og_u0MtDEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_QV4BkMVDEeecsefrduevSA" name="Nurse">
     <generalization xmi:type="uml:Generalization" xmi:id="_WcNN8MrmEee9EJtdmQ6Vlw" general="_OCSVoMrmEee9EJtdmQ6Vlw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yZLKUMtCEee9EJtdmQ6Vlw" name="currentPatient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1q0hQMtCEee9EJtdmQ6Vlw" name="Patient getCurrentPatient"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5HrCoMtCEee9EJtdmQ6Vlw" name="void setCurrentPatient">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Azv9gMtDEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_RQzYwMVDEeecsefrduevSA" name="Transporter">
     <generalization xmi:type="uml:Generalization" xmi:id="_VpwdUMrmEee9EJtdmQ6Vlw" general="_OCSVoMrmEee9EJtdmQ6Vlw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iBrFgMtEEee9EJtdmQ6Vlw" name="currentPatient" visibility="private" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_m3-tIMtEEee9EJtdmQ6Vlw" name="Patient getCurrentPatient"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_y72HoMtEEee9EJtdmQ6Vlw" name="void setCurrentPatient">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3ALfwMtEEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_LScHcMVEEeecsefrduevSA" name="HRFactory">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_YPyEYsrmEee9EJtdmQ6Vlw" name="humanresource" type="_OCSVoMrmEee9EJtdmQ6Vlw" association="_YPxdUMrmEee9EJtdmQ6Vlw"/>
@@ -86,13 +93,16 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ialmAMnqEee9OPNNLRHemQ" name="HealthServices">
     <generalization xmi:type="uml:Generalization" xmi:id="_4B8AwModEee9OPNNLRHemQ" general="_Fw17YMoLEee9OPNNLRHemQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_FUxv0MoeEee9OPNNLRHemQ" name="waitingQueue" visibility="private"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_o4m0sMoeEee9OPNNLRHemQ" name="probaDistribution" visibility="private" type="_zHeKgMogEee9OPNNLRHemQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_6H7AYMoeEee9OPNNLRHemQ" name="cost" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FUxv0MoeEee9OPNNLRHemQ" name="waitingQueue" visibility="protected"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_o4m0sMoeEee9OPNNLRHemQ" name="probaDistribution" visibility="protected" type="_zHeKgMogEee9OPNNLRHemQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6H7AYMoeEee9OPNNLRHemQ" name="cost" visibility="protected">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_HRSqYMofEee9OPNNLRHemQ" name="outcome" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_HRSqYMofEee9OPNNLRHemQ" name="outcome" visibility="protected">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_cGnHMMtCEee9EJtdmQ6Vlw" name="duration" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_69nP4MnqEee9OPNNLRHemQ" name="MRIScan">
@@ -190,13 +200,13 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_LfPI8MoIEee9OPNNLRHemQ" client="_LxkI4MVDEeecsefrduevSA" supplier="_NhM3UMU_EeecsefrduevSA"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_Fw17YMoLEee9OPNNLRHemQ" name="Resource" isAbstract="true">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Oj8IsMoLEee9OPNNLRHemQ" name="name" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Oj8IsMoLEee9OPNNLRHemQ" name="name" visibility="protected">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_V8cAQMoLEee9OPNNLRHemQ" name="id" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_V8cAQMoLEee9OPNNLRHemQ" name="id" visibility="protected">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_2kJZ0MotEee9OPNNLRHemQ" name="state" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_2kJZ0MotEee9OPNNLRHemQ" name="state" visibility="protected">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </ownedAttribute>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_5i-yIMrgEee9EJtdmQ6Vlw" name="String getName"/>
@@ -316,7 +326,14 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UrWJwMrlEee9EJtdmQ6Vlw" name="Room" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_YLKfkMrlEee9EJtdmQ6Vlw" general="_Fw17YMoLEee9OPNNLRHemQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_bN73kMrmEee9EJtdmQ6Vlw" name="patient" visibility="private" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_bN73kMrmEee9EJtdmQ6Vlw" name="patient" visibility="protected" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_z799UMtDEee9EJtdmQ6Vlw" name="state" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7QCA0MtDEee9EJtdmQ6Vlw" name="Patient getPatient"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_-dh3kMtDEee9EJtdmQ6Vlw" name="void setPatient">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Cb_RMMtEEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_GQUOIMrmEee9EJtdmQ6Vlw" memberEnd="_GQWDUMrmEee9EJtdmQ6Vlw _GQXRcMrmEee9EJtdmQ6Vlw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GQVcQMrmEee9EJtdmQ6Vlw" source="org.eclipse.papyrus">
@@ -326,9 +343,27 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_OCSVoMrmEee9EJtdmQ6Vlw" name="HumanResource" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_XlYcgMrmEee9EJtdmQ6Vlw" general="_Fw17YMoLEee9OPNNLRHemQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_jM1AwMrmEee9EJtdmQ6Vlw" name="surname" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_jM1AwMrmEee9EJtdmQ6Vlw" name="surname" visibility="protected">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_k3SIEMtBEee9EJtdmQ6Vlw" name="timeOfAvailability" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BrZMoMtCEee9EJtdmQ6Vlw" name="state" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_uO4JkMtBEee9EJtdmQ6Vlw" name="String getSurname"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_v1jzgMtBEee9EJtdmQ6Vlw" name="void setSurname">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjQI0MtBEee9EJtdmQ6Vlw" name="surname">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_4JNEsMtBEee9EJtdmQ6Vlw" name="int getTimeOfAvailability"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_55joAMtBEee9EJtdmQ6Vlw" name="void setTimeOfAvailability">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-uy4oMtBEee9EJtdmQ6Vlw" name="timestamp">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_YPxdUMrmEee9EJtdmQ6Vlw" memberEnd="_YPyEYsrmEee9EJtdmQ6Vlw _YPyrcMrmEee9EJtdmQ6Vlw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YPyEYMrmEee9EJtdmQ6Vlw" source="org.eclipse.papyrus">
