@@ -1,4 +1,4 @@
-
+package Resources;
 public abstract class HumanResource extends Resource {
 	protected String surname;
 	protected String state="idle";

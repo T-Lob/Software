@@ -1,4 +1,16 @@
+package others;
 import java.util.ArrayList;
+
+import Human.Nurse;
+import Human.Patient;
+import Human.Physician;
+import Human.Transporter;
+import Resources.BloodTestRoom;
+import Resources.BoxRoom;
+import Resources.MRIRoom;
+import Resources.RadioRoom;
+import Resources.Room;
+import Resources.ShockRoom;
 
 public class Database {
 	private static ArrayList<Patient> generatedPatients = new ArrayList<Patient>();

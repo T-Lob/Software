@@ -1,6 +1,9 @@
+package Human;
 
 import java.util.ArrayList;
 
+import Resources.HumanResource;
+import others.Database;
 import others.IDGenerator;
 
 

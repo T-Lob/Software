@@ -1,3 +1,4 @@
+package Resources;
 public abstract class Resource {
 	
 	protected String name;

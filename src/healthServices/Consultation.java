@@ -1,5 +1,8 @@
+package healthServices;
+import Human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
+import others.Database;
 
 public class Consultation extends HealthServices {
 	

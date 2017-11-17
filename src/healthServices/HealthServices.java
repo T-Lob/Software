@@ -1,5 +1,8 @@
+package healthServices;
 import java.util.ArrayList;
 
+import Human.Patient;
+import Resources.Resource;
 import maths.ProbabilityDistribution;
 
 public abstract class HealthServices extends Resource {

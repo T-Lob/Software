@@ -1,14 +1,16 @@
+package Resources;
 import others.IDGenerator;
 
-public class BoxRoom extends Room {
-	public BoxRoom() {
-		this.ID = IDGenerator.getInstance().getNextID();
-	}
+public class ShockRoom extends Room {
 	
-	public BoxRoom(String name) {
-		this.name=name;
+	public ShockRoom() {
 		this.ID = IDGenerator.getInstance().getNextID();
 		
 	}
+	public ShockRoom(String name) {
+		this.name=name;
+		this.ID = IDGenerator.getInstance().getNextID();
+		
+		}
 
 }

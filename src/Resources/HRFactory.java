@@ -1,3 +1,7 @@
+package Resources;
+import Human.Nurse;
+import Human.Physician;
+import Human.Transporter;
 
 public class HRFactory {
 	public HumanResource createHR(String HRType) {

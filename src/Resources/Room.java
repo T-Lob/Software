@@ -1,3 +1,5 @@
+package Resources;
+import Human.Patient;
 
 public abstract class Room extends Resource {
 
