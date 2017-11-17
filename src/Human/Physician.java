@@ -91,7 +91,7 @@ public class Physician extends HumanResource {
 		}
 	}
 	
-	public void endconsultation (Patient patient) {
+	public void endConsultation (Patient patient) {
 		if (this.timeOfAvailability == Database.getTime()) {
 			Consultation.result(patient);
 			this.setState("idle");
