@@ -34,6 +34,7 @@ public class Patient {
 		this.history = history;
 		this.arrivalTime = arrivalTime;
 		this.physician = physician;
+		Database.addToGeneratedPatients(this);
 	}
 
 	public Patient(String name,String surname,String severityLevel,int arrivalTime) {
@@ -41,9 +42,10 @@ public class Patient {
 		this.surname=surname;
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.severityLevel = severityLevel;
-		this.state = "waiting";
+		this.state = "arrived";
 		// this.location = WaitingRoom;  peut-etre un singleton waiting room ?
 		this.physician=null;
+		Database.addToGeneratedPatients(this);
 		
 	}	
 	public String getName() {
