@@ -21,7 +21,7 @@ public class Consultation extends HealthServices {
 		Uniform U = new Uniform(0,100);
 		int x = U.getSample();
 		if(0<=x && x<35) {
-			patient.setState("released");
+			patient.getPhysician().verdict(patient);
 		}
 		if(35<=x && x<55) {
 			patient.setDestination(Database.radioRoom);

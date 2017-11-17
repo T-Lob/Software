@@ -59,13 +59,17 @@ public class Nurse extends HumanResource {
 			this.setTimeOfAvailability(Database.getTime());
 			this.setState("busy");
 			patient.setState("transported");
+			patient.setLocation(room);
 			room.setState("onlypatient");
+			room.setPatient(patient);
+			this.setCurrentPatient(patient);
 			this.timeOfAvailability += 2;
 		}
 	}
 	public void endOfInstallation (Patient patient) {
 		if (this.timeOfAvailability == Database.getTime()) {
 			this.setState("idle");
+			this.setCurrentPatient(null);
 			patient.setState("waiting");
 		}
 	

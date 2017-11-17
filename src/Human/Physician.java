@@ -70,6 +70,24 @@ public class Physician extends HumanResource {
 	public void  addToMessageBox(String message) {
 		this.messageBox.add(message);
 	}
+	public void setState(String state) {
+		this.state=state;
+		if (state.equalsIgnoreCase("visiting")){
+			Database.getPhysicianList().get(1).add(this);
+			Database.getPhysicianList().get(0).remove(this);
+			Database.getPhysicianList().get(2).remove(this);
+		} else if (state.equalsIgnoreCase("idle")) {
+			Database.getPhysicianList().get(0).add(this);
+			Database.getPhysicianList().get(1).remove(this);
+			Database.getPhysicianList().get(2).remove(this);
+		}
+		else if (state.equalsIgnoreCase("offduty")){
+			Database.getPhysicianList().get(2).add(this);
+			Database.getPhysicianList().get(1).remove(this);
+			Database.getPhysicianList().get(0).remove(this);
+			}
+		
+}
 	
 	public void consultation (Patient patient) {
 		if (this.timeOfAvailability <= Database.getTime()) { // The physician can be idle for several minutes if no patient shows up
@@ -98,22 +116,9 @@ public class Physician extends HumanResource {
 			
 			}
 		}
-	public void setState(String state) {
-		this.state=state;
-		if (state.equalsIgnoreCase("visiting")){
-			Database.getPhysicianList().get(1).add(this);
-			Database.getPhysicianList().get(0).remove(this);
-			Database.getPhysicianList().get(2).remove(this);
-		} else if (state.equalsIgnoreCase("idle")) {
-			Database.getPhysicianList().get(0).add(this);
-			Database.getPhysicianList().get(1).remove(this);
-			Database.getPhysicianList().get(2).remove(this);
-		}
-		else if (state.equalsIgnoreCase("offduty")){
-			Database.getPhysicianList().get(2).add(this);
-			Database.getPhysicianList().get(1).remove(this);
-			Database.getPhysicianList().get(0).remove(this);
-			}
-		
-}
+	public void verdict (Patient patient) {
+		patient.setState("released");
+		this.currentPatients.remove(patient);
+	}
+	
 	}

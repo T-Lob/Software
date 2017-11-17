@@ -46,6 +46,25 @@ private Patient currentPatient;
 			}
 		
 }
+	public void transportation (Patient patient) {
+		if (this.timeOfAvailability <= Database.getTime()) {
+			this.setTimeOfAvailability(Database.getTime());
+			this.setState("transporting");
+			this.setCurrentPatient(patient);
+			patient.setState("transported");
+			patient.setLocation(patient.getDestination());
+			patient.getDestination().setState("full");
+			patient.getDestination().setPatient(patient);;
+			this.timeOfAvailability += 5;
+		}
+	}
+		public void endOfTransportation (Patient patient) {
+			if (this.timeOfAvailability == Database.getTime()) {
+				this.setState("idle");
+				this.setCurrentPatient(null);
+				patient.setState("waiting");
+				
+			}
 
-
+	}
 }
