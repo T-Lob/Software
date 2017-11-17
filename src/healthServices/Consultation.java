@@ -17,7 +17,7 @@ public class Consultation extends HealthServices {
 	}
 	
 	public static void result (Patient patient) {
-		
+		patient.getLocation().setState("empty");
 		Uniform U = new Uniform(0,100);
 		int x = U.getSample();
 		if(0<=x && x<35) {

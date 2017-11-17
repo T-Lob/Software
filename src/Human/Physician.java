@@ -1,7 +1,6 @@
 package Human;
 
 import java.util.ArrayList;
-
 import healthServices.Consultation;
 import others.Database;
 import others.IDGenerator;
@@ -20,6 +19,12 @@ public class Physician extends HumanResource {
 		this.ID = IDGenerator.getInstance().getNextID();
 		Database.addToPhysicianList(this);
 		
+	}
+	public Physician(String name) {
+		super();
+		this.name = name;
+		this.ID = IDGenerator.getInstance().getNextID();
+		Database.addToPhysicianList(this);
 	}
 
 	public Physician(String name, String surname, String username) {

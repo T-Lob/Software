@@ -1,21 +1,29 @@
 package core;
 
-import java.util.ArrayList;
 
-import Human.Patient;
-import Human.Physician;
+import Human.*;
+import Resources.*;
 import others.Database;
 
 public class Test {
 	public static void main(String[] args) {
 		Database.createED("ED");
 		
-		Physician physician = new Physician();
-		System.out.println(Database.getPhysicianList());
+		HRFactory hrfactory = new HRFactory();
+		RoomFactory roomfactory = new RoomFactory();
+		Nurse nurse = (Nurse) hrfactory.createHR("nurse");
+		BoxRoom boxroom= (BoxRoom) roomfactory.createRoom("boxroom");
+		Patient patient = new Patient();
+				
+		System.out.println(Database.getNurseList());
+		System.out.println(Database.getBoxRoomList());
+		nurse.installation(patient, boxroom);
 		
-		physician.setState("offduty");
+		System.out.println(Database.getNurseList());
+		System.out.println(Database.getBoxRoomList());
+
 		
-		System.out.println(Database.getPhysicianList());
+		
 		
 		
 		

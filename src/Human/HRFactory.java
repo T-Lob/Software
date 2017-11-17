@@ -16,5 +16,20 @@ public class HRFactory {
 		return null;
 		
 	}
+	public HumanResource createHR(String HRType, String name) {
+		if (HRType == null) {
+			return null;
+		}
+		
+		if (HRType.equalsIgnoreCase("PHYSICIAN")){
+			return new Physician(name);
+		} else if (HRType.equalsIgnoreCase("NURSE")){
+			return new Nurse(name);
+		} else if (HRType.equalsIgnoreCase("TRANSPORTER")) {
+			return new Transporter(name);
+		}
+		return null;
+		
+	}
 }
 

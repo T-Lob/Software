@@ -33,6 +33,8 @@ public class Patient {
 		Database.addToGeneratedPatients(this);
 		
 	}	
+	public Patient() {
+	}
 	public String getName() {
 		return name;
 	}
@@ -68,7 +70,8 @@ public class Patient {
 		return location;
 	}
 	public void setLocation(Room location) {
-		this.location = location;
+		this.location.setState("empty");
+		this.location=location;
 	}
 	public ArrayList<String[]> getHistory() {
 		return history;

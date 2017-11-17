@@ -26,7 +26,7 @@ public abstract class HumanResource extends Resource {
 		if (state.equalsIgnoreCase("visiting")){
 			Database.getPhysicianList().get(1).add((Physician) this);
 			Database.getPhysicianList().get(0).remove((Physician) this);
-			Database.getNurseList().get(2).remove((Nurse) this);
+			Database.getPhysicianList().get(2).remove((Physician) this);
 	
 			
 		} else if (state.equalsIgnoreCase("busy")){

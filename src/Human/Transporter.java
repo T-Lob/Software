@@ -15,6 +15,11 @@ private Patient currentPatient;
 		this.ID = IDGenerator.getInstance().getNextID();
 		Database.addToTransporterList(this);
 	}
+	public Transporter(String name) {
+		this.name = name;
+		this.ID = IDGenerator.getInstance().getNextID();
+		Database.addToTransporterList(this);
+	}
 	public Patient getCurrentPatient() {
 		return currentPatient;
 	}

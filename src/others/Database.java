@@ -17,7 +17,7 @@ public class Database {
 	private static ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>(2);
 	private static ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
 	private static ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
-	private static int time;
+	private static int time=1000;
 	private static String EDname;
 	public static final RadioRoom radioRoom = new RadioRoom();
 	public static final MRIRoom mriRoom = new MRIRoom();
