@@ -6,7 +6,7 @@ public class Database {
 	private static ArrayList<ArrayList<Patient>> registeredPatients = new ArrayList<ArrayList<Patient>>(5);
 	private static ArrayList<Patient> waitingForTransportPatients = new ArrayList<Patient> ();
 	private static ArrayList<Patient> waitingForVerdictPatients = new ArrayList<Patient>();
-	private static ArrayList<ArrayList<Room>> boxRoomList = new ArrayList<ArrayList<Room>>();
+	private static ArrayList<ArrayList<Room>> boxRoomList = new ArrayList<ArrayList<Room>>(3);
 	private static ArrayList<ArrayList<Room>> shockRoomList = new ArrayList<ArrayList<Room>>();
 	private static ArrayList<Patient> releasedPatients = new ArrayList<Patient> ();
 	private static ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>();
@@ -41,8 +41,8 @@ public class Database {
 	public static ArrayList<Patient> getWaitingForTransportPatients() {
 		return waitingForTransportPatients;
 	}
-	public static ArrayList<Patient> getPatientsWaitingForVerdictPatients() {
-		return getPatientsWaitingForVerdictPatients();
+	public static ArrayList<Patient> getWaitingForVerdictPatients() {
+		return waitingForVerdictPatients;
 	}
 	public static ArrayList<ArrayList<Room>> getBoxRoomList() {
 		return boxRoomList;

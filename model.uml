@@ -271,6 +271,10 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_FFCm0MszEee9EJtdmQ6Vlw" name="void addToRegisteredPatients" isStatic="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_50cxcMs0Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TODBgMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingForTransportPatients" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_uRfZsMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingForVerdictPatients()" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_06RrkMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getBoxRoomList()" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_FblhwMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getShockRoomList" isStatic="true"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_UrWJwMrlEee9EJtdmQ6Vlw" name="Room" isAbstract="true">
     <generalization xmi:type="uml:Generalization" xmi:id="_YLKfkMrlEee9EJtdmQ6Vlw" general="_Fw17YMoLEee9OPNNLRHemQ"/>
