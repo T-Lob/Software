@@ -1,17 +1,18 @@
 package Resources;
+import others.Database;
 import others.ED;
 import others.IDGenerator;
 
 public class ShockRoom extends Room {
 	
-	public ShockRoom(ED ed) {
-		this.ED=ed;
+	public ShockRoom(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToShockRoomList(this);
 		
 	}
-	public ShockRoom(ED ed,String name) {
-		this.ED=ed;
+	public ShockRoom(String EDname,String name) {
+		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToShockRoomList(this);

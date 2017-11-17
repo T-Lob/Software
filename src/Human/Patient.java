@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 
 import Resources.Room;
+import others.Database;
 import others.ED;
 import others.IDGenerator;
 
@@ -26,8 +27,8 @@ public class Patient {
 	
 	
 
-	public Patient(ED ed,String name,String surname,String severityLevel,int arrivalTime) {
-		this.ED=ed;
+	public Patient(String EDname,String name,String surname,String severityLevel,int arrivalTime) {
+		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.surname=surname;
 		this.ID=IDGenerator.getInstance().getNextID();
@@ -36,8 +37,8 @@ public class Patient {
 		this.ED.addToGeneratedPatients(this);
 		
 	}	
-	public Patient(ED ed) {
-		this.ED=ed;
+	public Patient(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 	}
 	public String getName() {
 		return name;

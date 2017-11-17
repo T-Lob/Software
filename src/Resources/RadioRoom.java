@@ -1,9 +1,11 @@
 package Resources;
 
+import others.Database;
+
 public class RadioRoom extends Room {
 
-	public RadioRoom(others.ED ed) {
-		// TODO Auto-generated constructor stub
+	public RadioRoom(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 	}
 
 }

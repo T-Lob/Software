@@ -8,20 +8,20 @@ import others.*;
 public class Nurse extends HumanResource {
 	private Patient currentPatient;
 	
-	public Nurse(ED ed) {
-		this.ED=ed;
+	public Nurse(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToNurseList(this);
 	}
-	public Nurse(ED ed, String name, String surname) {
-		this.ED=ed;
+	public Nurse(String EDname, String name, String surname) {
+		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToNurseList(this);
 	}
-	public Nurse(ED ed,String name) {
-		this.ED=ed;
+	public Nurse(String EDname,String name) {
+		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToNurseList(this);
@@ -36,11 +36,11 @@ public class Nurse extends HumanResource {
 	}
 	public void setState(String state) {
 		this.state=state;
-		if (state.equalsIgnoreCase("visiting")){
+		if (state.equalsIgnoreCase("busy")){
 			this.ED.getNurseList().get(1).add(this);
 			this.ED.getNurseList().get(0).remove(this);
 			this.ED.getNurseList().get(2).remove(this);
-		} else if (state.equalsIgnoreCase("busy")) {
+		} else if (state.equalsIgnoreCase("idle")) {
 			this.ED.getNurseList().get(0).add(this);
 			this.ED.getNurseList().get(1).remove(this);
 			this.ED.getNurseList().get(2).remove(this);

@@ -4,20 +4,20 @@ import others.*;
 public class Transporter extends HumanResource{
 private Patient currentPatient;
 	
-	public Transporter(ED ed) {
-		this.ED=ed;
+	public Transporter(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToTransporterList(this);
 	}
-	public Transporter(ED ed, String name, String surname) {
-		this.ED=ed;
+	public Transporter(String EDname, String name, String surname) {
+		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToTransporterList(this);
 	}
-	public Transporter(ED ed, String name) {
-		this.ED=ed;
+	public Transporter(String EDname, String name) {
+		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToTransporterList(this);

@@ -3,20 +3,20 @@ package healthServices;
 import Human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
-import others.ED;
+import others.Database;
 
 public class XRay extends HealthServices {
 	private ProbabilityDistribution probabilityDistribution= new Uniform(10,20);
 	private int duration=this.probabilityDistribution.getSample();
 	
-	public XRay(ED ed) {
-		this.ED=ed;
+	public XRay(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 		
 	}
-	public XRay(ED ed,ProbabilityDistribution probabilityDistribution, int cost) {
+	public XRay(String EDname,ProbabilityDistribution probabilityDistribution, int cost) {
+		this.ED=Database.getEDbyName(EDname);
 		this.probabilityDistribution= probabilityDistribution;
 		this.cost=cost;
-		this.ED=ed;
 	}
 	public void setDuration(int duration) {
 		this.duration = duration;

@@ -3,19 +3,19 @@ package healthServices;
 import Human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
-import others.ED;
+import others.Database;
 
 public class BloodTest extends HealthServices {
 	private ProbabilityDistribution probabilityDistribution= new Uniform(15,90);
 	private int duration=this.probabilityDistribution.getSample();
 	
-	public BloodTest(ED ed) {
-		this.ED=ed;
+	public BloodTest(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 		
 	}
-	public BloodTest(ED ed,ProbabilityDistribution probabilityDistribution) {
+	public BloodTest(String EDname,ProbabilityDistribution probabilityDistribution) {
+		this.ED=Database.getEDbyName(EDname);
 		this.probabilityDistribution= probabilityDistribution;
-		this.ED=ed;
 	}
 	public void setDuration(int duration) {
 		this.duration = duration;

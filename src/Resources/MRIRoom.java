@@ -1,9 +1,11 @@
 package Resources;
 
+import others.Database;
+
 public class MRIRoom extends Room {
 
-	public MRIRoom(others.ED ed) {
-		// TODO Auto-generated constructor stub
+	public MRIRoom(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 	}
 
 }

@@ -1,9 +1,11 @@
 package Resources;
 
+import others.Database;
+
 public class WaitingRoom extends Room {
 
-	public WaitingRoom(others.ED ed) {
-		// TODO Auto-generated constructor stub
+	public WaitingRoom(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 	}
 
 }

@@ -1,9 +1,11 @@
 package Resources;
 
+import others.Database;
+
 public class BloodTestRoom extends Room {
 
-	public BloodTestRoom(others.ED ed) {
-		// TODO Auto-generated constructor stub
+	public BloodTestRoom(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 	}
 
 }

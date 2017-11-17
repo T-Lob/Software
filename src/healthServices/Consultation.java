@@ -2,21 +2,22 @@ package healthServices;
 import Human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
+import others.Database;
 import others.ED;
 
 
 public class Consultation extends HealthServices {
 	
 
-	public Consultation(ED ed) {
+	public Consultation(String EDname) {
 		this.probabilityDistribution= new Uniform(5,20);
 		this.duration=this.probabilityDistribution.getSample();
-		this.ED=ed;
+		this.ED=Database.getEDbyName(EDname);
 	}
-	public Consultation(ED ed,ProbabilityDistribution probabilityDistribution) {
+	public Consultation(String EDname,ProbabilityDistribution probabilityDistribution) {
 		this.probabilityDistribution= probabilityDistribution;
 		this.duration=this.probabilityDistribution.getSample();
-		this.ED=ed;
+		this.ED=Database.getEDbyName(EDname);
 	}
 	
 	public void result (Patient patient) {

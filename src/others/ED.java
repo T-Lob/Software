@@ -19,9 +19,9 @@ public class ED {
 	private  ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
 	private  int time=1000;
 	private  String EDname;
-	public  final RadioRoom radioRoom = new RadioRoom(this);
-	public  final MRIRoom mriRoom = new MRIRoom(this);
-	public  final BloodTestRoom bloodTestRoom = new BloodTestRoom(this);
+	public  final RadioRoom radioRoom = new RadioRoom(this.EDname);
+	public  final MRIRoom mriRoom = new MRIRoom(this.EDname);
+	public  final BloodTestRoom bloodTestRoom = new BloodTestRoom(this.EDname);
 	
 	
 	public ED (String EDname) {
@@ -36,6 +36,7 @@ public class ED {
 		}
 		this.registeredPatients.add(generatedPatients);
 		this.registeredPatients.add(generatedPatients);
+		Database.addToGeneratedEDs(this);
 	}
 	
 	public String getEDname() {

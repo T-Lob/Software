@@ -2,14 +2,14 @@ package Resources;
 import others.*;
 
 public class BoxRoom extends Room {
-	public BoxRoom(ED ed) {
-		this.ED=ed;
+	public BoxRoom(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToBoxRoomList(this);
 	}
 	
-	public BoxRoom(ED ed,String name) {
-		this.ED=ed;
+	public BoxRoom(String EDname,String name) {
+		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToBoxRoomList(this);
