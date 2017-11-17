@@ -50,10 +50,19 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_LScHcMVEEeecsefrduevSA" name="HRFactory">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_YPyEYsrmEee9EJtdmQ6Vlw" name="humanresource" type="_OCSVoMrmEee9EJtdmQ6Vlw" association="_YPxdUMrmEee9EJtdmQ6Vlw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_1_gUoMs-Eee9EJtdmQ6Vlw" name="HumanResource createHR">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_79GUcMs-Eee9EJtdmQ6Vlw" name="HRType">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6MKGgMVEEeecsefrduevSA" name="RoomFactory">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_GQWDUMrmEee9EJtdmQ6Vlw" name="room" type="_UrWJwMrlEee9EJtdmQ6Vlw" association="_GQUOIMrmEee9EJtdmQ6Vlw"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TNyuYMssEee9EJtdmQ6Vlw" name="Room createRoom"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TNyuYMssEee9EJtdmQ6Vlw" name="Room createRoom">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CFAt4Ms_Eee9EJtdmQ6Vlw" name="roomType">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_eOQbwMVFEeecsefrduevSA" name="BoxRoom">
     <generalization xmi:type="uml:Generalization" xmi:id="_Y1JQsMrlEee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
@@ -66,17 +75,14 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_eyuawMVFEeecsefrduevSA" name="WaitingRoom">
     <generalization xmi:type="uml:Generalization" xmi:id="_Z6fIIMrlEee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_fKSmMMVFEeecsefrduevSA" name="TestRoom">
-    <generalization xmi:type="uml:Generalization" xmi:id="_aY9M0MrlEee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_usesQMVGEeecsefrduevSA" name="RadioRoom">
-    <generalization xmi:type="uml:Generalization" xmi:id="_DN13gMVHEeecsefrduevSA" general="_fKSmMMVFEeecsefrduevSA"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_kamv8Ms9Eee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_xp_mQMVGEeecsefrduevSA" name="MRIRoom">
-    <generalization xmi:type="uml:Generalization" xmi:id="_Dljz8MVHEeecsefrduevSA" general="_fKSmMMVFEeecsefrduevSA"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_o5PecMs9Eee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_03igUMVGEeecsefrduevSA" name="BloodTestRoom">
-    <generalization xmi:type="uml:Generalization" xmi:id="_Eo5gQMVHEeecsefrduevSA" general="_fKSmMMVFEeecsefrduevSA"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_pk3OUMs9Eee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ialmAMnqEee9OPNNLRHemQ" name="HealthServices">
     <generalization xmi:type="uml:Generalization" xmi:id="_4B8AwModEee9OPNNLRHemQ" general="_Fw17YMoLEee9OPNNLRHemQ"/>
@@ -231,6 +237,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_l_tNkMohEee9OPNNLRHemQ" name="parameter" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_mCjIsMs-Eee9EJtdmQ6Vlw" name="int getSample"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_jG-s8MohEee9OPNNLRHemQ" client="_hbolcMohEee9OPNNLRHemQ" supplier="_zHeKgMogEee9OPNNLRHemQ"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_PfnPUMoiEee9OPNNLRHemQ" memberEnd="_Pfn2YsoiEee9OPNNLRHemQ _PfodcMoiEee9OPNNLRHemQ">

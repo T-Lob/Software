@@ -1,5 +1,5 @@
 
-public class HumanResource extends Resource {
+public abstract class HumanResource extends Resource {
 	protected String surname;
 	protected String state="idle";
 	public int timeOfAvailability;
@@ -10,7 +10,7 @@ public class HumanResource extends Resource {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public int getTimeOFAvailability() {
+	public int getTimeOfAvailability() {
 		return timeOfAvailability;
 	}
 	public void setTimeOfAvailability(int timestamp) {
