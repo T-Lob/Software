@@ -1,17 +1,18 @@
 package Resources;
-import others.Database;
-import others.IDGenerator;
+import others.*;
 
 public class BoxRoom extends Room {
-	public BoxRoom() {
+	public BoxRoom(ED ed) {
+		this.ED=ed;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToBoxRoomList(this);
+		this.ED.addToBoxRoomList(this);
 	}
 	
-	public BoxRoom(String name) {
+	public BoxRoom(ED ed,String name) {
+		this.ED=ed;
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToBoxRoomList(this);
+		this.ED.addToBoxRoomList(this);
 		
 	}
 	
@@ -19,19 +20,19 @@ public class BoxRoom extends Room {
 		this.state=state;
 		
 		if (state.equalsIgnoreCase("empty")){
-			Database.getBoxRoomList().get(0).add(this);
-			Database.getBoxRoomList().get(1).remove(this);
-			Database.getBoxRoomList().get(2).remove(this);
+			this.ED.getBoxRoomList().get(0).add(this);
+			this.ED.getBoxRoomList().get(1).remove(this);
+			this.ED.getBoxRoomList().get(2).remove(this);
 			
 		} else if (state.equalsIgnoreCase("onlyPatient")){
-			Database.getBoxRoomList().get(1).add(this);
-			Database.getBoxRoomList().get(0).remove(this);
-			Database.getBoxRoomList().get(2).remove(this);
+			this.ED.getBoxRoomList().get(1).add(this);
+			this.ED.getBoxRoomList().get(0).remove(this);
+			this.ED.getBoxRoomList().get(2).remove(this);
 			
 		} else if (state.equalsIgnoreCase("full")) {
-			Database.getBoxRoomList().get(2).add(this);
-			Database.getBoxRoomList().get(1).remove(this);
-			Database.getBoxRoomList().get(0).remove(this);
+			this.ED.getBoxRoomList().get(2).add(this);
+			this.ED.getBoxRoomList().get(1).remove(this);
+			this.ED.getBoxRoomList().get(0).remove(this);
 		}
 	
 	

@@ -1,24 +1,26 @@
 package Human;
-import others.Database;
-import others.IDGenerator;
+import others.*;
 
 public class Transporter extends HumanResource{
 private Patient currentPatient;
 	
-	public Transporter() {
+	public Transporter(ED ed) {
+		this.ED=ed;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToTransporterList(this);
+		this.ED.addToTransporterList(this);
 	}
-	public Transporter(String name, String surname) {
+	public Transporter(ED ed, String name, String surname) {
+		this.ED=ed;
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToTransporterList(this);
+		this.ED.addToTransporterList(this);
 	}
-	public Transporter(String name) {
+	public Transporter(ED ed, String name) {
+		this.ED=ed;
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToTransporterList(this);
+		this.ED.addToTransporterList(this);
 	}
 	public Patient getCurrentPatient() {
 		return currentPatient;
@@ -31,24 +33,24 @@ private Patient currentPatient;
 	public void setState(String state) {
 		this.state=state;
 		if (state.equalsIgnoreCase("transporting")){
-			Database.getTransporterList().get(1).add(this);
-			Database.getTransporterList().get(0).remove(this);
-			Database.getTransporterList().get(2).remove(this);
+			this.ED.getTransporterList().get(1).add(this);
+			this.ED.getTransporterList().get(0).remove(this);
+			this.ED.getTransporterList().get(2).remove(this);
 		} else if (state.equalsIgnoreCase("idle")) {
-			Database.getTransporterList().get(0).add(this);
-			Database.getTransporterList().get(1).remove(this);
-			Database.getTransporterList().get(2).remove(this);
+			this.ED.getTransporterList().get(0).add(this);
+			this.ED.getTransporterList().get(1).remove(this);
+			this.ED.getTransporterList().get(2).remove(this);
 		}
 		else if (state.equalsIgnoreCase("offduty")){
-			Database.getTransporterList().get(2).add(this);
-			Database.getTransporterList().get(1).remove(this);
-			Database.getTransporterList().get(0).remove(this);
+			this.ED.getTransporterList().get(2).add(this);
+			this.ED.getTransporterList().get(1).remove(this);
+			this.ED.getTransporterList().get(0).remove(this);
 			}
 		
 }
 	public void transportation (Patient patient) {
-		if (this.timeOfAvailability <= Database.getTime()) {
-			this.setTimeOfAvailability(Database.getTime());
+		if (this.timeOfAvailability <= this.ED.getTime()) {
+			this.setTimeOfAvailability(this.ED.getTime());
 			this.setState("transporting");
 			this.setCurrentPatient(patient);
 			patient.setState("transported");
@@ -59,7 +61,7 @@ private Patient currentPatient;
 		}
 	}
 		public void endOfTransportation (Patient patient) {
-			if (this.timeOfAvailability == Database.getTime()) {
+			if (this.timeOfAvailability == this.ED.getTime()) {
 				this.setState("idle");
 				this.setCurrentPatient(null);
 				patient.setState("waiting");

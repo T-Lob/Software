@@ -1,9 +1,11 @@
 package Resources;
+import others.*;
 public abstract class Resource {
 	
 	protected String name;
 	protected int ID;
 	protected String state;
+	protected ED ED;
 	
 	public String getName() {
 		return name;

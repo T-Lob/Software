@@ -2,26 +2,29 @@ package Human;
 
 
 import Resources.Room;
-import others.Database;
-import others.IDGenerator;
+import others.*;
+
 
 public class Nurse extends HumanResource {
 	private Patient currentPatient;
 	
-	public Nurse() {
+	public Nurse(ED ed) {
+		this.ED=ed;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToNurseList(this);
+		this.ED.addToNurseList(this);
 	}
-	public Nurse(String name, String surname) {
+	public Nurse(ED ed, String name, String surname) {
+		this.ED=ed;
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToNurseList(this);
+		this.ED.addToNurseList(this);
 	}
-	public Nurse(String name) {
+	public Nurse(ED ed,String name) {
+		this.ED=ed;
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToNurseList(this);
+		this.ED.addToNurseList(this);
 		
 	}
 	public Patient getCurrentPatient() {
@@ -34,18 +37,18 @@ public class Nurse extends HumanResource {
 	public void setState(String state) {
 		this.state=state;
 		if (state.equalsIgnoreCase("visiting")){
-			Database.getNurseList().get(1).add(this);
-			Database.getNurseList().get(0).remove(this);
-			Database.getNurseList().get(2).remove(this);
+			this.ED.getNurseList().get(1).add(this);
+			this.ED.getNurseList().get(0).remove(this);
+			this.ED.getNurseList().get(2).remove(this);
 		} else if (state.equalsIgnoreCase("busy")) {
-			Database.getNurseList().get(0).add(this);
-			Database.getNurseList().get(1).remove(this);
-			Database.getNurseList().get(2).remove(this);
+			this.ED.getNurseList().get(0).add(this);
+			this.ED.getNurseList().get(1).remove(this);
+			this.ED.getNurseList().get(2).remove(this);
 		}
 		else if (state.equalsIgnoreCase("offduty")){
-			Database.getNurseList().get(2).add(this);
-			Database.getNurseList().get(1).remove(this);
-			Database.getNurseList().get(0).remove(this);
+			this.ED.getNurseList().get(2).add(this);
+			this.ED.getNurseList().get(1).remove(this);
+			this.ED.getNurseList().get(0).remove(this);
 			}
 		
 }
@@ -55,8 +58,8 @@ public class Nurse extends HumanResource {
 		
 	}
 	public void installation (Patient patient, Room room) {
-		if (this.timeOfAvailability <= Database.getTime()) {
-			this.setTimeOfAvailability(Database.getTime());
+		if (this.timeOfAvailability <= this.ED.getTime()) {
+			this.setTimeOfAvailability(this.ED.getTime());
 			this.setState("busy");
 			patient.setState("transported");
 			patient.setLocation(room);
@@ -67,7 +70,7 @@ public class Nurse extends HumanResource {
 		}
 	}
 	public void endOfInstallation (Patient patient) {
-		if (this.timeOfAvailability == Database.getTime()) {
+		if (this.timeOfAvailability == this.ED.getTime()) {
 			this.setState("idle");
 			this.setCurrentPatient(null);
 			patient.setState("waiting");

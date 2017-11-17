@@ -40,6 +40,9 @@ public abstract class HealthServices extends Resource {
 	public void setTimeOfAvailability(int t) {
 		this.timeOfAvailability = t;
 	}
+	public int getTimeOfAvailability() {
+		return timeOfAvailability;
+	}
 	
 
 }

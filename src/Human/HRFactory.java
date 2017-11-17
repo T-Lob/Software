@@ -1,32 +1,33 @@
 package Human;
+import others.*;
 
 public class HRFactory {
-	public HumanResource createHR(String HRType) {
+	public HumanResource createHR(ED ed,String HRType) {
 		if (HRType == null) {
 			return null;
 		}
 		
 		if (HRType.equalsIgnoreCase("PHYSICIAN")){
-			return new Physician();
+			return new Physician(ed);
 		} else if (HRType.equalsIgnoreCase("NURSE")){
-			return new Nurse();
+			return new Nurse(ed);
 		} else if (HRType.equalsIgnoreCase("TRANSPORTER")) {
-			return new Transporter();
+			return new Transporter(ed);
 		}
 		return null;
 		
 	}
-	public HumanResource createHR(String HRType, String name) {
+	public HumanResource createHR(ED ed,String HRType, String name) {
 		if (HRType == null) {
 			return null;
 		}
 		
 		if (HRType.equalsIgnoreCase("PHYSICIAN")){
-			return new Physician(name);
+			return new Physician(ed,name);
 		} else if (HRType.equalsIgnoreCase("NURSE")){
-			return new Nurse(name);
+			return new Nurse(ed,name);
 		} else if (HRType.equalsIgnoreCase("TRANSPORTER")) {
-			return new Transporter(name);
+			return new Transporter(ed,name);
 		}
 		return null;
 		

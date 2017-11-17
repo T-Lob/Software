@@ -2,21 +2,24 @@ package healthServices;
 import Human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
-import others.Database;
+import others.ED;
+
 
 public class Consultation extends HealthServices {
 	
 
-	public Consultation() {
+	public Consultation(ED ed) {
 		this.probabilityDistribution= new Uniform(5,20);
 		this.duration=this.probabilityDistribution.getSample();
+		this.ED=ed;
 	}
-	public Consultation(ProbabilityDistribution probabilityDistribution) {
+	public Consultation(ED ed,ProbabilityDistribution probabilityDistribution) {
 		this.probabilityDistribution= probabilityDistribution;
 		this.duration=this.probabilityDistribution.getSample();
+		this.ED=ed;
 	}
 	
-	public static void result (Patient patient) {
+	public void result (Patient patient) {
 		patient.getLocation().setState("empty");
 		Uniform U = new Uniform(0,100);
 		int x = U.getSample();
@@ -24,15 +27,15 @@ public class Consultation extends HealthServices {
 			patient.getPhysician().verdict(patient);
 		}
 		if(35<=x && x<55) {
-			patient.setDestination(Database.radioRoom);
+			patient.setDestination(this.ED.radioRoom);
 			patient.setState("waitingForTransport");
 		}
 		if(55<=x && x<95) {
-			patient.setDestination(Database.bloodTestRoom);
+			patient.setDestination(this.ED.bloodTestRoom);
 			patient.setState("waitingForTransport");
 		}
 		if(95<=x && x<=100) {
-			patient.setDestination(Database.mriRoom);
+			patient.setDestination(this.ED.mriRoom);
 			patient.setState("waitingForTransport");
 		}
 	}

@@ -1,35 +1,5 @@
-/.DS_Store
-/BoxRoom.class
-/Database.class
-/Nurse.class
-/Patient.class
-/Physician.class
-/Resource.class
-/Room.class
-/Test.class
-/Transporter.class
-/maths/
-/model.di
-/model.notation
-/model.uml
-/others/
-/HealthServices.class
-/Consultation.class
-<<<<<<< HEAD
-/ShockRoom.class
-=======
-/RoomFactory.class
-/ShockRoom.class
-/WaitingRoom.class
-/RadioRoom.class
-/MRIRoom.class
-/BloodTestRoom.class
->>>>>>> fb5e7faddf514d8abe25bfd1c2979e509b109316
-/HumanResource.class
-/HRFactory.class
-/StateChanger.class
-/Rooms/
-/Resources/
 /Human/
 /core/
 /healthServices/
+/Resources/
+/others/

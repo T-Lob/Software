@@ -2,8 +2,7 @@ package Human;
 
 import java.util.ArrayList;
 import healthServices.Consultation;
-import others.Database;
-import others.IDGenerator;
+import others.*;
 
 
 public class Physician extends HumanResource {
@@ -15,25 +14,26 @@ public class Physician extends HumanResource {
 	
 	
 	
-	public Physician() {
+	public Physician(ED ed) {
+		this.ED=ed;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToPhysicianList(this);
+		this.ED.addToPhysicianList(this);
 		
 	}
-	public Physician(String name) {
-		super();
+	public Physician(ED ed,String name) {
+		this.ED=ed;
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		Database.addToPhysicianList(this);
+		this.ED.addToPhysicianList(this);
 	}
 
-	public Physician(String name, String surname, String username) {
-		super();
+	public Physician(ED ed,String name, String surname, String username) {
+		this.ED=ed;
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.username = username;
-		Database.addToPhysicianList(this);
+		this.ED.addToPhysicianList(this);
 	}
 	
 	public String getUsername() {
@@ -73,27 +73,27 @@ public class Physician extends HumanResource {
 	public void setState(String state) {
 		this.state=state;
 		if (state.equalsIgnoreCase("visiting")){
-			Database.getPhysicianList().get(1).add(this);
-			Database.getPhysicianList().get(0).remove(this);
-			Database.getPhysicianList().get(2).remove(this);
+			this.ED.getPhysicianList().get(1).add(this);
+			this.ED.getPhysicianList().get(0).remove(this);
+			this.ED.getPhysicianList().get(2).remove(this);
 		} else if (state.equalsIgnoreCase("idle")) {
-			Database.getPhysicianList().get(0).add(this);
-			Database.getPhysicianList().get(1).remove(this);
-			Database.getPhysicianList().get(2).remove(this);
+			this.ED.getPhysicianList().get(0).add(this);
+			this.ED.getPhysicianList().get(1).remove(this);
+			this.ED.getPhysicianList().get(2).remove(this);
 		}
 		else if (state.equalsIgnoreCase("offduty")){
-			Database.getPhysicianList().get(2).add(this);
-			Database.getPhysicianList().get(1).remove(this);
-			Database.getPhysicianList().get(0).remove(this);
+			this.ED.getPhysicianList().get(2).add(this);
+			this.ED.getPhysicianList().get(1).remove(this);
+			this.ED.getPhysicianList().get(0).remove(this);
 			}
 		
 }
 	
 	public void consultation (Patient patient) {
-		if (this.timeOfAvailability <= Database.getTime()) { // The physician can be idle for several minutes if no patient shows up
-			this.setTimeOfAvailability(Database.getTime()); // We set the time to the time of the beginning of the consultation
+		if (this.timeOfAvailability <= this.ED.getTime()) { // The physician can be idle for several minutes if no patient shows up
+			this.setTimeOfAvailability(this.ED.getTime()); // We set the time to the time of the beginning of the consultation
 			this.setState("visiting");
-			Consultation consultation = new Consultation(); 
+			Consultation consultation = new Consultation(this.ED); 
 			this.addToHistoryPatients(patient);
 			this.addToCurrentPatients(patient);
 			patient.setPhysician(this);
@@ -110,8 +110,8 @@ public class Physician extends HumanResource {
 	}
 	
 	public void endConsultation (Patient patient) {
-		if (this.timeOfAvailability == Database.getTime()) {
-			Consultation.result(patient);
+		if (this.timeOfAvailability == this.ED.getTime()) {
+			new Consultation(this.ED).result(patient);
 			this.setState("idle");
 			
 			}

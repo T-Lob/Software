@@ -1,8 +1,9 @@
 package Human;
 import java.util.ArrayList;
 
+
 import Resources.Room;
-import others.Database;
+import others.ED;
 import others.IDGenerator;
 
 
@@ -20,20 +21,23 @@ public class Patient {
 	private Physician physician = null;
 	private int bill;
 	private Room destination;
+	private ED ED;
 	
 	
 	
 
-	public Patient(String name,String surname,String severityLevel,int arrivalTime) {
+	public Patient(ED ed,String name,String surname,String severityLevel,int arrivalTime) {
+		this.ED=ed;
 		this.name=name;
 		this.surname=surname;
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
-		Database.addToGeneratedPatients(this);
+		this.ED.addToGeneratedPatients(this);
 		
 	}	
-	public Patient() {
+	public Patient(ED ed) {
+		this.ED=ed;
 	}
 	public String getName() {
 		return name;
@@ -70,7 +74,9 @@ public class Patient {
 		return location;
 	}
 	public void setLocation(Room location) {
-		this.location.setState("empty");
+		if (this.location != null) {
+			this.location.setState("empty");
+			}
 		this.location=location;
 	}
 	public ArrayList<String[]> getHistory() {
@@ -125,20 +131,20 @@ public class Patient {
 	
 public void setState(String state) {
 		this.state=state;
-		String [] event= {state,String.valueOf(Database.getTime())};
+		String [] event= {state,String.valueOf(this.ED.getTime())};
 		this.addEventToHistory(event);
 		
 		if (state.equalsIgnoreCase("registered")){
-			Database.addToRegisteredPatients(this);
+			this.ED.addToRegisteredPatients(this);
 			
 		} else if (state.equalsIgnoreCase("waitingForTransport")){
-			Database.addToWaitingForTransportPatients(this);
+			this.ED.addToWaitingForTransportPatients(this);
 			
 		} else if (state.equalsIgnoreCase("waitingForVerdict")) {
-			Database.addToWaitingForVerdictPatients(this);
+			this.ED.addToWaitingForVerdictPatients(this);
 			
 		} else if (state.equalsIgnoreCase("released")){
-			Database.addToReleasedPatients(this);}
+			this.ED.addToReleasedPatients(this);}
 	
 	
 }
