@@ -1,6 +1,6 @@
 package healthServices;
 
-import Human.Patient;
+import human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
 import others.Database;

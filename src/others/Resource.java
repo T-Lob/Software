@@ -1,4 +1,4 @@
-package Resources;
+package others;
 import others.*;
 public abstract class Resource {
 	

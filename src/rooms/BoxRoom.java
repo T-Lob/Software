@@ -1,4 +1,4 @@
-package Resources;
+package rooms;
 import others.*;
 
 public class BoxRoom extends Room {

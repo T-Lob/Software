@@ -3,8 +3,14 @@ package core;
 
 import Human.*;
 import Resources.*;
+import human.HRFactory;
+import human.Nurse;
+import human.Patient;
+import human.Physician;
 import others.Database;
 import others.ED;
+import rooms.BoxRoom;
+import rooms.RoomFactory;
 
 public class Test {
 	public static void main(String[] args) {

@@ -1,5 +1,6 @@
-package Resources;
-import Human.Patient;
+package rooms;
+import human.Patient;
+import others.Resource;
 
 public abstract class Room extends Resource {
 

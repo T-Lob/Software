@@ -3,6 +3,16 @@ import java.util.ArrayList;
 
 import Human.*;
 import Resources.*;
+import human.Nurse;
+import human.Patient;
+import human.Physician;
+import human.Transporter;
+import rooms.BloodTestRoom;
+import rooms.BoxRoom;
+import rooms.MRIRoom;
+import rooms.RadioRoom;
+import rooms.Room;
+import rooms.ShockRoom;
 
 
 public class ED {

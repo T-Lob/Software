@@ -1,4 +1,4 @@
-package Human;
+package human;
 import others.*;
 
 public class Transporter extends HumanResource{

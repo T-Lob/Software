@@ -1,4 +1,4 @@
-package Human;
+package human;
 
 public class HRFactory {
 	public HumanResource createHR(String EDname,String HRType) {

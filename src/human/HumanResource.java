@@ -1,6 +1,6 @@
-package Human;
+package human;
 
-import Resources.Resource;
+import others.Resource;
 
 public abstract class HumanResource extends Resource {
 	protected String surname;

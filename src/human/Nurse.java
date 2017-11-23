@@ -1,8 +1,8 @@
-package Human;
+package human;
 
 
-import Resources.Room;
 import others.*;
+import rooms.Room;
 
 
 public class Nurse extends HumanResource {

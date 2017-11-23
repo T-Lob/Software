@@ -1,9 +1,9 @@
 package healthServices;
 import java.util.ArrayList;
 
-import Human.Patient;
-import Resources.Resource;
+import human.Patient;
 import maths.ProbabilityDistribution;
+import others.Resource;
 
 public abstract class HealthServices extends Resource {
 	protected ArrayList<Patient> WaitingQueue = new ArrayList<Patient>();

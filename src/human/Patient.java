@@ -1,11 +1,10 @@
-package Human;
+package human;
 import java.util.ArrayList;
 
-
-import Resources.Room;
 import others.Database;
 import others.ED;
 import others.IDGenerator;
+import rooms.Room;
 
 
 public class Patient {

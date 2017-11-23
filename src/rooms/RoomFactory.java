@@ -1,4 +1,4 @@
-package Resources;
+package rooms;
 
 public class RoomFactory {
 	
