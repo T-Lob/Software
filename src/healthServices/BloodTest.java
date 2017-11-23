@@ -11,18 +11,20 @@ public class BloodTest extends HealthServices {
 	
 	public BloodTest(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
-		
 	}
-	public BloodTest(String EDname,ProbabilityDistribution probabilityDistribution) {
+	
+	public BloodTest(String EDname,ProbabilityDistribution probabilityDistribution, int cost) {
 		this.ED=Database.getEDbyName(EDname);
 		this.probabilityDistribution= probabilityDistribution;
+		this.cost = cost;
 	}
+	
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 	
 	public void check (Patient patient) {
-		if (this.timeOfAvailability <= this.ED.getTime()) {
+		if (this.getTimeOfAvailability() <= this.ED.getTime()) {
 			this.setTimeOfAvailability(this.ED.getTime());
 			patient.setLocation(this.ED.bloodTestRoom);
 			this.ED.bloodTestRoom.setState("full");
@@ -32,22 +34,14 @@ public class BloodTest extends HealthServices {
 		}
 	}
 	
-		public void endCheck (Patient patient) {
+	public void endCheck (Patient patient) {
 		if (this.timeOfAvailability == this.ED.getTime()) {
 			patient.setState("waitingForVerdict");
 			this.ED.bloodTestRoom.setState("empty");
 			this.outcome = "Bloodtest done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
 			patient.getPhysician().addToMessageBox(this.outcome);
 			patient.addToBill(cost);
+			this.duration = this.probabilityDistribution.getSample();
 		}
-	
-		
-		
-		
-		
-		
-		
-		
-		}
-
+	}
 }

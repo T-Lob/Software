@@ -10,13 +10,15 @@ public class MRIScan extends HealthServices {
 	private int duration=this.probabilityDistribution.getSample();
 	
 	public MRIScan(String EDname) {
-		this.ED=Database.getEDbyName(EDname);
-		
+		this.ED=Database.getEDbyName(EDname);	
 	}
-	public MRIScan(String EDname,ProbabilityDistribution probabilityDistribution ) {
+	
+	public MRIScan(String EDname,ProbabilityDistribution probabilityDistribution, int cost) {
 		this.probabilityDistribution= probabilityDistribution;
 		this.ED=Database.getEDbyName(EDname);
+		this.cost = cost;
 	}
+	
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
@@ -32,14 +34,14 @@ public class MRIScan extends HealthServices {
 		}
 	}
 	
-		public void endCheck (Patient patient) {
+	public void endCheck (Patient patient) {
 		if (this.timeOfAvailability == this.ED.getTime()) {
 			patient.setState("waitingForVerdict");
 			this.ED.mriRoom.setState("empty");
 			this.outcome = "MRI done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
 			patient.getPhysician().addToMessageBox(this.outcome);
 			patient.addToBill(cost);
-			
+			this.duration = this.probabilityDistribution.getSample();
 		}
-		}
-		}
+	}
+}

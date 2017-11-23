@@ -10,14 +10,15 @@ public class XRay extends HealthServices {
 	private int duration=this.probabilityDistribution.getSample();
 	
 	public XRay(String EDname) {
-		this.ED=Database.getEDbyName(EDname);
-		
+		this.ED=Database.getEDbyName(EDname);	
 	}
+	
 	public XRay(String EDname,ProbabilityDistribution probabilityDistribution, int cost) {
 		this.ED=Database.getEDbyName(EDname);
 		this.probabilityDistribution= probabilityDistribution;
 		this.cost=cost;
 	}
+	
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
@@ -33,23 +34,15 @@ public class XRay extends HealthServices {
 		}
 	}
 	
-		public void endCheck (Patient patient) {
+	public void endCheck (Patient patient) {
 		if (this.timeOfAvailability == this.ED.getTime()) {
 			patient.setState("waitingForVerdict");
 			this.ED.radioRoom.setState("empty");
 			this.outcome = "Radiography done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
 			patient.getPhysician().addToMessageBox(this.outcome);
 			patient.addToBill(cost);
+			this.duration = this.probabilityDistribution.getSample();
 		}
-	
-		
-		
-		
-		
-		
-		
-		
-		}
-	
-	}
+	}	
+}
 
