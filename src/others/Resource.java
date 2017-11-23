@@ -1,5 +1,4 @@
-package others;
-import others.*;
+package others;;
 public abstract class Resource {
 	
 	protected String name;
