@@ -1,8 +1,6 @@
 package others;
 import java.util.ArrayList;
 
-import Human.*;
-import Resources.*;
 import human.Nurse;
 import human.Patient;
 import human.Physician;

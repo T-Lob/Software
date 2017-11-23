@@ -33,12 +33,13 @@ public class Patient {
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
-		this.ED.addToGeneratedPatients(this);
-		
-	}	
+		this.ED.addToGeneratedPatients(this);	
+	}
+	
 	public Patient(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -73,25 +74,31 @@ public class Patient {
 	public Room getLocation() {
 		return location;
 	}
+	
 	public void setLocation(Room location) {
 		if (this.location != null) {
 			this.location.setState("empty");
 			}
 		this.location=location;
 	}
+	
 	public void getHistory() {
 		for (String[] L: this.history) {
-			System.out.println("State: " + L[0] + " - Time: "  + L[1]);
-			
+			System.out.println("State: " + L[0] + " - Time: "  + L[1]);	
 		}
-		
 	}
+	
 	public void addEventToHistory(String[] event) {
 		this.history.add(event);
 	}
+	
 	public int getArrivalTime() {
 		return arrivalTime;
 	}	
+
+	public void setArrivalTime(int arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
 
 	public Physician getPhysician() {
 		return physician;
@@ -100,7 +107,6 @@ public class Patient {
 	public void setPhysician(Physician physician) {
 		this.physician = physician;
 	}
-
 	
 	public int getBill() {
 		return bill;
@@ -133,7 +139,7 @@ public class Patient {
 		return 0;
 	}
 	
-public void setState(String state) {
+	public void setState(String state) {
 		this.state=state;
 		String [] event= {state,String.valueOf(this.ED.getTime())};
 		this.addEventToHistory(event);
@@ -151,5 +157,5 @@ public void setState(String state) {
 			this.ED.addToReleasedPatients(this);}
 	
 	
-}
+	}
 }

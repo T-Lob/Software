@@ -1,16 +1,9 @@
 package core;
 
 
-import Human.*;
-import Resources.*;
-import human.HRFactory;
-import human.Nurse;
-import human.Patient;
-import human.Physician;
-import others.Database;
+import human.*;
+import rooms.*;
 import others.ED;
-import rooms.BoxRoom;
-import rooms.RoomFactory;
 
 public class Test {
 	public static void main(String[] args) {
@@ -36,16 +29,7 @@ public class Test {
 		System.out.println(ed.getBoxRoomList());
 		System.out.println(hosto.getPhysicianList());
 		System.out.println(physician.getHistoryPatients());
-		patient2.getHistory();
-
-		
-		
-		
-		
-		
-			
-			
-		
+		patient2.getHistory();	
 	
 	}
 

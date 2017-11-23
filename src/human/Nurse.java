@@ -11,8 +11,11 @@ public class Nurse extends HumanResource {
 	public Nurse(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
+		this.name = "Nurse"+String.valueOf(this.ID);
+		this.surname = "Nurse"+String.valueOf(this.ID);
 		this.ED.addToNurseList(this);
 	}
+	
 	public Nurse(String EDname, String name, String surname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
@@ -20,13 +23,16 @@ public class Nurse extends HumanResource {
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToNurseList(this);
 	}
+	
 	public Nurse(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
+		this.surname = "Nurse"+String.valueOf(this.ID);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToNurseList(this);
 		
 	}
+	
 	public Patient getCurrentPatient() {
 		return currentPatient;
 	}
@@ -34,6 +40,7 @@ public class Nurse extends HumanResource {
 	public void setCurrentPatient(Patient currentPatient) {
 		this.currentPatient = currentPatient;
 	}
+	
 	public void setState(String state) {
 		this.state=state;
 		if (state.equalsIgnoreCase("busy")){
@@ -49,14 +56,15 @@ public class Nurse extends HumanResource {
 			this.ED.getNurseList().get(2).add(this);
 			this.ED.getNurseList().get(1).remove(this);
 			this.ED.getNurseList().get(0).remove(this);
-			}
+		}
 		
-}
+	}
 	
 	public void registration (Patient patient) {
 		patient.setState("registrated");
 		
 	}
+	
 	public void installation (Patient patient, Room room) {
 		if (this.timeOfAvailability <= this.ED.getTime()) {
 			this.setTimeOfAvailability(this.ED.getTime());
@@ -69,14 +77,14 @@ public class Nurse extends HumanResource {
 			this.timeOfAvailability += 2;
 		}
 	}
+	
 	public void endOfInstallation (Patient patient) {
 		if (this.timeOfAvailability == this.ED.getTime()) {
 			this.setState("idle");
 			this.setCurrentPatient(null);
 			patient.setState("waiting");
 		}
-	
-}
+	}
 }
 
 

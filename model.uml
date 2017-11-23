@@ -46,6 +46,21 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_5HrCoMtCEee9EJtdmQ6Vlw" name="void setCurrentPatient">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Azv9gMtDEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IpNNUNBmEeeCYaCQiGwUBg" name="void setState">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Mf2uwNBmEeeCYaCQiGwUBg" name="state">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_SjeeENBmEeeCYaCQiGwUBg" name="void registration">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_WBnY4NBmEeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_YmHV8NBmEeeCYaCQiGwUBg" name="void installation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_bZDXoNBmEeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_dmL9kNBmEeeCYaCQiGwUBg" name="room" type="_UrWJwMrlEee9EJtdmQ6Vlw"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_myO2YNBmEeeCYaCQiGwUBg" name="void endOfInstallation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qiPkUNBmEeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_RQzYwMVDEeecsefrduevSA" name="Transporter">
     <generalization xmi:type="uml:Generalization" xmi:id="_VpwdUMrmEee9EJtdmQ6Vlw" general="_OCSVoMrmEee9EJtdmQ6Vlw"/>
@@ -90,12 +105,12 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_R2NMsMn1Eee9OPNNLRHemQ" name="surname" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Wg1v0Mn1Eee9OPNNLRHemQ" name="id" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Wg1v0Mn1Eee9OPNNLRHemQ" name="ID" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lnMq8Mn1Eee9OPNNLRHemQ" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lnSxkMn1Eee9OPNNLRHemQ" value="1"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_AqocEMn2Eee9OPNNLRHemQ" name="insurance" visibility="private">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_AqocEMn2Eee9OPNNLRHemQ" name="healthInsurance" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_8mv6cMn2Eee9OPNNLRHemQ" name="severityLevel" visibility="private">
@@ -111,6 +126,10 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Gv0-EMoJEee9OPNNLRHemQ" name="history" visibility="private"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_hxvVIModEee9OPNNLRHemQ" name="physician" visibility="private" type="_LxkI4MVDEeecsefrduevSA"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_NGxNwMrUEee9EJtdmQ6Vlw" name="destination" visibility="private" type="_UrWJwMrlEee9EJtdmQ6Vlw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_nz1A0NBnEeeCYaCQiGwUBg" name="bill" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_sUER0NBnEeeCYaCQiGwUBg" name="ED" visibility="private" type="_or3cIMrBEee9EJtdmQ6Vlw"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_Kl6YoMomEee9OPNNLRHemQ" name="void setArrivalTime">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_YIiasMonEee9OPNNLRHemQ" name="arrivalTime">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
@@ -127,10 +146,12 @@
       </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_9mAaYMoqEee9OPNNLRHemQ" name="void setState">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_szV5AMorEee9OPNNLRHemQ" name="state"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_szV5AMorEee9OPNNLRHemQ" name="state">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_4GJqAMorEee9OPNNLRHemQ" name="void setLocation">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_GTrfsMosEee9OPNNLRHemQ" name="location"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_GTrfsMosEee9OPNNLRHemQ" name="location" type="_UrWJwMrlEee9EJtdmQ6Vlw"/>
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_IDi60MosEee9OPNNLRHemQ" name="void setPhysician">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_PeC9gMosEee9OPNNLRHemQ" name="physician" type="_LxkI4MVDEeecsefrduevSA"/>
@@ -140,10 +161,10 @@
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mU4I4Mq8Eee9EJtdmQ6Vlw" name="String getName"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_qtS6oMq8Eee9EJtdmQ6Vlw" name="String getSurname"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_aCrWcMrHEee9EJtdmQ6Vlw" name="int getLevel"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_aCrWcMrHEee9EJtdmQ6Vlw" name="Integer getLevel"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_a1eTEMrMEee9EJtdmQ6Vlw" name="String getState"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_fx0RQMrMEee9EJtdmQ6Vlw" name="Room getLocation"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_rCJ9EMrMEee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;String>> getHistory"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rCJ9EMrMEee9EJtdmQ6Vlw" name="void getHistory"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_6FUaQMrMEee9EJtdmQ6Vlw" name="Physician getPhysician"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_J9JOkMrNEee9EJtdmQ6Vlw" name="void addToBill">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_wPeroMrOEee9EJtdmQ6Vlw" name="cost">
@@ -156,6 +177,10 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_J_tSAMrbEee9EJtdmQ6Vlw" name="void setDestination">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_ozAAEMrbEee9EJtdmQ6Vlw" name="destination"/>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ztBm8NBoEeeCYaCQiGwUBg" name="int getID"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6o-scNBoEeeCYaCQiGwUBg" name="String getHealthInsurance"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_LWADYNBpEeeCYaCQiGwUBg" name="String getSeverityLevel"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_kjAB4NBqEeeCYaCQiGwUBg" name="int getArrivalTime"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_dzcw4MnsEee9OPNNLRHemQ" name="Observable"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_jX5Q4MnsEee9OPNNLRHemQ" name="Observer"/>
@@ -230,7 +255,7 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_lnsckMopEee9OPNNLRHemQ" name="IdGenerator getInstance" isStatic="true"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_xLoZ0MopEee9OPNNLRHemQ" name="int getNextId"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_or3cIMrBEee9EJtdmQ6Vlw" name="Database">
+  <packagedElement xmi:type="uml:Class" xmi:id="_or3cIMrBEee9EJtdmQ6Vlw" name="ED">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_v7mZQMrBEee9EJtdmQ6Vlw" name="generatedPatients" isStatic="true"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_-bcG8MrBEee9EJtdmQ6Vlw" name="arrivedPatients" isStatic="true"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_uoTv8MrCEee9EJtdmQ6Vlw" name="registeredPatients" isStatic="true"/>
@@ -338,7 +363,7 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_YPyrcMrmEee9EJtdmQ6Vlw" name="hrfactory" type="_LScHcMVEEeecsefrduevSA" association="_YPxdUMrmEee9EJtdmQ6Vlw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="__B2sAMuYEee9EJtdmQ6Vlw" name="healthServices">
-    <packagedElement xmi:type="uml:Class" xmi:id="_ialmAMnqEee9OPNNLRHemQ" name="HealthServices">
+    <packagedElement xmi:type="uml:Class" xmi:id="_ialmAMnqEee9OPNNLRHemQ" name="HealthServices" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="_4B8AwModEee9OPNNLRHemQ" general="_Fw17YMoLEee9OPNNLRHemQ"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_FUxv0MoeEee9OPNNLRHemQ" name="waitingQueue" visibility="protected"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_o4m0sMoeEee9OPNNLRHemQ" name="probabilityDistribution" visibility="protected" type="_zHeKgMogEee9OPNNLRHemQ"/>
