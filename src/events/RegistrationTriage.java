@@ -10,10 +10,10 @@ public class RegistrationTriage extends Event {
 
 	
 	public RegistrationTriage(String EDname) {
-		this.ED=Database.getEDbyName(EDname);
+		this.ed=Database.getEDbyName(EDname);
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.name=("RegistrationTriage" + String.valueOf(ID));
-		this.occurenceTime=(this.ED.getTime());
+		this.occurenceTime=(this.ed.getTime());
 	}
 	
 	public int getID() {
@@ -21,13 +21,9 @@ public class RegistrationTriage extends Event {
 	}
 	
 	public void execute () {
-		for (Patient patient:this.ED.getGeneratedPatients()) {
-			this.ED.getNurseList().get(0).get(0).registration(patient);
-			this.ED.getNurseList().get(0).get(0).triage(patient);
-			}
-		
+		for (Patient patient:this.ed.getGeneratedPatients()) {
+			this.ed.getNurseList().get(0).get(0).registration(patient);
+			this.ed.getNurseList().get(0).get(0).triage(patient);
+		}	
 	}
-	
-	
-
 }
