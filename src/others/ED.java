@@ -11,6 +11,7 @@ import rooms.MRIRoom;
 import rooms.RadioRoom;
 import rooms.Room;
 import rooms.ShockRoom;
+import rooms.WaitingRoom;
 
 
 public class ED {
@@ -27,6 +28,7 @@ public class ED {
 	private  ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
 	private  int time=1000;
 	private  String EDname;
+	public  final WaitingRoom waitingRoom = new WaitingRoom(this.EDname);
 	public  final RadioRoom radioRoom = new RadioRoom(this.EDname);
 	public  final MRIRoom mriRoom = new MRIRoom(this.EDname);
 	public  final BloodTestRoom bloodTestRoom = new BloodTestRoom(this.EDname);
@@ -54,48 +56,75 @@ public class ED {
 	public int getTime() {
 		return time;
 	}
+	
 	public void setTime(int time) {
 		this.time = time;
 	}
+	
 	public ArrayList<Patient> getGeneratedPatients() {
 		return generatedPatients;
 	}
+	
 	public void addToGeneratedPatients(Patient patient) {
 		this.generatedPatients.add(patient);
 	}
+	
+	public void removeFromGeneratedPatients(Patient patient) {
+		this.generatedPatients.remove(patient);
+	}
+	
 	public ArrayList<Patient> getArrivedPatients() {
 		return arrivedPatients;
 	}
+	
 	public void addToArrivedPatients(Patient patient) {
 		this.arrivedPatients.add(patient);
 	}
+	
+	public void removeFromArrivedPatients(Patient patient) {
+		this.arrivedPatients.remove(patient);
+	}
+	
 	public ArrayList<ArrayList<Patient>> getRegisteredPatients() {
 		return registeredPatients;
 	}
+	
 	public void addToRegisteredPatients(Patient patient) {
 		this.registeredPatients.get(patient.getLevel()-1).add(patient);
 	}
+	
+	public void removeFromRegisteredPatients(Patient patient) {
+		this.registeredPatients.get(patient.getLevel()-1).remove(patient);
+	}
+	
 	public ArrayList<Patient> getWaitingForTransportPatients() {
 		return waitingForTransportPatients;
 	}
+	
 	public ArrayList<Patient> getWaitingForVerdictPatients() {
 		return waitingForVerdictPatients;
 	}
+	
 	public ArrayList<ArrayList<BoxRoom>> getBoxRoomList() {
 		return boxRoomList;
 	}
+	
 	public ArrayList<ArrayList<ShockRoom>> getShockRoomList() {
 		return shockRoomList;
 	}
+	
 	public ArrayList<Patient> getReleasedPatients() {
 		return releasedPatients;
 	}
+	
 	public ArrayList<ArrayList<Nurse>> getNurseList() {
 		return nurseList;
 	}
+	
 	public ArrayList<ArrayList<Physician>> getPhysicianList() {
 		return physicianList;
 	}
+	
 	public ArrayList<ArrayList<Transporter>> getTransporterList() {
 		return transporterList;
 	}
@@ -104,25 +133,42 @@ public class ED {
 		this.waitingForTransportPatients.add(patient);
 	}
 	
+	public void removeFromWaitingForTransportPatients(Patient patient) {
+		this.waitingForTransportPatients.remove(patient);
+	}
+	
 	public void addToWaitingForVerdictPatients(Patient patient) {
 		this.waitingForVerdictPatients.add(patient);
+	}
+	
+	public void removeFromWaitingForVerdictPatients(Patient patient) {
+		this.waitingForVerdictPatients.remove(patient);
 	}
 	
 	public void addToReleasedPatients(Patient patient) {
 		this.releasedPatients.add(patient);
 	}
+	
+	public void removeFromReleasedPatients(Patient patient) {
+		this.releasedPatients.remove(patient);
+	}
+	
 	public void addToBoxRoomList(BoxRoom room) {
 		this.boxRoomList.get(0).add(room);
 	}
+	
 	public void addToShockRoomList(ShockRoom room) {
 		this.shockRoomList.get(0).add(room);
 	}
+	
 	public void addToNurseList(Nurse nurse) {
 		this.nurseList.get(0).add(nurse);
 	}
+	
 	public void addToPhysicianList(Physician phys) {
 		this.physicianList.get(0).add(phys);
 	}
+	
 	public void addToTransporterList(Transporter transporter) {
 		this.transporterList.get(0).add(transporter);
 	}
@@ -144,10 +190,6 @@ public class ED {
 	        		rooms.set(min, x);
 	        	}
 	        }
-	    }
-	    
+	    } 
 	}
-		
-	
-
 }

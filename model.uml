@@ -481,6 +481,7 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_4ci_kNC0EeeCYaCQiGwUBg" name="radioRoom" type="_usesQMVGEeecsefrduevSA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_5tsB4NC1EeeCYaCQiGwUBg" name="mriRoom" type="_xp_mQMVGEeecsefrduevSA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_-G8hINC1EeeCYaCQiGwUBg" name="bloodTestRoom" type="_03igUMVGEeecsefrduevSA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_h7VlkNE6EeeCYaCQiGwUBg" name="waitingRoom" type="_eyuawMVFEeecsefrduevSA"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_hseMMMsxEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getGeneratedPatients"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_lrPH0MsxEee9EJtdmQ6Vlw" name="void addToGeneratedPatients">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_o2bRcMsxEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
@@ -534,6 +535,24 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_oms2UNC2EeeCYaCQiGwUBg" name="time">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Ax_tgNE3EeeCYaCQiGwUBg" name="void removeFromGeneratedPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_GwnoENE3EeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ewuLENE3EeeCYaCQiGwUBg" name="void removeFromArrivedPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_g7L3gNE3EeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_in0YcNE3EeeCYaCQiGwUBg" name="void removeFromRegisteredPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_pVrXkNE3EeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_r4XWwNE3EeeCYaCQiGwUBg" name="void removeFromWaitingForTransportPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zGCeYNE3EeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_03MS8NE3EeeCYaCQiGwUBg" name="void removeFromWaitingForVerdictPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_52XisNE3EeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_7Zs9sNE3EeeCYaCQiGwUBg" name="void removeFromReleasedPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="__py54NE3EeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_AjCTkMooEee9OPNNLRHemQ" name="IdGenerator">

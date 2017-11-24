@@ -147,6 +147,9 @@ public class Patient {
 		if (state.equalsIgnoreCase("registered")){
 			this.ED.addToRegisteredPatients(this);
 			
+		} else if (state.equalsIgnoreCase("arrived")) {
+			this.ED.addToArrivedPatients(this);
+		
 		} else if (state.equalsIgnoreCase("waitingForTransport")){
 			this.ED.addToWaitingForTransportPatients(this);
 			
