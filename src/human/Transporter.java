@@ -2,13 +2,15 @@ package human;
 import others.*;
 
 public class Transporter extends HumanResource{
-private Patient currentPatient;
+	
+	private Patient currentPatient;
 	
 	public Transporter(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToTransporterList(this);
 	}
+	
 	public Transporter(String EDname, String name, String surname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
@@ -16,12 +18,14 @@ private Patient currentPatient;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToTransporterList(this);
 	}
+	
 	public Transporter(String EDname, String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToTransporterList(this);
 	}
+	
 	public Patient getCurrentPatient() {
 		return currentPatient;
 	}
@@ -45,9 +49,10 @@ private Patient currentPatient;
 			this.ED.getTransporterList().get(2).add(this);
 			this.ED.getTransporterList().get(1).remove(this);
 			this.ED.getTransporterList().get(0).remove(this);
-			}
+		}
 		
-}
+	}
+	
 	public void transportation (Patient patient) {
 		if (this.timeOfAvailability <= this.ED.getTime()) {
 			this.setTimeOfAvailability(this.ED.getTime());
@@ -60,13 +65,12 @@ private Patient currentPatient;
 			this.timeOfAvailability += 5;
 		}
 	}
-		public void endOfTransportation (Patient patient) {
-			if (this.timeOfAvailability == this.ED.getTime()) {
-				this.setState("idle");
-				this.setCurrentPatient(null);
-				patient.setState("waiting");
-				
-			}
-
+	
+	public void endOfTransportation (Patient patient) {
+		if (this.timeOfAvailability == this.ED.getTime()) {
+			this.setState("idle");
+			this.setCurrentPatient(null);
+			patient.setState("waiting");
+		}
 	}
 }
