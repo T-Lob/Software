@@ -64,6 +64,10 @@ public class Nurse extends HumanResource {
 		patient.setState("registrated");
 		
 	}
+	public void triage (Patient patient) {
+		this.ED.addToRegisteredPatients(patient);
+		
+	}
 	
 	public void installation (Patient patient, Room room) {
 		if (this.timeOfAvailability <= this.ED.getTime()) {
