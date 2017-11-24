@@ -41,5 +41,5 @@ public abstract class Event {
 		return id;
 	}
 	
-	public void execute() {}
+	public abstract void execute();
 }

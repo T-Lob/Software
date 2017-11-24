@@ -2,7 +2,6 @@
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NhM3UMU_EeecsefrduevSA" name="RootElement">
   <packagedElement xmi:type="uml:Interface" xmi:id="_dzcw4MnsEee9OPNNLRHemQ" name="Observable"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_jX5Q4MnsEee9OPNNLRHemQ" name="Observer"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_dG7hwMnvEee9OPNNLRHemQ" name="Event"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_LfPI8MoIEee9OPNNLRHemQ" client="_LxkI4MVDEeecsefrduevSA" supplier="_NhM3UMU_EeecsefrduevSA"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_oWHtUMoLEee9OPNNLRHemQ" client="_ialmAMnqEee9OPNNLRHemQ" supplier="_dzcw4MnsEee9OPNNLRHemQ"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_QEONsMohEee9OPNNLRHemQ" client="_4n67UMogEee9OPNNLRHemQ" supplier="_zHeKgMogEee9OPNNLRHemQ"/>
@@ -574,6 +573,53 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_FzAXANE8EeeCYaCQiGwUBg" name="events">
+    <packagedElement xmi:type="uml:Class" xmi:id="_dG7hwMnvEee9OPNNLRHemQ" name="Event" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sl_fgNE8EeeCYaCQiGwUBg" name="name" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xUTBsNE8EeeCYaCQiGwUBg" name="ed" visibility="protected" type="_or3cIMrBEee9EJtdmQ6Vlw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_1g4W4NE8EeeCYaCQiGwUBg" name="occurenceTime" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_74q_YNE8EeeCYaCQiGwUBg" name="isEnabled" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__8KqANE8EeeCYaCQiGwUBg" name="id" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_HBef0NE9EeeCYaCQiGwUBg" name="String getName"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Ivh9ENE9EeeCYaCQiGwUBg" name="void setName">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_KWOOENE9EeeCYaCQiGwUBg" name="name">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_McJ_0NE9EeeCYaCQiGwUBg" name="int getOccurenceTime"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_OVA-4NE9EeeCYaCQiGwUBg" name="void setOccurenceTime">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_RfU-wNE9EeeCYaCQiGwUBg" name="occurenceTime">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_WfPOUNE9EeeCYaCQiGwUBg" name="boolean isEnabled"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ZjPx4NE9EeeCYaCQiGwUBg" name="void setEnabled">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_gDAqoNE9EeeCYaCQiGwUBg" name="isEnabled">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GVRrsNE-EeeCYaCQiGwUBg" name="ED getED"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_IR8zwNE-EeeCYaCQiGwUBg" name="int getID"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Jv3jQNE-EeeCYaCQiGwUBg" name="void execute" isAbstract="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_jVGRANE-EeeCYaCQiGwUBg" name="Registration">
+      <generalization xmi:type="uml:Generalization" xmi:id="_lUFtQNE-EeeCYaCQiGwUBg" general="_dG7hwMnvEee9OPNNLRHemQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_pkr_wNE-EeeCYaCQiGwUBg" name="void execute"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_tSegINE-EeeCYaCQiGwUBg" name="PatientArrival">
+      <generalization xmi:type="uml:Generalization" xmi:id="_0vGCsNE-EeeCYaCQiGwUBg" general="_dG7hwMnvEee9OPNNLRHemQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xSFJQNE-EeeCYaCQiGwUBg" name="patient" visibility="private" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1QzBkNE-EeeCYaCQiGwUBg" name="void execute"/>
     </packagedElement>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_DyYsoMn1Eee9OPNNLRHemQ">
