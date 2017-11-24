@@ -14,6 +14,4 @@ public abstract class Room extends Resource {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
-	
-	
 }

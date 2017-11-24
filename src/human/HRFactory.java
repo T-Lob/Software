@@ -1,6 +1,7 @@
 package human;
 
 public class HRFactory {
+	
 	public HumanResource createHR(String EDname,String HRType) {
 		if (HRType == null) {
 			return null;
@@ -13,9 +14,9 @@ public class HRFactory {
 		} else if (HRType.equalsIgnoreCase("TRANSPORTER")) {
 			return new Transporter(EDname);
 		}
-		return null;
-		
+		return null;	
 	}
+	
 	public HumanResource createHR(String EDname,String HRType, String name) {
 		if (HRType == null) {
 			return null;
@@ -29,7 +30,6 @@ public class HRFactory {
 			return new Transporter(EDname,name);
 		}
 		return null;
-		
 	}
 }
 

@@ -1,8 +1,11 @@
 package rooms;
+import human.Physician;
 import others.Database;
 import others.IDGenerator;
 
 public class ShockRoom extends Room {
+	
+	private Physician physician;
 	
 	public ShockRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
@@ -36,4 +39,14 @@ public class ShockRoom extends Room {
 			this.ED.getShockRoomList().get(0).remove(this);
 		}
 	}
+
+	public Physician getPhysician() {
+		return physician;
+	}
+
+	public void setPhysician(Physician physician) {
+		this.physician = physician;
+	}
+	
+	
 }
