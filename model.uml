@@ -2,39 +2,8 @@
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NhM3UMU_EeecsefrduevSA" name="RootElement">
   <packagedElement xmi:type="uml:Interface" xmi:id="_dzcw4MnsEee9OPNNLRHemQ" name="Observable"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_jX5Q4MnsEee9OPNNLRHemQ" name="Observer"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_dG7hwMnvEee9OPNNLRHemQ" name="Events">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_slzqkMnvEee9OPNNLRHemQ" name="void patientArrival"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_E25qUMrJEee9EJtdmQ6Vlw" name="void registration"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_HZ7AsMrJEee9EJtdmQ6Vlw" name="void nurseTransport"/>
-  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_dG7hwMnvEee9OPNNLRHemQ" name="Event"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_LfPI8MoIEee9OPNNLRHemQ" client="_LxkI4MVDEeecsefrduevSA" supplier="_NhM3UMU_EeecsefrduevSA"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Fw17YMoLEee9OPNNLRHemQ" name="Resource" isAbstract="true">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Oj8IsMoLEee9OPNNLRHemQ" name="name" visibility="protected">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_V8cAQMoLEee9OPNNLRHemQ" name="id" visibility="protected">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_2kJZ0MotEee9OPNNLRHemQ" name="state" visibility="protected">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_5i-yIMrgEee9EJtdmQ6Vlw" name="String getName"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_7aBzUMrgEee9EJtdmQ6Vlw" name="void setName">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_-eIdgMrgEee9EJtdmQ6Vlw" name="name">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_BZ65MMrhEee9EJtdmQ6Vlw" name="String getState"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_DTitQMrhEee9EJtdmQ6Vlw" name="void setState">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_GKiIgMrhEee9EJtdmQ6Vlw" name="state">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_I9R88MrhEee9EJtdmQ6Vlw" name="int getID"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_K9s8kMrhEee9EJtdmQ6Vlw" name="boolean isAvailable">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_OnoQoMrhEee9EJtdmQ6Vlw" name="resource" type="_Fw17YMoLEee9OPNNLRHemQ"/>
-    </ownedOperation>
-  </packagedElement>
   <packagedElement xmi:type="uml:Realization" xmi:id="_oWHtUMoLEee9OPNNLRHemQ" client="_ialmAMnqEee9OPNNLRHemQ" supplier="_dzcw4MnsEee9OPNNLRHemQ"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_QEONsMohEee9OPNNLRHemQ" client="_4n67UMogEee9OPNNLRHemQ" supplier="_zHeKgMogEee9OPNNLRHemQ"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_XbBcIMohEee9OPNNLRHemQ" client="_RnhMcMohEee9OPNNLRHemQ" supplier="_zHeKgMogEee9OPNNLRHemQ"/>
@@ -44,74 +13,6 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pfn2YcoiEee9OPNNLRHemQ" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_PfodcMoiEee9OPNNLRHemQ" name="probabilitydistribution" type="_zHeKgMogEee9OPNNLRHemQ" association="_PfnPUMoiEee9OPNNLRHemQ"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_AjCTkMooEee9OPNNLRHemQ" name="IdGenerator">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZAFb0MopEee9OPNNLRHemQ" name="instance" visibility="private" type="_AjCTkMooEee9OPNNLRHemQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_gEItYMopEee9OPNNLRHemQ" name="id" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
-    </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_lnsckMopEee9OPNNLRHemQ" name="IdGenerator getInstance" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_xLoZ0MopEee9OPNNLRHemQ" name="int getNextId"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_or3cIMrBEee9EJtdmQ6Vlw" name="ED">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_v7mZQMrBEee9EJtdmQ6Vlw" name="generatedPatients" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_-bcG8MrBEee9EJtdmQ6Vlw" name="arrivedPatients" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_uoTv8MrCEee9EJtdmQ6Vlw" name="registeredPatients" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_8htCsMsEEee9EJtdmQ6Vlw" name="waitingForTransportPatients" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_zPtO4MswEee9EJtdmQ6Vlw" name="waitingForVerdictPatients" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_3Zl1YMswEee9EJtdmQ6Vlw" name="boxRoomList" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_6fNigMswEee9EJtdmQ6Vlw" name="shockRoomList" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_9LHvIMswEee9EJtdmQ6Vlw" name="releasedPatients" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="__XccwMswEee9EJtdmQ6Vlw" name="nurseList" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Blhd4MsxEee9EJtdmQ6Vlw" name="physicianList" isStatic="true"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_Do9VQMsxEee9EJtdmQ6Vlw" name="transporterList" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_hseMMMsxEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getGeneratedPatients" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_lrPH0MsxEee9EJtdmQ6Vlw" name="void addToGeneratedPatients" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_o2bRcMsxEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_BqpZAMsyEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getArrivedPatients" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_D4WmsMsyEee9EJtdmQ6Vlw" name="void addToArrivedPatients" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_H0XwUMsyEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_MOOsgMsyEee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Patient>> getRegisteredPatients" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FFCm0MszEee9EJtdmQ6Vlw" name="void addToRegisteredPatients" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_50cxcMs0Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TODBgMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingForTransportPatients" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_uRfZsMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingForVerdictPatients()" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_06RrkMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getBoxRoomList()" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_FblhwMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getShockRoomList" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_j0Me8Ms3Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getReleasedPatients" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_l0kbQMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Nurse>> getNurseList" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_oc-A4Ms3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Physician>> getPhysicianList" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_rDxEAMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Transporter>> getTransporterList" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_BAuYoMs6Eee9EJtdmQ6Vlw" name="void addToWaitingForTranportPatients" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_EAk08Ms6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_MEvfsMs6Eee9EJtdmQ6Vlw" name="void addToWaitingForVerdictPatients" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_PDS7gMs6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_P1KdUMs6Eee9EJtdmQ6Vlw" name="void addToReleasedPatients" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_YaWKcMs6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_gh_nAMs6Eee9EJtdmQ6Vlw" name="void addToBoxRoomList" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kuYH4Ms6Eee9EJtdmQ6Vlw" name="room" type="_eOQbwMVFEeecsefrduevSA"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_72QCYMs6Eee9EJtdmQ6Vlw" name="void addToShockRoomList" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="__bm_gMs6Eee9EJtdmQ6Vlw" name="room" type="_efhx8MVFEeecsefrduevSA"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_GAAgoMs7Eee9EJtdmQ6Vlw" name="void addToNurseList" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JOxisMs7Eee9EJtdmQ6Vlw" name="nurse" type="_QV4BkMVDEeecsefrduevSA"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_PYq5IMs7Eee9EJtdmQ6Vlw" name="void addToPhysicianList" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_Si9D0Ms7Eee9EJtdmQ6Vlw" name="phys" type="_LxkI4MVDEeecsefrduevSA"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_bQ2BAMs7Eee9EJtdmQ6Vlw" name="void addToTransporterList" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_eT2fAMs7Eee9EJtdmQ6Vlw" name="transporter" type="_RQzYwMVDEeecsefrduevSA"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_gkJGoMs7Eee9EJtdmQ6Vlw" name="void sortBySelection" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_kh5VoMs7Eee9EJtdmQ6Vlw" name="rooms"/>
-    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_GQUOIMrmEee9EJtdmQ6Vlw" memberEnd="_GQWDUMrmEee9EJtdmQ6Vlw _GQXRcMrmEee9EJtdmQ6Vlw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GQVcQMrmEee9EJtdmQ6Vlw" source="org.eclipse.papyrus">
@@ -531,17 +432,130 @@
       </ownedOperation>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_NK9aQNCzEeeCYaCQiGwUBg" name="Database">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_RHp5UNCzEeeCYaCQiGwUBg" name="generatedEDs" visibility="private" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_WXFyoNCzEeeCYaCQiGwUBg" name="ArrayList&lt;ED> getGeneratedEDs" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_b-03MNCzEeeCYaCQiGwUBg" name="void addToGeneratedEDs" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_hvnxINCzEeeCYaCQiGwUBg" name="ed" type="_or3cIMrBEee9EJtdmQ6Vlw"/>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_jfa60NCzEeeCYaCQiGwUBg" name="ED getEDbyName" isStatic="true">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_s-BjQNCzEeeCYaCQiGwUBg" name="edName">
+  <packagedElement xmi:type="uml:Package" xmi:id="_uTnV0NC2EeeCYaCQiGwUBg" name="others">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Fw17YMoLEee9OPNNLRHemQ" name="Resource" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Oj8IsMoLEee9OPNNLRHemQ" name="name" visibility="protected">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-      </ownedParameter>
-    </ownedOperation>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_V8cAQMoLEee9OPNNLRHemQ" name="id" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2kJZ0MotEee9OPNNLRHemQ" name="state" visibility="protected">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_5i-yIMrgEee9EJtdmQ6Vlw" name="String getName"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_7aBzUMrgEee9EJtdmQ6Vlw" name="void setName">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-eIdgMrgEee9EJtdmQ6Vlw" name="name">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BZ65MMrhEee9EJtdmQ6Vlw" name="String getState"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DTitQMrhEee9EJtdmQ6Vlw" name="void setState">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_GKiIgMrhEee9EJtdmQ6Vlw" name="state">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_I9R88MrhEee9EJtdmQ6Vlw" name="int getID"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_K9s8kMrhEee9EJtdmQ6Vlw" name="boolean isAvailable">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_OnoQoMrhEee9EJtdmQ6Vlw" name="resource" type="_Fw17YMoLEee9OPNNLRHemQ"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_or3cIMrBEee9EJtdmQ6Vlw" name="ED">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_v7mZQMrBEee9EJtdmQ6Vlw" name="generatedPatients" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-bcG8MrBEee9EJtdmQ6Vlw" name="arrivedPatients" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_uoTv8MrCEee9EJtdmQ6Vlw" name="registeredPatients" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8htCsMsEEee9EJtdmQ6Vlw" name="waitingForTransportPatients" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zPtO4MswEee9EJtdmQ6Vlw" name="waitingForVerdictPatients" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_3Zl1YMswEee9EJtdmQ6Vlw" name="boxRoomList" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6fNigMswEee9EJtdmQ6Vlw" name="shockRoomList" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9LHvIMswEee9EJtdmQ6Vlw" name="releasedPatients" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__XccwMswEee9EJtdmQ6Vlw" name="nurseList" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Blhd4MsxEee9EJtdmQ6Vlw" name="physicianList" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Do9VQMsxEee9EJtdmQ6Vlw" name="transporterList" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nOzhMNC0EeeCYaCQiGwUBg" name="time" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0UPtcNC0EeeCYaCQiGwUBg" name="EDname" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_4ci_kNC0EeeCYaCQiGwUBg" name="radioRoom" type="_usesQMVGEeecsefrduevSA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_5tsB4NC1EeeCYaCQiGwUBg" name="mriRoom" type="_xp_mQMVGEeecsefrduevSA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-G8hINC1EeeCYaCQiGwUBg" name="bloodTestRoom" type="_03igUMVGEeecsefrduevSA"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_hseMMMsxEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getGeneratedPatients"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_lrPH0MsxEee9EJtdmQ6Vlw" name="void addToGeneratedPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_o2bRcMsxEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BqpZAMsyEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getArrivedPatients"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_D4WmsMsyEee9EJtdmQ6Vlw" name="void addToArrivedPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_H0XwUMsyEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MOOsgMsyEee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Patient>> getRegisteredPatients"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_FFCm0MszEee9EJtdmQ6Vlw" name="void addToRegisteredPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_50cxcMs0Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TODBgMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingForTransportPatients"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_uRfZsMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getWaitingForVerdictPatients()"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_06RrkMs2Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getBoxRoomList()"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_FblhwMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Room>> getShockRoomList"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_j0Me8Ms3Eee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getReleasedPatients"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_l0kbQMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Nurse>> getNurseList"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_oc-A4Ms3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Physician>> getPhysicianList"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rDxEAMs3Eee9EJtdmQ6Vlw" name="ArrayList&lt;ArrayList&lt;Transporter>> getTransporterList"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BAuYoMs6Eee9EJtdmQ6Vlw" name="void addToWaitingForTranportPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_EAk08Ms6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MEvfsMs6Eee9EJtdmQ6Vlw" name="void addToWaitingForVerdictPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_PDS7gMs6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_P1KdUMs6Eee9EJtdmQ6Vlw" name="void addToReleasedPatients">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YaWKcMs6Eee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_gh_nAMs6Eee9EJtdmQ6Vlw" name="void addToBoxRoomList">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_kuYH4Ms6Eee9EJtdmQ6Vlw" name="room" type="_eOQbwMVFEeecsefrduevSA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_72QCYMs6Eee9EJtdmQ6Vlw" name="void addToShockRoomList">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="__bm_gMs6Eee9EJtdmQ6Vlw" name="room" type="_efhx8MVFEeecsefrduevSA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GAAgoMs7Eee9EJtdmQ6Vlw" name="void addToNurseList">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_JOxisMs7Eee9EJtdmQ6Vlw" name="nurse" type="_QV4BkMVDEeecsefrduevSA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_PYq5IMs7Eee9EJtdmQ6Vlw" name="void addToPhysicianList">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_Si9D0Ms7Eee9EJtdmQ6Vlw" name="phys" type="_LxkI4MVDEeecsefrduevSA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_bQ2BAMs7Eee9EJtdmQ6Vlw" name="void addToTransporterList">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_eT2fAMs7Eee9EJtdmQ6Vlw" name="transporter" type="_RQzYwMVDEeecsefrduevSA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_gkJGoMs7Eee9EJtdmQ6Vlw" name="void sortBySelection">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_kh5VoMs7Eee9EJtdmQ6Vlw" name="rooms"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ijVlsNC2EeeCYaCQiGwUBg" name="String getEDname"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_k0BO4NC2EeeCYaCQiGwUBg" name="int getTime"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_lo3zQNC2EeeCYaCQiGwUBg" name="void setTime">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_oms2UNC2EeeCYaCQiGwUBg" name="time">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_AjCTkMooEee9OPNNLRHemQ" name="IdGenerator">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZAFb0MopEee9OPNNLRHemQ" name="instance" visibility="private" type="_AjCTkMooEee9OPNNLRHemQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gEItYMopEee9OPNNLRHemQ" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_lnsckMopEee9OPNNLRHemQ" name="IdGenerator getInstance" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_xLoZ0MopEee9OPNNLRHemQ" name="int getNextId"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_NK9aQNCzEeeCYaCQiGwUBg" name="Database">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_RHp5UNCzEeeCYaCQiGwUBg" name="generatedEDs" visibility="private" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_WXFyoNCzEeeCYaCQiGwUBg" name="ArrayList&lt;ED> getGeneratedEDs" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_b-03MNCzEeeCYaCQiGwUBg" name="void addToGeneratedEDs" isStatic="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_hvnxINCzEeeCYaCQiGwUBg" name="ed" type="_or3cIMrBEee9EJtdmQ6Vlw"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_jfa60NCzEeeCYaCQiGwUBg" name="ED getEDbyName" isStatic="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_s-BjQNCzEeeCYaCQiGwUBg" name="edName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_DyYsoMn1Eee9OPNNLRHemQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DyZ6wMn1Eee9OPNNLRHemQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
