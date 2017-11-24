@@ -4,7 +4,7 @@ import others.ED;
 
 public abstract class Event {
 	protected String name;
-	protected ED ED;
+	protected ED ed;
 	protected int occurenceTime;
 	protected boolean isEnabled;
 	
@@ -27,7 +27,6 @@ public abstract class Event {
 		this.isEnabled = isEnabled;
 	}
 	public ED getED() {
-		return ED;
+		return ed;
 	}
-
 }
