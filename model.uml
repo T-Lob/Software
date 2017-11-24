@@ -531,6 +531,18 @@
       </ownedOperation>
     </packagedElement>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NK9aQNCzEeeCYaCQiGwUBg" name="Database">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_RHp5UNCzEeeCYaCQiGwUBg" name="generatedEDs" visibility="private" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_WXFyoNCzEeeCYaCQiGwUBg" name="ArrayList&lt;ED> getGeneratedEDs" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_b-03MNCzEeeCYaCQiGwUBg" name="void addToGeneratedEDs" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_hvnxINCzEeeCYaCQiGwUBg" name="ed" type="_or3cIMrBEee9EJtdmQ6Vlw"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_jfa60NCzEeeCYaCQiGwUBg" name="ED getEDbyName" isStatic="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_s-BjQNCzEeeCYaCQiGwUBg" name="edName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_DyYsoMn1Eee9OPNNLRHemQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DyZ6wMn1Eee9OPNNLRHemQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
