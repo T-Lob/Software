@@ -47,6 +47,7 @@ public class Nurse extends HumanResource {
 			this.ED.getNurseList().get(1).add(this);
 			this.ED.getNurseList().get(0).remove(this);
 			this.ED.getNurseList().get(2).remove(this);
+			
 		} else if (state.equalsIgnoreCase("idle")) {
 			this.ED.getNurseList().get(0).add(this);
 			this.ED.getNurseList().get(1).remove(this);
@@ -66,24 +67,20 @@ public class Nurse extends HumanResource {
 	}
 	
 	public void installation (Patient patient, Room room) {
-		if (this.timeOfAvailability <= this.ED.getTime()) {
-			this.setTimeOfAvailability(this.ED.getTime());
-			this.setState("busy");
-			patient.setState("transported");
-			patient.setLocation(room);
-			room.setState("onlyPatient");
-			room.setPatient(patient);
-			this.setCurrentPatient(patient);
-			this.timeOfAvailability += 2;
-		}
+		this.setState("busy");
+		this.setCurrentPatient(patient);	
+		patient.setState("transported");
+		this.ED.removeFromRegisteredPatients(patient);
+		patient.setLocation(room);
+		room.setState("onlyPatient");
+		room.setPatient(patient);
+		this.setTimeOfAvailability(this.ED.getTime()+2);
 	}
 	
 	public void endOfInstallation (Patient patient) {
-		if (this.timeOfAvailability == this.ED.getTime()) {
-			this.setState("idle");
-			this.setCurrentPatient(null);
-			patient.setState("waiting");
-		}
+		this.setState("idle");
+		this.setCurrentPatient(null);
+		patient.setState("waiting");
 	}
 }
 

@@ -621,6 +621,13 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_xSFJQNE-EeeCYaCQiGwUBg" name="patient" visibility="private" type="_WFe_oMnsEee9OPNNLRHemQ"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_1QzBkNE-EeeCYaCQiGwUBg" name="void execute"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XIqFINFFEeeCYaCQiGwUBg" name="Installation">
+      <generalization xmi:type="uml:Generalization" xmi:id="_jpJKMNFFEeeCYaCQiGwUBg" general="_dG7hwMnvEee9OPNNLRHemQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Yt6LsNFFEeeCYaCQiGwUBg" name="patient" visibility="private" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cnZlwNFFEeeCYaCQiGwUBg" name="nurse" visibility="private" type="_QV4BkMVDEeecsefrduevSA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_fbrrQNFFEeeCYaCQiGwUBg" name="room" visibility="private" type="_UrWJwMrlEee9EJtdmQ6Vlw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_bUU0UNFFEeeCYaCQiGwUBg" name="void execute"/>
+    </packagedElement>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_DyYsoMn1Eee9OPNNLRHemQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DyZ6wMn1Eee9OPNNLRHemQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
