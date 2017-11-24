@@ -14,9 +14,6 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedParameter>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_49GzAMriEee9EJtdmQ6Vlw" name="boolean isAvailable">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_9EamoMriEee9EJtdmQ6Vlw" name="resource" type="_Fw17YMoLEee9OPNNLRHemQ"/>
-    </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="__rn5cMriEee9EJtdmQ6Vlw" name="ArrayList&lt;Patient> getCurrentPatients"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_C6ykIMrjEee9EJtdmQ6Vlw" name="void addToCurrentPatients" visibility="public">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_IsKs4MrjEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
@@ -37,6 +34,17 @@
     </ownedOperation>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_jxQpQMtDEee9EJtdmQ6Vlw" name="void consultation">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_og_u0MtDEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_zI1ZUNCrEeeCYaCQiGwUBg" name="void setState">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_37wVwNCrEeeCYaCQiGwUBg" name="state">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6NXzENCrEeeCYaCQiGwUBg" name="void endConsultation">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_8f094NCrEeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_-0cr4NCrEeeCYaCQiGwUBg" name="void verdict">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_CiBw4NCsEeeCYaCQiGwUBg" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_QV4BkMVDEeecsefrduevSA" name="Nurse">

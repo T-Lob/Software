@@ -50,6 +50,7 @@ public class Physician extends HumanResource {
 	public void addToCurrentPatients(Patient patient) {
 		this.currentPatients.add(patient);
 	}
+	
 	public void removeFromCurrentPatients(Patient patient) {
 		this.currentPatients.remove(patient);
 	}
@@ -57,6 +58,7 @@ public class Physician extends HumanResource {
 	public ArrayList<Patient> getHistoryPatients() {
 		return historyPatients;
 	}
+	
 	public void addToHistoryPatients(Patient patient) {
 		this.historyPatients.add(patient);
 	}
@@ -64,12 +66,15 @@ public class Physician extends HumanResource {
 	public ArrayList<String> getMessageBox() {
 		return messageBox;
 	}
+	
 	public String getLastMessage() {
 		return messageBox.get(messageBox.size()-1);
 	}
+	
 	public void  addToMessageBox(String message) {
 		this.messageBox.add(message);
 	}
+	
 	public void setState(String state) {
 		this.state=state;
 		if (state.equalsIgnoreCase("visiting")){
@@ -87,7 +92,7 @@ public class Physician extends HumanResource {
 			this.ED.getPhysicianList().get(0).remove(this);
 			}
 		
-}
+	}
 	
 	public void consultation (Patient patient) {
 		if (this.timeOfAvailability <= this.ED.getTime()) { // The physician can be idle for several minutes if no patient shows up
@@ -114,11 +119,11 @@ public class Physician extends HumanResource {
 			new Consultation(this.ED.getEDname()).result(patient);
 			this.setState("idle");
 			
-			}
 		}
+	}
+	
 	public void verdict (Patient patient) {
 		patient.setState("released");
 		this.currentPatients.remove(patient);
 	}
-	
-	}
+}
