@@ -8,15 +8,15 @@ public class ShockRoom extends Room {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToShockRoomList(this);
-		
 	}
+	
 	public ShockRoom(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToShockRoomList(this);
-		
-		}
+		this.ED.addToShockRoomList(this);	
+	}
+	
 	public void setState(String state) {
 		this.state=state;
 		
@@ -35,6 +35,5 @@ public class ShockRoom extends Room {
 			this.ED.getShockRoomList().get(1).remove(this);
 			this.ED.getShockRoomList().get(0).remove(this);
 		}
-
-}
+	}
 }
