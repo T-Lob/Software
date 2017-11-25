@@ -1,5 +1,7 @@
 package events;
 
+import java.util.ArrayList;
+
 import others.ED;
 
 public abstract class Event {
@@ -42,4 +44,10 @@ public abstract class Event {
 	}
 	
 	public abstract void execute();
-}
+
+	public static ArrayList <Event> updateEnabledEvents (ArrayList <Event> enabledEvents, ED ed) {
+		return enabledEvents;
+		
+	}
+	}
+			
