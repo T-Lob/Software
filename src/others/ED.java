@@ -1,17 +1,11 @@
 package others;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import human.Nurse;
-import human.Patient;
-import human.Physician;
-import human.Transporter;
-import rooms.BloodTestRoom;
-import rooms.BoxRoom;
-import rooms.MRIRoom;
-import rooms.RadioRoom;
-import rooms.Room;
-import rooms.ShockRoom;
-import rooms.WaitingRoom;
+import human.*;
+import rooms.*;
+import events.*;
+
 
 
 public class ED {
@@ -26,6 +20,10 @@ public class ED {
 	private  ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>(2);
 	private  ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
 	private  ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
+	private ArrayList<Event> eventQueue = new ArrayList <Event> ();
+	private ArrayList<Event> newEnabledEvents = new ArrayList <Event> ();
+	private ArrayList<Event> oldEnabledEvents = new ArrayList <Event> ();
+	private HashMap<Resource, Integer> state = new  HashMap<Resource, Integer> ();
 	private  int time=1000;
 	private  String EDname;
 	public  final WaitingRoom waitingRoom = new WaitingRoom(this.EDname);
@@ -173,6 +171,48 @@ public class ED {
 		this.transporterList.get(0).add(transporter);
 	}
 	
+	public ArrayList<Event> getEventQueue() {
+		return eventQueue;
+	}
+	
+	public void addToEventQueue(Event e) {
+		this.eventQueue.add(e);
+	}
+	
+	public void removeFromEventQueue(Event e) {
+		this.eventQueue.remove(e);
+	}
+	
+	
+	public ArrayList<Event> getNewEnabledEvents() {
+		return newEnabledEvents;
+	}
+
+	public ArrayList<Event> getOldEnabledEvents() {
+		return oldEnabledEvents;
+	}
+	
+	public void addToNewEnabledEvents(Event e) {
+		this.newEnabledEvents.add(e);
+	}
+	
+	public void removeNewEnabledEvents(Event e) {
+		this.newEnabledEvents.remove(e);
+	}
+	
+	public void addToOldEnabledEvents(Event e) {
+		this.oldEnabledEvents.add(e);
+	}
+	
+	public void removeOldEnabledEvents(Event e) {
+		this.oldEnabledEvents.remove(e);
+	}
+	
+
+	public BloodTestRoom getBloodTestRoom() {
+		return bloodTestRoom;
+	}
+
 	public void sortBySelection(ArrayList<Room> rooms) {
 
 	    int i, min, j;

@@ -9,7 +9,7 @@ public class Registration extends Event {
 	public Registration(String edName) {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGenerator.getInstance().getNextID();
-		this.name=("RegistrationTriage" + String.valueOf(id));
+		this.name=("Registration" + String.valueOf(id));
 		this.occurenceTime=(this.ed.getTime());
 	}
 	
