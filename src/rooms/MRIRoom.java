@@ -7,6 +7,11 @@ import others.Database;
 
 public class MRIRoom extends Room {
 	private ArrayList<Patient> WaitingQueue = new ArrayList<Patient>();
+	
+	public MRIRoom(String EDname) {
+		this.ED=Database.getEDbyName(EDname);
+	}
+	
 	public ArrayList<Patient> getWaitingQueue() {
 		return WaitingQueue;
 	}
@@ -14,9 +19,4 @@ public class MRIRoom extends Room {
 	public void addToWaitingQueue(Patient patient) {
 		this.WaitingQueue.add(patient);
 	}
-	
-	public MRIRoom(String EDname) {
-		this.ED=Database.getEDbyName(EDname);
-	}
-
 }
