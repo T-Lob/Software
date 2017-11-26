@@ -2,17 +2,26 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import human.Nurse;
+import others.Database;
 import others.ED;
 
 public class NurseTest {
 	
+
+	@BeforeClass
+	public static void setUpBeforeClass(){
+		@SuppressWarnings("unused")
+		ED ed = new ED("Saint-Denis");
+	}
+	
 	@Test
 	public void testSetState() {
 		
-		ED ed = new ED("Saint-Denis");
+		ED ed = Database.getEDbyName("Saint-Denis");
 		Nurse nurse = new Nurse("Saint-Denis");
 		
 		nurse.setState("busy");

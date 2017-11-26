@@ -15,6 +15,8 @@ public class HRFactoryTest {
 
 	@Test
 	public void testCreateHRStringString() {
+		
+		@SuppressWarnings("unused")
 		ED ed = new ED("Saint-Denis");
 		HRFactory factory = new HRFactory();
 		
