@@ -9,14 +9,14 @@ public class BoxRoom extends Room {
 	public BoxRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToBoxRoomList(this);
+		this.ED.getBoxRoomList().get(0).add(this);
 	}
 	
 	public BoxRoom(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToBoxRoomList(this);
+		this.ED.getBoxRoomList().get(0).add(this);
 	}
 	
 	public void setState(String state) {

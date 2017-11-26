@@ -36,7 +36,7 @@ public class Patient {
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
-		this.ED.addToGeneratedPatients(this);
+		this.ED.getGeneratedPatients().add(this);
 		
 	}
 	
@@ -47,7 +47,7 @@ public class Patient {
 		this.severityLevel = "L"+String.valueOf(new Uniform(1,5).getSample());
 		this.arrivalTime=new Uniform(0,1000).getSample();
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
-		this.ED.addToGeneratedPatients(this);
+		this.ED.getGeneratedPatients().add(this);
 		
 	}
 	
@@ -161,19 +161,19 @@ public class Patient {
 		this.addEventToHistory(event);
 		
 		if (state.equalsIgnoreCase("registered")){
-			this.ED.addToRegisteredPatients(this);
+			this.ED.getRegisteredPatients().get(this.getLevel()-1).add(this);
 			
 		} else if (state.equalsIgnoreCase("arrived")) {
-			this.ED.addToArrivedPatients(this);
+			this.ED.getArrivedPatients().add(this);
 		
 		} else if (state.equalsIgnoreCase("waitingForTransport")){
-			this.ED.addToWaitingForTransportPatients(this);
+			this.ED.getWaitingForTransportPatients().add(this);
 			
 		} else if (state.equalsIgnoreCase("waitingForVerdict")) {
-			this.ED.addToWaitingForVerdictPatients(this);
+			this.ED.getWaitingForVerdictPatients().add(this);
 			
 		} else if (state.equalsIgnoreCase("released")){
-			this.ED.addToReleasedPatients(this);}
+			this.ED.getReleasedPatients().add(this);}
 	
 	
 	}

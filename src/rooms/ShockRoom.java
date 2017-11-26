@@ -10,14 +10,14 @@ public class ShockRoom extends Room {
 	public ShockRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToShockRoomList(this);
+		this.ED.getShockRoomList().get(0).add(this);
 	}
 	
 	public ShockRoom(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToShockRoomList(this);	
+		this.ED.getShockRoomList().get(0).add(this);	
 	}
 	
 	public void setState(String state) {

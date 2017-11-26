@@ -43,6 +43,7 @@ public class ED {
 			this.shockRoomList.add(new ArrayList<ShockRoom>());
 			this.boxRoomList.add(new ArrayList<BoxRoom> ());
 			this.registeredPatients.add(generatedPatients);
+			System.out.println("la bite");
 		}
 		this.registeredPatients.add(generatedPatients);
 		this.registeredPatients.add(generatedPatients);
@@ -67,30 +68,13 @@ public class ED {
 		return generatedPatients;
 	}
 	
-	public void addToGeneratedPatients(Patient patient) {
-		this.generatedPatients.add(patient);
-	}
-	
-	public void removeFromGeneratedPatients(Patient patient) {
-		this.generatedPatients.remove(patient);
-	}
-	
 	public ArrayList<Patient> getArrivedPatients() {
 		return arrivedPatients;
-	}
-	
-	public void addToArrivedPatients(Patient patient) {
-		this.arrivedPatients.add(patient);
 	}
 	
 	public ArrayList<ArrayList<Patient>> getRegisteredPatients() {
 		return registeredPatients;
 	}
-	
-	public void addToRegisteredPatients(Patient patient) {
-		this.registeredPatients.get(patient.getLevel()-1).add(patient);
-	}
-	
 	
 	public ArrayList<Patient> getWaitingForTransportPatients() {
 		return waitingForTransportPatients;
@@ -124,41 +108,6 @@ public class ED {
 		return transporterList;
 	}
 	
-	public void addToWaitingForTransportPatients(Patient patient) {
-		this.waitingForTransportPatients.add(patient);
-	}
-	
-	
-	public void addToWaitingForVerdictPatients(Patient patient) {
-		this.waitingForVerdictPatients.add(patient);
-	}
-	
-	
-	public void addToReleasedPatients(Patient patient) {
-		this.releasedPatients.add(patient);
-	}
-	
-	
-	public void addToBoxRoomList(BoxRoom room) {
-		this.boxRoomList.get(0).add(room);
-	}
-	
-	public void addToShockRoomList(ShockRoom room) {
-		this.shockRoomList.get(0).add(room);
-	}
-	
-	public void addToNurseList(Nurse nurse) {
-		this.nurseList.get(0).add(nurse);
-	}
-	
-	public void addToPhysicianList(Physician phys) {
-		this.physicianList.get(0).add(phys);
-	}
-	
-	public void addToTransporterList(Transporter transporter) {
-		this.transporterList.get(0).add(transporter);
-	}
-	
 	public ArrayList<Event> getEventQueue() {
 		return eventQueue;
 	}
@@ -171,10 +120,6 @@ public class ED {
 		this.eventQueue.add(e);}
 	}
 	
-	public void removeFromEventQueue(Event e) {
-		this.eventQueue.remove(e);
-	}
-	
 	public void removeFromEventQueue(String type) {
 		ArrayList<Event> list = new ArrayList<Event>();
 		for (Event e:this.eventQueue) {
@@ -183,11 +128,9 @@ public class ED {
 			}
 		}
 		for (Event e:list) {
-			this.removeFromEventQueue(e);
+			this.eventQueue.remove(e);
 		}
 	}
-	
-	
 	
 	public ArrayList<String> getNewEnabledEvents() {
 		return newEnabledEvents;

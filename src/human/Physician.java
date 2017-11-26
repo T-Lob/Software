@@ -18,14 +18,14 @@ public class Physician extends HumanResource {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.name = "Physician" + String.valueOf(this.ID);
-		this.ED.addToPhysicianList(this);
+		this.ED.getPhysicianList().get(0).add(this);
 		
 	}
 	public Physician(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToPhysicianList(this);
+		this.ED.getPhysicianList().get(0).add(this);
 	}
 
 	public Physician(String EDname,String name, String surname, String username) {
@@ -34,7 +34,7 @@ public class Physician extends HumanResource {
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.username = username;
-		this.ED.addToPhysicianList(this);
+		this.ED.getPhysicianList().get(0).add(this);
 	}
 	
 	public String getUsername() {

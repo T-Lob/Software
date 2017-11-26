@@ -9,7 +9,7 @@ public class Transporter extends HumanResource{
 		this.ED=Database.getEDbyName(EDname);
 		this.name = "Transporter" + String.valueOf(this.ID);
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToTransporterList(this);
+		this.ED.getTransporterList().get(0).add(this);
 	}
 	
 	public Transporter(String EDname, String name, String surname) {
@@ -17,14 +17,14 @@ public class Transporter extends HumanResource{
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToTransporterList(this);
+		this.ED.getTransporterList().get(0).add(this);
 	}
 	
 	public Transporter(String EDname, String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.ED.addToTransporterList(this);
+		this.ED.getTransporterList().get(0).add(this);
 	}
 	
 	public Patient getCurrentPatient() {
