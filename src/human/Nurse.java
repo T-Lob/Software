@@ -13,6 +13,7 @@ public class Nurse extends HumanResource {
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.name = "Nurse"+String.valueOf(this.ID);
 		this.surname = "Nurse"+String.valueOf(this.ID);
+		this.state = "idle";
 		this.ED.getNurseList().get(0).add(this);
 	}
 	
@@ -21,6 +22,7 @@ public class Nurse extends HumanResource {
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
+		this.state = "idle";
 		this.ED.getNurseList().get(0).add(this);
 	}
 	
@@ -29,44 +31,9 @@ public class Nurse extends HumanResource {
 		this.name = name;
 		this.surname = "Nurse"+String.valueOf(this.ID);
 		this.ID = IDGenerator.getInstance().getNextID();
+		this.state = "idle";
 		this.ED.getNurseList().get(0).add(this);
 		
-	}
-	
-	@Override
-	public String getSurname() {
-		// TODO Auto-generated method stub
-		return super.getSurname();
-	}
-
-	@Override
-	public void setSurname(String surname) {
-		// TODO Auto-generated method stub
-		super.setSurname(surname);
-	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return super.getName();
-	}
-
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		super.setName(name);
-	}
-
-	@Override
-	public String getState() {
-		// TODO Auto-generated method stub
-		return this.state;
-	}
-
-	@Override
-	public int getID() {
-		// TODO Auto-generated method stub
-		return super.getID();
 	}
 
 	public Patient getCurrentPatient() {
