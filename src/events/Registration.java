@@ -1,10 +1,12 @@
 package events;
 
+import human.Nurse;
 import human.Patient;
 import others.Database;
 import others.IDGenerator;
 
 public class Registration extends Event {
+	private Nurse nurse;
 	
 	public Registration(String edName) {
 		this.ed=Database.getEDbyName(edName);
@@ -15,8 +17,9 @@ public class Registration extends Event {
 	}
 	@Override
 	public void execute () {
+		this.nurse=ed.getNextNurse();
 		for (Patient patient:this.ed.getArrivedPatients()) {
-			this.ed.getNextNurse().registration(patient);
+			nurse.registration(patient);
 		}	
 	}
 }

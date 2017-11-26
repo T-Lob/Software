@@ -15,6 +15,7 @@ public class Test {
 		Patient patient2  = new Patient ("ED");
 		Patient patient3  = new Patient ("ED");
 		Patient patient4 = new Patient ("ED");
+		System.out.println(patient.getLevel());
 		Physician physician = (Physician) HRFactory.createHR("ED", "Physician");
 		Nurse nurse = (Nurse) HRFactory.createHR("ED", "Nurse");
 		Transporter transporter = (Transporter) HRFactory.createHR("ED", "Transporter");
