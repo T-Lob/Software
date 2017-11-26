@@ -11,6 +11,7 @@ public class Registration extends Event {
 		this.id=IDGenerator.getInstance().getNextID();
 		this.name=("Registration" + String.valueOf(id));
 		this.occurenceTime=(this.ed.getTime());
+		this.type= "Registration";
 	}
 	
 	public void execute () {

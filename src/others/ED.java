@@ -1,5 +1,7 @@
 package others;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import human.*;
@@ -21,9 +23,9 @@ public class ED {
 	private  ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
 	private  ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
 	private ArrayList<Event> eventQueue = new ArrayList <Event> ();
-	private ArrayList<Event> newEnabledEvents = new ArrayList <Event> ();
-	private ArrayList<Event> oldEnabledEvents = new ArrayList <Event> ();
-	private HashMap<Resource, Integer> state = new  HashMap<Resource, Integer> ();
+	private ArrayList<String> newEnabledEvents = new ArrayList <String> ();
+	private ArrayList<String> oldEnabledEvents = new ArrayList <String> ();
+	private HashMap<String, Integer> state = new  HashMap<String, Integer> ();
 	private  int time=1000;
 	private  String EDname;
 	public  final WaitingRoom waitingRoom = new WaitingRoom(this.EDname);
@@ -183,34 +185,61 @@ public class ED {
 		this.eventQueue.remove(e);
 	}
 	
+	public void removeFromEventQueue(String type) {
+		for (Event e:this.eventQueue) {
+			if (e.getType()==type) {
+				removeFromEventQueue(e);
+			}
+		}
+	}
 	
-	public ArrayList<Event> getNewEnabledEvents() {
+	
+	
+	public ArrayList<String> getNewEnabledEvents() {
 		return newEnabledEvents;
 	}
 
-	public ArrayList<Event> getOldEnabledEvents() {
+	public ArrayList<String> getOldEnabledEvents() {
 		return oldEnabledEvents;
 	}
 	
-	public void addToNewEnabledEvents(Event e) {
-		this.newEnabledEvents.add(e);
+	public void addToNewEnabledEvents(String s) {
+		this.newEnabledEvents.add(s);
 	}
 	
-	public void removeNewEnabledEvents(Event e) {
-		this.newEnabledEvents.remove(e);
+	public void removeNewEnabledEvents(String s) {
+		this.newEnabledEvents.remove(s);
 	}
 	
-	public void addToOldEnabledEvents(Event e) {
-		this.oldEnabledEvents.add(e);
+	public void addToOldEnabledEvents(String s) {
+		this.oldEnabledEvents.add(s);
 	}
 	
-	public void removeOldEnabledEvents(Event e) {
-		this.oldEnabledEvents.remove(e);
+	public void removeOldEnabledEvents(String s) {
+		this.oldEnabledEvents.remove(s);
 	}
 	
 
 	public BloodTestRoom getBloodTestRoom() {
 		return bloodTestRoom;
+	}
+
+	public void setNewEnabledEvents(ArrayList<String> newEnabledEvents) {
+		this.newEnabledEvents = newEnabledEvents;
+	}
+
+	public void setOldEnabledEvents(ArrayList<String> enabledEvents) {
+		this.oldEnabledEvents = enabledEvents;
+	}
+	public Patient getNextPatient() {
+		int i = 4;
+		while (i >= 0 & this.registeredPatients.get(i).size()==0) {
+			i-=1;	
+		}
+		if (i==-1) {
+			return null;
+		}
+		return this.registeredPatients.get(i).get(0);
 	}
 
 	public void sortBySelection(ArrayList<Room> rooms) {
@@ -232,4 +261,52 @@ public class ED {
 	        }
 	    } 
 	}
+	public void sortEventQueue() {
+		Collections.sort(this.eventQueue, new Comparator<Event>() {
+	        @Override
+	        public int compare(Event event2, Event event1)
+	        {
+
+	            return  event2.getOccurenceTime()-event1.getOccurenceTime();
+	        }
+	    });
+		
+	}
+
+	public HashMap<String, Integer> getState() {
+		return state;
+	}
+
+	public void updateState() {
+		state.put("arrivedPatients",this.arrivedPatients.size());
+		state.put("waitingForTransportPatients",this.waitingForTransportPatients.size());
+		state.put("Nurse",this.nurseList.get(0).size());
+		state.put("emptyBoxrooms", this.boxRoomList.get(0).size());
+		state.put("onlyPatientBoxrooms", this.boxRoomList.get(1).size());
+		state.put("emptyShockrooms", this.shockRoomList.get(0).size());
+		state.put("onlyPatientShockrooms", this.boxRoomList.get(1).size());
+		state.put("Physician",this.physicianList.get(0).size());
+		state.put("Transporter", this.transporterList.get(0).size());
+		state.put("BloodTest", -this.bloodTestRoom.getWaitingQueue().size() +1);
+		state.put("MRI", -this.mriRoom.getWaitingQueue().size() +1);
+		state.put("Radio", -this.radioRoom.getWaitingQueue().size() +1);
+	}
+	public ArrayList<String> getNewlyEnabledEvents() {
+		ArrayList<String> newlyEnabledEvents = this.newEnabledEvents;
+		for (String s: oldEnabledEvents) {
+			newlyEnabledEvents.remove(s);
+		}
+		return newlyEnabledEvents;
+		
+	}
+	public ArrayList<String> getNewlyDisabledEvents() {
+		ArrayList<String> newlyDisabledEvents = this.oldEnabledEvents;
+		for (String s: newEnabledEvents) {
+			newlyDisabledEvents.remove(s);
+		}
+		return newlyDisabledEvents;
+		
+	}
+
+	
 }

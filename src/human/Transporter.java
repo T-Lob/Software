@@ -70,7 +70,7 @@ public class Transporter extends HumanResource{
 		if (this.timeOfAvailability == this.ED.getTime()) {
 			this.setState("idle");
 			this.setCurrentPatient(null);
-			patient.setState("waiting");
+			patient.setState("waitingForExamination");
 		}
 	}
 }

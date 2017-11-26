@@ -8,6 +8,13 @@ public class PatientArrival extends Event {
 	
 	private Patient patient;
 	
+	public PatientArrival(String edName){
+		this.ed = Database.getEDbyName(edName);
+		this.id = IDGenerator.getInstance().getNextID();
+		this.name = "Patient Arrival " + String.valueOf(id);
+		this.occurenceTime = patient.getArrivalTime();
+	}
+	
 	public PatientArrival(String edName, Patient patient){
 		this.ed = Database.getEDbyName(edName);
 		this.id = IDGenerator.getInstance().getNextID();

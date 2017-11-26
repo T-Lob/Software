@@ -12,6 +12,14 @@ public class Installation extends Event{
 	private Patient patient;
 	private Room room;
 	
+	public Installation(String edName) {
+		this.ed = Database.getEDbyName(edName);
+		this.id = IDGenerator.getInstance().getNextID();
+		this.name = "Patient Installation" + String.valueOf(this.id);
+		this.occurenceTime = ed.getTime();
+		this.type= "Installation";
+	}
+	
 	public Installation(String edName, Patient patient, Nurse nurse, Room room) {
 		this.ed = Database.getEDbyName(edName);
 		this.id = IDGenerator.getInstance().getNextID();
@@ -20,6 +28,7 @@ public class Installation extends Event{
 		this.nurse = nurse;
 		this.patient = patient;
 		this.room = room;
+		this.type= "Installation";
 	}
 	
 	@Override

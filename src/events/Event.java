@@ -8,8 +8,8 @@ public abstract class Event {
 	protected String name;
 	protected ED ed;
 	protected int occurenceTime;
-	protected boolean isEnabled;
 	protected int id;
+	protected String type;
 	
 	public String getName() {
 		return name;
@@ -27,14 +27,6 @@ public abstract class Event {
 		this.occurenceTime = occurenceTime;
 	}
 	
-	public boolean isEnabled() {
-		return isEnabled;
-	}
-	
-	public void setEnabled(boolean isEnabled) {
-		this.isEnabled = isEnabled;
-	}
-	
 	public ED getED() {
 		return ed;
 	}
@@ -43,11 +35,61 @@ public abstract class Event {
 		return id;
 	}
 	
-	public abstract void execute();
+	
+	public String getType() {
+		return type;
+	}
 
-	public static ArrayList <Event> updateEnabledEvents (ArrayList <Event> enabledEvents, ED ed) {
-		return enabledEvents;
+	public abstract void execute();
 		
+
+	public static ArrayList <String> updateEnabledEvents (ArrayList <String> enabledEvents, ED ed) {
+		ed.setOldEnabledEvents(enabledEvents);
+		if (ed.getState().get("arrivedPatients") > 0) {
+			ed.addToNewEnabledEvents("Registration");
+		}
+		if (ed.getState().get("Nurse") >0 & ed.getNextPatient() != null) {
+			if (ed.getNextPatient().getLevel() >= 4 & (ed.getState().get("emptyBoxrooms") > 0 || ed.getState().get("emptyShockrooms") > 0)) {
+				ed.addToNewEnabledEvents("Installation");
+				}
+			else if (ed.getState().get("emptyBoxrooms") > 0) {
+				ed.addToNewEnabledEvents("Installation");
+			}
+		}
+		if (ed.getState().get("Physician") > 0 & (ed.getState().get("onlyPatienBoxrooms") > 0 || ed.getState().get("onlyPatientShockrooms") > 0)) {
+			ed.addToNewEnabledEvents("Consultation");
+		}
+		if (ed.getState().get("Transporter") >0 & ed.getState().get("waitingForTransportPatients") >0) {
+			ed.addToNewEnabledEvents("Transportation");
+		}
+		if (ed.mriRoom.getState()=="empty") {
+			ed.addToNewEnabledEvents("mriExamination");
+		}
+		if (ed.bloodTestRoom.getState()=="empty") {
+			ed.addToNewEnabledEvents("bloodTestExamination");
+		}
+		if (ed.radioRoom.getState()=="empty") {
+			ed.addToNewEnabledEvents("radioExamination");
+		}
+		return ed.getNewEnabledEvents();
 	}
+	public static ArrayList <Event> updateEventQueue (ED ed) {
+		ArrayList<String> newlyEnabledEvents = ed.getNewlyEnabledEvents();
+		ArrayList<String> newlyDisabledEvents = ed.getNewlyDisabledEvents();
+		for (String s: newlyDisabledEvents) {
+			ed.removeFromEventQueue(s);
+		}
+		for (String s: newlyEnabledEvents) {
+			Event e=EventFactory.createEvent(ed.getEDname(), s);
+			ed.addToEventQueue(e);	
+		}
+		ed.sortEventQueue();
+		return ed.getEventQueue();
+		
+		
+
 	}
+	
+}
+	
 			
