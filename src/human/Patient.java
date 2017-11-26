@@ -152,6 +152,7 @@ public class Patient {
 	
 	public void setState(String state) {
 		this.state=state;
+		this.ED.getGeneratedPatients().remove(this);
 		this.ED.getRegisteredPatients().get(this.getLevel()-1).remove(this);
 		this.ED.getArrivedPatients().remove(this);
 		this.ED.getWaitingForTransportPatients().remove(this);
