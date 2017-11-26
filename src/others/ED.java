@@ -35,6 +35,7 @@ public class ED {
 	
 	
 	public ED (String EDname) {
+		ArrayList<Patient> L = new ArrayList<Patient>();
 		this.EDname=EDname;
 		for (int i=0 ; i<3; i++) {
 			this.physicianList.add(new ArrayList<Physician>());
@@ -42,11 +43,10 @@ public class ED {
 			this.transporterList.add(new ArrayList<Transporter>());
 			this.shockRoomList.add(new ArrayList<ShockRoom>());
 			this.boxRoomList.add(new ArrayList<BoxRoom> ());
-			this.registeredPatients.add(generatedPatients);
-			System.out.println("la bite");
+			this.registeredPatients.add(L);
 		}
-		this.registeredPatients.add(generatedPatients);
-		this.registeredPatients.add(generatedPatients);
+		this.registeredPatients.add(L);
+		this.registeredPatients.add(L);
 		this.newEnabledEvents.add("PatientArrival");
 		this.oldEnabledEvents.add("PatientArrival");
 		Database.addToGeneratedEDs(this);
