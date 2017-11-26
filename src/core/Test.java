@@ -35,9 +35,6 @@ public class Test {
 			ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getOldEnabledEvents(), ed));
 			ed.setEventQueue(Database.updateEventQueue(ed));
 			ed.display();
-			
-			
-			
 		}
 		
 		

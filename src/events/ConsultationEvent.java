@@ -18,7 +18,7 @@ public class ConsultationEvent extends Event {
 		this.name=("Consultation" + String.valueOf(id));
 		this.occurenceTime=(this.ed.getTime());
 		this.consultation=new Consultation(this.ed.getEDname());
-		this.type= "Consulatation";
+		this.type= "Consultation";
 		
 	}
 
