@@ -145,22 +145,9 @@ public class ED {
 		this.newEnabledEvents.add(s);
 	}
 	
-	public void removeNewEnabledEvents(String s) {
-		this.newEnabledEvents.remove(s);
-	}
-	
 	public void addToOldEnabledEvents(String s) {
 		if (!oldEnabledEvents.contains(s))
 		this.oldEnabledEvents.add(s);
-	}
-	
-	public void removeOldEnabledEvents(String s) {
-		this.oldEnabledEvents.remove(s);
-	}
-	
-
-	public BloodTestRoom getBloodTestRoom() {
-		return bloodTestRoom;
 	}
 
 	public void setNewEnabledEvents(ArrayList<String> newEnabledEvents) {
