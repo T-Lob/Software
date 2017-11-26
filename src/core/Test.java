@@ -10,6 +10,7 @@ import others.ED;
 public class Test {
 	public static void main(String[] args) {
 		ED ed = new ED("ED");
+		System.out.println(ed.getRegisteredPatients());
 		Patient patient  = new Patient ("ED");
 		Patient patient2  = new Patient ("ED");
 		Patient patient3  = new Patient ("ED");

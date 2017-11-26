@@ -386,6 +386,7 @@ public class ED {
 		for (Patient patient:arrivedPatients) {
 			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
 		}
+		System.out.println(registeredPatients);
 		System.out.println(eventQueue);
 	}
 
