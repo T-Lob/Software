@@ -33,6 +33,42 @@ public class Nurse extends HumanResource {
 		
 	}
 	
+	@Override
+	public String getSurname() {
+		// TODO Auto-generated method stub
+		return super.getSurname();
+	}
+
+	@Override
+	public void setSurname(String surname) {
+		// TODO Auto-generated method stub
+		super.setSurname(surname);
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return super.getName();
+	}
+
+	@Override
+	public void setName(String name) {
+		// TODO Auto-generated method stub
+		super.setName(name);
+	}
+
+	@Override
+	public String getState() {
+		// TODO Auto-generated method stub
+		return this.state;
+	}
+
+	@Override
+	public int getID() {
+		// TODO Auto-generated method stub
+		return super.getID();
+	}
+
 	public Patient getCurrentPatient() {
 		return currentPatient;
 	}
