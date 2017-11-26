@@ -17,6 +17,7 @@ public class Physician extends HumanResource {
 	public Physician(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
+		this.name = "Physician" + String.valueOf(this.ID);
 		this.ED.addToPhysicianList(this);
 		
 	}
@@ -94,32 +95,17 @@ public class Physician extends HumanResource {
 		
 	}
 	
-	public void consultation (Patient patient) {
-		if (this.timeOfAvailability <= this.ED.getTime()) { // The physician can be idle for several minutes if no patient shows up
-			this.setTimeOfAvailability(this.ED.getTime()); // We set the time to the time of the beginning of the consultation
-			this.setState("visiting");
-			Consultation consultation = new Consultation(this.ED.getEDname()); 
+	public void consultation (Patient patient, Consultation consultation) {
+			this.setState("visiting"); 
 			this.addToHistoryPatients(patient);
 			this.addToCurrentPatients(patient);
 			patient.setPhysician(this);
 			patient.setState("visited");
-			this.timeOfAvailability += consultation.getDuration();
-		}
-	
-	
-		else {
-			/* The patient is being visited by the physician, nothing to do
-			unless a High severity patient comes and takes his place => To implement */
-			
-		}
 	}
 	
-	public void endConsultation (Patient patient) {
-		if (this.timeOfAvailability == this.ED.getTime()) {
-			new Consultation(this.ED.getEDname()).result(patient);
+	public void endOfConsultation (Patient patient, Consultation consultation) {
+			consultation.result(patient);
 			this.setState("idle");
-			
-		}
 	}
 	
 	public void verdict (Patient patient) {

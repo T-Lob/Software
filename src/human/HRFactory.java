@@ -2,7 +2,7 @@ package human;
 
 public class HRFactory {
 	
-	public HumanResource createHR(String EDname,String HRType) {
+	public static HumanResource createHR(String EDname,String HRType) {
 		if (HRType == null) {
 			return null;
 		}

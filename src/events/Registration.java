@@ -13,10 +13,10 @@ public class Registration extends Event {
 		this.occurenceTime=(this.ed.getTime());
 		this.type= "Registration";
 	}
-	
+	@Override
 	public void execute () {
-		for (Patient patient:this.ed.getGeneratedPatients()) {
-			this.ed.getNurseList().get(0).get(0).registration(patient);
+		for (Patient patient:this.ed.getArrivedPatients()) {
+			this.ed.getNextNurse().registration(patient);
 		}	
 	}
 }

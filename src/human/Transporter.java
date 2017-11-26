@@ -7,6 +7,7 @@ public class Transporter extends HumanResource{
 	
 	public Transporter(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
+		this.name = "Transporter" + String.valueOf(this.ID);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.ED.addToTransporterList(this);
 	}
@@ -54,23 +55,17 @@ public class Transporter extends HumanResource{
 	}
 	
 	public void transportation (Patient patient) {
-		if (this.timeOfAvailability <= this.ED.getTime()) {
-			this.setTimeOfAvailability(this.ED.getTime());
 			this.setState("transporting");
 			this.setCurrentPatient(patient);
 			patient.setState("transported");
 			patient.setLocation(patient.getDestination());
 			patient.getDestination().setState("full");
 			patient.getDestination().setPatient(patient);;
-			this.timeOfAvailability += 5;
-		}
 	}
 	
 	public void endOfTransportation (Patient patient) {
-		if (this.timeOfAvailability == this.ED.getTime()) {
 			this.setState("idle");
 			this.setCurrentPatient(null);
 			patient.setState("waitingForExamination");
-		}
 	}
 }

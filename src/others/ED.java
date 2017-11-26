@@ -22,11 +22,11 @@ public class ED {
 	private  ArrayList<ArrayList<Nurse>> nurseList = new ArrayList<ArrayList<Nurse>>(2);
 	private  ArrayList<ArrayList<Physician>> physicianList = new ArrayList<ArrayList<Physician>>(2);
 	private  ArrayList<ArrayList<Transporter>> transporterList = new ArrayList<ArrayList<Transporter>>(2);
-	private ArrayList<Event> eventQueue = new ArrayList <Event> ();
+	private ArrayList<Event> eventQueue = new ArrayList <Event> ();	
 	private ArrayList<String> newEnabledEvents = new ArrayList <String> ();
 	private ArrayList<String> oldEnabledEvents = new ArrayList <String> ();
 	private HashMap<String, Integer> state = new  HashMap<String, Integer> ();
-	private  int time=1000;
+	private  int time;
 	private  String EDname;
 	public  final WaitingRoom waitingRoom = new WaitingRoom(this.EDname);
 	public  final RadioRoom radioRoom = new RadioRoom(this.EDname);
@@ -46,6 +46,8 @@ public class ED {
 		}
 		this.registeredPatients.add(generatedPatients);
 		this.registeredPatients.add(generatedPatients);
+		this.newEnabledEvents.add("PatientArrival");
+		this.oldEnabledEvents.add("PatientArrival");
 		Database.addToGeneratedEDs(this);
 	}
 	
@@ -81,10 +83,6 @@ public class ED {
 		this.arrivedPatients.add(patient);
 	}
 	
-	public void removeFromArrivedPatients(Patient patient) {
-		this.arrivedPatients.remove(patient);
-	}
-	
 	public ArrayList<ArrayList<Patient>> getRegisteredPatients() {
 		return registeredPatients;
 	}
@@ -93,9 +91,6 @@ public class ED {
 		this.registeredPatients.get(patient.getLevel()-1).add(patient);
 	}
 	
-	public void removeFromRegisteredPatients(Patient patient) {
-		this.registeredPatients.get(patient.getLevel()-1).remove(patient);
-	}
 	
 	public ArrayList<Patient> getWaitingForTransportPatients() {
 		return waitingForTransportPatients;
@@ -133,25 +128,16 @@ public class ED {
 		this.waitingForTransportPatients.add(patient);
 	}
 	
-	public void removeFromWaitingForTransportPatients(Patient patient) {
-		this.waitingForTransportPatients.remove(patient);
-	}
 	
 	public void addToWaitingForVerdictPatients(Patient patient) {
 		this.waitingForVerdictPatients.add(patient);
 	}
 	
-	public void removeFromWaitingForVerdictPatients(Patient patient) {
-		this.waitingForVerdictPatients.remove(patient);
-	}
 	
 	public void addToReleasedPatients(Patient patient) {
 		this.releasedPatients.add(patient);
 	}
 	
-	public void removeFromReleasedPatients(Patient patient) {
-		this.releasedPatients.remove(patient);
-	}
 	
 	public void addToBoxRoomList(BoxRoom room) {
 		this.boxRoomList.get(0).add(room);
@@ -176,9 +162,13 @@ public class ED {
 	public ArrayList<Event> getEventQueue() {
 		return eventQueue;
 	}
+	public void setEventQueue(ArrayList<Event> eventQueue) {
+		this.eventQueue = eventQueue;
+	}
 	
 	public void addToEventQueue(Event e) {
-		this.eventQueue.add(e);
+		if (e !=null) {
+		this.eventQueue.add(e);}
 	}
 	
 	public void removeFromEventQueue(Event e) {
@@ -186,10 +176,14 @@ public class ED {
 	}
 	
 	public void removeFromEventQueue(String type) {
+		ArrayList<Event> list = new ArrayList<Event>();
 		for (Event e:this.eventQueue) {
 			if (e.getType()==type) {
-				removeFromEventQueue(e);
+				list.add(e);
 			}
+		}
+		for (Event e:list) {
+			this.removeFromEventQueue(e);
 		}
 	}
 	
@@ -204,6 +198,7 @@ public class ED {
 	}
 	
 	public void addToNewEnabledEvents(String s) {
+		if (!newEnabledEvents.contains(s))
 		this.newEnabledEvents.add(s);
 	}
 	
@@ -212,6 +207,7 @@ public class ED {
 	}
 	
 	public void addToOldEnabledEvents(String s) {
+		if (!oldEnabledEvents.contains(s))
 		this.oldEnabledEvents.add(s);
 	}
 	
@@ -231,7 +227,13 @@ public class ED {
 	public void setOldEnabledEvents(ArrayList<String> enabledEvents) {
 		this.oldEnabledEvents = enabledEvents;
 	}
-	public Patient getNextPatient() {
+	public Patient getNextGeneratedPatient() {
+		if (this.generatedPatients.size() >0) {
+			return this.generatedPatients.get(9);
+		}
+		return null;
+	}
+	public Patient getNextRegisteredPatient() {
 		int i = 4;
 		while (i >= 0 & this.registeredPatients.get(i).size()==0) {
 			i-=1;	
@@ -241,6 +243,55 @@ public class ED {
 		}
 		return this.registeredPatients.get(i).get(0);
 	}
+	public Patient getNextWaitingForTransportPatient() {
+		if (this.waitingForTransportPatients.size() >0) {
+			return this.waitingForTransportPatients.get(9);
+		}
+		return null;
+	}
+	public Nurse getNextNurse() {
+		if (this.nurseList.get(0).size() >0) {
+			return this.nurseList.get(0).get(0);
+		}
+		return null;
+	}
+	public Physician getNextPhysician() {
+		if (this.physicianList.get(0).size() >0) {
+			return this.physicianList.get(0).get(0);
+		}
+		return null;
+	}
+	public Transporter getNextTransporter() {
+		if (this.transporterList.get(0).size() >0) {
+			return this.transporterList.get(0).get(0);
+		}
+		return null;
+	}
+	public BoxRoom getNextEmptyBoxRoom() {
+		if (this.boxRoomList.get(0).size() >0) {
+			return this.boxRoomList.get(0).get(0);
+		}
+		return null;
+	}
+	public ShockRoom getNextEmptyShockRoom() {
+		if (this.shockRoomList.get(0).size() >0) {
+			return this.shockRoomList.get(0).get(0);
+		}
+		return null;
+	}
+	public BoxRoom getNextOnlyPatientBoxRoom() {
+		if (this.boxRoomList.get(1).size() >0) {
+			return this.boxRoomList.get(1).get(0);
+		}
+		return null;
+	}
+	public ShockRoom getNextOnlyPatientShockRoom() {
+		if (this.shockRoomList.get(1).size() >0) {
+			return this.shockRoomList.get(1).get(0);
+		}
+		return null;
+	}
+	
 
 	public void sortBySelection(ArrayList<Room> rooms) {
 
@@ -261,17 +312,37 @@ public class ED {
 	        }
 	    } 
 	}
+	public void sort(ArrayList<Event> eQ) {
+
+	    int i, min, j;
+		Event x;
+	    for(i = 0 ; i < eQ.size() - 1 ; i++)
+	    {
+	    	min = i;
+	        for(j = i+1 ; j < eQ.size(); j++){
+	        	if(eQ.get(j).getOccurenceTime() < eQ.get(min).getOccurenceTime())
+	        		min = j;
+	        	if(min != i)
+	        	{
+	        		x = eQ.get(i);
+	        		eQ.set(i,eQ.get(min));
+	        		eQ.set(min, x);
+	        	}
+	        }
+	    } 
+	}
 	public void sortEventQueue() {
 		Collections.sort(this.eventQueue, new Comparator<Event>() {
 	        @Override
 	        public int compare(Event event2, Event event1)
 	        {
 
-	            return  event2.getOccurenceTime()-event1.getOccurenceTime();
+	            return  new Integer(event2.getOccurenceTime()).compareTo(event1.getOccurenceTime());
 	        }
 	    });
 		
 	}
+	
 
 	public HashMap<String, Integer> getState() {
 		return state;
@@ -280,11 +351,11 @@ public class ED {
 	public void updateState() {
 		state.put("arrivedPatients",this.arrivedPatients.size());
 		state.put("waitingForTransportPatients",this.waitingForTransportPatients.size());
-		state.put("Nurse",this.nurseList.get(0).size());
 		state.put("emptyBoxrooms", this.boxRoomList.get(0).size());
 		state.put("onlyPatientBoxrooms", this.boxRoomList.get(1).size());
 		state.put("emptyShockrooms", this.shockRoomList.get(0).size());
 		state.put("onlyPatientShockrooms", this.boxRoomList.get(1).size());
+		state.put("Nurse",this.nurseList.get(0).size());
 		state.put("Physician",this.physicianList.get(0).size());
 		state.put("Transporter", this.transporterList.get(0).size());
 		state.put("BloodTest", -this.bloodTestRoom.getWaitingQueue().size() +1);
@@ -292,7 +363,7 @@ public class ED {
 		state.put("Radio", -this.radioRoom.getWaitingQueue().size() +1);
 	}
 	public ArrayList<String> getNewlyEnabledEvents() {
-		ArrayList<String> newlyEnabledEvents = this.newEnabledEvents;
+		ArrayList<String> newlyEnabledEvents = new ArrayList<String>(this.newEnabledEvents);
 		for (String s: oldEnabledEvents) {
 			newlyEnabledEvents.remove(s);
 		}
@@ -300,12 +371,22 @@ public class ED {
 		
 	}
 	public ArrayList<String> getNewlyDisabledEvents() {
-		ArrayList<String> newlyDisabledEvents = this.oldEnabledEvents;
+		ArrayList<String> newlyDisabledEvents = new ArrayList<String>(this.oldEnabledEvents);
 		for (String s: newEnabledEvents) {
 			newlyDisabledEvents.remove(s);
 		}
 		return newlyDisabledEvents;
 		
+	}
+	
+	public void display() {
+		for (Patient patient:generatedPatients) {
+			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
+		}
+		for (Patient patient:arrivedPatients) {
+			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
+		}
+		System.out.println(eventQueue);
 	}
 
 	

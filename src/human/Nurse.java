@@ -61,7 +61,6 @@ public class Nurse extends HumanResource {
 	}
 	
 	public void registration (Patient patient) {
-		this.ED.removeFromArrivedPatients(patient);
 		patient.setState("registered");
 		patient.setLocation(ED.waitingRoom);
 	}
@@ -70,11 +69,9 @@ public class Nurse extends HumanResource {
 		this.setState("busy");
 		this.setCurrentPatient(patient);	
 		patient.setState("transported");
-		this.ED.removeFromRegisteredPatients(patient);
 		patient.setLocation(room);
 		room.setState("onlyPatient");
 		room.setPatient(patient);
-		this.setTimeOfAvailability(this.ED.getTime()+2);
 	}
 	
 	public void endOfInstallation (Patient patient) {

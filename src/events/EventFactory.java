@@ -6,15 +6,18 @@ public class EventFactory {
 			return null;
 		}
 		
-		if (eventType.equalsIgnoreCase("PATTIENTARRIVAL")){
+		if (eventType.equalsIgnoreCase("PATIENTARRIVAL")){
 			return new PatientArrival(EDname);
 		} else if (eventType.equalsIgnoreCase("INSTALLATION")){
 			return new Installation(EDname);
 		} else if (eventType.equalsIgnoreCase("REGISTRATION")){
 			return new Registration(EDname);
 		} else if (eventType.equalsIgnoreCase("CONSULTATION")) {
-			return new Consultation(EDname);
+			return new ConsultationEvent(EDname);
+		} else if (eventType.equalsIgnoreCase("TRANSPORTATION")) {
+			return new Transportation(EDname);
 		}
+		
 		return null;	
 	}
 

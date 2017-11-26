@@ -31,8 +31,28 @@ public class Installation extends Event{
 		this.type= "Installation";
 	}
 	
+	public Nurse getNurse() {
+		return nurse;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
 	@Override
 	public void execute() {
-		nurse.installation(patient, room);
+		this.nurse=this.ed.getNextNurse();
+		this.patient=this.ed.getNextRegisteredPatient();
+		if (this.patient.getLevel()>=4 & this.ed.getNextEmptyShockRoom() != null) {
+			this.room=this.ed.getNextEmptyShockRoom();
+		} else {
+			this.room=this.ed.getNextEmptyBoxRoom();
+		}
+		nurse.installation (patient,room);
+		this.ed.addToEventQueue(new EndOfInstallation(this));
 	}
 }

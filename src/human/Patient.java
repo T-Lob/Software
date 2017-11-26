@@ -1,6 +1,8 @@
 package human;
 import java.util.ArrayList;
 
+import events.PatientArrival;
+import maths.Uniform;
 import others.Database;
 import others.ED;
 import others.IDGenerator;
@@ -14,7 +16,7 @@ public class Patient {
 	private int ID;
 	private String healthInsurance="None";
 	private String severityLevel;
-	private String state = "arrived";
+	private String state = "generated";
 	private Room location = null;
 	private ArrayList<String[]> history = new ArrayList<String[]> () ;
 	private int arrivalTime;
@@ -33,11 +35,20 @@ public class Patient {
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
-		this.ED.addToGeneratedPatients(this);	
+		this.ED.addToEventQueue(new PatientArrival(EDname, this));
+		this.ED.addToGeneratedPatients(this);
+		
 	}
 	
 	public Patient(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
+		this.ID=IDGenerator.getInstance().getNextID();
+		this.name = "Patient" + String.valueOf(this.ID);
+		this.severityLevel = "L"+String.valueOf(new Uniform(1,5).getSample());
+		this.arrivalTime=new Uniform(0,1000).getSample();
+		this.ED.addToEventQueue(new PatientArrival(EDname, this));
+		this.ED.addToGeneratedPatients(this);
+		
 	}
 	
 	public String getName() {
@@ -141,6 +152,10 @@ public class Patient {
 	
 	public void setState(String state) {
 		this.state=state;
+		this.ED.getRegisteredPatients().get(this.getLevel()-1).remove(this);
+		this.ED.getArrivedPatients().remove(this);
+		this.ED.getWaitingForTransportPatients().remove(this);
+		this.ED.getWaitingForVerdictPatients().remove(this);
 		String [] event= {state,String.valueOf(this.ED.getTime())};
 		this.addEventToHistory(event);
 		
