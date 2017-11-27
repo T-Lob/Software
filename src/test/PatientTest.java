@@ -226,6 +226,7 @@ public class PatientTest {
 			fail("Released Patients List contains arrived patient");
 		
 		patient.setState("registered");
+		System.out.println(ed.getRegisteredPatients());
 		if (ed.getGeneratedPatients().contains(patient))
 			fail("Generated Patients List contains registered patient");
 		if (ed.getArrivedPatients().contains(patient))
