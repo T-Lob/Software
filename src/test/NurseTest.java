@@ -27,34 +27,33 @@ public class NurseTest {
 		Nurse nurse = new Nurse("Saint-Denis");
 		
 		nurse.setState("busy");
-		
 		if (!(nurse.getState().equalsIgnoreCase("busy")))
 			fail("Nurse State not busy");
-		if (!(ed.getNurseList().get(1).contains(nurse)))
+		if (!(ed.getNurseList().get(1).contains(nurse)) & ed.getNurseList().get(1).size() != 1)
 			fail("Nurse not added to the occupied nurses");
-		if (ed.getNurseList().get(0).contains(nurse))
+		if (ed.getNurseList().get(0).contains(nurse) & ed.getNurseList().get(0).size() != 0)
 			fail("Nurse added to the idle nurses");
-		if (ed.getNurseList().get(2).contains(nurse))
+		if (ed.getNurseList().get(2).contains(nurse) & ed.getNurseList().get(2).size() != 0)
 			fail("Nurse added to the offduty nurses");
 		
 		nurse.setState("idle");
 		if (!(nurse.getState().equalsIgnoreCase("idle")))
 			fail("Nurse State is not idle");
-		if (ed.getNurseList().get(1).contains(nurse))
+		if (ed.getNurseList().get(1).contains(nurse) & ed.getNurseList().get(1).size() != 0)
 			fail("Nurse added to the occupied nurses");
-		if (!(ed.getNurseList().get(0).contains(nurse)))
+		if (!(ed.getNurseList().get(0).contains(nurse)) & ed.getNurseList().get(0).size() != 1)
 			fail("Nurse not added to the idle nurses");
-		if (ed.getNurseList().get(2).contains(nurse))
+		if (ed.getNurseList().get(2).contains(nurse) & ed.getNurseList().get(2).size() != 0)
 			fail("Nurse added to the offduty nurses");
 		
 		nurse.setState("offduty");
 		if (!(nurse.getState().equalsIgnoreCase("offduty")))
 			fail("Nurse State is not offduty");
-		if (ed.getNurseList().get(1).contains(nurse))
+		if (ed.getNurseList().get(1).contains(nurse) & ed.getNurseList().get(1).size() != 0)
 			fail("Nurse added to the occupied nurses");
-		if (ed.getNurseList().get(0).contains(nurse))
+		if (ed.getNurseList().get(0).contains(nurse) & ed.getNurseList().get(0).size() != 0)
 			fail("Nurse added to the idle nurses");
-		if (!(ed.getNurseList().get(2).contains(nurse)))
+		if (!(ed.getNurseList().get(2).contains(nurse)) & ed.getNurseList().get(2).size() != 1)
 			fail("Nurse not added to the offduty nurses");
 	}
 
