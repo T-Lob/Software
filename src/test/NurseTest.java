@@ -13,7 +13,8 @@ public class NurseTest {
 	
 
 	@BeforeClass
-	public static void setUpBeforeClass(){
+	public static void setUpBeforeClass() throws Exception {
+		
 		@SuppressWarnings("unused")
 		ED ed = new ED("Saint-Denis");
 	}

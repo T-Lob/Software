@@ -21,18 +21,19 @@ public class Patient {
 	private ArrayList<String[]> history = new ArrayList<String[]> () ;
 	private int arrivalTime;
 	private Physician physician = null;
-	private int bill;
+	private int bill = 0;
 	private Room destination;
 	private ED ED;
 	
 	
 	
 
-	public Patient(String EDname,String name,String surname,String severityLevel,int arrivalTime) {
+	public Patient(String EDname,String name,String surname,String healthInsurance, String severityLevel,int arrivalTime) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.surname=surname;
 		this.ID=IDGenerator.getInstance().getNextID();
+		this.healthInsurance = healthInsurance;
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
@@ -71,8 +72,12 @@ public class Patient {
 		return ID;
 	}
 
-	public String getHealthIsurance() {
+	public String getHealthInsurance() {
 		return healthInsurance;
+	}
+	
+	public void setHealthInsurance(String healthInsurance) {
+		this.healthInsurance = healthInsurance;
 	}
 
 	public String getSeverityLevel() {
@@ -126,6 +131,7 @@ public class Patient {
 	public void addToBill(int cost) {
 		this.bill= this.bill+cost;
 	}
+	
 	public Room getDestination() {
 		return destination;
 	}
@@ -133,6 +139,7 @@ public class Patient {
 	public void setDestination(Room destination) {
 		this.destination = destination;
 	}
+	
 	public Integer getLevel() {
 		return Integer.parseInt(this.severityLevel.substring(severityLevel.length()-1));
 	}
@@ -144,7 +151,7 @@ public class Patient {
 			return S/2;
 		case "Silver":
 			return 4*S/5;
-		case "":
+		case "None":
 			return S;
 		}
 		return 0;
