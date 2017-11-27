@@ -39,7 +39,7 @@ public class MRIScan extends HealthServices {
 			patient.setState("waitingForVerdict");
 			this.ED.mriRoom.setState("empty");
 			this.outcome = "MRI done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
-			patient.getPhysician().addToMessageBox(this.outcome);
+			patient.getPhysician().getMessageBox().add(this.outcome);
 			patient.addToBill(cost);
 			this.duration = this.probabilityDistribution.getSample();
 		}

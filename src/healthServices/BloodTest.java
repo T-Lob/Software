@@ -39,7 +39,7 @@ public class BloodTest extends HealthServices {
 			patient.setState("waitingForVerdict");
 			this.ED.bloodTestRoom.setState("empty");
 			this.outcome = "Bloodtest done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
-			patient.getPhysician().addToMessageBox(this.outcome);
+			patient.getPhysician().getMessageBox().add(this.outcome);
 			patient.addToBill(cost);
 			this.duration = this.probabilityDistribution.getSample();
 		}

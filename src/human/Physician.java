@@ -18,6 +18,7 @@ public class Physician extends HumanResource {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.name = "Physician" + String.valueOf(this.ID);
+		this.surname = "Physician" + String.valueOf(this.ID);
 		this.state = "idle";
 		this.ED.getPhysicianList().get(0).add(this);
 		
@@ -25,6 +26,7 @@ public class Physician extends HumanResource {
 	public Physician(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
+		this.surname = "Physician" + String.valueOf(this.ID);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getPhysicianList().get(0).add(this);
@@ -50,21 +52,9 @@ public class Physician extends HumanResource {
 	public ArrayList<Patient> getCurrentPatients() {
 		return currentPatients;
 	}
-	
-	public void addToCurrentPatients(Patient patient) {
-		this.currentPatients.add(patient);
-	}
-	
-	public void removeFromCurrentPatients(Patient patient) {
-		this.currentPatients.remove(patient);
-	}
 
 	public ArrayList<Patient> getHistoryPatients() {
 		return historyPatients;
-	}
-	
-	public void addToHistoryPatients(Patient patient) {
-		this.historyPatients.add(patient);
 	}
 
 	public ArrayList<String> getMessageBox() {
@@ -73,10 +63,6 @@ public class Physician extends HumanResource {
 	
 	public String getLastMessage() {
 		return messageBox.get(messageBox.size()-1);
-	}
-	
-	public void  addToMessageBox(String message) {
-		this.messageBox.add(message);
 	}
 	
 	public void setState(String state) {
@@ -89,19 +75,17 @@ public class Physician extends HumanResource {
 			this.ED.getPhysicianList().get(0).add(this);
 			this.ED.getPhysicianList().get(1).remove(this);
 			this.ED.getPhysicianList().get(2).remove(this);
-		}
-		else if (state.equalsIgnoreCase("offduty")){
+		} else if (state.equalsIgnoreCase("offduty")){
 			this.ED.getPhysicianList().get(2).add(this);
 			this.ED.getPhysicianList().get(1).remove(this);
 			this.ED.getPhysicianList().get(0).remove(this);
-			}
-		
+		}
 	}
 	
 	public void consultation (Patient patient, Consultation consultation) {
 			this.setState("visiting"); 
-			this.addToHistoryPatients(patient);
-			this.addToCurrentPatients(patient);
+			this.getHistoryPatients().add(patient);
+			this.getCurrentPatients().add(patient);
 			patient.setPhysician(this);
 			patient.setState("visited");
 	}

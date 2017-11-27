@@ -39,7 +39,7 @@ public class XRay extends HealthServices {
 			patient.setState("waitingForVerdict");
 			this.ED.radioRoom.setState("empty");
 			this.outcome = "Radiography done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
-			patient.getPhysician().addToMessageBox(this.outcome);
+			patient.getPhysician().getMessageBox().add(this.outcome);
 			patient.addToBill(cost);
 			this.duration = this.probabilityDistribution.getSample();
 		}
