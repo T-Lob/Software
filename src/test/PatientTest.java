@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -19,6 +20,29 @@ public class PatientTest {
 		
 		@SuppressWarnings("unused")
 		ED ed = new ED("Saint-Denis");
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+		
+		ED ed = Database.getEDbyName("Saint-Denis");
+		ed.getGeneratedPatients().clear();
+		ed.getArrivedPatients().clear();
+		for (int i =0; i<3; i++) {
+			ed.getNurseList().get(i).clear();
+			ed.getRegisteredPatients().get(i).clear();
+			ed.getPhysicianList().get(i).clear();
+			ed.getTransporterList().get(i).clear();
+		}
+		ed.getRegisteredPatients().get(3).clear();
+		ed.getRegisteredPatients().get(4).clear();
+		ed.getWaitingForTransportPatients().clear();
+		ed.getWaitingForVerdictPatients().clear();
+		ed.getReleasedPatients().clear();
+		for (int i = 0; i<2; i++) {
+			ed.getBoxRoomList().get(i).clear();
+			ed.getShockRoomList().get(i).clear();
+		}
 	}
 
 	@Test
@@ -213,74 +237,92 @@ public class PatientTest {
 		if (!patient.getState().equalsIgnoreCase("arrived"))
 			fail("Patient state hasn't been changed");
 		
-		if (ed.getGeneratedPatients().contains(patient) & ed.getGeneratedPatients().size() != 0)
+		if (ed.getGeneratedPatients().contains(patient) || ed.getGeneratedPatients().size() != 0)
 			fail("Generated Patients List contains arrived patient");
-		if (!ed.getArrivedPatients().contains(patient) & ed.getArrivedPatients().size() != 1)
+		if (!(ed.getArrivedPatients().contains(patient)) || ed.getArrivedPatients().size() != 1)
 			fail("Arrived Patients List doesn't contain arrived patient");
-		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) & ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
+		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) || ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
 			fail("Registered Patients List contains arrived patient");
-		if (ed.getWaitingForTransportPatients().contains(patient) & ed.getWaitingForTransportPatients().size() != 0)
+		if (ed.getWaitingForTransportPatients().contains(patient) || ed.getWaitingForTransportPatients().size() != 0)
 			fail("Waiting for Transport Patients List contains arrived patient");
-		if (ed.getWaitingForVerdictPatients().contains(patient) & ed.getWaitingForVerdictPatients().size() != 0)
+		if (ed.getWaitingForVerdictPatients().contains(patient) || ed.getWaitingForVerdictPatients().size() != 0)
 			fail("Waiting for Verdict Patients List contains arrived patient");
-		if (ed.getReleasedPatients().contains(patient) & ed.getReleasedPatients().size() != 0)
+		if (ed.getReleasedPatients().contains(patient) || ed.getReleasedPatients().size() != 0)
 			fail("Released Patients List contains arrived patient");
 		
 		patient.setState("registered");
-		if (ed.getGeneratedPatients().contains(patient) & ed.getGeneratedPatients().size() != 0)
+		if (ed.getGeneratedPatients().contains(patient) || ed.getGeneratedPatients().size() != 0)
 			fail("Generated Patients List contains registered patient");
-		if (ed.getArrivedPatients().contains(patient) & ed.getArrivedPatients().size() != 0)
+		if (ed.getArrivedPatients().contains(patient) || ed.getArrivedPatients().size() != 0)
 			fail("Arrived Patients List contains registered patient");
-		if (!ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) & ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 1)
+		if (!(ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient)) || ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 1)
 			fail("Registered Patients List doesn't contain registered patient");
-		if (ed.getWaitingForTransportPatients().contains(patient) & ed.getWaitingForTransportPatients().size() != 0)
+		if (ed.getWaitingForTransportPatients().contains(patient) || ed.getWaitingForTransportPatients().size() != 0)
 			fail("Waiting for Transport Patients List contains registered patient");
-		if (ed.getWaitingForVerdictPatients().contains(patient) & ed.getWaitingForVerdictPatients().size() != 0)
+		if (ed.getWaitingForVerdictPatients().contains(patient) || ed.getWaitingForVerdictPatients().size() != 0)
 			fail("Waiting for Verdict Patients List contains registered patient");
-		if (ed.getReleasedPatients().contains(patient) & ed.getReleasedPatients().size() != 0)
+		if (ed.getReleasedPatients().contains(patient) || ed.getReleasedPatients().size() != 0)
 			fail("Released Patients List contains registered patient");
 		
 		patient.setState("waitingfortransport");
-		if (ed.getGeneratedPatients().contains(patient) & ed.getGeneratedPatients().size() != 0)
+		if (ed.getGeneratedPatients().contains(patient) || ed.getGeneratedPatients().size() != 0)
 			fail("Generated Patients List contains waiting for transport patient");
-		if (ed.getArrivedPatients().contains(patient) & ed.getArrivedPatients().size() != 0)
+		if (ed.getArrivedPatients().contains(patient) || ed.getArrivedPatients().size() != 0)
 			fail("Arrived Patients List contains waiting for transport patient");
-		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) & ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
+		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) || ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
 			fail("Registered Patients List contains waiting for transport patient");
-		if (!ed.getWaitingForTransportPatients().contains(patient) & ed.getWaitingForTransportPatients().size() != 1)
+		if (!(ed.getWaitingForTransportPatients().contains(patient)) || ed.getWaitingForTransportPatients().size() != 1)
 			fail("Waiting for Transport Patients List doesn't contain waiting for transport patient");
-		if (ed.getWaitingForVerdictPatients().contains(patient) & ed.getWaitingForVerdictPatients().size() != 0)
+		if (ed.getWaitingForVerdictPatients().contains(patient) || ed.getWaitingForVerdictPatients().size() != 0)
 			fail("Waiting for Verdict Patients List contains waiting for transport patient");
-		if (ed.getReleasedPatients().contains(patient) & ed.getReleasedPatients().size() != 0)
+		if (ed.getReleasedPatients().contains(patient) || ed.getReleasedPatients().size() != 0)
 			fail("Released Patients List contains waiting for transport patient");
 		
 		patient.setState("waitingforverdict");
-		if (ed.getGeneratedPatients().contains(patient) & ed.getGeneratedPatients().size() != 0)
+		if (ed.getGeneratedPatients().contains(patient) || ed.getGeneratedPatients().size() != 0)
 			fail("Generated Patients List contains waiting for verdict patient");
-		if (ed.getArrivedPatients().contains(patient) & ed.getArrivedPatients().size() != 0)
+		if (ed.getArrivedPatients().contains(patient) || ed.getArrivedPatients().size() != 0)
 			fail("Arrived Patients List contains waiting for verdict patient");
-		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) & ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
+		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) || ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
 			fail("Registered Patients List contains waiting for verdict patient");
-		if (ed.getWaitingForTransportPatients().contains(patient) & ed.getWaitingForTransportPatients().size() != 0)
+		if (ed.getWaitingForTransportPatients().contains(patient) || ed.getWaitingForTransportPatients().size() != 0)
 			fail("Waiting for Transport Patients List contains waiting for verdict patient");
-		if (!ed.getWaitingForVerdictPatients().contains(patient) & ed.getWaitingForVerdictPatients().size() != 1)
+		if (!(ed.getWaitingForVerdictPatients().contains(patient)) || ed.getWaitingForVerdictPatients().size() != 1)
 			fail("Waiting for Verdict Patients List doesn't contain waiting for verdict patient");
-		if (ed.getReleasedPatients().contains(patient) & ed.getReleasedPatients().size() != 0)
+		if (ed.getReleasedPatients().contains(patient) || ed.getReleasedPatients().size() != 0)
 			fail("Released Patients List contains waiting for verdict patient");
 		
 		patient.setState("released");
-		if (ed.getGeneratedPatients().contains(patient) & ed.getGeneratedPatients().size() != 0)
+		if (ed.getGeneratedPatients().contains(patient) || ed.getGeneratedPatients().size() != 0)
 			fail("Generated Patients List contains released patient");
-		if (ed.getArrivedPatients().contains(patient) & ed.getArrivedPatients().size() != 0)
+		if (ed.getArrivedPatients().contains(patient) || ed.getArrivedPatients().size() != 0)
 			fail("Arrived Patients List contains released patient");
-		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) & ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
+		if (ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient) || ed.getRegisteredPatients().get(patient.getLevel()-1).size() != 0)
 			fail("Registered Patients List contains released patient");
-		if (ed.getWaitingForTransportPatients().contains(patient) & ed.getWaitingForTransportPatients().size() != 0)
+		if (ed.getWaitingForTransportPatients().contains(patient) || ed.getWaitingForTransportPatients().size() != 0)
 			fail("Waiting for Transport Patients List contains released patient");
-		if (ed.getWaitingForVerdictPatients().contains(patient) & ed.getWaitingForVerdictPatients().size() != 0)
+		if (ed.getWaitingForVerdictPatients().contains(patient) || ed.getWaitingForVerdictPatients().size() != 0)
 			fail("Waiting for Verdict Patients List contains released patient");
-		if (!ed.getReleasedPatients().contains(patient) & ed.getReleasedPatients().size() != 1)
+		if (!ed.getReleasedPatients().contains(patient) || ed.getReleasedPatients().size() != 1)
 			fail("Released Patients List doesn't contain released patient");
+		
+		Patient patient2 = new Patient("Saint-Denis", "Clément", "Quesnel", "Gold", "L5", 20);
+		patient.setState("registered");
+		patient2.setState("registered");
+		if (ed.getRegisteredPatients().get(0).contains(patient) || ed.getRegisteredPatients().get(0).contains(patient2) || ed.getRegisteredPatients().get(0).size() != 0)
+			fail("Patient 1 or Patient 2 are in the L1 queue");
+		if (ed.getRegisteredPatients().get(1).contains(patient) || ed.getRegisteredPatients().get(1).contains(patient2) || ed.getRegisteredPatients().get(1).size() != 0)
+			fail("Patient 1 or Patient 2 are in the L2 queue");
+		if (ed.getRegisteredPatients().get(2).contains(patient2))
+			fail("Patient 2 is in the L3 queue");
+		if (!ed.getRegisteredPatients().get(2).contains(patient) || ed.getRegisteredPatients().get(2).size() != 1)
+			fail("Patient 1 isn't in the L3 queue");
+		if (ed.getRegisteredPatients().get(3).contains(patient) || ed.getRegisteredPatients().get(3).contains(patient2) || ed.getRegisteredPatients().get(3).size() != 0)
+			fail("Patient 1 or 2 are in the L4 queue");
+		if (ed.getRegisteredPatients().get(4).contains(patient))
+			fail("Patient 1 is in the L5 queue");
+		if (!ed.getRegisteredPatients().get(4).contains(patient2) || ed.getRegisteredPatients().get(4).size() != 1)
+			fail("Patient 2 isn't in the L5 queue");
+		
 	}
-
 }
