@@ -1,5 +1,7 @@
 package events;
 
+import java.util.ArrayList;
+
 import human.Nurse;
 import human.Patient;
 import others.Database;
@@ -18,7 +20,7 @@ public class Registration extends Event {
 	@Override
 	public void execute () {
 		this.nurse=ed.getNextNurse();
-		for (Patient patient:this.ed.getArrivedPatients()) {
+		for (Patient patient:new ArrayList<Patient>(this.ed.getArrivedPatients())) {
 			nurse.registration(patient);
 		}	
 	}

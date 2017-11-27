@@ -165,13 +165,12 @@ public class ED {
 	}
 	public Patient getNextRegisteredPatient() {
 		int i = 4;
-		while (i >= 0 & this.registeredPatients.get(i).size()==0) {
+		while (i >= 1 & this.registeredPatients.get(i).size()==0) {
 			i-=1;	
 		}
-		if (i==-1) {
-			return null;
-		}
-		return this.registeredPatients.get(i).get(0);
+		try {return this.registeredPatients.get(i).get(0); 
+		} finally {return null;}
+		
 	}
 	public Patient getNextWaitingForTransportPatient() {
 		if (this.waitingForTransportPatients.size() >0) {
@@ -316,8 +315,11 @@ public class ED {
 		for (Patient patient:arrivedPatients) {
 			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
 		}
-		System.out.println(registeredPatients);
-		System.out.println(eventQueue);
+		for (int i=0; i<5; i++) {
+				for (Patient patient:registeredPatients.get(i)) {
+			System.out.println("RegisteredPatientLevel " + " " + i + " "+ patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
+		}
+		}
 	}
 
 	

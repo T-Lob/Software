@@ -69,7 +69,7 @@ public class Database {
 			Event e=EventFactory.createEvent(ed.getEDname(), s);
 			ed.addToEventQueue(e);	
 		}
-		// ed.sortEventQueue();
+		ed.sortEventQueue();
 		return ed.getEventQueue();
 	}
 	public static ED execute (Event e, ED ed) {
