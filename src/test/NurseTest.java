@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import human.Nurse;
+import human.Patient;
 import others.Database;
 import others.ED;
 
@@ -61,6 +62,17 @@ public class NurseTest {
 		
 		ED ed = Database.getEDbyName("Saint-Denis");
 		Nurse nurse = new Nurse("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis");
+		
+		nurse.registration(patient);
+		if (!patient.getState().equalsIgnoreCase("registered"))
+			fail("The patient's state hasn't been modified");
+		if (!ed.getRegisteredPatients().get(patient.getLevel()-1).contains(patient))
+			fail("The patient hasn't been added to the registered patients Queue");
+		if (ed.getArrivedPatients().contains(patient) || ed.getGeneratedPatients().contains(patient))
+			fail("The patient hasn't been removed from the other queues");
+		if (!patient.getLocation().equals(ed.waitingRoom))
+			fail("The patient hasn't been place in the waiting room");
 	}
 
 	@Test

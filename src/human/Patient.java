@@ -45,6 +45,7 @@ public class Patient {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.name = "Patient" + String.valueOf(this.ID);
+		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = "L"+String.valueOf(new Uniform(1,5).getSample());
 		this.arrivalTime=new Uniform(0,1000).getSample();
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
