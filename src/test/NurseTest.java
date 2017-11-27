@@ -58,7 +58,9 @@ public class NurseTest {
 
 	@Test
 	public void testRegistration() {
-		fail("Not yet implemented");
+		
+		ED ed = Database.getEDbyName("Saint-Denis");
+		Nurse nurse = new Nurse("Saint-Denis");
 	}
 
 	@Test

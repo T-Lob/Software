@@ -24,8 +24,6 @@ public class PatientTest {
 	@Test
 	public void testGetName() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (!patient.getName().equalsIgnoreCase("smo"))
@@ -35,8 +33,6 @@ public class PatientTest {
 	@Test
 	public void testSetName() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		patient.setName("Pierre");
@@ -47,8 +43,6 @@ public class PatientTest {
 	@Test
 	public void testGetSurname() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (!patient.getSurname().equalsIgnoreCase("koco"))
@@ -58,8 +52,6 @@ public class PatientTest {
 	@Test
 	public void testSetSurname() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		patient.setSurname("Blondin");
@@ -70,8 +62,6 @@ public class PatientTest {
 	@Test
 	public void testGetID() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (patient.getID() != 6){
@@ -82,8 +72,6 @@ public class PatientTest {
 	@Test
 	public void testGetHealthIsurance() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (!patient.getHealthInsurance().equalsIgnoreCase("Silver"))
@@ -93,8 +81,6 @@ public class PatientTest {
 	@Test
 	public void testGetSeverityLevel() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (!patient.getSeverityLevel().equalsIgnoreCase("l3"))
@@ -104,8 +90,6 @@ public class PatientTest {
 	@Test
 	public void testGetState() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (!patient.getState().equalsIgnoreCase("generated"))
@@ -115,8 +99,6 @@ public class PatientTest {
 	@Test
 	public void testSetLocation() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		Room location = new BoxRoom("Saint-Denis");
 		
@@ -128,8 +110,6 @@ public class PatientTest {
 	@Test
 	public void testAddEventToHistory() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		String[] event = {"registration","10h"};
@@ -140,8 +120,6 @@ public class PatientTest {
 	@Test
 	public void testGetArrivalTime() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (patient.getArrivalTime() != 10)
@@ -151,8 +129,6 @@ public class PatientTest {
 	@Test
 	public void testSetArrivalTime() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		patient.setArrivalTime(15);
@@ -163,8 +139,6 @@ public class PatientTest {
 	@Test
 	public void testSetPhysician() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		Physician phys = new Physician("Saint-Denis");
 		
@@ -176,8 +150,6 @@ public class PatientTest {
 	@Test
 	public void testGetBill() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (patient.getBill() != 0)
@@ -187,8 +159,6 @@ public class PatientTest {
 	@Test
 	public void testAddToBill() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		patient.addToBill(5);
@@ -200,8 +170,6 @@ public class PatientTest {
 	@Test
 	public void testSetDestination() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		Room destination = new BoxRoom("Saint-Denis");
 		
@@ -213,8 +181,6 @@ public class PatientTest {
 	@Test
 	public void testGetLevel() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		if (patient.getLevel() != 3)
@@ -224,8 +190,6 @@ public class PatientTest {
 	@Test
 	public void testCharges() {
 		
-		@SuppressWarnings("unused")
-		ED ed = Database.getEDbyName("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
 		patient.addToBill(20);
