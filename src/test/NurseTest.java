@@ -109,5 +109,4 @@ public class NurseTest {
 	public void testEndOfInstallation() {
 		fail("Not yet implemented");
 	}
-
 }
