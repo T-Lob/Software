@@ -27,6 +27,7 @@ public class NurseTest {
 		Nurse nurse = new Nurse("Saint-Denis");
 		
 		nurse.setState("busy");
+		
 		if (!(nurse.getState().equalsIgnoreCase("busy")))
 			fail("Nurse State not busy");
 		if (!(ed.getNurseList().get(1).contains(nurse)))

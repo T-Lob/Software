@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import events.Event;
 import events.EventFactory;
+import events.Registration;
 
 
 public class Database {
@@ -26,13 +27,14 @@ public class Database {
 		return null;
 	}
 	public static ArrayList <String> updateEnabledEvents (ArrayList <String> enabledEvents, ED ed) {
-		ed.setOldEnabledEvents(enabledEvents);
+		ed.setOldEnabledEvents(new ArrayList<String>(ed.getNewEnabledEvents()));
 		ed.addToNewEnabledEvents("PatientArrival");
 		ed.addToNewEnabledEvents("endOfInstallation");
 		ed.addToNewEnabledEvents("endOfConsultation");
 		ed.addToNewEnabledEvents("endOfTransportation");
 		if (ed.getState().get("arrivedPatients") > 0) {
 			ed.addToNewEnabledEvents("Registration");
+			ed.addToEventQueue(new Registration(ed.getEDname()));
 		}
 		if (ed.getState().get("Nurse") >0 & ed.getNextRegisteredPatient() != null) {
 			if (ed.getNextRegisteredPatient().getLevel() >= 4 & (ed.getState().get("emptyBoxrooms") > 0 || ed.getState().get("emptyShockrooms") > 0)) {
@@ -57,6 +59,8 @@ public class Database {
 		if (ed.radioRoom.getState()=="empty") {
 			ed.addToNewEnabledEvents("radioExamination");
 		}
+		System.out.println(ed.getOldEnabledEvents());
+		System.out.println(ed.getNewEnabledEvents());
 		return ed.getNewEnabledEvents();
 	}
 	public static ArrayList <Event> updateEventQueue (ED ed) {

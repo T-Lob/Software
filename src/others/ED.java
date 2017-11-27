@@ -13,7 +13,7 @@ import events.*;
 public class ED {
 	private  ArrayList<Patient> generatedPatients = new ArrayList<Patient>();
 	private  ArrayList<Patient> arrivedPatients = new ArrayList<Patient> ();
-	private  ArrayList<ArrayList<Patient>> registeredPatients = new ArrayList<ArrayList<Patient>>(5);
+	private  ArrayList<ArrayList<Patient>> registeredPatients = new ArrayList<ArrayList<Patient>>();
 	private  ArrayList<Patient> waitingForTransportPatients = new ArrayList<Patient> ();
 	private  ArrayList<Patient> waitingForVerdictPatients = new ArrayList<Patient>();
 	private  ArrayList<ArrayList<BoxRoom>> boxRoomList = new ArrayList<ArrayList<BoxRoom>>(3);
@@ -38,15 +38,16 @@ public class ED {
 		ArrayList<Patient> L = new ArrayList<Patient>();
 		this.EDname=EDname;
 		for (int i=0 ; i<3; i++) {
+			ArrayList<Patient> L1 = new ArrayList<Patient>();
 			this.physicianList.add(new ArrayList<Physician>());
 			this.nurseList.add(new ArrayList<Nurse>());
 			this.transporterList.add(new ArrayList<Transporter>());
 			this.shockRoomList.add(new ArrayList<ShockRoom>());
 			this.boxRoomList.add(new ArrayList<BoxRoom> ());
-			this.registeredPatients.add(L);
+			this.registeredPatients.add((ArrayList<Patient>) L1.clone());
 		}
-		this.registeredPatients.add(L);
-		this.registeredPatients.add(L);
+		this.registeredPatients.add((ArrayList<Patient>) L.clone());
+		this.registeredPatients.add((ArrayList<Patient>) L.clone());
 		this.newEnabledEvents.add("PatientArrival");
 		this.oldEnabledEvents.add("PatientArrival");
 		Database.addToGeneratedEDs(this);
@@ -165,16 +166,20 @@ public class ED {
 	}
 	public Patient getNextRegisteredPatient() {
 		int i = 4;
-		while (i >= 1 & this.registeredPatients.get(i).size()==0) {
-			i-=1;	
+		while (i >= 0)  {
+			if (this.registeredPatients.get(i).size()==0) {
+				i-=1;
+			}
+			else  {
+				return this.registeredPatients.get(i).get(0);
+			}
 		}
-		try {return this.registeredPatients.get(i).get(0); 
-		} finally {return null;}
+			return null;
+		}
 		
-	}
 	public Patient getNextWaitingForTransportPatient() {
 		if (this.waitingForTransportPatients.size() >0) {
-			return this.waitingForTransportPatients.get(9);
+			return this.waitingForTransportPatients.get(0);
 		}
 		return null;
 	}
@@ -310,16 +315,26 @@ public class ED {
 	
 	public void display() {
 		for (Patient patient:generatedPatients) {
-			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
+		System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
 		}
 		for (Patient patient:arrivedPatients) {
 			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
 		}
 		for (int i=0; i<5; i++) {
+			int j=i+1;
 				for (Patient patient:registeredPatients.get(i)) {
-			System.out.println("RegisteredPatientLevel " + " " + i + " "+ patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
+			System.out.println("RegisteredPatientLevel " + " " + j  + " "+ patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
 		}
+		for (Patient patient:waitingForTransportPatients) {
+			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
+				}
 		}
+		//System.out.println(getNextRegisteredPatient());
+		System.out.println(nurseList);
+		System.out.println(physicianList);
+		System.out.println(transporterList);
+		System.out.println("Event Queue " + eventQueue);
+		System.out.println("------------------------------");
 	}
 
 	
