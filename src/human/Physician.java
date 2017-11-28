@@ -84,6 +84,7 @@ public class Physician extends HumanResource {
 	
 	public void consultation (Patient patient, Consultation consultation) {
 			this.setState("visiting");
+			patient.getLocation().setState("full");
 			this.getHistoryPatients().add(patient);
 			this.getCurrentPatients().add(patient);
 			patient.setPhysician(this);
