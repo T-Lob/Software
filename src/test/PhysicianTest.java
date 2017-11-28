@@ -56,28 +56,28 @@ public class PhysicianTest {
 			fail("Physician State not busy");
 		if (!(ed.getPhysicianList().get(1).contains(phys)) || ed.getPhysicianList().get(1).size() != 1)
 			fail("Physician not added to the occupied physicians");
-		if (ed.getPhysicianList().get(0).contains(phys) || ed.getPhysicianList().get(0).size() != 0)
+		if (ed.getPhysicianList().get(0).size() != 0)
 			fail("Physician added to the idle physicians");
-		if (ed.getPhysicianList().get(2).contains(phys) || ed.getPhysicianList().get(2).size() != 0)
+		if (ed.getPhysicianList().get(2).size() != 0)
 			fail("Physician added to the offduty physicians");
 		
 		
 		phys.setState("idle");
 		if (!(phys.getState().equalsIgnoreCase("idle")))
 			fail("Physician State is not idle");
-		if (ed.getPhysicianList().get(1).contains(phys) || ed.getPhysicianList().get(1).size() != 0)
+		if (ed.getPhysicianList().get(1).size() != 0)
 			fail("Physician added to the occupied physicians");
 		if (!(ed.getPhysicianList().get(0).contains(phys)) || ed.getPhysicianList().get(0).size() != 1)
 			fail("Physician not added to the idle physicians");
-		if (ed.getPhysicianList().get(2).contains(phys) || ed.getPhysicianList().get(2).size() != 0)
+		if (ed.getPhysicianList().get(2).size() != 0)
 			fail("Physician added to the offduty physicians");
 		
 		phys.setState("offduty");
 		if (!(phys.getState().equalsIgnoreCase("offduty")))
 			fail("Physician State is not offduty");
-		if (ed.getPhysicianList().get(1).contains(phys) || ed.getPhysicianList().get(1).size() != 0)
+		if (ed.getPhysicianList().get(1).size() != 0)
 			fail("Physician added to the occupied physicians");
-		if (ed.getPhysicianList().get(0).contains(phys) || ed.getPhysicianList().get(0).size() != 0)
+		if (ed.getPhysicianList().get(0).size() != 0)
 			fail("Physician added to the idle physicians");
 		if (!(ed.getPhysicianList().get(2).contains(phys)) || ed.getPhysicianList().get(2).size() != 1)
 			fail("Physician not added to the offduty physicians");
