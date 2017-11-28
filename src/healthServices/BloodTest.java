@@ -6,17 +6,18 @@ import maths.Uniform;
 import others.Database;
 
 public class BloodTest extends HealthServices {
-	private ProbabilityDistribution probabilityDistribution= new Uniform(15,90);
-	private int duration=this.probabilityDistribution.getSample();
 	
 	public BloodTest(String EDname) {
-		this.ED=Database.getEDbyName(EDname);
+		this.ED = Database.getEDbyName(EDname);
+		this.probabilityDistribution = new Uniform(15,90);
+		this.duration = this.probabilityDistribution.getSample();
 	}
 	
 	public BloodTest(String EDname,ProbabilityDistribution probabilityDistribution, int cost) {
 		this.ED=Database.getEDbyName(EDname);
 		this.probabilityDistribution= probabilityDistribution;
 		this.cost = cost;
+		this.duration = this.probabilityDistribution.getSample();
 	}
 	
 	public void setDuration(int duration) {

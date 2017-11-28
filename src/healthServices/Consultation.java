@@ -6,7 +6,6 @@ import others.Database;
 
 
 public class Consultation extends HealthServices {
-	
 
 	public Consultation(String EDname) {
 		this.probabilityDistribution= new Uniform(5,20);

@@ -10,13 +10,16 @@ public class MRIScan extends HealthServices {
 	private int duration=this.probabilityDistribution.getSample();
 	
 	public MRIScan(String EDname) {
-		this.ED=Database.getEDbyName(EDname);	
+		this.ED = Database.getEDbyName(EDname);
+		this.probabilityDistribution = new Uniform(10,20);
+		this.duration = this.probabilityDistribution.getSample();
 	}
 	
 	public MRIScan(String EDname,ProbabilityDistribution probabilityDistribution, int cost) {
 		this.probabilityDistribution= probabilityDistribution;
 		this.ED=Database.getEDbyName(EDname);
 		this.cost = cost;
+		this.duration = this.probabilityDistribution.getSample();
 	}
 	
 	public void setDuration(int duration) {

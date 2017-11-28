@@ -10,13 +10,16 @@ public class XRay extends HealthServices {
 	private int duration=this.probabilityDistribution.getSample();
 	
 	public XRay(String EDname) {
-		this.ED=Database.getEDbyName(EDname);	
+		this.ED = Database.getEDbyName(EDname);
+		this.probabilityDistribution = new Uniform(10,20);
+		this.duration = this.probabilityDistribution.getSample();
 	}
 	
 	public XRay(String EDname,ProbabilityDistribution probabilityDistribution, int cost) {
 		this.ED=Database.getEDbyName(EDname);
 		this.probabilityDistribution= probabilityDistribution;
 		this.cost=cost;
+		this.duration = this.probabilityDistribution.getSample();
 	}
 	
 	public void setDuration(int duration) {
