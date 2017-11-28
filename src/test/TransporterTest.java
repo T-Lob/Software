@@ -10,6 +10,7 @@ import human.Patient;
 import human.Transporter;
 import others.Database;
 import others.ED;
+import rooms.BoxRoom;
 
 public class TransporterTest {
 
@@ -94,15 +95,33 @@ public class TransporterTest {
 
 	@Test
 	public void testTransportation() {
-		fail("Not yet implemented");
+		
+		Transporter transporter = new Transporter("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 12);
+		BoxRoom room = new BoxRoom("Saint-Denis");
+		
+		patient.setDestination(room);
+		transporter.transportation(patient);
+		if (!transporter.getState().equalsIgnoreCase("transporting"))
+			fail("The transporter's state is not transporting");
+		if (!transporter.getCurrentPatient().equals(patient))
+			fail("Wrong transporter's current patient");
+		if (!patient.getState().equalsIgnoreCase("transported"))
+			fail("Wrong patient's state");
+		if (!room.getState().equalsIgnoreCase("full"))
+			fail("The room has a wrong room");
+		if (!room.getPatient().equals(patient))
+			fail("The room contains a wrong patient");
 	}
 
 	@Test
 	public void testEndOfTransportation() {
 		
 		Transporter transporter = new Transporter("Saint-Denis");
-		Patient patient = new Patient("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 12);
+		BoxRoom room = new BoxRoom("Saint-Denis");
 		
+		patient.setDestination(room);
 		transporter.endOfTransportation(patient);
 		if (!transporter.getState().equalsIgnoreCase("idle"))
 			fail("The transporter's state is not idle");
@@ -110,5 +129,10 @@ public class TransporterTest {
 			fail("Wrong transporter's current patient");
 		if (!patient.getState().equalsIgnoreCase("waitingforexamination"))
 			fail("Wrong patient's state");
+		if (!patient.getLocation().equals(room))
+			fail("Wrong patient's location");
+		if (patient.getDestination() != null)
+			fail("The patient still has a destination");
+		
 	}
 }

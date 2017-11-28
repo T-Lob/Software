@@ -11,6 +11,7 @@ import human.Patient;
 import human.Physician;
 import others.Database;
 import others.ED;
+import rooms.BoxRoom;
 
 public class PhysicianTest {
 
@@ -149,8 +150,10 @@ public class PhysicianTest {
 		
 		Physician phys = new Physician("Saint-Denis");
 		Consultation consultation = new Consultation("Saint-Denis");
-		Patient patient = new Patient("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 12);
+		BoxRoom room = new BoxRoom("Saint-Denis");
 		
+		patient.setLocation(room);
 		phys.consultation(patient, consultation);
 		if (!(phys.getState().equalsIgnoreCase("visiting")))
 			fail("Wrong physician state after consultation");
