@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import healthServices.Consultation;
 import human.Patient;
 import human.Physician;
 import others.Database;
@@ -49,9 +50,7 @@ public class PhysicianTest {
 		ED ed = Database.getEDbyName("Saint-Denis");
 		Physician phys = new Physician("Saint-Denis");
 		
-		System.out.println(ed.getPhysicianList().toString());
 		phys.setState("visiting");
-		System.out.println(ed.getPhysicianList().toString());
 		if (!(phys.getState().equalsIgnoreCase("visiting")))
 			fail("Physician State not busy");
 		if (!(ed.getPhysicianList().get(1).contains(phys)) || ed.getPhysicianList().get(1).size() != 1)
@@ -147,7 +146,22 @@ public class PhysicianTest {
 
 	@Test
 	public void testConsultation() {
-		fail("Not yet implemented");
+		
+		Physician phys = new Physician("Saint-Denis");
+		Consultation consultation = new Consultation("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis");
+		
+		phys.consultation(patient, consultation);
+		if (!(phys.getState().equalsIgnoreCase("visiting")))
+			fail("Wrong physician state after consultation");
+		if (!phys.getCurrentPatients().get(0).equals(patient) || phys.getCurrentPatients().size() != 1)
+			fail("Current Patients not updated after consultation");
+		if (!phys.getHistoryPatients().get(0).equals(patient) || phys.getHistoryPatients().size() != 1)
+			fail("History Patients not updated after consultation");
+		if (!patient.getPhysician().equals(phys))
+			fail("Patient's physician not updated after consultation");
+		if (!patient.getState().equalsIgnoreCase("visited"))
+			fail("Patient's state not updated after consultation");
 	}
 
 	@Test
@@ -157,7 +171,16 @@ public class PhysicianTest {
 
 	@Test
 	public void testVerdict() {
-		fail("Not yet implemented");
+		
+		Physician phys = new Physician("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis");
+		
+		phys.getCurrentPatients().add(patient);
+		phys.verdict(patient);
+		if (phys.getCurrentPatients().size() != 0)
+			fail("Current patients' list still contains patient");
+		if (phys.getState().equalsIgnoreCase("released"))
+			fail("Wrong patient's state");
 	}
 
 }
