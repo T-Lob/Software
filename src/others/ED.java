@@ -325,14 +325,13 @@ public class ED {
 				for (Patient patient:registeredPatients.get(i)) {
 			System.out.println("RegisteredPatientLevel " + " " + j  + " "+ patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
 		}
-		for (Patient patient:waitingForTransportPatients) {
-			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
-				}
 		}
-		//System.out.println(getNextRegisteredPatient());
-		System.out.println(nurseList);
-		System.out.println(physicianList);
-		System.out.println(transporterList);
+		for (Patient patient:waitingForTransportPatients) {
+			System.out.println("Patient " + patient +" "+ patient.getLocation() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
+				}
+		System.out.println(state);
+		System.out.println(boxRoomList);
+		System.out.println(shockRoomList);
 		System.out.println("Event Queue " + eventQueue);
 		System.out.println("------------------------------");
 	}

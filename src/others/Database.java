@@ -32,11 +32,11 @@ public class Database {
 		ed.addToNewEnabledEvents("endOfInstallation");
 		ed.addToNewEnabledEvents("endOfConsultation");
 		ed.addToNewEnabledEvents("endOfTransportation");
-		if (ed.getState().get("arrivedPatients") > 0) {
+		if (ed.getState().get("Nurse") > 0 & ed.getState().get("arrivedPatients") > 0) {
 			ed.addToNewEnabledEvents("Registration");
 			ed.addToEventQueue(new Registration(ed.getEDname()));
 		}
-		if (ed.getState().get("Nurse") >0 & ed.getNextRegisteredPatient() != null) {
+		if (ed.getState().get("Nurse") > 0 & ed.getNextRegisteredPatient() != null) {
 			if (ed.getNextRegisteredPatient().getLevel() >= 4 & (ed.getState().get("emptyBoxrooms") > 0 || ed.getState().get("emptyShockrooms") > 0)) {
 				ed.addToNewEnabledEvents("Installation");
 				}

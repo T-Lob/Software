@@ -265,6 +265,7 @@ public class PatientTest {
 			fail("Released Patients List contains registered patient");
 		
 		patient.setState("waitingfortransport");
+		System.out.println(ed.getWaitingForTransportPatients());
 		if (ed.getGeneratedPatients().contains(patient) || ed.getGeneratedPatients().size() != 0)
 			fail("Generated Patients List contains waiting for transport patient");
 		if (ed.getArrivedPatients().contains(patient) || ed.getArrivedPatients().size() != 0)
@@ -306,7 +307,7 @@ public class PatientTest {
 		if (!ed.getReleasedPatients().contains(patient) || ed.getReleasedPatients().size() != 1)
 			fail("Released Patients List doesn't contain released patient");
 		
-		Patient patient2 = new Patient("Saint-Denis", "Clément", "Quesnel", "Gold", "L5", 20);
+		Patient patient2 = new Patient("Saint-Denis", "Clï¿½ment", "Quesnel", "Gold", "L5", 20);
 		patient.setState("registered");
 		patient2.setState("registered");
 		if (ed.getRegisteredPatients().get(0).contains(patient) || ed.getRegisteredPatients().get(0).contains(patient2) || ed.getRegisteredPatients().get(0).size() != 0)

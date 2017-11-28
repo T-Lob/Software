@@ -26,15 +26,15 @@ public class Consultation extends HealthServices {
 		if(0<=x && x<35) {
 			patient.getPhysician().verdict(patient);
 		}
-		if(35<=x && x<55) {
+		else if(35<=x && x<55) {
 			patient.setDestination(this.ED.radioRoom);
 			patient.setState("waitingForTransport");
 		}
-		if(55<=x && x<95) {
+		else if(55<=x && x<95) {
 			patient.setDestination(this.ED.bloodTestRoom);
 			patient.setState("waitingForTransport");
 		}
-		if(95<=x && x<=100) {
+		else if(95<=x && x<=100) {
 			patient.setDestination(this.ED.mriRoom);
 			patient.setState("waitingForTransport");
 		}
