@@ -10,6 +10,7 @@ import human.Nurse;
 import human.Patient;
 import others.Database;
 import others.ED;
+import rooms.BoxRoom;
 
 public class NurseTest {
 	
@@ -102,11 +103,44 @@ public class NurseTest {
 
 	@Test
 	public void testInstallation() {
-		fail("Not yet implemented");
+		
+		Nurse nurse = new Nurse("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 15);
+		BoxRoom room = new BoxRoom("Saint-Denis");
+		
+		nurse.installation(patient, room);
+		if (!nurse.getState().equalsIgnoreCase("busy"))
+			fail("Nurse state not busy");
+		if (!nurse.getCurrentPatient().equals(patient))
+			fail("Wrong nurse's current patient");
+		if (!patient.getState().equalsIgnoreCase("transported"))
+			fail("Patient's state not transported");
+		if (!patient.getDestination().equals(room))
+			fail("Wrong patient's destination");
+		if (!room.getState().equalsIgnoreCase("onlypatient"))
+			fail("Wrong state for the room");
+		if (!room.getPatient().equals(patient))
+			fail("Wrong patient for the room");
 	}
 
 	@Test
 	public void testEndOfInstallation() {
-		fail("Not yet implemented");
+		
+		Nurse nurse = new Nurse("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 15);
+		BoxRoom room = new BoxRoom("Saint-Denis");
+		
+		nurse.installation(patient, room);
+		nurse.endOfInstallation(patient);
+		if (!nurse.getState().equalsIgnoreCase("idle"))
+			fail("Wrong nurse state");
+		if (nurse.getCurrentPatient() != null)
+			fail("The nurse still has a patient");
+		if (!patient.getLocation().equals(room))
+			fail("Patient has a wrong location");
+		if (patient.getDestination() != null)
+			fail("The patient still has a destination");
+		if (!patient.getState().equalsIgnoreCase("waiting"))
+			fail("The patient's state is not waiting");
 	}
 }
