@@ -104,7 +104,6 @@ public class TransporterTest {
 		Patient patient = new Patient("Saint-Denis");
 		
 		transporter.endOfTransportation(patient);
-		System.out.println(patient.getState());
 		if (!transporter.getState().equalsIgnoreCase("idle"))
 			fail("The transporter's state is not idle");
 		if (transporter.getCurrentPatient() != null)
