@@ -6,21 +6,21 @@ import org.junit.Test;
 
 import human.Patient;
 import others.ED;
-import rooms.BloodTestRoom;
+import rooms.MRIRoom;
 
-public class BloodTestRoomTest {
+public class MRIRoomTest {
 
 	@Test
 	public void testAddToWaitingQueue() {
 		
 		@SuppressWarnings("unused")
 		ED ed = new ED("Saint-Denis");
-		BloodTestRoom bloodTestRoom = new BloodTestRoom("Saint-Denis");
+		MRIRoom mriRoom = new MRIRoom("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis");
 		
-		bloodTestRoom.addToWaitingQueue(patient);
-		if (!bloodTestRoom.getWaitingQueue().get(0).equals(patient) || bloodTestRoom.getWaitingQueue().size() != 1)
+		mriRoom.addToWaitingQueue(patient);
+		if (!mriRoom.getWaitingQueue().get(0).equals(patient) || mriRoom.getWaitingQueue().size() != 1)
 			fail("The waiting queue doesn't contain the patient");
 	}
-	
+
 }
