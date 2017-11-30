@@ -54,7 +54,6 @@ public class Transporter extends HumanResource{
 			this.ED.getTransporterList().get(1).remove(this);
 			this.ED.getTransporterList().get(0).remove(this);
 		}
-		
 	}
 	
 	public void transportation (Patient patient) {

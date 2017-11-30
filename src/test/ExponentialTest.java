@@ -11,12 +11,13 @@ public class ExponentialTest {
 	@Test
 	public void testGetSample() {
 		Exponential exp1 = new Exponential(0.2);
-		double moy = 0.001;
+		double moy = 0;
 		
-		for (int i = 1; i<=1000; i++)
+		for (int i = 1; i<=100000; i++)
 			moy += exp1.getSample();
+		moy*=0.00001;
 		
-		if (moy<=4.9 & moy>=5.1)
+		if (moy<=5.4 || moy>=5.6)
 			fail("La moyenne ne correspond pas");
 	}
 
