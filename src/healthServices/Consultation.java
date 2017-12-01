@@ -21,7 +21,6 @@ public class Consultation extends HealthServices {
 	}
 	
 	public void result (Patient patient) {
-		patient.getLocation().setState("empty"); // Cette ligne ne doit pas être là, sinon on indique que la salle est vide trop tôt !!!!!!!
 		double x = 100*(new Random().nextDouble());
 		if(0<=x & x<35) {
 			patient.getPhysician().verdict(patient);
