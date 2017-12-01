@@ -67,15 +67,15 @@ public class Physician extends HumanResource {
 	
 	public void setState(String state) {
 		this.state=state;
-		if (state.equalsIgnoreCase("visiting")){
+		if (state.equalsIgnoreCase("visiting") & !(this.ED.getPhysicianList().get(1).contains(this))){
 			this.ED.getPhysicianList().get(1).add(this);
 			this.ED.getPhysicianList().get(0).remove(this);
 			this.ED.getPhysicianList().get(2).remove(this);
-		} else if (state.equalsIgnoreCase("idle")) {
+		} else if (state.equalsIgnoreCase("idle") & !(this.ED.getPhysicianList().get(0).contains(this))) {
 			this.ED.getPhysicianList().get(0).add(this);
 			this.ED.getPhysicianList().get(1).remove(this);
 			this.ED.getPhysicianList().get(2).remove(this);
-		} else if (state.equalsIgnoreCase("offduty")){
+		} else if (state.equalsIgnoreCase("offduty") & !(this.ED.getPhysicianList().get(2).contains(this))){
 			this.ED.getPhysicianList().get(2).add(this);
 			this.ED.getPhysicianList().get(1).remove(this);
 			this.ED.getPhysicianList().get(0).remove(this);

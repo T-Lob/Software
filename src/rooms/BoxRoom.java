@@ -24,17 +24,17 @@ public class BoxRoom extends Room {
 	public void setState(String state) {
 		this.state=state;
 		
-		if (state.equalsIgnoreCase("empty")){
+		if (state.equalsIgnoreCase("empty") & !(this.ED.getBoxRoomList().get(0).contains(this))){
 			this.ED.getBoxRoomList().get(0).add(this);
 			this.ED.getBoxRoomList().get(1).remove(this);
 			this.ED.getBoxRoomList().get(2).remove(this);
 			
-		} else if (state.equalsIgnoreCase("onlyPatient")){
+		} else if (state.equalsIgnoreCase("onlyPatient") & !(this.ED.getBoxRoomList().get(1).contains(this))){
 			this.ED.getBoxRoomList().get(1).add(this);
 			this.ED.getBoxRoomList().get(0).remove(this);
 			this.ED.getBoxRoomList().get(2).remove(this);
 			
-		} else if (state.equalsIgnoreCase("full")) {
+		} else if (state.equalsIgnoreCase("full") & !(this.ED.getBoxRoomList().get(2).contains(this))) {
 			this.ED.getBoxRoomList().get(2).add(this);
 			this.ED.getBoxRoomList().get(1).remove(this);
 			this.ED.getBoxRoomList().get(0).remove(this);

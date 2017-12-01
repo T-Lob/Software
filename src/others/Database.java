@@ -59,8 +59,6 @@ public class Database {
 		if (ed.radioRoom.getState()=="empty") {
 			ed.addToNewEnabledEvents("radioExamination");
 		}
-		System.out.println(ed.getOldEnabledEvents());
-		System.out.println(ed.getNewEnabledEvents());
 		return ed.getNewEnabledEvents();
 	}
 	public static ArrayList <Event> updateEventQueue (ED ed) {
