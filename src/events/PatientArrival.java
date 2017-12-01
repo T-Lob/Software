@@ -3,6 +3,7 @@ package events;
 import human.Patient;
 import others.Database;
 import others.IDGenerator;
+import others.IDGeneratorEvent;
 
 public class PatientArrival extends Event {
 	
@@ -10,7 +11,7 @@ public class PatientArrival extends Event {
 	
 	public PatientArrival(String edName){
 		this.ed = Database.getEDbyName(edName);
-		this.id = IDGenerator.getInstance().getNextID();
+		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "Patient Arrival " + String.valueOf(id);
 		this.occurenceTime = patient.getArrivalTime();
 		this.type="PatientArrival";
@@ -18,7 +19,7 @@ public class PatientArrival extends Event {
 	
 	public PatientArrival(String edName, Patient patient){
 		this.ed = Database.getEDbyName(edName);
-		this.id = IDGenerator.getInstance().getNextID();
+		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "Patient Arrival " + String.valueOf(id);
 		this.patient = patient;
 		this.occurenceTime = patient.getArrivalTime();

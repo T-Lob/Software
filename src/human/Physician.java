@@ -99,6 +99,7 @@ public class Physician extends HumanResource {
 	
 	public void verdict (Patient patient) {
 		patient.setState("released");
+		patient.getLocation().setState("empty");
 		this.currentPatients.remove(patient);
 	}
 }

@@ -73,7 +73,7 @@ public class Nurse extends HumanResource {
 		this.setCurrentPatient(patient);	
 		patient.setState("transported");
 		patient.setDestination(room);
-		room.setState("onlyPatient");
+		room.setState("full");
 		room.setPatient(patient);
 	}
 	
@@ -81,6 +81,7 @@ public class Nurse extends HumanResource {
 		this.setState("idle");
 		this.setCurrentPatient(null);
 		patient.setLocation(patient.getDestination());
+		patient.getLocation().setState("onlyPatient");
 		patient.setDestination(null);
 		patient.setState("waiting");
 	}

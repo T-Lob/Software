@@ -2,6 +2,7 @@ package events;
 
 import others.Database;
 import others.IDGenerator;
+import others.IDGeneratorEvent;
 import healthServices.*;
 import human.Patient;
 import human.Physician;
@@ -14,7 +15,7 @@ public class ConsultationEvent extends Event {
 	
 	public ConsultationEvent(String edName) {
 		this.ed=Database.getEDbyName(edName);
-		this.id=IDGenerator.getInstance().getNextID();
+		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("Consultation" + String.valueOf(id));
 		this.occurenceTime=(this.ed.getTime());
 		this.consultation=new Consultation(this.ed.getEDname());

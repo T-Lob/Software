@@ -15,15 +15,8 @@ public class Test {
 		Patient patient  = new Patient ("ED");
 		Patient patient2  = new Patient ("ED");
 		Patient patient3  = new Patient ("ED");
-		Patient patient4 = new Patient ("ED");
+		Patient patient4  = new Patient ("ED");
 		Patient patient5  = new Patient ("ED");
-		Patient patient6  = new Patient ("ED");
-		Patient patient7  = new Patient ("ED");
-		Patient patient8 = new Patient ("ED");
-		Patient patient9  = new Patient ("ED");
-		Patient patient10 = new Patient ("ED");
-		Patient patient11  = new Patient ("ED");
-		Patient patient12 = new Patient ("ED");
 		System.out.println(ed.getGeneratedPatients());
 		Physician physician = (Physician) HRFactory.createHR("ED", "Physician");
 		Nurse nurse = (Nurse) HRFactory.createHR("ED", "Nurse");
@@ -36,8 +29,8 @@ public class Test {
 		while (ed.getTime()<1000) {
 			Event e1=ed.getEventQueue().get(0);
 			System.out.println(e1.getType());
-			ed=Database.execute(e1, ed);
 			ed.setTime(e1.getOccurenceTime());
+			ed=Database.execute(e1, ed);
 			System.out.println(ed.getTime());
 			ed.getNewEnabledEvents().remove(e1.getType());
 			ed.addToNewEnabledEvents("PatientArrival");
@@ -45,8 +38,9 @@ public class Test {
 			ed.setEventQueue(Database.updateEventQueue(ed));
 			patient.getHistory();
 			System.out.println("Event Queue: " + ed.getEventQueue());
+			ed.display();
 			System.out.println("----------------");
-			//ed.display();
+			
 		 }
 		
 		
