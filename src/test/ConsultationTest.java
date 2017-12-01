@@ -37,6 +37,7 @@ public class ConsultationTest {
 		patient.setPhysician(phys);
 		patient.setLocation(room);
 		for (int i=0 ; i <= 1000000; i++) {
+			patient.setDestination(room);
 			consultation.result(patient);
 			if (patient.getDestination().equals(ed.radioRoom)) {
 				radio++;
@@ -49,8 +50,12 @@ public class ConsultationTest {
 		radio*=0.0001;
 		bloodtest*=0.0001;
 		mri*=0.0001;
-		System.out.println(radio);
-		System.out.println(bloodtest);
-		System.out.println(mri);
+		
+		if (radio<19.9 || radio>20.1)
+			fail("Radio rate is wrong");
+		if (bloodtest<39.9 || bloodtest>40.1)
+			fail("Bloodtest rate is wrong");
+		if (mri<4.9 || mri>5.1)
+			fail("MRI rate is wrong");
 	}
 }
