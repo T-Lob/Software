@@ -99,18 +99,23 @@ public class TransporterTest {
 		Transporter transporter = new Transporter("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 12);
 		BoxRoom room = new BoxRoom("Saint-Denis");
+		BoxRoom room1 = new BoxRoom("Saint-Denis");
 		
-		patient.setDestination(room);
+		room.setState("full");
+		patient.setDestination(room1);
+		patient.setLocation(room);
 		transporter.transportation(patient);
+		if (!room.getState().equalsIgnoreCase("empty"))
+			fail("Location not set to empty");
 		if (!transporter.getState().equalsIgnoreCase("transporting"))
 			fail("The transporter's state is not transporting");
 		if (!transporter.getCurrentPatient().equals(patient))
 			fail("Wrong transporter's current patient");
 		if (!patient.getState().equalsIgnoreCase("transported"))
 			fail("Wrong patient's state");
-		if (!room.getState().equalsIgnoreCase("full"))
+		if (!room1.getState().equalsIgnoreCase("full"))
 			fail("The room has a wrong room");
-		if (!room.getPatient().equals(patient))
+		if (!room1.getPatient().equals(patient))
 			fail("The room contains a wrong patient");
 	}
 
