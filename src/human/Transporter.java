@@ -72,4 +72,5 @@ public class Transporter extends HumanResource{
 		patient.setLocation(patient.getDestination());
 		patient.setDestination(null);
 	}
+	
 }
