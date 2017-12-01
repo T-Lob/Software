@@ -40,16 +40,16 @@ public class Transporter extends HumanResource{
 	
 	public void setState(String state) {
 		this.state=state;
-		if (state.equalsIgnoreCase("transporting")){
+		if (state.equalsIgnoreCase("transporting") & !(this.ED.getTransporterList().get(1).contains(this))){
 			this.ED.getTransporterList().get(1).add(this);
 			this.ED.getTransporterList().get(0).remove(this);
 			this.ED.getTransporterList().get(2).remove(this);
-		} else if (state.equalsIgnoreCase("idle")) {
+		} else if (state.equalsIgnoreCase("idle")  & !(this.ED.getTransporterList().get(0).contains(this))) {
 			this.ED.getTransporterList().get(0).add(this);
 			this.ED.getTransporterList().get(1).remove(this);
 			this.ED.getTransporterList().get(2).remove(this);
 		}
-		else if (state.equalsIgnoreCase("offduty")){
+		else if (state.equalsIgnoreCase("offduty")  & !(this.ED.getTransporterList().get(2).contains(this))){
 			this.ED.getTransporterList().get(2).add(this);
 			this.ED.getTransporterList().get(1).remove(this);
 			this.ED.getTransporterList().get(0).remove(this);

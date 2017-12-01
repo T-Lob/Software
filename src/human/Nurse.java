@@ -46,17 +46,17 @@ public class Nurse extends HumanResource {
 	
 	public void setState(String state) {
 		this.state=state;
-		if (state.equalsIgnoreCase("busy")){
+		if (state.equalsIgnoreCase("busy")  & !(this.ED.getNurseList().get(1).contains(this))){
 			this.ED.getNurseList().get(1).add(this);
 			this.ED.getNurseList().get(0).remove(this);
 			this.ED.getNurseList().get(2).remove(this);
 			
-		} else if (state.equalsIgnoreCase("idle")) {
+		} else if (state.equalsIgnoreCase("idle") & !(this.ED.getNurseList().get(0).contains(this))) {
 			this.ED.getNurseList().get(0).add(this);
 			this.ED.getNurseList().get(1).remove(this);
 			this.ED.getNurseList().get(2).remove(this);
 		}
-		else if (state.equalsIgnoreCase("offduty")){
+		else if (state.equalsIgnoreCase("offduty") & !(this.ED.getNurseList().get(2).contains(this))){
 			this.ED.getNurseList().get(2).add(this);
 			this.ED.getNurseList().get(1).remove(this);
 			this.ED.getNurseList().get(0).remove(this);

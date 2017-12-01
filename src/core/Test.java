@@ -36,9 +36,6 @@ public class Test {
 		while (ed.getTime()<1000) {
 			Event e1=ed.getEventQueue().get(0);
 			System.out.println(e1.getType());
-			System.out.println(ed.getState());
-			System.out.println(ed.getState().get("Physician") > 0 & (ed.getState().get("onlyPatientBoxrooms") > 0 || ed.getState().get("onlyPatientShockrooms") > 0));
-			System.out.println(ed.getState().get("Transporter") >0 & ed.getState().get("waitingForTransportPatients") >0);
 			ed=Database.execute(e1, ed);
 			ed.setTime(e1.getOccurenceTime());
 			System.out.println(ed.getTime());
@@ -46,7 +43,10 @@ public class Test {
 			ed.addToNewEnabledEvents("PatientArrival");
 			ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getNewEnabledEvents(), ed));
 			ed.setEventQueue(Database.updateEventQueue(ed));
-			ed.display();
+			patient.getHistory();
+			System.out.println("Event Queue: " + ed.getEventQueue());
+			System.out.println("----------------");
+			//ed.display();
 		 }
 		
 		
