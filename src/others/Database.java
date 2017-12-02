@@ -63,12 +63,10 @@ public class Database {
 		if (ed.bloodTestRoom.getState()=="empty" & ed.getState().get("BloodTest")>0) {
 			ed.addToNewEnabledEvents("BloodTest");
 		}
-		if (ed.radioRoom.getState()=="empty" & ed.getState().get("Radio")>0) {
+		if (ed.radioRoom.getState()=="empty" & ed.getState().get("XRay")>0) {
 			ed.addToNewEnabledEvents("Xray");
 		}
-		if (ed.getWaitingForVerdictPatients().size()>0) {
-			ed.addToNewEnabledEvents("Xray");
-		}
+
 		if (verdict) {
 			ed.addToNewEnabledEvents("Verdict");
 		}
