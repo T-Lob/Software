@@ -1,13 +1,18 @@
 package healthServices;
 
+import java.util.ArrayList;
+
 import human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
 import others.Database;
+import others.Observable;
+import others.Observer;
 
-public class XRay extends HealthServices {
+public class XRay extends HealthServices implements Observable{
 	private ProbabilityDistribution probabilityDistribution= new Uniform(10,20);
 	private int duration=this.probabilityDistribution.getSample();
+	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
 	
 	public XRay(String EDname) {
 		this.ED = Database.getEDbyName(EDname);
@@ -46,6 +51,25 @@ public class XRay extends HealthServices {
 			patient.addToBill(cost);
 			this.duration = this.probabilityDistribution.getSample();
 		}
-	}	
+	}
+	
+	@Override
+	public void registerObserver(Observer observer) {
+		if (!this.ObserverList.contains(observer))
+			this.ObserverList.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		if (this.ObserverList.contains(observer))
+			this.ObserverList.remove(observer);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer observer : this.ObserverList) {
+			observer.update(this.outcome);
+		}
+	}
 }
 
