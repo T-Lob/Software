@@ -293,9 +293,9 @@ public class ED {
 		state.put("Nurse",this.nurseList.get(0).size());
 		state.put("Physician",this.physicianList.get(0).size());
 		state.put("Transporter", this.transporterList.get(0).size());
-		state.put("BloodTest", -this.bloodTestRoom.getWaitingQueue().size() +1);
-		state.put("MRI", -this.mriRoom.getWaitingQueue().size() +1);
-		state.put("Radio", -this.radioRoom.getWaitingQueue().size() +1);
+		state.put("BloodTest", this.bloodTestRoom.getWaitingQueue().size());
+		state.put("MRI", this.mriRoom.getWaitingQueue().size());
+		state.put("Radio", this.radioRoom.getWaitingQueue().size());
 	}
 	public ArrayList<String> getNewlyEnabledEvents() {
 		ArrayList<String> newlyEnabledEvents = new ArrayList<String>(this.newEnabledEvents);

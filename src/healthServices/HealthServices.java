@@ -6,19 +6,13 @@ import maths.ProbabilityDistribution;
 import others.Resource;
 
 public abstract class HealthServices extends Resource {
-	protected ArrayList<Patient> WaitingQueue = new ArrayList<Patient>();
 	protected ProbabilityDistribution probabilityDistribution;
 	protected int cost;
 	protected String outcome;
 	protected int duration;
 	protected int timeOfAvailability;
 	
-	public ArrayList<Patient> getWaitingQueue() {
-		return WaitingQueue;
-	}
-	public void addToWaitingQueue(Patient patient) {
-		this.WaitingQueue.add(patient);
-	}
+	
 	public ProbabilityDistribution getProbabilityDistribution() {
 		return probabilityDistribution;
 	}

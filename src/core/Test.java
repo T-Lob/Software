@@ -17,6 +17,7 @@ public class Test {
 		Patient patient3  = new Patient ("ED");
 		Patient patient4  = new Patient ("ED");
 		Patient patient5  = new Patient ("ED");
+		Patient patient6  = new Patient ("ED");
 		System.out.println(ed.getGeneratedPatients());
 		Physician physician = (Physician) HRFactory.createHR("ED", "Physician");
 		Nurse nurse = (Nurse) HRFactory.createHR("ED", "Nurse");
@@ -38,7 +39,7 @@ public class Test {
 			ed.setEventQueue(Database.updateEventQueue(ed));
 			patient.getHistory();
 			System.out.println("Event Queue: " + ed.getEventQueue());
-			ed.display();
+			//ed.display();
 			System.out.println("----------------");
 			
 		 }

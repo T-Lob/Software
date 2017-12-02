@@ -32,7 +32,7 @@ public class BloodTest extends HealthServices implements Observable {
 	
 	public void check (Patient patient) {
 		this.ED.bloodTestRoom.setState("full");
-		this.WaitingQueue.remove(patient);
+		this.ED.bloodTestRoom.getWaitingQueue().remove(patient);
 		patient.setState("checked");
 		
 	}

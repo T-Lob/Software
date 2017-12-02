@@ -31,7 +31,7 @@ public class MRIScan extends HealthServices implements Observable{
 	
 	public void check (Patient patient) {
 		this.ED.mriRoom.setState("full");
-		this.WaitingQueue.remove(patient);
+		this.ED.mriRoom.getWaitingQueue().remove(patient);
 		patient.setState("checked");
 		
 	}

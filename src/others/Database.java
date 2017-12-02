@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import events.Event;
 import events.EventFactory;
 import events.Registration;
+import human.Patient;
 
 
 public class Database {
@@ -32,6 +33,13 @@ public class Database {
 		ed.addToNewEnabledEvents("endOfInstallation");
 		ed.addToNewEnabledEvents("endOfConsultation");
 		ed.addToNewEnabledEvents("endOfTransportation");
+		boolean verdict =false;
+		for(Patient patient : ed.getWaitingForVerdictPatients()) {
+			if (patient.getPhysician().getState().equalsIgnoreCase("idle")) {
+				verdict = true;
+				break;
+			}
+		}
 		if (ed.getState().get("Nurse") > 0 & ed.getState().get("arrivedPatients") > 0) {
 			ed.addToNewEnabledEvents("Registration");
 			ed.addToEventQueue(new Registration(ed.getEDname()));
@@ -50,14 +58,20 @@ public class Database {
 		if (ed.getState().get("Transporter") >0 & ed.getState().get("waitingForTransportPatients") >0) {
 			ed.addToNewEnabledEvents("Transportation");
 		}
-		if (ed.mriRoom.getState()=="empty") {
+		if (ed.mriRoom.getState()=="empty" & ed.getState().get("MRI")>0) {
 			ed.addToNewEnabledEvents("MRI");
 		}
-		if (ed.bloodTestRoom.getState()=="empty") {
+		if (ed.bloodTestRoom.getState()=="empty" & ed.getState().get("BloodTest")>0) {
 			ed.addToNewEnabledEvents("BloodTest");
 		}
-		if (ed.radioRoom.getState()=="empty") {
+		if (ed.radioRoom.getState()=="empty" & ed.getState().get("Radio")>0) {
 			ed.addToNewEnabledEvents("Xray");
+		}
+		if (ed.getWaitingForVerdictPatients().size()>0) {
+			ed.addToNewEnabledEvents("Xray");
+		}
+		if (verdict) {
+			ed.addToNewEnabledEvents("Verdict");
 		}
 		return ed.getNewEnabledEvents();
 	}

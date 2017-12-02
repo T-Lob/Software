@@ -10,6 +10,7 @@ public class RadioRoom extends Room {
 	
 	public RadioRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
+		this.state="empty";
 	}
 	
 	public ArrayList<Patient> getWaitingQueue() {

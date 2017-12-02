@@ -32,7 +32,7 @@ public class XRay extends HealthServices implements Observable{
 	
 	public void check (Patient patient) {
 		this.ED.radioRoom.setState("full");
-		this.WaitingQueue.remove(patient);
+		this.ED.radioRoom.getWaitingQueue().remove(patient);
 		patient.setState("checked");
 		
 	}
