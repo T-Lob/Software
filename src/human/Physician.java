@@ -5,7 +5,7 @@ import healthServices.Consultation;
 import others.*;
 
 
-public class Physician extends HumanResource {
+public class Physician extends HumanResource implements Observer{
 	
 	private String username;
 	private ArrayList<Patient> currentPatients = new ArrayList<Patient>();
@@ -101,5 +101,10 @@ public class Physician extends HumanResource {
 		patient.setState("released");
 		patient.getLocation().setState("empty");
 		this.currentPatients.remove(patient);
+	}
+	
+	@Override
+	public void update(String outcome) {
+		this.messageBox.add(outcome);
 	}
 }
