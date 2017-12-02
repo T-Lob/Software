@@ -1,14 +1,25 @@
 package events;
 
-public class EndOfBloodTestEvent extends Event {
+import healthServices.BloodTest;
+import human.Patient;
 
-	public EndOfBloodTestEvent(BloodTestEvent bloodTestEvent) {
-		// TODO Auto-generated constructor stub
+public class EndOfBloodTestEvent extends Event {
+	private BloodTest bloodTest;
+	private Patient patient;
+
+	public EndOfBloodTestEvent(BloodTestEvent e) {
+		this.ed = e.getED();
+		this.id = e.getID();
+		this.name = "End of BloodTest" + String.valueOf(this.id);
+		this.bloodTest=e.getBloodTest();
+		this.occurenceTime = e.getOccurenceTime()+bloodTest.getDuration();
+		this.patient = e.getPatient();
+		this.type= "endOfBloodTest";
 	}
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		bloodTest.endCheck(patient);
 
 	}
 

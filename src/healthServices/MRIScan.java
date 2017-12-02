@@ -10,8 +10,6 @@ import others.Observable;
 import others.Observer;
 
 public class MRIScan extends HealthServices implements Observable{
-	private ProbabilityDistribution probabilityDistribution= new Uniform(10,20);
-	private int duration=this.probabilityDistribution.getSample();
 	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
 	
 	public MRIScan(String EDname) {
@@ -32,25 +30,19 @@ public class MRIScan extends HealthServices implements Observable{
 	}
 	
 	public void check (Patient patient) {
-		if (this.getTimeOfAvailability() <= this.ED.getTime()) {
-			this.setTimeOfAvailability(this.ED.getTime());
-			patient.setLocation(this.ED.mriRoom);
-			this.ED.mriRoom.setState("full");
-			this.WaitingQueue.remove(patient);
-			patient.setState("checked");
-			this.timeOfAvailability += this.duration;
-		}
+		this.ED.mriRoom.setState("full");
+		this.WaitingQueue.remove(patient);
+		patient.setState("checked");
+		
 	}
 	
 	public void endCheck (Patient patient) {
-		if (this.timeOfAvailability == this.ED.getTime()) {
-			patient.setState("waitingForVerdict");
-			this.ED.mriRoom.setState("empty");
-			this.outcome = "MRI done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
-			patient.getPhysician().getMessageBox().add(this.outcome);
-			patient.addToBill(cost);
-			this.duration = this.probabilityDistribution.getSample();
-		}
+		patient.setState("waitingForVerdict");
+		this.ED.mriRoom.setState("empty");
+		this.outcome = "MRI done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
+		patient.getPhysician().getMessageBox().add(this.outcome);
+		patient.addToBill(cost);
+		
 	}
 
 	@Override

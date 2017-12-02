@@ -27,4 +27,13 @@ public class BloodTestEvent extends Event {
 		
 		
 	}
+
+	public BloodTest getBloodTest() {
+		return this.bloodTest;
+	}
+
+	public Patient getPatient() {
+		return this.patient;
+	}
+
 }

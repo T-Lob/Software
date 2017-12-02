@@ -51,13 +51,13 @@ public class Database {
 			ed.addToNewEnabledEvents("Transportation");
 		}
 		if (ed.mriRoom.getState()=="empty") {
-			ed.addToNewEnabledEvents("mriExamination");
+			ed.addToNewEnabledEvents("MRI");
 		}
 		if (ed.bloodTestRoom.getState()=="empty") {
-			ed.addToNewEnabledEvents("bloodTestExamination");
+			ed.addToNewEnabledEvents("BloodTest");
 		}
 		if (ed.radioRoom.getState()=="empty") {
-			ed.addToNewEnabledEvents("radioExamination");
+			ed.addToNewEnabledEvents("Xray");
 		}
 		return ed.getNewEnabledEvents();
 	}

@@ -16,9 +16,14 @@ public class EventFactory {
 			return new ConsultationEvent(EDname);
 		} else if (eventType.equalsIgnoreCase("TRANSPORTATION")) {
 			return new Transportation(EDname);
+		} else if (eventType.equalsIgnoreCase("BLOODTEST")) {
+			return new BloodTestEvent(EDname);	
+		} else if (eventType.equalsIgnoreCase("XRAY")) {
+			return new XrayEvent(EDname);	
+		} else if (eventType.equalsIgnoreCase("MRI")) {
+			return new MRIEvent(EDname);	
 		}
-		
 		return null;	
-	}
 
+	}
 }

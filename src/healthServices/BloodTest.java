@@ -1,11 +1,17 @@
 package healthServices;
 
+import java.util.ArrayList;
+
 import human.Patient;
 import maths.ProbabilityDistribution;
 import maths.Uniform;
 import others.Database;
+import others.Observable;
+import others.Observer;
 
-public class BloodTest extends HealthServices {
+public class BloodTest extends HealthServices implements Observable {
+	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
+	
 	
 	public BloodTest(String EDname) {
 		this.ED = Database.getEDbyName(EDname);
@@ -38,5 +44,24 @@ public class BloodTest extends HealthServices {
 		patient.getPhysician().getMessageBox().add(this.outcome);
 		patient.addToBill(cost);
 	
+	}
+	
+	@Override
+	public void registerObserver(Observer observer) {
+		if (!this.ObserverList.contains(observer))
+			this.ObserverList.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		if (this.ObserverList.contains(observer))
+			this.ObserverList.remove(observer);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer observer : this.ObserverList) {
+			observer.update(this.outcome);
+		}
 	}
 }
