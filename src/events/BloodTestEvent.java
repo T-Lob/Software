@@ -1,13 +1,12 @@
 package events;
 
-import healthServices.Consultation;
+import healthServices.BloodTest;
 import human.Patient;
 import others.Database;
-import others.IDGenerator;
 import others.IDGeneratorEvent;
 
 public class BloodTestEvent extends Event {
-	private Consultation consultation;
+	private BloodTest bloodTest;
 	private Patient patient;
 	
 	public BloodTestEvent(String edName) {
@@ -15,14 +14,17 @@ public class BloodTestEvent extends Event {
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("BloodTest" + String.valueOf(id));
 		this.occurenceTime=(this.ed.getTime());
-		this.consultation=new Consultation(this.ed.getEDname());
-		this.type= "Consultation";
+		this.bloodTest=new BloodTest(this.ed.getEDname());
+		this.type= "BloodTest";
 
 }
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		this.patient=this.ed.bloodTestRoom.getWaitingQueue().get(0);
+		this.bloodTest.check(patient);
+		this.ed.addToEventQueue(new EndOfBloodTestEvent(this));
+		
 		
 	}
 }

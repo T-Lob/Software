@@ -66,11 +66,18 @@ public class Transporter extends HumanResource{
 	}
 	
 	public void endOfTransportation (Patient patient) {
+		if (this.currentPatient.getDestination().equals(this.ED.bloodTestRoom)) {
+			this.ED.bloodTestRoom.addToWaitingQueue(patient);
+		} else if (this.currentPatient.getDestination().equals(this.ED.mriRoom)) {
+			this.ED.mriRoom.addToWaitingQueue(patient);
+		} else if (this.currentPatient.getDestination().equals(this.ED.radioRoom)) {
+			this.ED.radioRoom.addToWaitingQueue(patient);
+		}
 		this.setState("idle");
-		this.setCurrentPatient(null);
 		patient.setState("waitingForExamination");
 		patient.setLocation(patient.getDestination());
 		patient.setDestination(null);
+		this.setCurrentPatient(null);
 	}
 	
 }
