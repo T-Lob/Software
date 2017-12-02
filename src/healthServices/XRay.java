@@ -39,7 +39,7 @@ public class XRay extends HealthServices implements Observable{
 	
 	public void endCheck (Patient patient) {
 		patient.setState("waitingForVerdict");
-		this.ED.radioRoom.setState("empty");
+		patient.setLocation(this.ED.waitingRoom);
 		this.outcome = "Xray done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
 		patient.getPhysician().getMessageBox().add(this.outcome);
 		patient.addToBill(cost);

@@ -8,6 +8,7 @@ import maths.Uniform;
 import others.Database;
 import others.Observable;
 import others.Observer;
+import rooms.WaitingRoom;
 
 public class BloodTest extends HealthServices implements Observable {
 	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
@@ -39,7 +40,7 @@ public class BloodTest extends HealthServices implements Observable {
 	
 	public void endCheck (Patient patient) {
 		patient.setState("waitingForVerdict");
-		this.ED.bloodTestRoom.setState("empty");
+		patient.setLocation(this.ED.waitingRoom);
 		this.outcome = "Bloodtest done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
 		patient.getPhysician().getMessageBox().add(this.outcome);
 		patient.addToBill(cost);

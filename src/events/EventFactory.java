@@ -22,6 +22,8 @@ public class EventFactory {
 			return new XrayEvent(EDname);	
 		} else if (eventType.equalsIgnoreCase("MRI")) {
 			return new MRIEvent(EDname);	
+		} else if (eventType.equalsIgnoreCase("VERDICT")) {
+			return new Verdict(EDname);	
 		}
 		return null;	
 
