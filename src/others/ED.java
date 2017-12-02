@@ -34,6 +34,7 @@ public class ED {
 	public  final BloodTestRoom bloodTestRoom = new BloodTestRoom(this.EDname);
 	
 	
+	@SuppressWarnings("unchecked")
 	public ED (String EDname) {
 		ArrayList<Patient> L = new ArrayList<Patient>();
 		this.EDname=EDname;
