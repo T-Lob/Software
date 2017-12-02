@@ -44,7 +44,7 @@ public class Database {
 			ed.addToNewEnabledEvents("Registration");
 		}
 		if (ed.getState().get("Nurse") > 0 & ed.getNextRegisteredPatient() != null) {
-			if (ed.getNextRegisteredPatient().getLevel() >= 4 & (ed.getState().get("emptyBoxrooms") > 0 || ed.getState().get("emptyShockrooms") > 0)) {
+			if (ed.getNextRegisteredPatient().getLevel() <= 2 & (ed.getState().get("emptyBoxrooms") > 0 || ed.getState().get("emptyShockrooms") > 0)) {
 				ed.addToNewEnabledEvents("Installation");
 				}
 			else if (ed.getState().get("emptyBoxrooms") > 0) {

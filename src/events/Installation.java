@@ -48,7 +48,7 @@ public class Installation extends Event{
 	public void execute() {
 		this.nurse=this.ed.getNextNurse();
 		this.patient=this.ed.getNextRegisteredPatient();
-		if (this.patient.getLevel()>=4 & this.ed.getNextEmptyShockRoom() != null) {
+		if (this.patient.getLevel()<=2 & this.ed.getNextEmptyShockRoom() != null) {
 			this.room=this.ed.getNextEmptyShockRoom();
 		} else {
 			this.room=this.ed.getNextEmptyBoxRoom();
