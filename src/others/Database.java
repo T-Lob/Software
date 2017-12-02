@@ -51,7 +51,9 @@ public class Database {
 				ed.addToNewEnabledEvents("Installation");
 			}
 		}
-		if (ed.getState().get("Physician") > 0 & (ed.getState().get("onlyPatientBoxrooms") > 0 || ed.getState().get("onlyPatientShockrooms") > 0)) {
+		if (ed.getState().get("Physician") > 0 & ed.getState().get("onlyPatientShockrooms") > 0) {
+			ed.addToNewEnabledEvents("Consultation");
+		} else if (ed.getState().get("Physician") > 0 & ed.getState().get("onlyPatientBoxrooms") > 0) {
 			ed.addToNewEnabledEvents("Consultation");
 		}
 		if (ed.getState().get("Transporter") >0 & ed.getState().get("waitingForTransportPatients") >0) {
