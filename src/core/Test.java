@@ -24,6 +24,11 @@ public class Test {
 		Transporter transporter = (Transporter) HRFactory.createHR("ED", "Transporter");
 		BoxRoom boxroom = new BoxRoom("ED");
 		ShockRoom shockroom = new ShockRoom("ED");
+		Physician physician2 = (Physician) HRFactory.createHR("ED", "Physician");
+		Nurse nurse2 = (Nurse) HRFactory.createHR("ED", "Nurse");
+		Transporter transporter2 = (Transporter) HRFactory.createHR("ED", "Transporter");
+		BoxRoom boxroom2 = new BoxRoom("ED");
+		ShockRoom shockroom2 = new ShockRoom("ED");
 		ed.updateState();
 		ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getOldEnabledEvents(), ed));
 		ed.setEventQueue(Database.updateEventQueue(ed));
@@ -37,9 +42,9 @@ public class Test {
 			ed.addToNewEnabledEvents("PatientArrival");
 			ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getNewEnabledEvents(), ed));
 			ed.setEventQueue(Database.updateEventQueue(ed));
-			patient.getHistory();
+			//patient.getHistory();
 			System.out.println("Event Queue: " + ed.getEventQueue());
-			//ed.display();
+			ed.display();
 			System.out.println("----------------");
 			
 		 }
