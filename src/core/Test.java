@@ -42,9 +42,9 @@ public class Test {
 			ed.addToNewEnabledEvents("PatientArrival");
 			ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getNewEnabledEvents(), ed));
 			ed.setEventQueue(Database.updateEventQueue(ed));
-			//patient.getHistory();
+			patient.getHistory();
 			System.out.println("Event Queue: " + ed.getEventQueue());
-			ed.display();
+			//ed.display();
 			System.out.println("----------------");
 			
 		 }

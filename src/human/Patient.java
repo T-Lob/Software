@@ -47,7 +47,7 @@ public class Patient {
 		this.name = "Patient" + String.valueOf(this.ID);
 		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = "L"+String.valueOf(new Uniform(1,5).getSample());
-		this.arrivalTime=new Uniform(0,1000).getSample();
+		this.arrivalTime=new Uniform(700,710).getSample();
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
 		
