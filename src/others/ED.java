@@ -289,7 +289,7 @@ public class ED {
 		state.put("emptyBoxrooms", this.boxRoomList.get(0).size());
 		state.put("onlyPatientBoxrooms", this.boxRoomList.get(1).size());
 		state.put("emptyShockrooms", this.shockRoomList.get(0).size());
-		state.put("onlyPatientShockrooms", this.boxRoomList.get(1).size());
+		state.put("onlyPatientShockrooms", this.shockRoomList.get(1).size());
 		state.put("Nurse",this.nurseList.get(0).size());
 		state.put("Physician",this.physicianList.get(0).size());
 		state.put("Transporter", this.transporterList.get(0).size());
