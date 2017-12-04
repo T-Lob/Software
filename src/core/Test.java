@@ -14,14 +14,14 @@ public class Test {
 		ED ed = new ED("ED");
 		
 		System.out.println(ed.getRegisteredPatients().get(4));
-		Patient patient  = new Patient ("ED","L5",700);
-		Patient patient2  = new Patient ("ED","L5",700);
-		Patient patient10  = new Patient ("ED","L5",700);
-		Patient patient21  = new Patient ("ED","L5",700);
-		Patient patient111  = new Patient ("ED","L5",700);
-		Patient patient212 = new Patient ("ED","L5",700);
-		Patient patient5  = new Patient ("ED","L1",704);
-		Patient patient6  = new Patient ("ED","L1",705);
+		Patient patient  = new Patient ("ED");
+		Patient patient2  = new Patient ("ED");
+		Patient patient10  = new Patient ("ED");
+		Patient patient21  = new Patient ("ED");
+		Patient patient111  = new Patient ("ED");
+		Patient patient212 = new Patient ("ED");
+		Patient patient5  = new Patient ("ED");
+		Patient patient6  = new Patient ("ED");
 		ArrayList<Patient> L = new ArrayList<Patient>(ed.getGeneratedPatients());
 		System.out.println(ed.getGeneratedPatients());
 		Physician physician = (Physician) HRFactory.createHR("ED", "Physician");
@@ -57,6 +57,11 @@ public class Test {
 			System.out.println(ed.getNewEnabledEvents());
 			for (Patient p: L) {
 				System.out.println(p +" "+p.getState()+" "+ p .getLocation() );
+			}
+			if(ed.getEventQueue().size()==0) {
+				System.out.println("Simulation terminee");
+				System.out.println("----------------");
+				break;
 			}
 			System.out.println("----------------");
 			

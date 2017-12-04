@@ -19,6 +19,10 @@ public class ReplacePatient extends Event {
 	@Override
 	public void execute() {
 		 ed.getRegisteredPatients().get(patient.getLevel()-1).add(0,patient);
+		 patient.setState("registered");
+		 int index = ed.getRegisteredPatients().get(patient.getLevel()-1).indexOf(patient);
+		 ed.getRegisteredPatients().get(patient.getLevel()-1).remove(index);
+		 ed.getRegisteredPatients().get(patient.getLevel()-1).add(0,patient);
 		 patient.setLocation(ed.waitingRoom);
 		 this.ed.getNewEnabledEvents().remove("ReplacePatient");
 	}

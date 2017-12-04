@@ -27,6 +27,5 @@ public class PatientArrival extends Event {
 	@Override
 	public void execute() {
 		this.patient.setState("arrived");
-		this.ed.getNewEnabledEvents().remove("PatientArrival");
 	}
 }
