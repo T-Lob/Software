@@ -19,7 +19,7 @@ public class Patient {
 	private String state = "generated";
 	private Room location = null;
 	private ArrayList<String[]> history = new ArrayList<String[]> () ;
-	private int arrivalTime;
+	private double arrivalTime;
 	private Physician physician = null;
 	private int bill = 0;
 	private Room destination;
@@ -34,6 +34,18 @@ public class Patient {
 		this.surname=surname;
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.healthInsurance = healthInsurance;
+		this.severityLevel = severityLevel;
+		this.arrivalTime=arrivalTime;
+		this.ED.addToEventQueue(new PatientArrival(EDname, this));
+		this.ED.getGeneratedPatients().add(this);
+		
+	}
+	
+	public Patient(String EDname, String severityLevel,int arrivalTime) {
+		this.ED=Database.getEDbyName(EDname);
+		this.ID=IDGenerator.getInstance().getNextID();
+		this.name = "Patient" + String.valueOf(this.ID);
+		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
@@ -94,8 +106,10 @@ public class Patient {
 	
 	public void setLocation(Room location) {
 		if (this.location != null) {
-			this.location.setState("empty");
+				if (this.location.getState()!="onlyPatient") {
+					this.location.setState("empty");
 			}
+		}
 		this.location=location;
 	}
 	
@@ -109,7 +123,7 @@ public class Patient {
 		this.history.add(event);
 	}
 	
-	public int getArrivalTime() {
+	public double getArrivalTime() {
 		return arrivalTime;
 	}	
 

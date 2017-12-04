@@ -11,6 +11,7 @@ public class ConsultationEvent extends Event {
 	private Consultation consultation;
 	private Patient patient;
 	private Physician physician;
+	private EndOfConsultationEvent endOfConsultationEvent;
 	
 	
 	public ConsultationEvent(String edName) {
@@ -20,8 +21,11 @@ public class ConsultationEvent extends Event {
 		this.occurenceTime=(this.ed.getTime());
 		this.consultation=new Consultation(this.ed.getEDname());
 		this.type= "Consultation";
+		Database.addToGeneratedConsultations(this);
 		
 	}
+
+	
 
 	@Override
 	public void execute() {
@@ -33,7 +37,9 @@ public class ConsultationEvent extends Event {
 			this.patient=this.ed.getNextOnlyPatientBoxRoom().getPatient();
 		}
 		physician.consultation(patient, consultation);
-		this.ed.addToEventQueue(new EndOfConsultationEvent(this));
+		this.endOfConsultationEvent=new EndOfConsultationEvent(this);
+		this.ed.addToEventQueue(endOfConsultationEvent);
+		this.ed.getNewEnabledEvents().remove("Consultation");
 		
 	}
 
@@ -48,7 +54,9 @@ public class ConsultationEvent extends Event {
 	public Physician getPhysician() {
 		return physician;
 	}
-
+	public EndOfConsultationEvent getEndOfConsultationEvent() {
+		return endOfConsultationEvent;
+	}
 
 
 }

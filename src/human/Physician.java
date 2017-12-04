@@ -99,7 +99,8 @@ public class Physician extends HumanResource implements Observer{
 	
 	public void verdict (Patient patient) {
 		patient.setState("released");
-		patient.getLocation().setState("empty");
+		patient.setLocation(this.ED.waitingRoom);
+		this.setState("idle");
 		this.currentPatients.remove(patient);
 	}
 	

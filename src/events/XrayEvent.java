@@ -25,6 +25,7 @@ public class XrayEvent extends Event {
 		this.patient=this.ed.radioRoom.getWaitingQueue().get(0);
 		this.xray.check(patient);
 		this.ed.addToEventQueue(new EndOfXrayEvent(this));
+		this.ed.getNewEnabledEvents().remove("Xray");
 		
 		
 	}

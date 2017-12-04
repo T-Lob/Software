@@ -55,5 +55,6 @@ public class Installation extends Event{
 		}
 		nurse.installation (patient,room);
 		this.ed.addToEventQueue(new EndOfInstallation(this));
+		this.ed.getNewEnabledEvents().remove("Installation");
 	}
 }

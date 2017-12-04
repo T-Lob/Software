@@ -23,6 +23,7 @@ public class Registration extends Event {
 		this.nurse=ed.getNextNurse();
 		for (Patient patient:new ArrayList<Patient>(this.ed.getArrivedPatients())) {
 			nurse.registration(patient);
+			this.ed.getNewEnabledEvents().remove("Registration");
 		}	
 	}
 }

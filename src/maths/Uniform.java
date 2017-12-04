@@ -16,8 +16,8 @@ public class Uniform implements ProbabilityDistribution {
 	}
 	
 	@Override
-	public int getSample() {
-		return (int) (Math.ceil(this.b-this.a)*new Random().nextDouble() + this.a);
+	public double getSample() {
+		return (this.b-this.a)*new Random().nextDouble() + this.a;
 	}
 
 }

@@ -9,7 +9,7 @@ public abstract class HealthServices extends Resource {
 	protected ProbabilityDistribution probabilityDistribution;
 	protected int cost;
 	protected String outcome;
-	protected int duration;
+	protected double duration;
 	protected int timeOfAvailability;
 	
 	
@@ -28,7 +28,7 @@ public abstract class HealthServices extends Resource {
 	public int getCost() {
 		return cost;
 	}
-	public int getDuration() {
+	public double getDuration() {
 		return duration;
 	}
 	public void setTimeOfAvailability(int t) {

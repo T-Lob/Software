@@ -5,7 +5,7 @@ import others.ED;
 public abstract class Event {
 	protected String name;
 	protected ED ed;
-	protected int occurenceTime;
+	protected double occurenceTime;
 	protected int id;
 	protected String type;
 	
@@ -17,7 +17,7 @@ public abstract class Event {
 		this.name = name;
 	}
 	
-	public int getOccurenceTime() {
+	public double getOccurenceTime() {
 		return occurenceTime;
 	}
 	

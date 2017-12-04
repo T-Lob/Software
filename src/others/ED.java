@@ -26,7 +26,7 @@ public class ED {
 	private ArrayList<String> newEnabledEvents = new ArrayList <String> ();
 	private ArrayList<String> oldEnabledEvents = new ArrayList <String> ();
 	private HashMap<String, Integer> state = new  HashMap<String, Integer> ();
-	private  int time;
+	private  double time;
 	private  String EDname;
 	public  final WaitingRoom waitingRoom = new WaitingRoom(this.EDname);
 	public  final RadioRoom radioRoom = new RadioRoom(this.EDname);
@@ -58,11 +58,11 @@ public class ED {
 		return EDname;
 	}
 
-	public int getTime() {
+	public double getTime() {
 		return time;
 	}
 	
-	public void setTime(int time) {
+	public void setTime(double time) {
 		this.time = time;
 	}
 	
@@ -166,10 +166,10 @@ public class ED {
 		return null;
 	}
 	public Patient getNextRegisteredPatient() {
-		int i = 4;
-		while (i >= 0)  {
+		int i = 0;
+		while (i <= 4)  {
 			if (this.registeredPatients.get(i).size()==0) {
-				i-=1;
+				i+=1;
 			}
 			else  {
 				return this.registeredPatients.get(i).get(0);
@@ -264,7 +264,20 @@ public class ED {
 	        		eQ.set(min, x);
 	        	}
 	        }
-	    } 
+	    }
+	    AbortConsultation e;
+	    ArrayList<Event> fakeEQ = new ArrayList<Event>(eQ);
+	    for (Event event: fakeEQ) {
+    			if(event.getOccurenceTime()>time)
+	    				break;
+	    		if(event.getType()=="AbortConsultation") {
+	    			e=(AbortConsultation) event;
+	    			int index = eQ.indexOf(e);
+		    		eQ.remove(index);
+		    		eQ.add(0,e);
+		    		break;
+	    			}
+	    }
 	}
 	public void sortEventQueue() {
 		Collections.sort(this.eventQueue, new Comparator<Event>() {
@@ -272,7 +285,7 @@ public class ED {
 	        public int compare(Event event2, Event event1)
 	        {
 
-	            return  new Integer(event2.getOccurenceTime()).compareTo(event1.getOccurenceTime());
+	            return  new Double(event2.getOccurenceTime()).compareTo(event1.getOccurenceTime());
 	        }
 	    });
 		

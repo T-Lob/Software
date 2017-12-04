@@ -25,6 +25,7 @@ public class MRIEvent extends Event {
 		this.patient=this.ed.mriRoom.getWaitingQueue().get(0);
 		this.mri.check(patient);
 		this.ed.addToEventQueue(new EndOfMRIEvent(this));
+		this.ed.getNewEnabledEvents().remove("MRI");
 		
 		
 	}

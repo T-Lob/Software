@@ -22,6 +22,7 @@ public class Verdict extends Event {
 			Patient patient = ed.getWaitingForVerdictPatients().get(i);
 			if (patient.getPhysician().getState().equalsIgnoreCase("idle")) 
 				patient.getPhysician().verdict(patient);
+			this.ed.getNewEnabledEvents().remove("Verdict");
 		}		
 	}	
 }

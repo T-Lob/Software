@@ -24,6 +24,7 @@ public class BloodTestEvent extends Event {
 		this.patient=this.ed.bloodTestRoom.getWaitingQueue().get(0);
 		this.bloodTest.check(patient);
 		this.ed.addToEventQueue(new EndOfBloodTestEvent(this));
+		this.ed.getNewEnabledEvents().remove("BloodTest");
 		
 		
 	}

@@ -9,8 +9,8 @@ public class Exponential implements ProbabilityDistribution {
 	}
 	
 	@Override
-	public int getSample() {
-		return (int) Math.ceil(-1/parameter*Math.log(1-new Random().nextDouble()));
+	public double getSample() {
+		return -1/parameter*Math.log(1-new Random().nextDouble());
 	}
 }
 

@@ -38,6 +38,7 @@ public class MRIScan extends HealthServices implements Observable{
 	
 	public void endCheck (Patient patient) {
 		patient.setState("waitingForVerdict");
+		ED.mriRoom.setState("empty");
 		patient.setLocation(this.ED.waitingRoom);
 		this.outcome = "MRI done for the patient "  + patient.getName() +  "in "+ String.valueOf(this.duration) + " minutes";
 		patient.getPhysician().getMessageBox().add(this.outcome);

@@ -8,8 +8,8 @@ public class Det implements ProbabilityDistribution {
 	}
 	
 	@Override
-	public int getSample() {
-		return (int) Math.ceil(this.parameter);
+	public double getSample() {
+		return  this.parameter;
 	}
 }
 

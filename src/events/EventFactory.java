@@ -12,6 +12,10 @@ public class EventFactory {
 			return new Installation(EDname);
 		} else if (eventType.equalsIgnoreCase("REGISTRATION")){
 			return new Registration(EDname);
+		} else if (eventType.equalsIgnoreCase("REPLACEPATIENT")) {
+			return new ReplacePatient(EDname);
+		} else if (eventType.equalsIgnoreCase("ABORTCONSULTATION")) {
+			return new AbortConsultation(EDname);
 		} else if (eventType.equalsIgnoreCase("CONSULTATION")) {
 			return new ConsultationEvent(EDname);
 		} else if (eventType.equalsIgnoreCase("TRANSPORTATION")) {

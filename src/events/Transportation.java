@@ -22,6 +22,7 @@ public class Transportation extends Event{
 		this.patient=this.ed.getNextWaitingForTransportPatient();
 		transporter.transportation (patient);
 		this.ed.addToEventQueue(new EndOfTransportation(this));
+		this.ed.getNewEnabledEvents().remove("Transportation");
 		
 	}
 

@@ -2,27 +2,47 @@ package others;
 
 import java.util.ArrayList;
 
+import events.ConsultationEvent;
 import events.Event;
 import events.EventFactory;
 import events.Registration;
 import human.Patient;
+import rooms.Room;
 
 
 public class Database {
 	private static  ArrayList<ED> generatedEDs = new ArrayList<ED>();
+	private static  ArrayList<ConsultationEvent> generatedConsultations = new ArrayList<ConsultationEvent>();
+	public static Patient remplacedPatient = null;
 
 	public static ArrayList<ED> getGeneratedEDs() {
 		return generatedEDs;
 	}
 	
+	public static ArrayList<ConsultationEvent> getGeneratedConsultations() {
+		return generatedConsultations;
+	}
+
 	public static void addToGeneratedEDs(ED ed) {
 		Database.generatedEDs.add(ed);
+	}
+	
+	public static void addToGeneratedConsultations(ConsultationEvent c) {
+		Database.generatedConsultations.add(c);
 	}
 
 	public static ED getEDbyName(String edName) {
 		for (ED ed:generatedEDs) {
 			if (ed.getEDname().equalsIgnoreCase(edName)) {
 				return ed;
+			}
+		}
+		return null;
+	}
+	public static ConsultationEvent getConsultationbyPatient(Patient patient) {
+		for (ConsultationEvent c:generatedConsultations) {
+			if (c.getPatient()==remplacedPatient) {
+				return c;
 			}
 		}
 		return null;
@@ -34,6 +54,11 @@ public class Database {
 		ed.addToNewEnabledEvents("endOfConsultation");
 		ed.addToNewEnabledEvents("endOfTransportation");
 		boolean verdict =false;
+		boolean emergency = false;
+		remplacedPatient=null;
+		if ((ed.getRegisteredPatients().get(0).size() >0 || ed.getRegisteredPatients().get(1).size() >0) & ed.getState().get("emptyBoxrooms") == 0 & ed.getState().get("emptyShockrooms") == 0) {
+			emergency = true;
+		}
 		for(Patient patient : ed.getWaitingForVerdictPatients()) {
 			if (patient.getPhysician().getState().equalsIgnoreCase("idle")) {
 				verdict = true;
@@ -42,6 +67,50 @@ public class Database {
 		}
 		if (ed.getState().get("Nurse") > 0 & ed.getState().get("arrivedPatients") > 0) {
 			ed.addToNewEnabledEvents("Registration");
+		}
+		if (emergency) {
+			// mettre le patient concerne en 1ere position (ca c'est deja fait normalement)
+			 // checker les onlyPatient rooms et jarter si possible un patient pas trop malade
+			for (Room room: ed.getBoxRoomList().get(1)) {
+				if (remplacedPatient==null) {
+					remplacedPatient = room.getPatient();
+				}
+				if (room.getPatient().getLevel() > remplacedPatient.getLevel()) {
+					remplacedPatient=room.getPatient();	
+				}		
+			}
+			for (Room room: ed.getShockRoomList().get(1)) {
+				if (remplacedPatient==null) {
+					remplacedPatient = room.getPatient();
+				}
+				if (room.getPatient().getLevel() > remplacedPatient.getLevel()) {
+					remplacedPatient=room.getPatient();	
+				}		
+			}
+			if (remplacedPatient != null) { // on remet le patient dans le tableau unregistered patient, la room redevient empty
+				ed.addToNewEnabledEvents("ReplacePatient");
+				// ed.getRegisteredPatients().get(remplacedPatient.getLevel()-1).add(0,remplacedPatient);
+				// remplacedPatient.setLocation(ed.waitingRoom);
+			}	
+			else 
+			{	for (Room room: ed.getBoxRoomList().get(2)) { // si pas possible checker les busy rooms et si possible jarter un patient pas trop malade (on recup la room)
+					if (remplacedPatient==null) {
+					remplacedPatient = room.getPatient();
+					}
+					if (room.getPatient().getLevel() > remplacedPatient.getLevel()) {
+					remplacedPatient=room.getPatient();	
+					}		
+				}
+				for (Room room: ed.getShockRoomList().get(2)) {
+					if (remplacedPatient==null) {
+					remplacedPatient = room.getPatient();
+					}
+					if (room.getPatient().getLevel() > remplacedPatient.getLevel()) {
+					remplacedPatient=room.getPatient();	
+					}		
+				}
+				ed.addToNewEnabledEvents("AbortConsultation");
+			}
 		}
 		if (ed.getState().get("Nurse") > 0 & ed.getNextRegisteredPatient() != null) {
 			if (ed.getNextRegisteredPatient().getLevel() <= 2 & (ed.getState().get("emptyBoxrooms") > 0 || ed.getState().get("emptyShockrooms") > 0)) {

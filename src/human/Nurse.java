@@ -71,7 +71,7 @@ public class Nurse extends HumanResource {
 	public void installation (Patient patient, Room room) {
 		this.setState("busy");
 		this.setCurrentPatient(patient);	
-		patient.setState("transported");
+		patient.setState("installed");
 		patient.setDestination(room);
 		room.setState("full");
 		room.setPatient(patient);
