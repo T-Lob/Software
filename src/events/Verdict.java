@@ -1,6 +1,5 @@
 package events;
 
-import healthServices.XRay;
 import human.Patient;
 import others.Database;
 import others.IDGeneratorEvent;

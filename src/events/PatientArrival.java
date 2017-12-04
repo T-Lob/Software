@@ -2,7 +2,6 @@ package events;
 
 import human.Patient;
 import others.Database;
-import others.IDGenerator;
 import others.IDGeneratorEvent;
 
 public class PatientArrival extends Event {

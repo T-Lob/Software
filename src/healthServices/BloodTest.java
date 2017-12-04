@@ -8,7 +8,6 @@ import maths.Uniform;
 import others.Database;
 import others.Observable;
 import others.Observer;
-import rooms.WaitingRoom;
 
 public class BloodTest extends HealthServices implements Observable {
 	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();

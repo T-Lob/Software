@@ -1,7 +1,6 @@
 package events;
 
 import others.Database;
-import others.IDGenerator;
 import others.IDGeneratorEvent;
 import healthServices.*;
 import human.Patient;

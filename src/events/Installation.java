@@ -3,7 +3,6 @@ package events;
 import human.Nurse;
 import human.Patient;
 import others.Database;
-import others.IDGenerator;
 import others.IDGeneratorEvent;
 import rooms.Room;
 

@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import healthServices.BloodTest;
+import human.Patient;
+import human.Physician;
 import others.Database;
 import others.ED;
 
@@ -40,6 +42,7 @@ public class BloodTestTest {
 			ed.getBoxRoomList().get(i).clear();
 			ed.getShockRoomList().get(i).clear();
 		}
+		ed.bloodTestRoom.setState("empty");
 	}
 
 	@Test
@@ -55,12 +58,43 @@ public class BloodTestTest {
 
 	@Test
 	public void testCheck() {
-		fail("Not yet implemented");
+		
+		ED ed = Database.getEDbyName("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis");
+		BloodTest bloodTest = new BloodTest("Saint-Denis");
+		
+		ed.bloodTestRoom.addToWaitingQueue(patient);
+		bloodTest.check(patient);
+		if (!ed.bloodTestRoom.getState().equalsIgnoreCase("full"))
+			fail("Blood Test Room not occuppied");
+		if (ed.bloodTestRoom.getWaitingQueue().size() != 0)
+			fail("Patient still in waiting queue");
+		if (!patient.getState().equalsIgnoreCase("checked"))
+			fail("Patient not currently checked");
 	}
 
 	@Test
 	public void testEndCheck() {
-		fail("Not yet implemented");
+		
+		ED ed = Database.getEDbyName("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis");
+		BloodTest bloodTest = new BloodTest("Saint-Denis");
+		Physician physician = new Physician("Saint-Denis");
+		
+		patient.setPhysician(physician);
+		bloodTest.endCheck(patient);
+		if (!patient.getState().equalsIgnoreCase("waitingforverdict"))
+			fail("Patient has wrong state");
+		if (!ed.bloodTestRoom.getState().equalsIgnoreCase("empty"))
+			fail("Blood test room not emptied");
+		if (!patient.getLocation().equals(ed.waitingRoom))
+			fail("Patient has wrong location");
+		if (!bloodTest.getOutcome().equalsIgnoreCase("Bloodtest done for the patient "  + patient.getName() +  "in "+ String.valueOf(bloodTest.getDuration()) + " minutes"))
+			fail("Wrong outcome");
+		if (!physician.getLastMessage().equalsIgnoreCase(bloodTest.getOutcome()))
+			fail("The physician has not received the outcome");
+		if (patient.getBill() != bloodTest.getCost())
+			fail("Patient has wrong bill");
 	}
 
 }

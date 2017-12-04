@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import human.Nurse;
 import human.Patient;
 import others.Database;
-import others.IDGenerator;
 import others.IDGeneratorEvent;
 
 public class Registration extends Event {

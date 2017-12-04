@@ -1,7 +1,5 @@
 package healthServices;
-import java.util.ArrayList;
 
-import human.Patient;
 import maths.ProbabilityDistribution;
 import others.Resource;
 

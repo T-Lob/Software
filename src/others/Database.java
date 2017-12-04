@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import events.ConsultationEvent;
 import events.Event;
 import events.EventFactory;
-import events.Registration;
 import human.Patient;
 import rooms.Room;
 
