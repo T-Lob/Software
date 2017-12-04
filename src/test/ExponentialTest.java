@@ -17,7 +17,7 @@ public class ExponentialTest {
 			moy += exp1.getSample();
 		moy*=0.00001;
 		
-		if (moy<=5.4 || moy>=5.6)
+		if (moy<=4.9 || moy>=5.1)
 			fail("La moyenne ne correspond pas");
 	}
 

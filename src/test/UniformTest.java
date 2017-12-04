@@ -17,7 +17,7 @@ public class UniformTest {
 			moy += u.getSample();
 		moy*=0.00001;
 		
-		if (moy >= 2.6 || moy <= 2.4)
+		if (moy >= 3.1 || moy <= 2.9)
 			fail("la moyenne est fausse");
 	}
 

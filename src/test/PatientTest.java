@@ -88,9 +88,8 @@ public class PatientTest {
 		
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
 		
-		if (patient.getID() != 6){
+		if (patient.getID() != 3)
 			fail("The patient has no ID");
-		}
 	}
 
 	@Test
@@ -231,7 +230,7 @@ public class PatientTest {
 	public void testSetState() {
 		
 		ED ed = Database.getEDbyName("Saint-Denis");
-		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Silver", "L3", 10);
+		Patient patient = new Patient("Saint-Denis");
 		
 		patient.setState("arrived");
 		if (!patient.getState().equalsIgnoreCase("arrived"))

@@ -42,6 +42,9 @@ public class TransporterTest {
 			ed.getBoxRoomList().get(i).clear();
 			ed.getShockRoomList().get(i).clear();
 		}
+		ed.bloodTestRoom.getWaitingQueue().clear();
+		ed.mriRoom.getWaitingQueue().clear();
+		ed.radioRoom.getWaitingQueue().clear();
 	}
 
 	@Test
@@ -113,8 +116,6 @@ public class TransporterTest {
 			fail("Wrong transporter's current patient");
 		if (!patient.getState().equalsIgnoreCase("transported"))
 			fail("Wrong patient's state");
-		if (!room1.getState().equalsIgnoreCase("full"))
-			fail("The room has a wrong room");
 		if (!room1.getPatient().equals(patient))
 			fail("The room contains a wrong patient");
 	}
@@ -122,22 +123,50 @@ public class TransporterTest {
 	@Test
 	public void testEndOfTransportation() {
 		
+		ED ed = Database.getEDbyName("Saint-Denis");
 		Transporter transporter = new Transporter("Saint-Denis");
 		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 12);
-		BoxRoom room = new BoxRoom("Saint-Denis");
 		
-		patient.setDestination(room);
+		patient.setDestination(ed.bloodTestRoom);
+		transporter.setCurrentPatient(patient);
 		transporter.endOfTransportation(patient);
+		if (!ed.bloodTestRoom.getWaitingQueue().contains(patient) || ed.bloodTestRoom.getWaitingQueue().size() != 1)
+			fail("Blood Test Room's waiting queue is wrong");
 		if (!transporter.getState().equalsIgnoreCase("idle"))
 			fail("The transporter's state is not idle");
 		if (transporter.getCurrentPatient() != null)
 			fail("Wrong transporter's current patient");
 		if (!patient.getState().equalsIgnoreCase("waitingforexamination"))
 			fail("Wrong patient's state");
-		if (!patient.getLocation().equals(room))
+		if (!patient.getLocation().equals(ed.bloodTestRoom))
 			fail("Wrong patient's location");
-		if (patient.getDestination() != null)
-			fail("The patient still has a destination");
 		
+		patient.setDestination(ed.mriRoom);
+		transporter.setCurrentPatient(patient);
+		transporter.endOfTransportation(patient);
+		if (!ed.mriRoom.getWaitingQueue().contains(patient) || ed.mriRoom.getWaitingQueue().size() != 1)
+			fail("Blood Test Room's waiting queue is wrong");
+		if (!transporter.getState().equalsIgnoreCase("idle"))
+			fail("The transporter's state is not idle");
+		if (transporter.getCurrentPatient() != null)
+			fail("Wrong transporter's current patient");
+		if (!patient.getState().equalsIgnoreCase("waitingforexamination"))
+			fail("Wrong patient's state");
+		if (!patient.getLocation().equals(ed.mriRoom))
+			fail("Wrong patient's location");
+		
+		patient.setDestination(ed.radioRoom);
+		transporter.setCurrentPatient(patient);
+		transporter.endOfTransportation(patient);
+		if (!ed.radioRoom.getWaitingQueue().contains(patient) || ed.radioRoom.getWaitingQueue().size() != 1)
+			fail("Blood Test Room's waiting queue is wrong");
+		if (!transporter.getState().equalsIgnoreCase("idle"))
+			fail("The transporter's state is not idle");
+		if (transporter.getCurrentPatient() != null)
+			fail("Wrong transporter's current patient");
+		if (!patient.getState().equalsIgnoreCase("waitingforexamination"))
+			fail("Wrong patient's state");
+		if (!patient.getLocation().equals(ed.radioRoom))
+			fail("Wrong patient's location");
 	}
 }

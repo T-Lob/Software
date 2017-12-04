@@ -113,11 +113,11 @@ public class NurseTest {
 			fail("Nurse state not busy");
 		if (!nurse.getCurrentPatient().equals(patient))
 			fail("Wrong nurse's current patient");
-		if (!patient.getState().equalsIgnoreCase("transported"))
+		if (!patient.getState().equalsIgnoreCase("installed"))
 			fail("Patient's state not transported");
 		if (!patient.getDestination().equals(room))
 			fail("Wrong patient's destination");
-		if (!room.getState().equalsIgnoreCase("onlypatient"))
+		if (!room.getState().equalsIgnoreCase("full"))
 			fail("Wrong state for the room");
 		if (!room.getPatient().equals(patient))
 			fail("Wrong patient for the room");
@@ -142,5 +142,7 @@ public class NurseTest {
 			fail("The patient still has a destination");
 		if (!patient.getState().equalsIgnoreCase("waiting"))
 			fail("The patient's state is not waiting");
+		if (!room.getState().equalsIgnoreCase("onlypatient"))
+			fail("Wrong room state");
 	}
 }

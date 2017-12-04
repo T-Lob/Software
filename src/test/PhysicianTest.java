@@ -169,7 +169,21 @@ public class PhysicianTest {
 
 	@Test
 	public void testEndOfConsultation() {
-		fail("Not yet implemented");
+		
+		Physician phys = new Physician("Saint-Denis");
+		Consultation consultation = new Consultation("Saint-Denis");
+		Patient patient = new Patient("Saint-Denis", "Smo", "Koco", "Gold", "L4", 12);
+		BoxRoom room = new BoxRoom("Saint-Denis");
+		
+		patient.setDestination(room);
+		patient.setPhysician(phys);
+		patient.setLocation(room);
+		phys.consultation(patient, consultation);
+		phys.endOfConsultation(patient, consultation);
+		
+		// consultation.result already tested in ConsultationTest.
+		if (!phys.getState().equalsIgnoreCase("idle"))
+			fail("Physician has wrong state");
 	}
 
 	@Test
