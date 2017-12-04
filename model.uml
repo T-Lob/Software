@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NhM3UMU_EeecsefrduevSA" name="RootElement">
-  <packagedElement xmi:type="uml:Interface" xmi:id="_dzcw4MnsEee9OPNNLRHemQ" name="Observable"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_jX5Q4MnsEee9OPNNLRHemQ" name="Observer"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_LfPI8MoIEee9OPNNLRHemQ" client="_LxkI4MVDEeecsefrduevSA" supplier="_NhM3UMU_EeecsefrduevSA"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_oWHtUMoLEee9OPNNLRHemQ" client="_ialmAMnqEee9OPNNLRHemQ" supplier="_dzcw4MnsEee9OPNNLRHemQ"/>
   <packagedElement xmi:type="uml:Realization" xmi:id="_QEONsMohEee9OPNNLRHemQ" client="_4n67UMogEee9OPNNLRHemQ" supplier="_zHeKgMogEee9OPNNLRHemQ"/>
@@ -373,9 +371,6 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_UrWJwMrlEee9EJtdmQ6Vlw" name="Room" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="_YLKfkMrlEee9EJtdmQ6Vlw" general="_Fw17YMoLEee9OPNNLRHemQ"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_bN73kMrmEee9EJtdmQ6Vlw" name="patient" visibility="protected" type="_WFe_oMnsEee9OPNNLRHemQ"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_z799UMtDEee9EJtdmQ6Vlw" name="state" visibility="protected">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_7QCA0MtDEee9EJtdmQ6Vlw" name="Patient getPatient"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_-dh3kMtDEee9EJtdmQ6Vlw" name="void setPatient">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_Cb_RMMtEEee9EJtdmQ6Vlw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
@@ -394,9 +389,19 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_03igUMVGEeecsefrduevSA" name="BloodTestRoom">
       <generalization xmi:type="uml:Generalization" xmi:id="_pk3OUMs9Eee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_foKGMNiGEeeTbJisgAfbKw" name="waitingQueue" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_uLZGINiGEeeTbJisgAfbKw" name="ArrayList&lt;Patient> getWaitingQueue()"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_0V7VwNiGEeeTbJisgAfbKw" name="void addToWaitingQueue">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3BBDANiGEeeTbJisgAfbKw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_xp_mQMVGEeecsefrduevSA" name="MRIRoom">
       <generalization xmi:type="uml:Generalization" xmi:id="_o5PecMs9Eee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_g28YENiHEeeTbJisgAfbKw" name="waitingQueue" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nCUVMNiHEeeTbJisgAfbKw" name="ArrayList&lt;Patient> getWaitingQueue"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_pnIbUNiHEeeTbJisgAfbKw" name="void addToWaitingQueue">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_rs8RQNiHEeeTbJisgAfbKw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_eOQbwMVFEeecsefrduevSA" name="BoxRoom">
       <generalization xmi:type="uml:Generalization" xmi:id="_Y1JQsMrlEee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
@@ -413,6 +418,11 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_usesQMVGEeecsefrduevSA" name="RadioRoom">
       <generalization xmi:type="uml:Generalization" xmi:id="_kamv8Ms9Eee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0SRIUNiHEeeTbJisgAfbKw" name="waitingQueue" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_7WLP8NiHEeeTbJisgAfbKw" name="ArrayList&lt;Patient> getWaitingQueue"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9_SAMNiHEeeTbJisgAfbKw" name="void addToWaitingQueue">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ANmR4NiIEeeTbJisgAfbKw" name="patient" type="_WFe_oMnsEee9OPNNLRHemQ"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_eyuawMVFEeecsefrduevSA" name="WaitingRoom">
       <generalization xmi:type="uml:Generalization" xmi:id="_Z6fIIMrlEee9EJtdmQ6Vlw" general="_UrWJwMrlEee9EJtdmQ6Vlw"/>
@@ -574,6 +584,8 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_jX5Q4MnsEee9OPNNLRHemQ" name="Observer"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_dzcw4MnsEee9OPNNLRHemQ" name="Observable"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_FzAXANE8EeeCYaCQiGwUBg" name="events">
     <packagedElement xmi:type="uml:Class" xmi:id="_dG7hwMnvEee9OPNNLRHemQ" name="Event" isAbstract="true">

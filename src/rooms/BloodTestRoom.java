@@ -6,7 +6,7 @@ import human.Patient;
 import others.Database;
 
 public class BloodTestRoom extends Room {
-	private ArrayList<Patient> WaitingQueue = new ArrayList<Patient>();
+	private ArrayList<Patient> waitingQueue = new ArrayList<Patient>();
 	
 	public BloodTestRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
@@ -14,11 +14,11 @@ public class BloodTestRoom extends Room {
 	}
 	
 	public ArrayList<Patient> getWaitingQueue() {
-		return WaitingQueue;
+		return waitingQueue;
 	}
 	
 	public void addToWaitingQueue(Patient patient) {
-		this.WaitingQueue.add(patient);
+		this.waitingQueue.add(patient);
 	}
 
 }
