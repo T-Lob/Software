@@ -59,7 +59,7 @@ public class AbortConsultationTest {
 		abort.execute();
 		
 		if (!ed.getRegisteredPatients().get(3).get(0).equals(patientL4) || ed.getRegisteredPatients().get(3).size() != 2)
-			fail("L4 Patient isn't in the registered list or he's not on the right sport");
+			fail("L4 Patient isn't in the registered list or he's not on the right spot");
 		if (!patientL4.getLocation().equals(ed.waitingRoom))
 			fail("The patient is not in the waiting room");
 		if (!phys.getState().equalsIgnoreCase("idle"))
