@@ -9,7 +9,7 @@ import rooms.*;
 import others.Database;
 import others.ED;
 
-public class Test {
+public class SimErgy {
 	public static void main(String[] args) {
 		ED ed = new ED("ED");
 		
