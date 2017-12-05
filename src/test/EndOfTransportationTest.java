@@ -11,7 +11,7 @@ import human.Transporter;
 import others.Database;
 import others.ED;
 
-public class TransportationTest {
+public class EndOfTransportationTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -54,12 +54,17 @@ public class TransportationTest {
 		Transportation transport3 = new Transportation("Saint-Denis");
 		transport3.execute();
 		
-		if (!trans1.getState().equalsIgnoreCase("transporting") || !trans2.getState().equalsIgnoreCase("transporting") || !trans3.getState().equalsIgnoreCase("transporting"))
-			fail("Transporters are not busy");
-		if (!patient1.getState().equalsIgnoreCase("transported") || !patient2.getState().equalsIgnoreCase("transported") || !patient3.getState().equalsIgnoreCase("transported"))
-			fail("Patients not transported");
-		if (ed.getEventQueue().size() != 3)
-			fail("Event Queue doesn't contain EndOfTransportation");
+		ed.getEventQueue().get(0).execute();
+		ed.getEventQueue().remove(0);
+		ed.getEventQueue().get(0).execute();
+		ed.getEventQueue().remove(0);
+		ed.getEventQueue().get(0).execute();
+		ed.getEventQueue().remove(0);
+		
+		if (!trans1.getState().equalsIgnoreCase("idle") || !trans2.getState().equalsIgnoreCase("idle") || !trans3.getState().equalsIgnoreCase("idle"))
+			fail("Transporters are not idle");
+		if (!patient1.getLocation().equals(ed.bloodTestRoom) || !patient2.getLocation().equals(ed.mriRoom) || !patient3.getLocation().equals(ed.radioRoom))
+			fail("Patients not in the right rooms");
 	}
 
 }
