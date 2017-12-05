@@ -39,6 +39,10 @@ public class ShockRoom extends Room {
 			this.ED.getShockRoomList().get(2).add(this);
 			this.ED.getShockRoomList().get(1).remove(this);
 			this.ED.getShockRoomList().get(0).remove(this);
+		}  else if (state.equalsIgnoreCase("reserved")){
+			this.ED.getShockRoomList().get(0).remove(this);
+			this.ED.getShockRoomList().get(1).remove(this);
+			this.ED.getShockRoomList().get(2).remove(this);
 		}
 	}
 

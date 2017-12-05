@@ -38,6 +38,10 @@ public class BoxRoom extends Room {
 			this.ED.getBoxRoomList().get(2).add(this);
 			this.ED.getBoxRoomList().get(1).remove(this);
 			this.ED.getBoxRoomList().get(0).remove(this);
+		} else if (state.equalsIgnoreCase("reserved")){
+			this.ED.getBoxRoomList().get(0).remove(this);
+			this.ED.getBoxRoomList().get(1).remove(this);
+			this.ED.getBoxRoomList().get(2).remove(this);
 		}
 	}
 
