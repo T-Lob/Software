@@ -13,12 +13,13 @@ public class ConsultationEvent extends Event {
 	private EndOfConsultationEvent endOfConsultationEvent;
 	
 	
-	public ConsultationEvent(String edName) {
+	public ConsultationEvent(String edName, Patient patient) {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("Consultation" + String.valueOf(id));
 		this.occurenceTime=(this.ed.getTime());
 		this.consultation=new Consultation(this.ed.getEDname());
+		this.patient = patient;
 		this.type= "Consultation";
 		Database.addToGeneratedConsultations(this);
 		
@@ -29,12 +30,6 @@ public class ConsultationEvent extends Event {
 	@Override
 	public void execute() {
 		this.physician=this.ed.getNextPhysician();
-		if (this.ed.getNextOnlyPatientShockRoom() != null) {
-			this.patient=this.ed.getNextOnlyPatientShockRoom().getPatient();
-		}
-		else {
-			this.patient=this.ed.getNextOnlyPatientBoxRoom().getPatient();
-		}
 		physician.consultation(patient, consultation);
 		this.endOfConsultationEvent=new EndOfConsultationEvent(this);
 		this.ed.addToEventQueue(endOfConsultationEvent);

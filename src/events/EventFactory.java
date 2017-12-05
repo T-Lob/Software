@@ -1,7 +1,11 @@
 package events;
 
+import others.Database;
+import others.ED;
+
 public class EventFactory {
 	public static Event createEvent(String EDname,String eventType) {
+		ED ed = Database.getEDbyName(EDname);
 		if (eventType == null) {
 			return null;
 		}
@@ -17,7 +21,11 @@ public class EventFactory {
 		} else if (eventType.equalsIgnoreCase("ABORTCONSULTATION")) {
 			return new AbortConsultation(EDname);
 		} else if (eventType.equalsIgnoreCase("CONSULTATION")) {
-			return new ConsultationEvent(EDname);
+			if (ed.getNextOnlyPatientShockRoom() != null) {
+				return new ConsultationEvent(EDname, ed.getNextOnlyPatientShockRoom().getPatient());
+			}else {
+				return new ConsultationEvent(EDname,ed.getNextOnlyPatientBoxRoom().getPatient());
+			}
 		} else if (eventType.equalsIgnoreCase("TRANSPORTATION")) {
 			return new Transportation(EDname);
 		} else if (eventType.equalsIgnoreCase("BLOODTEST")) {
