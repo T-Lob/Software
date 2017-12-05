@@ -10,6 +10,8 @@ import others.Database;
 import others.ED;
 
 public class SimErgy {
+	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		ED ed = new ED("ED");
 		
