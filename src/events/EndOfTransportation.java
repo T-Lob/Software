@@ -7,6 +7,12 @@ public class EndOfTransportation extends Event {
 	private Transporter transporter;
 	private Patient patient;
 	
+	/**
+	 * Constructs an EndOftrasportation Event
+	 * It takes the same ID as the transportation corresponding
+	 * It occurs 5 minutes after the trasnportation has been triggered
+	 * @param transportation the corresponding transportations.
+	 */
 	public EndOfTransportation(Transportation transportation) {
 		this.ed = transportation.getED();
 		this.id = transportation.getID();

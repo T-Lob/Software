@@ -10,6 +10,10 @@ public class MRIEvent extends Event {
 	private MRIScan mri;
 	private Patient patient;
 	
+	/**
+	 * ThE MRIEvent constructor creates the corresponding MRIScan and chose the patient from the waiting queue.
+	 * @param edName The ED in which the MRI occurs.
+	 */
 	public MRIEvent(String edName) {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
@@ -19,8 +23,11 @@ public class MRIEvent extends Event {
 		this.type= "MRI";
 		this.patient=this.ed.mriRoom.getWaitingQueue().get(0);
 
-}
+	}
 
+	/**
+	 * This triggers the check and the EndOfMRIEvent.
+	 */
 	@Override
 	public void execute() {
 		

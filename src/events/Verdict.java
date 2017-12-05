@@ -6,6 +6,11 @@ import others.IDGeneratorEvent;
 
 public class Verdict extends Event {
 
+	/**
+	 * Constructs a Verdict Envent
+	 * <br>Occurs immediatly
+	 * @param eDname The ED in which the event is created.
+	 */
 	public Verdict(String eDname) {
 		this.ed=Database.getEDbyName(eDname);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
@@ -15,6 +20,9 @@ public class Verdict extends Event {
 	}
 		
 
+	/**
+	 * when the physician is idling, he can give his verdict to the patient
+	 */
 	@Override
 	public void execute() {
 		for(int i=0 ; i<ed.getWaitingForVerdictPatients().size(); i++) {

@@ -67,30 +67,6 @@ public class Database {
 			ed.addToNewEnabledEvents("Registration");
 		}
 		if (emergency) {
-			// mettre le patient concerne en 1ere position (ca c'est deja fait normalement)
-			 // checker les onlyPatient rooms et jarter si possible un patient pas trop malade
-			/*for (Room room: ed.getBoxRoomList().get(1)) {
-				if (remplacedPatient==null) {
-					remplacedPatient = room.getPatient();
-				}
-				if (room.getPatient().getLevel() > remplacedPatient.getLevel()) {
-					remplacedPatient=room.getPatient();	
-				}		
-			}
-			for (Room room: ed.getShockRoomList().get(1)) {
-				if (remplacedPatient==null) {
-					remplacedPatient = room.getPatient();
-				}
-				if (room.getPatient().getLevel() > remplacedPatient.getLevel()) {
-					remplacedPatient=room.getPatient();	
-				}		
-			}
-			if (remplacedPatient != null) { // on remet le patient dans le tableau unregistered patient, la room redevient empty
-				ed.addToNewEnabledEvents("ReplacePatient");
-				// ed.getRegisteredPatients().get(remplacedPatient.getLevel()-1).add(0,remplacedPatient);
-				// remplacedPatient.setLocation(ed.waitingRoom);
-			}	*/
-			
 			{	for (Room room: ed.getBoxRoomList().get(2)) { // si pas possible checker les busy rooms et si possible jarter un patient pas trop malade (on recup la room)
 					if (remplacedPatient==null) {
 					remplacedPatient = room.getPatient();

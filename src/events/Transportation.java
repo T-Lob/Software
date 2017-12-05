@@ -9,6 +9,11 @@ public class Transportation extends Event{
 	private Patient patient;
 	private Transporter transporter;
 	
+	/**
+	 * Constructs a transportation event
+	 * <br>Occurs immediatly.
+	 * @param edName The ED in which the event is created.
+	 */
 	public Transportation(String edName) {
 		this.ed = Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
@@ -18,6 +23,9 @@ public class Transportation extends Event{
 		this.patient=this.ed.getNextWaitingForTransportPatient();
 	}
 
+	/**
+	 * a transporter is selected, then the transportation is triggered, followed by the endoftransportation.
+	 */
 	public void execute() {
 		this.transporter=this.ed.getNextTransporter();
 		transporter.transportation (patient);

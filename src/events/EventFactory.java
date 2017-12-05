@@ -3,6 +3,10 @@ package events;
 import others.Database;
 import others.ED;
 
+/**
+ * This Factory creates all the events
+ * For consultation, it checks that a schockroom is available if it is needed and uses a boxroom otherwise.
+ */
 public class EventFactory {
 	public static Event createEvent(String EDname,String eventType) {
 		ED ed = Database.getEDbyName(EDname);

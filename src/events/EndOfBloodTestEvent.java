@@ -7,6 +7,11 @@ public class EndOfBloodTestEvent extends Event {
 	private BloodTest bloodTest;
 	private Patient patient;
 
+	/**
+	 * This constructs a EndOfBloodTestEvent
+	 * Occurs bloodtest.getduration() after the ceoresponding BloodTestEvent
+	 * @param e the corresponding BloodTest
+	 */
 	public EndOfBloodTestEvent(BloodTestEvent e) {
 		this.ed = e.getED();
 		this.id = e.getID();

@@ -2,6 +2,12 @@ package rooms;
 
 public class RoomFactory {
 	
+	/**
+	 * Creates a room between BoxRoom, schockRoom, WaitingRoom, RadioRoom, MRIRoom and BlodtestRoom.
+	 * @param EDname The ED in which you wish to create the room
+	 * @param roomType The type of room to create.
+	 * @return the room created
+	 */
 	public Room createRoom(String EDname, String roomType) {
 		if (roomType == null) {
 			return null;

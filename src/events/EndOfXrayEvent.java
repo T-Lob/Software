@@ -7,6 +7,11 @@ public class EndOfXrayEvent extends Event {
 	private XRay xray;
 	private Patient patient;
 
+	/**
+	 * This constructs a EndOfXRayEvent
+	 * Occurs bloodtest.getduration() after the coresponding XRayEvent
+	 * @param e the corresponding XRay
+	 */
 	public EndOfXrayEvent(XrayEvent e) {
 		this.ed = e.getED();
 		this.id = e.getID();

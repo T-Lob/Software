@@ -13,6 +13,10 @@ public class IDGenerator {
 		return instance;
 	}
 	
+	/**
+	 * This method works by simple increments of 1
+	 * @return an unique ID
+	 */
 	public int getNextID(){
 		return num++;
 	}

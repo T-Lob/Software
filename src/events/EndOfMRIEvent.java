@@ -7,6 +7,11 @@ public class EndOfMRIEvent extends Event {
 	private MRIScan mri;
 	private Patient patient;
 
+	/**
+	 * This constructs a EndOfMRItEvent
+	 * Occurs MRIScan.getduration() after the ceoresponding MRIEvent
+	 * @param e the corresponding MRIEvent
+	 */
 	public EndOfMRIEvent(MRIEvent e) {
 		this.ed = e.getED();
 		this.id = e.getID();

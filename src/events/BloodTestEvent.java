@@ -9,6 +9,10 @@ public class BloodTestEvent extends Event {
 	private BloodTest bloodTest;
 	private Patient patient;
 	
+	/**
+	 * ThE BloodtestEvent constructor creates the corresponding BloodTest and chose the patient from the waiting queue.
+	 * @param edName The ED in which the bloodtest occurs.
+	 */
 	public BloodTestEvent(String edName) {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
@@ -18,8 +22,11 @@ public class BloodTestEvent extends Event {
 		this.patient=this.ed.bloodTestRoom.getWaitingQueue().get(0);
 		this.type= "BloodTest";
 
-}
-
+	}
+	
+	/**
+	 * This simply triggers the BloodTestEvent and theEndOfBloodTestEvent
+	 */
 	@Override
 	public void execute() {
 		this.bloodTest.check(patient);

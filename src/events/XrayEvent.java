@@ -10,6 +10,10 @@ public class XrayEvent extends Event {
 	private XRay xray;
 	private Patient patient;
 	
+	/**
+	 * ThE XRayEvent constructor creates the corresponding XRay and chose the patient from the waiting queue.
+	 * @param edName The ED in which the XRay occurs.
+	 */
 	public XrayEvent(String edName) {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
@@ -19,8 +23,11 @@ public class XrayEvent extends Event {
 		this.type= "XRay";
 		this.patient=this.ed.radioRoom.getWaitingQueue().get(0);
 
-}
+	}
 
+	/**
+	 * This triggers the check and the EndOfXRayEvent.
+	 */
 	@Override
 	public void execute() {
 		this.xray.check(patient);

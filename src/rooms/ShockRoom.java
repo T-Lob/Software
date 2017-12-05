@@ -7,6 +7,12 @@ public class ShockRoom extends Room {
 	
 	private Physician physician;
 	
+	/**
+	 * This constructs a ShockRoom and adds it to the ShockRoomList.
+	 * <br>Its default state is empty.
+	 * <br>Its ID is calculated by the getNextID method.
+	 * @param EDname The name of the ED in which you wish to create a ShockRoom.
+	 */
 	public ShockRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
@@ -16,6 +22,13 @@ public class ShockRoom extends Room {
 		
 	}
 	
+	/**
+	 * This constructs a ShockRoom and adds it to the ShockRoomList.
+	 * <br>Its default state is empty.
+	 * <br>Its ID is calculated by the getNextID method.
+	 * @param EDname The name of the ED in which you wish to create a ShockRoom.
+	 * @param name The name of this room
+	 */
 	public ShockRoom(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
@@ -25,6 +38,11 @@ public class ShockRoom extends Room {
 		this.ED.getShockRoomList().get(0).add(this);	
 	}
 	
+	/**
+	 * This is used to set the state of this ShockRoom, it works by moving this ShockRoom from one line to the other in the ShockRoomList Arraylist
+	 * (only if it is not already in this line)
+	 * @param state The state in which you wish to set this ShockRoom.
+	 */
 	public void setState(String state) {
 		this.state=state;
 		
@@ -49,10 +67,18 @@ public class ShockRoom extends Room {
 		}
 	}
 
+	/**
+	 * 
+	 * @return the physician assigned to this SchockRoom.
+	 */
 	public Physician getPhysician() {
 		return physician;
 	}
 
+	/**
+	 * Sets the physician assigned to this SchockRoom.
+	 * @param physician The physician to assign.
+	 */
 	public void setPhysician(Physician physician) {
 		this.physician = physician;
 	}

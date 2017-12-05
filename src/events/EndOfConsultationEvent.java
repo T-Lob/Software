@@ -9,6 +9,12 @@ public class EndOfConsultationEvent extends Event {
 	private Patient patient;
 	private Physician physician;
 	
+	/**
+	 * This constructs the EndOfConsultationEvent
+	 * Its name is "End of Consultation" followed by the corresponding consultationEvent ID
+	 * The occurence time is calculated using th ocurence time of the calculation events and the duration of the corresponding consultation
+	 * @param e the ConsultationEvent corresponding.
+	 */
 	public EndOfConsultationEvent(ConsultationEvent e) {
 		this.ed = e.getED();
 		this.id = e.getID();

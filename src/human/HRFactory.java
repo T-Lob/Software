@@ -2,6 +2,12 @@ package human;
 
 public class HRFactory {
 	
+	/**
+	 * Creates a human resource between nurse, physician and transporter.
+	 * @param EDname The ED in which you wish to create a human resource
+	 * @param HRType the type of resource to create
+	 * @return the human resource created.
+	 */
 	public static HumanResource createHR(String EDname,String HRType) {
 		if (HRType == null) {
 			return null;
@@ -17,6 +23,13 @@ public class HRFactory {
 		return null;	
 	}
 	
+	/**
+	 * Creates a human resource between nurse, physician and transporter.
+	 * @param EDname The ED in which you wish to create a human resource
+	 * @param HRType the type of resource to create.
+	 * @param name the name you wish to give to this HR.
+	 * @return the human resource created.
+	 */
 	public HumanResource createHR(String EDname,String HRType, String name) {
 		if (HRType == null) {
 			return null;
