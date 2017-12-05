@@ -29,6 +29,7 @@ public class Test {
 		Transporter transporter = (Transporter) HRFactory.createHR("ED", "Transporter");
 		BoxRoom boxroom = new BoxRoom("ED");
 		ShockRoom shockroom = new ShockRoom("ED");
+		ShockRoom shockroom2 = new ShockRoom("ED");
 		Physician physician2 = (Physician) HRFactory.createHR("ED", "Physician");
 		Nurse nurse2 = (Nurse) HRFactory.createHR("ED", "Nurse");
 		Transporter transporter2 = (Transporter) HRFactory.createHR("ED", "Transporter");
@@ -38,34 +39,33 @@ public class Test {
 		ed.setEventQueue(Database.updateEventQueue(ed));
 		while (ed.getTime()<1000) {
 			Event e1=ed.getEventQueue().get(0);
-			System.out.println(e1.getType());
 			ed.setTime(e1.getOccurenceTime());
 			ed=Database.execute(e1, ed);
-			System.out.println(ed.getTime());
+			System.out.println(e1.getType()+ " executed at time: " +ed.getTime());
 			ed.getNewEnabledEvents().remove(e1.getType());
 			ed.addToNewEnabledEvents("PatientArrival");
 			ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getNewEnabledEvents(), ed));
 			ed.setEventQueue(Database.updateEventQueue(ed));
-			System.out.println(patient.getDestination());
-			System.out.println(ed.radioRoom.getWaitingQueue());
-			System.out.println(ed.mriRoom.getWaitingQueue());
-			System.out.println(ed.bloodTestRoom.getWaitingQueue());
-			System.out.println(ed.radioRoom.getState());
-			System.out.println(ed.getState());
-			System.out.println("Event Queue: " + ed.getEventQueue());
-			System.out.println(ed.getOldEnabledEvents());
-			System.out.println(ed.getNewEnabledEvents());
-			for (Patient p: L) {
-				System.out.println(p +" "+p.getState()+" "+ p .getLocation() );
-			}
 			if(ed.getEventQueue().size()==0) {
-				System.out.println("Simulation terminee");
+				System.out.println("Final State:");
+				for (Patient p: L) {
+					System.out.println(p.getName() +" " + p.getSeverityLevel() + " arrived at: " +p.getArrivalTime() + " "+p.getState()+" at " + p.getReleaseTime());
+					System.out.println(p.getName() +" LOS: " + p.LOS() + " -- DTDT: " +p.DTDT());
+				}
+				System.out.println("End of simulation, all the patients should be released.");
 				System.out.println("----------------");
 				break;
 			}
 			System.out.println("----------------");
 			
 		 }
+		if(ed.getTime()>=1000) {
+			System.out.println("State at time: " + ed.getTime() + ":");
+			for (Patient p: L) {
+				System.out.println(p.getName() +" "+p.getState()+" ");
+			}
+			System.out.println("Time out ! Some patients may not have been released yet.");
+		}
 		
 		
 	

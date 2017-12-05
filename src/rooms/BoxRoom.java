@@ -10,6 +10,7 @@ public class BoxRoom extends Room {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.state = "empty";
+		this.ED.upInstanciedBoxRooms();
 		this.ED.getBoxRoomList().get(0).add(this);
 	}
 	
@@ -18,6 +19,7 @@ public class BoxRoom extends Room {
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.state = "empty";
+		this.ED.upInstanciedBoxRooms();
 		this.ED.getBoxRoomList().get(0).add(this);
 	}
 	

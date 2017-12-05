@@ -21,11 +21,13 @@ public class Consultation extends HealthServices {
 	}
 	
 	public void result (Patient patient) {
+		patient.setLocation(this.ED.waitingRoom);
 		double x = 100*(new Random().nextDouble());
 		if(0<=x & x<35) {
 			patient.getPhysician().verdict(patient);
 		}
 		else if(35<=x & x<55) {
+			
 			patient.setDestination(this.ED.radioRoom);
 			patient.setState("waitingForTransport");
 		}

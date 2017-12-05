@@ -20,6 +20,8 @@ public class Patient {
 	private Room location = null;
 	private ArrayList<String[]> history = new ArrayList<String[]> () ;
 	private double arrivalTime;
+	private double ConsultationTime;
+	private double releaseTime;
 	private Physician physician = null;
 	private int bill = 0;
 	private Room destination;
@@ -59,7 +61,7 @@ public class Patient {
 		this.name = "Patient" + String.valueOf(this.ID);
 		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = "L"+String.valueOf((int) Math.floor(new Uniform(1,5).getSample()));
-		this.arrivalTime=new Uniform(700,710).getSample();
+		this.arrivalTime=new Uniform(495,500).getSample();
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
 		
@@ -198,5 +200,28 @@ public class Patient {
 			this.ED.getReleasedPatients().add(this);}
 	
 	
+	}
+
+	public double getReleaseTime() {
+		return releaseTime;
+	}
+
+	public void setReleaseTime(double releaseTime) {
+		this.releaseTime = releaseTime;
+	}
+
+	public double getConsultationTime() {
+		return ConsultationTime;
+	}
+
+	public void setConsultationTime(double ConsultationTime) {
+		this.ConsultationTime = ConsultationTime;
+	}
+	
+	public double LOS() {
+		return releaseTime-arrivalTime;
+	}
+	public double DTDT() {
+		return ConsultationTime-arrivalTime;
 	}
 }

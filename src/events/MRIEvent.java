@@ -17,12 +17,13 @@ public class MRIEvent extends Event {
 		this.occurenceTime=(this.ed.getTime());
 		this.mri=new MRIScan(this.ed.getEDname());
 		this.type= "MRI";
+		this.patient=this.ed.mriRoom.getWaitingQueue().get(0);
 
 }
 
 	@Override
 	public void execute() {
-		this.patient=this.ed.mriRoom.getWaitingQueue().get(0);
+		
 		this.mri.check(patient);
 		this.ed.addToEventQueue(new EndOfMRIEvent(this));
 		this.ed.getNewEnabledEvents().remove("MRI");

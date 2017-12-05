@@ -27,6 +27,8 @@ public class ED {
 	private ArrayList<String> oldEnabledEvents = new ArrayList <String> ();
 	private HashMap<String, Integer> state = new  HashMap<String, Integer> ();
 	private  double time;
+	private int instanciedBoxRooms;
+	private int instanciedShockRooms;
 	private  String EDname;
 	public  final WaitingRoom waitingRoom = new WaitingRoom(this.EDname);
 	public  final RadioRoom radioRoom = new RadioRoom(this.EDname);
@@ -62,10 +64,26 @@ public class ED {
 		return time;
 	}
 	
+	public int getInstanciedBoxRooms() {
+		return instanciedBoxRooms;
+	}
+
+	public void upInstanciedBoxRooms() {
+		this.instanciedBoxRooms +=1;
+	}
+
 	public void setTime(double time) {
 		this.time = time;
 	}
 	
+	public int getInstanciedShockRooms() {
+		return instanciedShockRooms;
+	}
+
+	public void upInstanciedShockRooms() {
+		this.instanciedShockRooms += 1;
+	}
+
 	public ArrayList<Patient> getGeneratedPatients() {
 		return generatedPatients;
 	}
@@ -288,6 +306,19 @@ public class ED {
 	            return  new Double(event2.getOccurenceTime()).compareTo(event1.getOccurenceTime());
 	        }
 	    });
+		AbortConsultation e;
+	    ArrayList<Event> fakeEQ = new ArrayList<Event>(eventQueue);
+	    for (Event event: fakeEQ) {
+    			if(event.getOccurenceTime()>time)
+	    				break;
+	    		if(event.getType()=="AbortConsultation") {
+	    			e=(AbortConsultation) event;
+	    			int index = eventQueue	.indexOf(e);
+		    		eventQueue.remove(index);
+		    		eventQueue.add(0,e);
+		    		break;
+	    			}
+	    }
 		
 	}
 	
@@ -301,8 +332,10 @@ public class ED {
 		state.put("waitingForTransportPatients",this.waitingForTransportPatients.size());
 		state.put("emptyBoxrooms", this.boxRoomList.get(0).size());
 		state.put("onlyPatientBoxrooms", this.boxRoomList.get(1).size());
+		state.put("fullBoxrooms", this.boxRoomList.get(2).size());
 		state.put("emptyShockrooms", this.shockRoomList.get(0).size());
 		state.put("onlyPatientShockrooms", this.shockRoomList.get(1).size());
+		state.put("fullShockrooms", this.shockRoomList.get(2).size());
 		state.put("Nurse",this.nurseList.get(0).size());
 		state.put("Physician",this.physicianList.get(0).size());
 		state.put("Transporter", this.transporterList.get(0).size());

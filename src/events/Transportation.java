@@ -15,11 +15,11 @@ public class Transportation extends Event{
 		this.name = "Transportation" + String.valueOf(this.id);
 		this.occurenceTime = ed.getTime();
 		this.type= "Transportation";
+		this.patient=this.ed.getNextWaitingForTransportPatient();
 	}
 
 	public void execute() {
 		this.transporter=this.ed.getNextTransporter();
-		this.patient=this.ed.getNextWaitingForTransportPatient();
 		transporter.transportation (patient);
 		this.ed.addToEventQueue(new EndOfTransportation(this));
 		this.ed.getNewEnabledEvents().remove("Transportation");

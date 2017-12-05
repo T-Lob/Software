@@ -15,13 +15,13 @@ public class BloodTestEvent extends Event {
 		this.name=("BloodTest" + String.valueOf(id));
 		this.occurenceTime=(this.ed.getTime());
 		this.bloodTest=new BloodTest(this.ed.getEDname());
+		this.patient=this.ed.bloodTestRoom.getWaitingQueue().get(0);
 		this.type= "BloodTest";
 
 }
 
 	@Override
 	public void execute() {
-		this.patient=this.ed.bloodTestRoom.getWaitingQueue().get(0);
 		this.bloodTest.check(patient);
 		this.ed.addToEventQueue(new EndOfBloodTestEvent(this));
 		this.ed.getNewEnabledEvents().remove("BloodTest");

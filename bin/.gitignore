@@ -1,8 +1,8 @@
-/others/
 /core/
+/events/
+/healthServices/
 /human/
+/maths/
+/others/
 /rooms/
 /test/
-/events/
-/maths/
-/healthServices/

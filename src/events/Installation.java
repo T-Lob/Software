@@ -17,6 +17,7 @@ public class Installation extends Event{
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "Patient Installation" + String.valueOf(this.id);
 		this.occurenceTime = ed.getTime();
+		this.patient=this.ed.getNextRegisteredPatient();
 		this.type= "Installation";
 	}
 	
@@ -46,7 +47,6 @@ public class Installation extends Event{
 	@Override
 	public void execute() {
 		this.nurse=this.ed.getNextNurse();
-		this.patient=this.ed.getNextRegisteredPatient();
 		if (this.patient.getLevel()<=2 & this.ed.getNextEmptyShockRoom() != null) {
 			this.room=this.ed.getNextEmptyShockRoom();
 		} else {

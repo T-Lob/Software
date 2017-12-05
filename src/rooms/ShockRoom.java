@@ -11,7 +11,9 @@ public class ShockRoom extends Room {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.state = "empty";
+		this.ED.upInstanciedBoxRooms();
 		this.ED.getShockRoomList().get(0).add(this);
+		
 	}
 	
 	public ShockRoom(String EDname,String name) {
@@ -19,6 +21,7 @@ public class ShockRoom extends Room {
 		this.name=name;
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.state = "empty";
+		this.ED.upInstanciedBoxRooms();
 		this.ED.getShockRoomList().get(0).add(this);	
 	}
 	

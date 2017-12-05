@@ -57,7 +57,6 @@ public class Transporter extends HumanResource{
 	}
 	
 	public void transportation (Patient patient) {
-		patient.getLocation().setState("empty");
 		this.setState("transporting");
 		this.setCurrentPatient(patient);
 		patient.setState("transported");

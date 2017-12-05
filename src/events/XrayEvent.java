@@ -17,12 +17,12 @@ public class XrayEvent extends Event {
 		this.occurenceTime=(this.ed.getTime());
 		this.xray=new XRay(this.ed.getEDname());
 		this.type= "XRay";
+		this.patient=this.ed.radioRoom.getWaitingQueue().get(0);
 
 }
 
 	@Override
 	public void execute() {
-		this.patient=this.ed.radioRoom.getWaitingQueue().get(0);
 		this.xray.check(patient);
 		this.ed.addToEventQueue(new EndOfXrayEvent(this));
 		this.ed.getNewEnabledEvents().remove("Xray");

@@ -55,8 +55,7 @@ public class Database {
 		boolean verdict =false;
 		boolean emergency = false;
 		remplacedPatient=null;
-		if ((ed.getRegisteredPatients().get(0).size() >0 || ed.getRegisteredPatients().get(1).size() >0) & ed.getState().get("emptyBoxrooms") == 0 & ed.getState().get("emptyShockrooms") == 0) {
-			emergency = true;
+		if ((ed.getRegisteredPatients().get(0).size() >0 || ed.getRegisteredPatients().get(1).size() >0) & ed.getState().get("fullBoxrooms") == ed.getInstanciedBoxRooms() & ed.getState().get("fullShockrooms") == ed.getInstanciedShockRooms()) { 
 		}
 		for(Patient patient : ed.getWaitingForVerdictPatients()) {
 			if (patient.getPhysician().getState().equalsIgnoreCase("idle")) {
@@ -70,7 +69,7 @@ public class Database {
 		if (emergency) {
 			// mettre le patient concerne en 1ere position (ca c'est deja fait normalement)
 			 // checker les onlyPatient rooms et jarter si possible un patient pas trop malade
-			for (Room room: ed.getBoxRoomList().get(1)) {
+			/*for (Room room: ed.getBoxRoomList().get(1)) {
 				if (remplacedPatient==null) {
 					remplacedPatient = room.getPatient();
 				}
@@ -90,8 +89,8 @@ public class Database {
 				ed.addToNewEnabledEvents("ReplacePatient");
 				// ed.getRegisteredPatients().get(remplacedPatient.getLevel()-1).add(0,remplacedPatient);
 				// remplacedPatient.setLocation(ed.waitingRoom);
-			}	
-			else 
+			}	*/
+			
 			{	for (Room room: ed.getBoxRoomList().get(2)) { // si pas possible checker les busy rooms et si possible jarter un patient pas trop malade (on recup la room)
 					if (remplacedPatient==null) {
 					remplacedPatient = room.getPatient();

@@ -92,14 +92,15 @@ public class Physician extends HumanResource implements Observer{
 			
 	}
 	
-	public void endOfConsultation (Patient patient, Consultation consultation) {
+	public void endOfConsultation (Patient patient, Consultation consultation)
+		{	patient.setConsultationTime(ED.getTime()-consultation.getDuration());
 			consultation.result(patient);
 			this.setState("idle");
 	}
 	
 	public void verdict (Patient patient) {
+		patient.setReleaseTime(ED.getTime());
 		patient.setState("released");
-		patient.setLocation(this.ED.waitingRoom);
 		this.setState("idle");
 		this.currentPatients.remove(patient);
 	}

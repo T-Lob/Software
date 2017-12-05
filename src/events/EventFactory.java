@@ -21,7 +21,7 @@ public class EventFactory {
 		} else if (eventType.equalsIgnoreCase("ABORTCONSULTATION")) {
 			return new AbortConsultation(EDname);
 		} else if (eventType.equalsIgnoreCase("CONSULTATION")) {
-			if (ed.getNextOnlyPatientShockRoom() != null) {
+			if (ed.getState().get("onlyPatientShockrooms") > 0) {
 				return new ConsultationEvent(EDname, ed.getNextOnlyPatientShockRoom().getPatient());
 			}else {
 				return new ConsultationEvent(EDname,ed.getNextOnlyPatientBoxRoom().getPatient());
