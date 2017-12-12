@@ -60,14 +60,12 @@ public class Physician extends HumanResource implements Observer{
 	 * @param EDname The name of the ED in which you wish to create a Physician.
 	 * @param name The name of this physician.
 	 * @param surname The surname of this physician.
-	 * @param username The username of this physician.
 	 */
-	public Physician(String EDname,String name, String surname, String username) {
+	public Physician(String EDname,String name, String surname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = surname;
 		this.ID = IDGenerator.getInstance().getNextID();
-		this.username = username;
 		this.state = "idle";
 		this.ED.getPhysicianList().get(0).add(this);
 	}

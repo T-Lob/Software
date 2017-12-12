@@ -8,7 +8,6 @@ import others.Resource;
  */
 public abstract class HealthServices extends Resource {
 	protected ProbabilityDistribution probabilityDistribution;
-	protected int cost;
 	protected String outcome;
 	protected double duration;
 	protected int timeOfAvailability;
@@ -45,13 +44,6 @@ public abstract class HealthServices extends Resource {
 		this.outcome = outcome;
 	}
 	
-	/**
-	 * 
-	 * @return The cost of this HS
-	 */
-	public int getCost() {
-		return cost;
-	}
 	
 	/**
 	 * 

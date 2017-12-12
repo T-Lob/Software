@@ -12,4 +12,9 @@ public class WaitingRoom extends Room {
 		this.ED=Database.getEDbyName(EDname);
 	}
 
+	public WaitingRoom(String eDname, String roomName) {
+		this.ED=Database.getEDbyName(eDname);
+		this.name=roomName;
+	}
+
 }

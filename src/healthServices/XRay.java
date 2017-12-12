@@ -15,6 +15,7 @@ import others.Observer;
  */
 public class XRay extends HealthServices implements Observable{
 	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
+	private int cost;
 	
 	/**
 	 * This constructs an XRay
@@ -39,13 +40,25 @@ public class XRay extends HealthServices implements Observable{
 		this.cost=cost;
 		this.duration = this.probabilityDistribution.getSample();
 	}
-	
+	public XRay(String EDname,ProbabilityDistribution probabilityDistribution) {
+		this.ED=Database.getEDbyName(EDname);
+		this.probabilityDistribution= probabilityDistribution;
+		this.duration = this.probabilityDistribution.getSample();
+	}
 	/**
 	 * Sets the duration of this XRay
 	 * @param duration The duration to set
 	 */
 	public void setDuration(int duration) {
 		this.duration = duration;
+	}
+	
+	/**
+	 * 
+	 * @return The cost of this HS
+	 */
+	public int getCost() {
+		return cost;
 	}
 	
 	/**

@@ -21,6 +21,12 @@ public class BloodTestRoom extends Room {
 		this.state="empty";
 	}
 	
+	public BloodTestRoom(String eDname, String roomName) {
+		this.ED=Database.getEDbyName(eDname);
+		this.name=roomName;
+		this.state="empty";
+	}
+
 	/**
 	 * 
 	 * @return The waitingQueue of this BloodTestRoom

@@ -30,17 +30,17 @@ public class HRFactory {
 	 * @param name the name you wish to give to this HR.
 	 * @return the human resource created.
 	 */
-	public HumanResource createHR(String EDname,String HRType, String name) {
+	public static HumanResource createHR(String EDname,String HRType, String name, String surname) {
 		if (HRType == null) {
 			return null;
 		}
 		
 		if (HRType.equalsIgnoreCase("PHYSICIAN")){
-			return new Physician(EDname,name);
+			return new Physician(EDname,name,surname);
 		} else if (HRType.equalsIgnoreCase("NURSE")){
-			return new Nurse(EDname,name);
+			return new Nurse(EDname,name,surname);
 		} else if (HRType.equalsIgnoreCase("TRANSPORTER")) {
-			return new Transporter(EDname,name);
+			return new Transporter(EDname,name,surname);
 		}
 		return null;
 	}

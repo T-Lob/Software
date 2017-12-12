@@ -11,6 +11,7 @@ import others.Database;
  * its duration is random, by default it is defined by Uniform(5,20)
  */
 public class Consultation extends HealthServices {
+	
 
 	/**
 	 * This constructs a Consultation

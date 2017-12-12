@@ -88,6 +88,7 @@ public class ED {
 		return generatedPatients;
 	}
 	
+	
 	public ArrayList<Patient> getArrivedPatients() {
 		return arrivedPatients;
 	}

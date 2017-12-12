@@ -15,6 +15,15 @@ import others.Observer;
  */
 public class BloodTest extends HealthServices implements Observable {
 	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
+	private int cost;
+	
+	/**
+	 * 
+	 * @return The cost of this HS
+	 */
+	public int getCost() {
+		return cost;
+	}
 	
 	/**
 	 * This constructs a BloodTest
@@ -37,6 +46,12 @@ public class BloodTest extends HealthServices implements Observable {
 		this.ED=Database.getEDbyName(EDname);
 		this.probabilityDistribution= probabilityDistribution;
 		this.cost = cost;
+		this.duration = this.probabilityDistribution.getSample();
+	}
+	
+	public BloodTest(String EDname,ProbabilityDistribution probabilityDistribution) {
+		this.ED=Database.getEDbyName(EDname);
+		this.probabilityDistribution= probabilityDistribution;
 		this.duration = this.probabilityDistribution.getSample();
 	}
 	

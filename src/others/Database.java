@@ -13,6 +13,7 @@ public class Database {
 	private static  ArrayList<ED> generatedEDs = new ArrayList<ED>();
 	private static  ArrayList<ConsultationEvent> generatedConsultations = new ArrayList<ConsultationEvent>();
 	public static Patient remplacedPatient = null;
+	private static  ArrayList <Object> generatedResources = new ArrayList <Object> ();
 
 	public static ArrayList<ED> getGeneratedEDs() {
 		return generatedEDs;
@@ -24,6 +25,10 @@ public class Database {
 
 	public static void addToGeneratedEDs(ED ed) {
 		Database.generatedEDs.add(ed);
+	}
+	
+	public static void addToGeneratedResources(Object o) {
+		Database.generatedResources.add(o);
 	}
 	
 	public static void addToGeneratedConsultations(ConsultationEvent c) {
@@ -46,6 +51,11 @@ public class Database {
 		}
 		return null;
 	}
+	
+	public ArrayList<Object> getGeneratedResources() {
+		return generatedResources;
+	}
+
 	public static ArrayList <String> updateEnabledEvents (ArrayList <String> enabledEvents, ED ed) {
 		ed.setOldEnabledEvents(new ArrayList<String>(ed.getNewEnabledEvents()));
 		ed.addToNewEnabledEvents("PatientArrival");
