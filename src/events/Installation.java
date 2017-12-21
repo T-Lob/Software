@@ -22,7 +22,7 @@ public class Installation extends Event{
 		this.ed = Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "Patient Installation" + String.valueOf(this.id);
-		this.occurenceTime = ed.getTime();
+		this.occurenceTime = Database.getTime();
 		this.patient=this.ed.getNextRegisteredPatient();
 		this.type= "Installation";
 	}
@@ -40,7 +40,7 @@ public class Installation extends Event{
 		this.ed = Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "Patient Installation" + String.valueOf(this.id);
-		this.occurenceTime = ed.getTime();
+		this.occurenceTime = Database.getTime();
 		this.nurse = nurse;
 		this.patient = patient;
 		this.room = room;

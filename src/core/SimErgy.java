@@ -39,11 +39,11 @@ public class SimErgy {
 		ed.updateState();
 		ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getOldEnabledEvents(), ed));
 		ed.setEventQueue(Database.updateEventQueue(ed));
-		while (ed.getTime()<1000) {
+		while (Database.getTime()<1000) {
 			Event e1=ed.getEventQueue().get(0);
-			ed.setTime(e1.getOccurenceTime());
+			Database.setTime(e1.getOccurenceTime());
 			ed=Database.execute(e1, ed);
-			System.out.println(e1.getType()+ " executed at time: " +ed.getTime());
+			System.out.println(e1.getType()+ " executed at time: " +Database.getTime());
 			ed.getNewEnabledEvents().remove(e1.getType());
 			ed.addToNewEnabledEvents("PatientArrival");
 			ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getNewEnabledEvents(), ed));
@@ -61,8 +61,8 @@ public class SimErgy {
 			System.out.println("----------------");
 			
 		 }
-		if(ed.getTime()>=1000) {
-			System.out.println("State at time: " + ed.getTime() + ":");
+		if(Database.getTime()>=1000) {
+			System.out.println("State at time: " + Database.getTime() + ":");
 			for (Patient p: L) {
 				System.out.println(p.getName() +" "+p.getState()+" ");
 			}

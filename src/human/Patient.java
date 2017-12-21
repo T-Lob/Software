@@ -314,7 +314,7 @@ public class Patient {
 		this.ED.getArrivedPatients().remove(this);
 		this.ED.getWaitingForTransportPatients().remove(this);
 		this.ED.getWaitingForVerdictPatients().remove(this);
-		String [] event= {state,String.valueOf(this.ED.getTime())};
+		String [] event= {state,String.valueOf(Database.getTime())};
 		this.addEventToHistory(event);
 		
 		if (state.equalsIgnoreCase("registered")){

@@ -18,7 +18,7 @@ public class XrayEvent extends Event {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("XRay" + String.valueOf(id));
-		this.occurenceTime=(this.ed.getTime());
+		this.occurenceTime=(Database.getTime());
 		this.xray=new XRay(this.ed.getEDname());
 		this.type= "XRay";
 		this.patient=this.ed.radioRoom.getWaitingQueue().get(0);

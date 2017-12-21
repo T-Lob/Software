@@ -15,7 +15,7 @@ public class Verdict extends Event {
 		this.ed=Database.getEDbyName(eDname);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("Verdict" + String.valueOf(id));
-		this.occurenceTime=(this.ed.getTime());
+		this.occurenceTime=(Database.getTime());
 		this.type= "Verdict";
 	}
 		

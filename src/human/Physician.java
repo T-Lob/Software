@@ -162,7 +162,7 @@ public class Physician extends HumanResource implements Observer{
 	 * @param consultation The consultation he was gven.
 	 */
 	public void endOfConsultation (Patient patient, Consultation consultation)
-		{	patient.setConsultationTime(ED.getTime()-consultation.getDuration());
+		{	patient.setConsultationTime(Database.getTime()-consultation.getDuration());
 			consultation.result(patient);
 			this.setState("idle");
 	}
@@ -174,7 +174,7 @@ public class Physician extends HumanResource implements Observer{
 	 * @param patient The patient which is waiting for verdict
 	 */
 	public void verdict (Patient patient) {
-		patient.setReleaseTime(ED.getTime());
+		patient.setReleaseTime(Database.getTime());
 		patient.setState("released");
 		this.setState("idle");
 		this.currentPatients.remove(patient);

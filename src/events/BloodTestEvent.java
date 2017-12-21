@@ -17,7 +17,7 @@ public class BloodTestEvent extends Event {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("BloodTest" + String.valueOf(id));
-		this.occurenceTime=(this.ed.getTime());
+		this.occurenceTime=(Database.getTime());
 		this.bloodTest=new BloodTest(this.ed.getEDname());
 		this.patient=this.ed.bloodTestRoom.getWaitingQueue().get(0);
 		this.type= "BloodTest";

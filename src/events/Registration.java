@@ -20,7 +20,7 @@ public class Registration extends Event {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("Registration" + String.valueOf(id));
-		this.occurenceTime=(this.ed.getTime());
+		this.occurenceTime=(Database.getTime());
 		this.type= "Registration";
 	}
 	

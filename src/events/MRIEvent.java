@@ -18,7 +18,7 @@ public class MRIEvent extends Event {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("MRI" + String.valueOf(id));
-		this.occurenceTime=(this.ed.getTime());
+		this.occurenceTime=(Database.getTime());
 		this.mri=new MRIScan(this.ed.getEDname());
 		this.type= "MRI";
 		this.patient=this.ed.mriRoom.getWaitingQueue().get(0);

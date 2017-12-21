@@ -5,12 +5,14 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 import human.*;
+import maths.ProbabilityDistribution;
 import rooms.*;
 import events.*;
 
 
 
 public class ED {
+	public  ArrayList<String[]> toBeGeneratedPatients = new ArrayList<String[]>();
 	private  ArrayList<Patient> generatedPatients = new ArrayList<Patient>();
 	private  ArrayList<Patient> arrivedPatients = new ArrayList<Patient> ();
 	private  ArrayList<ArrayList<Patient>> registeredPatients = new ArrayList<ArrayList<Patient>>();
@@ -26,10 +28,14 @@ public class ED {
 	private ArrayList<String> newEnabledEvents = new ArrayList <String> ();
 	private ArrayList<String> oldEnabledEvents = new ArrayList <String> ();
 	private HashMap<String, Integer> state = new  HashMap<String, Integer> ();
-	private  double time;
 	private int instanciedBoxRooms;
 	private int instanciedShockRooms;
 	private  String EDname;
+	private PatientGeneration L1 = new PatientGeneration(this.EDname,"L1");
+	private PatientGeneration L2 = new PatientGeneration(this.EDname,"L2");
+	private PatientGeneration L3 = new PatientGeneration(this.EDname,"L3");
+	private PatientGeneration L4 = new PatientGeneration(this.EDname,"L4");
+	private PatientGeneration L5 = new PatientGeneration(this.EDname,"L5");
 	public  final WaitingRoom waitingRoom = new WaitingRoom(this.EDname);
 	public  final RadioRoom radioRoom = new RadioRoom(this.EDname);
 	public  final MRIRoom mriRoom = new MRIRoom(this.EDname);
@@ -54,16 +60,14 @@ public class ED {
 		this.newEnabledEvents.add("PatientArrival");
 		this.oldEnabledEvents.add("PatientArrival");
 		Database.addToGeneratedEDs(this);
+		toBeGeneratedPatients.add(new String[] {"lol"});
 	}
 	
 	public String getEDname() {
 		return EDname;
 	}
 
-	public double getTime() {
-		return time;
-	}
-	
+
 	public int getInstanciedBoxRooms() {
 		return instanciedBoxRooms;
 	}
@@ -72,9 +76,7 @@ public class ED {
 		this.instanciedBoxRooms +=1;
 	}
 
-	public void setTime(double time) {
-		this.time = time;
-	}
+	
 	
 	public int getInstanciedShockRooms() {
 		return instanciedShockRooms;
@@ -180,7 +182,7 @@ public class ED {
 	}
 	public Patient getNextGeneratedPatient() {
 		if (this.generatedPatients.size() >0) {
-			return this.generatedPatients.get(9);
+			return this.generatedPatients.get(0);
 		}
 		return null;
 	}
@@ -287,7 +289,7 @@ public class ED {
 	    AbortConsultation e;
 	    ArrayList<Event> fakeEQ = new ArrayList<Event>(eQ);
 	    for (Event event: fakeEQ) {
-    			if(event.getOccurenceTime()>time)
+    			if(event.getOccurenceTime()>Database.getTime())
 	    				break;
 	    		if(event.getType()=="AbortConsultation") {
 	    			e=(AbortConsultation) event;
@@ -310,7 +312,7 @@ public class ED {
 		AbortConsultation e;
 	    ArrayList<Event> fakeEQ = new ArrayList<Event>(eventQueue);
 	    for (Event event: fakeEQ) {
-    			if(event.getOccurenceTime()>time)
+    			if(event.getOccurenceTime()>Database.getTime())
 	    				break;
 	    		if(event.getType()=="AbortConsultation") {
 	    			e=(AbortConsultation) event;
@@ -382,6 +384,54 @@ public class ED {
 		System.out.println(shockRoomList);
 		System.out.println("Event Queue " + eventQueue);
 		System.out.println("------------------------------");
+	}
+
+	public ArrayList<String[]> getToBeGeneratedPatients() {
+		return toBeGeneratedPatients;
+	}
+
+	public void addToBeGeneratedPatients(String[] arrayList) {
+		this.toBeGeneratedPatients.add(arrayList);
+	}
+
+	public PatientGeneration getL1() {
+		return L1;
+	}
+
+	public void setL1(PatientGeneration l1) {
+		L1 = l1;
+	}
+
+	public PatientGeneration getL2() {
+		return L2;
+	}
+
+	public void setL2(PatientGeneration l2) {
+		L2 = l2;
+	}
+
+	public PatientGeneration getL3() {
+		return L3;
+	}
+
+	public void setL3(PatientGeneration l3) {
+		L3 = l3;
+	}
+
+	public PatientGeneration getL4() {
+		return L4;
+	}
+
+	public void setL4(PatientGeneration l4) {
+		L4 = l4;
+	}
+
+	public PatientGeneration getL5() {
+		return L5;
+	}
+
+	public void setL5(PatientGeneration l5) {
+		L5 = l5;
 	}
 
 	

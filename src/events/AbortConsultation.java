@@ -12,7 +12,7 @@ public class AbortConsultation extends Event {
 		this.ed = Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "AbortConsultation" + String.valueOf(this.id);
-		this.occurenceTime = ed.getTime();
+		this.occurenceTime = Database.getTime();
 		this.type= "AbortConsultation";
 		this.patient=Database.remplacedPatient;
 		this.consultationEvent=Database.getConsultationbyPatient(patient);

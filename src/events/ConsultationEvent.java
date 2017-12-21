@@ -24,7 +24,7 @@ public class ConsultationEvent extends Event {
 		this.ed=Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name=("Consultation" + String.valueOf(id));
-		this.occurenceTime=(this.ed.getTime());
+		this.occurenceTime=(Database.getTime());
 		this.consultation=new Consultation(this.ed.getEDname());
 		this.patient = patient;
 		this.type= "Consultation";

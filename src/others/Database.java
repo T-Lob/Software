@@ -14,6 +14,9 @@ public class Database {
 	private static  ArrayList<ConsultationEvent> generatedConsultations = new ArrayList<ConsultationEvent>();
 	public static Patient remplacedPatient = null;
 	private static  ArrayList <Object> generatedResources = new ArrayList <Object> ();
+	private  ArrayList<Patient> toBeGeneratedPatients = new ArrayList<Patient>();
+	private static double time;
+	
 
 	public static ArrayList<ED> getGeneratedEDs() {
 		return generatedEDs;
@@ -147,4 +150,18 @@ public class Database {
 		return ed;
 		
 	}
+
+	public static double getTime() {
+		return time;
+	}
+
+	public static void setTime(double time) {
+		Database.time = time;
+	}
+
+	public ArrayList<Patient> getToBeGeneratedPatients() {
+		return toBeGeneratedPatients;
+	}
+
+	
 }

@@ -18,7 +18,7 @@ public class Transportation extends Event{
 		this.ed = Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "Transportation" + String.valueOf(this.id);
-		this.occurenceTime = ed.getTime();
+		this.occurenceTime = Database.getTime();
 		this.type= "Transportation";
 		this.patient=this.ed.getNextWaitingForTransportPatient();
 	}

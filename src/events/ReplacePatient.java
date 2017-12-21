@@ -10,7 +10,7 @@ public class ReplacePatient extends Event {
 		this.ed = Database.getEDbyName(edName);
 		this.id=IDGeneratorEvent.getInstance().getNextID();
 		this.name = "Replace Patient" + String.valueOf(this.id);
-		this.occurenceTime = ed.getTime();
+		this.occurenceTime = Database.getTime();
 		this.type= "ReplacePatient";
 		this.patient=Database.remplacedPatient;
 	}
