@@ -17,10 +17,11 @@ public class BoxRoom extends Room {
 	 */
 	public BoxRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
+		this.name="BoxRoom";
 		this.ID = IDGenerator.getInstance().getNextID();
 		this.state = "empty";
-		this.ED.upInstanciedBoxRooms();
-		this.ED.getBoxRoomList().get(0).add(this);
+		Database.getEDbyName(EDname).upInstanciedBoxRooms();
+		Database.getEDbyName(EDname).getBoxRoomList().get(0).add(this);
 	}
 	
 	/**

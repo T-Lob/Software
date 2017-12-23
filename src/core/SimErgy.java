@@ -2,6 +2,7 @@ package core;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import events.Event;
 import human.*;
@@ -56,6 +57,11 @@ public class SimErgy {
 				}
 				System.out.println("End of simulation, all the patients should be released.");
 				System.out.println("----------------");
+				System.out.println(Arrays.toString(ed.getToBeGeneratedPatients().get(0)));
+				System.out.println(Arrays.toString(ed.getToBeGeneratedPatients().get(1)));
+				System.out.println(Arrays.toString(ed.getToBeGeneratedPatients().get(2)));
+				System.out.println(Arrays.toString(ed.getToBeGeneratedPatients().get(3)));
+				System.out.println(Arrays.toString(ed.getToBeGeneratedPatients().get(4)));
 				break;
 			}
 			System.out.println("----------------");

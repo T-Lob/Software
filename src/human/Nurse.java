@@ -26,7 +26,7 @@ public class Nurse extends HumanResource {
 		this.name = "Nurse"+String.valueOf(this.ID);
 		this.surname = "Nurse"+String.valueOf(this.ID);
 		this.state = "idle";
-		this.ED.getNurseList().get(0).add(this);
+		//Database.getEDbyName(EDname).getNurseList().get(0).add(this);
 	}
 	
 	/**

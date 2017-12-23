@@ -60,7 +60,13 @@ public class ED {
 		this.newEnabledEvents.add("PatientArrival");
 		this.oldEnabledEvents.add("PatientArrival");
 		Database.addToGeneratedEDs(this);
-		toBeGeneratedPatients.add(new String[] {"lol"});
+		L1.addGeneration(this);
+		L2.addGeneration(this);
+		L3.addGeneration(this);
+		L4.addGeneration(this);
+		L5.addGeneration(this);
+		sortTBGP();
+		
 	}
 	
 	public String getEDname() {
@@ -308,6 +314,7 @@ public class ED {
 
 	            return  new Double(event2.getOccurenceTime()).compareTo(event1.getOccurenceTime());
 	        }
+	       
 	    });
 		AbortConsultation e;
 	    ArrayList<Event> fakeEQ = new ArrayList<Event>(eventQueue);
@@ -323,6 +330,18 @@ public class ED {
 	    			}
 	    }
 		
+	}
+	
+	public void sortTBGP() {
+		Collections.sort(this.toBeGeneratedPatients, new Comparator<String[]>() {
+	        @Override
+	        public int compare(String[] list2, String[] list1)
+	        {
+
+	            return  new Double(Double.parseDouble(list2 [1])).compareTo(Double.parseDouble(list1[1]));
+	        }
+	        
+		});
 	}
 	
 
@@ -433,6 +452,14 @@ public class ED {
 	public void setL5(PatientGeneration l5) {
 		L5 = l5;
 	}
-
+	
+	public Patient getPatientbyId(int ID) {
+		for (Patient patient:generatedPatients) {
+			if (patient.getID()==ID) {
+				return patient;
+			}
+		}
+		return null;
+	}
 	
 }

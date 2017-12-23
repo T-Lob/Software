@@ -1,0 +1,23 @@
+ED: Saint-Denis  
+L1Patient: 2
+L2Patient: 2
+L3Patient: 2 
+L4Patient: 2 
+L5Patient: 2 
+Physician : 2  
+Nurse : 2  
+Transporter: 2 
+BoxRoom: 1 
+ShockRoom: 1
+---------------
+ED: Centrale
+L1Patient: 4
+L2Patient: 5
+L3Patient: 6 
+L4Patient: 7 
+L5Patient: 1 
+Physician : 10  
+Nurse : 11  
+Transporter: 10 
+BoxRoom: 5 
+ShockRoom: 5

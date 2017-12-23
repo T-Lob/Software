@@ -40,14 +40,13 @@ public class PatientGeneration {
 		return ed;
 	}
 
-	public String[] getGeneration() {
-		String [] array= {severityLevel , Double.toString(Database.getTime()+probabilityDistribution.getSample()), this.ed.getEDname()};
+	public String[] getGeneration(ED ed) {
+		String [] array= {severityLevel , Double.toString(Database.getTime()+probabilityDistribution.getSample()), ed.getEDname()};
 		return array;
 	}
 	
 	public void addGeneration(ED ed) {
-		String [] array= {"lol"};
-		ed.getToBeGeneratedPatients().add(getGeneration());
+		ed.getToBeGeneratedPatients().add(getGeneration(ed));
 	}
 
 	}

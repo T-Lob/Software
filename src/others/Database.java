@@ -1,6 +1,7 @@
 package others;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import events.ConsultationEvent;
 import events.Event;
@@ -162,6 +163,29 @@ public class Database {
 	public ArrayList<Patient> getToBeGeneratedPatients() {
 		return toBeGeneratedPatients;
 	}
+	
+	public static void addGeneration(String severityLevel, String EDname) {
+		
+		
+		if (severityLevel.equalsIgnoreCase("L1")){
+			getEDbyName(EDname).getL1().addGeneration(getEDbyName(EDname));
+		} else if (severityLevel.equalsIgnoreCase("L2")){
+			getEDbyName(EDname).getL2().addGeneration(getEDbyName(EDname));
+		} else if (severityLevel.equalsIgnoreCase("L3")){
+			getEDbyName(EDname).getL3().addGeneration(getEDbyName(EDname));
+		} else if (severityLevel.equalsIgnoreCase("L4")){
+			getEDbyName(EDname).getL4().addGeneration(getEDbyName(EDname));
+		} else if (severityLevel.equalsIgnoreCase("L5")){
+			getEDbyName(EDname).getL5().addGeneration(getEDbyName(EDname));
+		}
+		getEDbyName(EDname).sortTBGP();
+		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(0)));
+		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(1)));
+		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(2)));
+		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(3)));
+		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(4)));
+	}
+		
 
 	
 }

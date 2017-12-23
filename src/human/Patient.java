@@ -54,7 +54,7 @@ public class Patient {
 	 * @param severityLevel The security level of this patient
 	 * @param arrivalTime The time at which this patient arrived to the ED
 	 */
-	public Patient(String EDname,String name,String surname,String healthInsurance, String severityLevel,int arrivalTime) {
+	public Patient(String EDname,String name,String surname,String healthInsurance, String severityLevel,double arrivalTime) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.surname=surname;
@@ -67,6 +67,17 @@ public class Patient {
 		
 	}
 	
+	public Patient(String EDname,String name,String surname,String healthInsurance) {
+		this.ED=Database.getEDbyName(EDname);
+		this.name=name;
+		this.surname=surname;
+		this.ID=IDGenerator.getInstance().getNextID();
+		this.healthInsurance = healthInsurance;
+		this.ED.addToEventQueue(new PatientArrival(EDname, this));
+		this.ED.getGeneratedPatients().add(this);
+		
+	}
+	
 	/**
 	 * This constructs a patient with generic name and surname and trigger the PatientArrival event before adding it 
 	 * to the GeneratedPatients list
@@ -74,7 +85,7 @@ public class Patient {
 	 * @param severityLevel The security level of this patient
 	 * @param arrivalTime The time at which this patient arrived to the ED
 	 */
-	public Patient(String EDname, String severityLevel,int arrivalTime) {
+	public Patient(String EDname, String severityLevel,double arrivalTime) {
 		this.ED=Database.getEDbyName(EDname);
 		this.ID=IDGenerator.getInstance().getNextID();
 		this.name = "Patient" + String.valueOf(this.ID);
@@ -98,6 +109,17 @@ public class Patient {
 		this.name = "Patient" + String.valueOf(this.ID);
 		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = "L"+String.valueOf((int) Math.floor(new Uniform(1,5).getSample()));
+		this.arrivalTime=new Uniform(495,500).getSample();
+		this.ED.addToEventQueue(new PatientArrival(EDname, this));
+		this.ED.getGeneratedPatients().add(this);
+		
+	}
+	public Patient(String EDname, String severityLevel) {
+		this.ED=Database.getEDbyName(EDname);
+		this.ID=IDGenerator.getInstance().getNextID();
+		this.name = "Patient" + String.valueOf(this.ID);
+		this.surname = "Patient" + String.valueOf(this.ID);
+		this.severityLevel = severityLevel;
 		this.arrivalTime=new Uniform(495,500).getSample();
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
