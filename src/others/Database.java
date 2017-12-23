@@ -148,6 +148,12 @@ public class Database {
 		e.execute();
 		ed.getEventQueue().remove(e);
 		ed.updateState();
+		if (Database.getTime()>Double.parseDouble(ed.toBeGeneratedPatients.get(0)[1])) {
+			for (int i=0;i<5;i++) {
+			ed.toBeGeneratedPatients.get(i)[1]=String.valueOf(Database.time+Double.parseDouble(ed.toBeGeneratedPatients.get(i)[3]));
+		}
+		}
+			
 		return ed;
 		
 	}

@@ -18,4 +18,17 @@ public class ProbabilityDistributionFactory {
 		return null;	
 	}
 
+	public static ProbabilityDistribution createPD(String PDType, int argument1) {
+		if (PDType == null) {
+			return null;
+		}
+		
+		if (PDType.equalsIgnoreCase("EXPONENTIAL")){
+			return new Exponential(argument1);
+		}  else if (PDType.equalsIgnoreCase("DET")) {
+			return new Det(argument1);
+		}
+		return null;	
+	}
+
 }

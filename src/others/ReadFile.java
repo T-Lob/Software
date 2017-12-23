@@ -28,7 +28,6 @@ public class ReadFile {
 				if (arguments.get(0).equalsIgnoreCase("ED")) {
 					currentED=arguments.get(1);
 					Database.addToGeneratedResources(new ED(arguments.get(1)));
-					Database.getGeneratedEDs().get(0).getNurseList().get(0).add(new Nurse("Saint-Denis"));
 					System.out.println("Created ED "+ arguments.get(1));	
 				}
 				
@@ -49,7 +48,7 @@ public class ReadFile {
 				else if (arguments.get(0).equalsIgnoreCase("Transporter")) {
 					arguments.add(1,currentED);
 					for (int i=0; i<Integer.parseInt(arguments.get(2));i++) {
-						Database.addToGeneratedResources(HRFactory.createHR(arguments.get(1),"NURSE"));
+						Database.addToGeneratedResources(HRFactory.createHR(arguments.get(1),"Transporter"));
 					}
 					System.out.println("Created " + arguments.get(2) + " Transporter(s)" + " in " + arguments.get(1));
 				}

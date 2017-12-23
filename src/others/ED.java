@@ -14,6 +14,7 @@ import events.*;
 public class ED {
 	public  ArrayList<String[]> toBeGeneratedPatients = new ArrayList<String[]>();
 	private  ArrayList<Patient> generatedPatients = new ArrayList<Patient>();
+	private  ArrayList<Patient> historyOfPatients = new ArrayList<Patient>();
 	private  ArrayList<Patient> arrivedPatients = new ArrayList<Patient> ();
 	private  ArrayList<ArrayList<Patient>> registeredPatients = new ArrayList<ArrayList<Patient>>();
 	private  ArrayList<Patient> waitingForTransportPatients = new ArrayList<Patient> ();
@@ -381,29 +382,6 @@ public class ED {
 		return newlyDisabledEvents;
 		
 	}
-	
-	public void display() {
-		for (Patient patient:generatedPatients) {
-		System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
-		}
-		for (Patient patient:arrivedPatients) {
-			System.out.println("Patient " + patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
-		}
-		for (int i=0; i<5; i++) {
-			int j=i+1;
-				for (Patient patient:registeredPatients.get(i)) {
-			System.out.println("RegisteredPatientLevel " + " " + j  + " "+ patient +" "+ patient.getName() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
-		}
-		}
-		for (Patient patient:waitingForTransportPatients) {
-			System.out.println("Patient " + patient +" "+ patient.getLocation() + " "+ patient.getSeverityLevel() + " "+ patient.getArrivalTime() + " "+ patient.getState());
-				}
-		System.out.println(state);
-		System.out.println(boxRoomList);
-		System.out.println(shockRoomList);
-		System.out.println("Event Queue " + eventQueue);
-		System.out.println("------------------------------");
-	}
 
 	public ArrayList<String[]> getToBeGeneratedPatients() {
 		return toBeGeneratedPatients;
@@ -462,4 +440,60 @@ public class ED {
 		return null;
 	}
 	
+	public void display() {
+		System.out.println("------------------------------");
+		System.out.println("State at time: " + Database.getTime() + ":");
+		System.out.println("Generated Patients");
+		for (Patient p:historyOfPatients) {
+			System.out.println(p.getName() +" " + p.getSeverityLevel() + " Arrival Time: " +p.getArrivalTime() + " "+p.getLastHistoryItem());
+			//System.out.println(p.getName() +" LOS: " + p.LOS() + " -- DTDT: " +p.DTDT());
+		}
+		
+		System.out.print("\rIdle Nurses: ");
+		for (Nurse nurse:nurseList.get(0)) {
+			System.out.print(nurse.getName() + "; ");
+		}
+		System.out.print("\rBusy Nurses: ");
+		for (Nurse nurse:nurseList.get(1)) {
+			System.out.print(nurse.getName() + "; ");
+		}
+		System.out.print("\rOffduty Nurses: ");
+		for (Nurse nurse:nurseList.get(2)) {
+			System.out.print(nurse.getName() + "; ");
+		}
+		System.out.print("\rIdle Transporter: ");
+		for (Physician physician:physicianList.get(0)) {
+			System.out.print(physician.getName() + "; ");
+		}
+		System.out.print("\rBusy Physicians: ");
+		for (Physician physician:physicianList.get(1)) {
+			System.out.print(physician.getName() + "; ");
+		}
+		System.out.print("\rOffduty Physicians: ");
+		for (Physician physician:physicianList.get(2)) {
+			System.out.print(physician.getName() + "; ");
+		}
+		System.out.print("\rIdle Transporters: ");
+		for (Transporter transporter:transporterList.get(0)) {
+			System.out.print(transporter.getName() + "; ");
+		}
+		System.out.print("\rBusy Transporters: ");
+		for (Transporter transporter:transporterList.get(1)) {
+			System.out.print(transporter.getName() + "; ");
+		}
+		System.out.print("\rOffduty Transporters: ");
+		for (Transporter transporter:transporterList.get(2)) {
+			System.out.print(transporter.getName() + "; ");
+		}
+		
+		System.out.println("\r------------------------------");
+	}
+
+	public ArrayList<Patient> getHistoryOfPatients() {
+		return historyOfPatients;
+	}
+
+	public void setHistoryOfPatients(ArrayList<Patient> historyOfPatients) {
+		this.historyOfPatients = historyOfPatients;
+	}
 }

@@ -41,7 +41,8 @@ public class PatientGeneration {
 	}
 
 	public String[] getGeneration(ED ed) {
-		String [] array= {severityLevel , Double.toString(Database.getTime()+probabilityDistribution.getSample()), ed.getEDname()};
+		double d =probabilityDistribution.getSample();
+		String [] array= {severityLevel , Double.toString(Database.getTime()+d), ed.getEDname(), Double.toString(d)};
 		return array;
 	}
 	

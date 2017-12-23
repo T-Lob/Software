@@ -27,7 +27,7 @@ public class Physician extends HumanResource implements Observer{
 	 */
 	public Physician(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorPhysician.getInstance().getNextID();
 		this.name = "Physician" + String.valueOf(this.ID);
 		this.surname = "Physician" + String.valueOf(this.ID);
 		this.state = "idle";
@@ -48,7 +48,7 @@ public class Physician extends HumanResource implements Observer{
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = "Physician" + String.valueOf(this.ID);
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorPhysician.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getPhysicianList().get(0).add(this);
 	}
@@ -65,7 +65,7 @@ public class Physician extends HumanResource implements Observer{
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = surname;
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorPhysician.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getPhysicianList().get(0).add(this);
 	}

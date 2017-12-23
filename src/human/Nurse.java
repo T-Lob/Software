@@ -22,7 +22,7 @@ public class Nurse extends HumanResource {
 	 */
 	public Nurse(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorNurse.getInstance().getNextID();
 		this.name = "Nurse"+String.valueOf(this.ID);
 		this.surname = "Nurse"+String.valueOf(this.ID);
 		this.state = "idle";
@@ -41,7 +41,7 @@ public class Nurse extends HumanResource {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = surname;
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorNurse.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getNurseList().get(0).add(this);
 	}
@@ -58,7 +58,7 @@ public class Nurse extends HumanResource {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = "Nurse"+String.valueOf(this.ID);
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorNurse.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getNurseList().get(0).add(this);
 		

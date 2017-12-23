@@ -5,7 +5,7 @@ import events.PatientArrival;
 import maths.Uniform;
 import others.Database;
 import others.ED;
-import others.IDGenerator;
+import others.IDGeneratorPatient;
 import rooms.Room;
 
 /**
@@ -58,23 +58,26 @@ public class Patient {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.surname=surname;
-		this.ID=IDGenerator.getInstance().getNextID();
+		this.ID=IDGeneratorPatient.getInstance().getNextID();
 		this.healthInsurance = healthInsurance;
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
+		this.setState("generated");
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
-		
+		this.ED.getHistoryOfPatients().add(this);
 	}
 	
 	public Patient(String EDname,String name,String surname,String healthInsurance) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
 		this.surname=surname;
-		this.ID=IDGenerator.getInstance().getNextID();
+		this.ID=IDGeneratorPatient.getInstance().getNextID();
 		this.healthInsurance = healthInsurance;
+		this.setState("generated");
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
+		this.ED.getHistoryOfPatients().add(this);
 		
 	}
 	
@@ -87,13 +90,15 @@ public class Patient {
 	 */
 	public Patient(String EDname, String severityLevel,double arrivalTime) {
 		this.ED=Database.getEDbyName(EDname);
-		this.ID=IDGenerator.getInstance().getNextID();
+		this.ID=IDGeneratorPatient.getInstance().getNextID();
 		this.name = "Patient" + String.valueOf(this.ID);
 		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = severityLevel;
 		this.arrivalTime=arrivalTime;
+		this.setState("generated");
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
+		this.ED.getHistoryOfPatients().add(this);
 		
 	}
 	
@@ -105,24 +110,28 @@ public class Patient {
 	 */
 	public Patient(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
-		this.ID=IDGenerator.getInstance().getNextID();
+		this.ID=IDGeneratorPatient.getInstance().getNextID();
 		this.name = "Patient" + String.valueOf(this.ID);
 		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = "L"+String.valueOf((int) Math.floor(new Uniform(1,5).getSample()));
 		this.arrivalTime=new Uniform(495,500).getSample();
+		this.setState("generated");
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
+		this.ED.getHistoryOfPatients().add(this);
 		
 	}
 	public Patient(String EDname, String severityLevel) {
 		this.ED=Database.getEDbyName(EDname);
-		this.ID=IDGenerator.getInstance().getNextID();
+		this.ID=IDGeneratorPatient.getInstance().getNextID();
 		this.name = "Patient" + String.valueOf(this.ID);
 		this.surname = "Patient" + String.valueOf(this.ID);
 		this.severityLevel = severityLevel;
 		this.arrivalTime=new Uniform(495,500).getSample();
+		this.setState("generated");
 		this.ED.addToEventQueue(new PatientArrival(EDname, this));
 		this.ED.getGeneratedPatients().add(this);
+		this.ED.getHistoryOfPatients().add(this);
 		
 	}
 	
@@ -222,12 +231,30 @@ public class Patient {
 	/**
 	 * Prints the history of this patient, line by line.
 	 */
-	public void getHistory() {
+	public void getAllHistory() {
 		for (String[] L: this.history) {
-			System.out.println("State: " + L[0] + " - Time: "  + L[1]);	
+			System.out.println("State: " + L[0] + " at Time: "  + L[1]);	
 		}
 	}
 	
+	public ED getED() {
+		return ED;
+	}
+
+	public void setED(ED eD) {
+		ED = eD;
+	}
+
+	public ArrayList<String[]> getHistory() {
+		return history;
+	}
+	public String getLastHistoryItem() {
+		String [] L =history.get(history.size()-1);
+		return "State: " + L[0] + " at Time: "  + L[1];
+		
+		
+	}
+
 	/**
 	 * adds an event to the history oh this patient
 	 * @param event the event which is to add to the history

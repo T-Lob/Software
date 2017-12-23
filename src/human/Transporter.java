@@ -22,7 +22,7 @@ public class Transporter extends HumanResource{
 	public Transporter(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = "Transporter" + String.valueOf(this.ID);
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorTransporter.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getTransporterList().get(0).add(this);
 	}
@@ -39,7 +39,7 @@ public class Transporter extends HumanResource{
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
 		this.surname = surname;
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorTransporter.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getTransporterList().get(0).add(this);
 	}
@@ -54,7 +54,7 @@ public class Transporter extends HumanResource{
 	public Transporter(String EDname, String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name = name;
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorTransporter.getInstance().getNextID();
 		this.state = "idle";
 		this.ED.getTransporterList().get(0).add(this);
 	}
