@@ -25,27 +25,30 @@ public class CLI {
 		ReadFile.Read();
 		Scanner sc = new Scanner(System.in);
 		while(!(str.equalsIgnoreCase("EXIT"))) {
-			System.out.println("Write your command, help to show all commands, exit to exit the CLI");
+			System.out.println("\n\nWrite your command, help to show all commands, exit to exit the CLI");
 			str = sc.nextLine();
 			str=str.replace("<", "").replace(">", "");
 			String [] array =str.split(" ");
 			String command = array[0];
-			if (command.equalsIgnoreCase("HELP")) {
-				try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
-					String sCurrentLine;
-					while ((sCurrentLine = br.readLine()) != null) {
-						System.out.println(sCurrentLine);
-					}
-					
-			}
-				catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 				try {
+					
 				arguments= Arrays.copyOfRange(array, 1, array.length);
+				if (command.equalsIgnoreCase("HELP")) {
+					try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+						String sCurrentLine;
+						System.out.println("---------HELP----------");
+						while ((sCurrentLine = br.readLine()) != null) {
+							System.out.println(sCurrentLine);
+						}
+						System.out.println("-----------------------");
+						
+				}
+					catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 			
-				if (command.equalsIgnoreCase("CreateED")) {
+				else if (command.equalsIgnoreCase("CreateED")) {
 					Database.addToGeneratedResources(new ED(arguments[0]));
 					System.out.println(Database.getGeneratedEDs());
 					
@@ -120,21 +123,21 @@ public class CLI {
 					else if (arguments.length==3) {
 						Database.addToGeneratedResources(HRFactory.createHR(arguments[0],"Transporter", arguments[1], arguments[2]));	
 					}
-				}
+				} 
 				else if (command.equalsIgnoreCase("setL1arrivalDist")) {
-					Database.getEDbyName(arguments[0]).setL1(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "l1"));
+					Database.getEDbyName(arguments[0]).setL1(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L1"));
 					}
 				else if (command.equalsIgnoreCase("setL2arrivalDist")) {
-					Database.getEDbyName(arguments[0]).setL2(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "l1"));
+					Database.getEDbyName(arguments[0]).setL2(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L2"));
 					}
 				else if (command.equalsIgnoreCase("setL3arrivalDist")) {
-					Database.getEDbyName(arguments[0]).setL3(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "l1"));
+					Database.getEDbyName(arguments[0]).setL3(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L3"));
 					}
 				else if (command.equalsIgnoreCase("setL4arrivalDist")) {
-					Database.getEDbyName(arguments[0]).setL4(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "l1"));
+					Database.getEDbyName(arguments[0]).setL4(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L4"));
 					}
 				else if (command.equalsIgnoreCase("setL5arrivalDist")) {
-					Database.getEDbyName(arguments[0]).setL5(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "l1"));
+					Database.getEDbyName(arguments[0]).setL5(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L5"));
 					}
 				else if (command.equalsIgnoreCase("addPatient")) {
 					if (arguments.length==1) {
@@ -197,15 +200,15 @@ public class CLI {
 					ed.display();
 					}
 				else {
-					System.out.println("This command does not exist");
+					System.out.println("\nThis command does not exist");
 				}
 				
 				}
 				catch (ArrayIndexOutOfBoundsException exception) {
-					System.out.println("Wrong arguments, type help if needed");
+					System.out.println("\nWrong arguments, type help if needed");
 				}
 				catch (NullPointerException exception) {
-					System.out.println("Wrong arguments, type help if needed");
+					System.out.println("\nWrong arguments, type help if needed");
 				}
 				}
 			

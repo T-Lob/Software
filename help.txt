@@ -1,20 +1,39 @@
 createED <EDname> : to allow a user to create an ED with given name
+
 addRoom <EDname, RoomType, RoomName> : to allow to add a room of given type and name to an ED with given name.
+
 addRadioService<EDname, DistType, DistParams> : to allow to add a radiology service to an ED with given name and with DistType, DistParams representing the prob. distribution for the service time of the radiology
+
 addMRI<EDname,DistType, DistParams> : to allow to add an MRI service with given service time to an ED with given name.
+
 addBloodTest<EDname,DistType, DistParams> : to allow to add a blood-test lab service with given service time to an ED with given name.
+
 addNurse <EDname> : to allow to add a nurse with name nurseN, and surname nurseN (N being the unique ID of the nurse) to an ED with given name.
+
 addNurse <EDname, NurseName, NurseSurname> : to allow to add a nurse with given name and surname to an ED with given name.
+
 addPhysi or addPhysician <EDname> : to allow to add a nurse with name physiN, and surname physiN (N being the unique ID of the physician) to an ED with given name.
+
 addPhysi or addPhysician <EDname, PhysiName, PhysiSurname> : to allow to add a Physician with given name and surname to an ED with given name.
+
 addTransp or addTransporter <EDname> : to allow to add a nurse with name TranspN, and surname TranspN (N being the unique ID of the Transporter) to an ED with given name.
+
 addTransp or addTransporter <EDname, TranspName, TranspSurname> : to allow to add a Transporter with given name and surname to an ED with given name.
-setL1arrivalDist <EDname, DistType, DistParams> : to allows to set the distri- bution of arrival for L1-patient in an ED with given name.
-setL2arrivalDist <EDname, DistType, DistParams> : to allows to set the dis- tribution of arrival for L2-patient in an ED with given name
-setL3arrivalDist <EDname, DistType, DistParams> : to allows to set the dis- tribution of arrival for L3-patient in an ED with given name
-setL4arrivalDist <EDname, DistType, DistParams> : to allows to set the dis- tribution of arrival for L4-patient in an ED with given name
-setL5arrivalDist <EDname, DistType, DistParams> : to allows to set the dis- tribution of arrival for L5-patient in an ED with given name
+
+setL1arrivalDist <EDname, DistType, DistParams> : to allows to set the distribution of arrival for L1-patient in an ED with given name.
+
+setL2arrivalDist <EDname, DistType, DistParams> : to allows to set the distribution of arrival for L2-patient in an ED with given name
+
+setL3arrivalDist <EDname, DistType, DistParams> : to allows to set the distribution of arrival for L3-patient in an ED with given name
+
+setL4arrivalDist <EDname, DistType, DistParams> : to allows to set the distribution of arrival for L4-patient in an ED with given name
+
+setL5arrivalDist <EDname, DistType, DistParams> : to allows to set the distribution of arrival for L5-patient in an ED with given name
+
 addPatient <EDname> <PatientName> <PatientSurname> <HealthInsurance>: to register a patient with given name and surname and healt insurance status to an ED with given name
+
 setPatientInsurance <EDname> <PatientID> <HealthInsurance>: set the health insurance of a patient with given ID to a given status (either no-insurance, silver or gold)
+
 executeEvent <EDname>: to execute the first event in the event-queue of an ED with given name
+
 display <EDname>: to display the entire status (patients, resources, queues) of an ED with given name

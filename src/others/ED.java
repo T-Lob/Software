@@ -449,44 +449,44 @@ public class ED {
 			//System.out.println(p.getName() +" LOS: " + p.LOS() + " -- DTDT: " +p.DTDT());
 		}
 		
-		System.out.print("\rIdle Nurses: ");
+		System.out.print("\nIdle Nurses: ");
 		for (Nurse nurse:nurseList.get(0)) {
 			System.out.print(nurse.getName() + "; ");
 		}
-		System.out.print("\rBusy Nurses: ");
+		System.out.print("\nBusy Nurses: ");
 		for (Nurse nurse:nurseList.get(1)) {
 			System.out.print(nurse.getName() + "; ");
 		}
-		System.out.print("\rOffduty Nurses: ");
+		System.out.print("\nOffduty Nurses: ");
 		for (Nurse nurse:nurseList.get(2)) {
 			System.out.print(nurse.getName() + "; ");
 		}
-		System.out.print("\rIdle Transporter: ");
+		System.out.print("\nIdle Transporter: ");
 		for (Physician physician:physicianList.get(0)) {
 			System.out.print(physician.getName() + "; ");
 		}
-		System.out.print("\rBusy Physicians: ");
+		System.out.print("\nBusy Physicians: ");
 		for (Physician physician:physicianList.get(1)) {
 			System.out.print(physician.getName() + "; ");
 		}
-		System.out.print("\rOffduty Physicians: ");
+		System.out.print("\nOffduty Physicians: ");
 		for (Physician physician:physicianList.get(2)) {
 			System.out.print(physician.getName() + "; ");
 		}
-		System.out.print("\rIdle Transporters: ");
+		System.out.print("\nIdle Transporters: ");
 		for (Transporter transporter:transporterList.get(0)) {
 			System.out.print(transporter.getName() + "; ");
 		}
-		System.out.print("\rBusy Transporters: ");
+		System.out.print("\nBusy Transporters: ");
 		for (Transporter transporter:transporterList.get(1)) {
 			System.out.print(transporter.getName() + "; ");
 		}
-		System.out.print("\rOffduty Transporters: ");
+		System.out.print("\nOffduty Transporters: ");
 		for (Transporter transporter:transporterList.get(2)) {
 			System.out.print(transporter.getName() + "; ");
 		}
 		
-		System.out.println("\r------------------------------");
+		System.out.println("\n------------------------------");
 	}
 
 	public ArrayList<Patient> getHistoryOfPatients() {
