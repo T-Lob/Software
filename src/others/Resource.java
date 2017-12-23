@@ -21,7 +21,4 @@ public abstract class Resource {
 	public int getID() {
 		return ID;
 	}
-	public boolean isAvailable(){
-		return this.state == "empty" || this.state =="idle";
-	}
 }

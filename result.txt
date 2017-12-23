@@ -1,0 +1,33 @@
+------------------------------
+
+State at time: 0.0:
+
+Generated Patients
+
+Patient0 L1 Arrival Time: 429.9430828495917 State: generated at Time: 0.0
+Patient1 L1 Arrival Time: 425.6414829270103 State: generated at Time: 0.0
+Patient2 L2 Arrival Time: 83.16225929942445 State: generated at Time: 0.0
+Patient3 L2 Arrival Time: 542.4185554956348 State: generated at Time: 0.0
+Patient4 L3 Arrival Time: 888.8883510084388 State: generated at Time: 0.0
+Patient5 L3 Arrival Time: 409.72536157334514 State: generated at Time: 0.0
+Patient6 L4 Arrival Time: 617.609208371754 State: generated at Time: 0.0
+Patient7 L4 Arrival Time: 641.9508859306924 State: generated at Time: 0.0
+Patient8 L5 Arrival Time: 484.5324038244477 State: generated at Time: 0.0
+Patient9 L5 Arrival Time: 145.3965498224884 State: generated at Time: 0.0
+
+Idle Nurses: Nurse0; Nurse1; 
+Busy Nurses: 
+Offduty Nurses: 
+Idle Physicians: Physician0; Physician1; 
+Busy Physicians: 
+Offduty Physicians: 
+Idle Transporters: Transporter0; Transporter0; 
+Busy Transporters: 
+Offduty Transporters: 
+Empty BoxRooms: BoxRoom0; 
+BoxRooms with a patient waiting for a Physician: 
+Full BoxRooms: 
+Empty ShockRooms: ShockRoom0; 
+ShockRooms with a patient waiting for a Physician: 
+Full ShockRooms: 
+------------------------------

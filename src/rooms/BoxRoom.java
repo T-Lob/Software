@@ -17,8 +17,8 @@ public class BoxRoom extends Room {
 	 */
 	public BoxRoom(String EDname) {
 		this.ED=Database.getEDbyName(EDname);
-		this.name="BoxRoom";
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorBoxRoom.getInstance().getNextID();
+		this.name="BoxRoom" + String.valueOf(this.ID);
 		this.state = "empty";
 		Database.getEDbyName(EDname).upInstanciedBoxRooms();
 		Database.getEDbyName(EDname).getBoxRoomList().get(0).add(this);
@@ -34,7 +34,7 @@ public class BoxRoom extends Room {
 	public BoxRoom(String EDname,String name) {
 		this.ED=Database.getEDbyName(EDname);
 		this.name=name;
-		this.ID = IDGenerator.getInstance().getNextID();
+		this.ID = IDGeneratorBoxRoom.getInstance().getNextID();
 		this.state = "empty";
 		this.ED.upInstanciedBoxRooms();
 		this.ED.getBoxRoomList().get(0).add(this);

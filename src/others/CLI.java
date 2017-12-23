@@ -1,8 +1,10 @@
 package others;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -21,7 +23,7 @@ public class CLI {
 	private static final String FILENAME = "./help.txt";
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		ReadFile.Read();
 		Scanner sc = new Scanner(System.in);
 		while(!(str.equalsIgnoreCase("EXIT"))) {
@@ -190,8 +192,8 @@ public class CLI {
 						}
 						}
 						catch (IndexOutOfBoundsException e) {
-							System.out.println("Number is too high, final state displayed");
-							Database.getEDbyName(arguments[0]).display();
+							System.out.println("\n \n Number is too high, final state displayed");
+							Database.getEDbyName(arguments[0]).displayFinalState();
 						}
 					}
 				}
@@ -200,21 +202,26 @@ public class CLI {
 					ed.display();
 					}
 				else {
-					System.out.println("\nThis command does not exist");
+					if(!command.equalsIgnoreCase("exit"))
+					System.out.println("\nThis command does not exist, type help if needed");
 				}
 				
 				}
 				catch (ArrayIndexOutOfBoundsException exception) {
-					System.out.println("\nWrong arguments, type help if needed");
+					System.out.println("\nWrong arguments, maybe you need more than " + arguments.length +  " arguments. Type help if needed.");
 				}
 				catch (NullPointerException exception) {
-					System.out.println("\nWrong arguments, type help if needed");
+					System.out.println("\nWrong arguments, maybe ED \"" + arguments[0] + "\" does not exist. Type help if needed. ");
 				}
+				catch (NumberFormatException exception) {
+					System.out.println("\nWrong arguments, one or more of the arguments should be a number. Type help if needed.");
+				}
+				
 				}
 			
 		
 	
 	sc.close();
-	System.out.println("on sort de la boucle");
+	System.out.println("Exited");
 	}
 }

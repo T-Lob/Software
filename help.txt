@@ -36,4 +36,7 @@ setPatientInsurance <EDname> <PatientID> <HealthInsurance>: set the health insur
 
 executeEvent <EDname>: to execute the first event in the event-queue of an ED with given name
 
+executeEvent <EDname> <N>: to execute the N first events in the event-queue of an ED with given name, if N is too high displays the final state.
+
 display <EDname>: to display the entire status (patients, resources, queues) of an ED with given name
+

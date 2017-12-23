@@ -20,9 +20,9 @@ public class HRFactoryTest {
 		ED ed = new ED("Saint-Denis");
 		HRFactory factory = new HRFactory();
 		
-		HumanResource phys = factory.createHR("Saint-Denis", "physician", "Léo");
-		HumanResource nurse = factory.createHR("Saint-Denis", "nurse", "Simon");
-		HumanResource transporter = factory.createHR("Saint-Denis", "transporter", "Pierre");
+		HumanResource phys = factory.createHR("Saint-Denis", "physician", "Leo","Saiquilol");
+		HumanResource nurse = factory.createHR("Saint-Denis", "nurse", "Simon", "Cadere");
+		HumanResource transporter = factory.createHR("Saint-Denis", "transporter", "Pierre","Racaillou");
 		
 		if (!(phys instanceof Physician))
 			fail("mauvaise instanciation de Physician");

@@ -1,4 +1,10 @@
 package others;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,6 +47,7 @@ public class ED {
 	public  final RadioRoom radioRoom = new RadioRoom(this.EDname);
 	public  final MRIRoom mriRoom = new MRIRoom(this.EDname);
 	public  final BloodTestRoom bloodTestRoom = new BloodTestRoom(this.EDname);
+	private static final String FILENAME = "./result.txt";
 	
 	
 	@SuppressWarnings("unchecked")
@@ -440,53 +447,175 @@ public class ED {
 		return null;
 	}
 	
-	public void display() {
-		System.out.println("------------------------------");
-		System.out.println("State at time: " + Database.getTime() + ":");
-		System.out.println("Generated Patients");
+	public void display() throws FileNotFoundException, UnsupportedEncodingException {
+		PrintWriter writer = new PrintWriter("result.txt", "UTF-8");
+		writer.println("------------------------------");
+		writer.println("\nState at time: " + Database.getTime() + ":");
+		writer.println("\nGenerated Patients\n");
 		for (Patient p:historyOfPatients) {
-			System.out.println(p.getName() +" " + p.getSeverityLevel() + " Arrival Time: " +p.getArrivalTime() + " "+p.getLastHistoryItem());
-			//System.out.println(p.getName() +" LOS: " + p.LOS() + " -- DTDT: " +p.DTDT());
+			writer.println(p.getName() +" " + p.getSeverityLevel() + " Arrival Time: " +p.getArrivalTime() + " "+p.getLastHistoryItem());
+			//writer.println(p.getName() +" LOS: " + p.LOS() + " -- DTDT: " +p.DTDT());
 		}
 		
-		System.out.print("\nIdle Nurses: ");
+		writer.print("\nIdle Nurses: ");
 		for (Nurse nurse:nurseList.get(0)) {
-			System.out.print(nurse.getName() + "; ");
+			writer.print(nurse.getName() + "; ");
 		}
-		System.out.print("\nBusy Nurses: ");
+		writer.print("\nBusy Nurses: ");
 		for (Nurse nurse:nurseList.get(1)) {
-			System.out.print(nurse.getName() + "; ");
+			writer.print(nurse.getName() + "; ");
 		}
-		System.out.print("\nOffduty Nurses: ");
+		writer.print("\nOffduty Nurses: ");
 		for (Nurse nurse:nurseList.get(2)) {
-			System.out.print(nurse.getName() + "; ");
+			writer.print(nurse.getName() + "; ");
 		}
-		System.out.print("\nIdle Transporter: ");
+		writer.print("\nIdle Physicians: ");
 		for (Physician physician:physicianList.get(0)) {
-			System.out.print(physician.getName() + "; ");
+			writer.print(physician.getName() + "; ");
 		}
-		System.out.print("\nBusy Physicians: ");
+		writer.print("\nBusy Physicians: ");
 		for (Physician physician:physicianList.get(1)) {
-			System.out.print(physician.getName() + "; ");
+			writer.print(physician.getName() + "; ");
 		}
-		System.out.print("\nOffduty Physicians: ");
+		writer.print("\nOffduty Physicians: ");
 		for (Physician physician:physicianList.get(2)) {
-			System.out.print(physician.getName() + "; ");
+			writer.print(physician.getName() + "; ");
 		}
-		System.out.print("\nIdle Transporters: ");
+		writer.print("\nIdle Transporters: ");
 		for (Transporter transporter:transporterList.get(0)) {
-			System.out.print(transporter.getName() + "; ");
+			writer.print(transporter.getName() + "; ");
 		}
-		System.out.print("\nBusy Transporters: ");
+		writer.print("\nBusy Transporters: ");
 		for (Transporter transporter:transporterList.get(1)) {
-			System.out.print(transporter.getName() + "; ");
+			writer.print(transporter.getName() + "; ");
 		}
-		System.out.print("\nOffduty Transporters: ");
+		writer.print("\nOffduty Transporters: ");
 		for (Transporter transporter:transporterList.get(2)) {
-			System.out.print(transporter.getName() + "; ");
+			writer.print(transporter.getName() + "; ");
+		}
+		writer.print("\nEmpty BoxRooms: ");
+		for (BoxRoom b:boxRoomList.get(0)) {
+			writer.print(b.getName() + "; ");
+		}
+		writer.print("\nBoxRooms with a patient waiting for a Physician: ");
+		for (BoxRoom b:boxRoomList.get(1)) {
+			writer.print(b.getName() + "; ");
+		}
+		writer.print("\nFull BoxRooms: ");
+		for (BoxRoom b:boxRoomList.get(2)) {
+			writer.print(b.getName() + "; ");
+		}
+		writer.print("\nEmpty ShockRooms: ");
+		for (ShockRoom s:shockRoomList.get(0)) {
+			writer.print(s.getName() + "; ");
+		}
+		writer.print("\nShockRooms with a patient waiting for a Physician: ");
+		for (ShockRoom s:shockRoomList.get(1)) {
+			writer.print(s.getName() + "; ");
+		}
+		writer.print("\nFull ShockRooms: ");
+		for (ShockRoom s:shockRoomList.get(2)) {
+			writer.print(s.getName() + "; ");
 		}
 		
-		System.out.println("\n------------------------------");
+		writer.println("\n------------------------------");
+		writer.close();
+		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+			String sCurrentLine;
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+			
+	}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public void displayFinalState() throws FileNotFoundException, UnsupportedEncodingException {
+		PrintWriter writer = new PrintWriter("result.txt", "UTF-8");
+		writer.println("------------------------------");
+		writer.println("State at time: " + Database.getTime() + ":");
+		writer.println("Generated Patients");
+		for (Patient p:historyOfPatients) {
+			writer.println(p.getName() +" " + p.getSeverityLevel() + " Arrival Time: " +p.getArrivalTime() + " "+p.getLastHistoryItem());
+			writer.println(p.getName() +" LOS: " + p.LOS() + " -- DTDT: " +p.DTDT());
+		}
+		
+		writer.print("\nIdle Nurses: ");
+		for (Nurse nurse:nurseList.get(0)) {
+			writer.print(nurse.getName() + "; ");
+		}
+		writer.print("\nBusy Nurses: ");
+		for (Nurse nurse:nurseList.get(1)) {
+			writer.print(nurse.getName() + "; ");
+		}
+		writer.print("\nOffduty Nurses: ");
+		for (Nurse nurse:nurseList.get(2)) {
+			writer.print(nurse.getName() + "; ");
+		}
+		writer.print("\nIdle Physicians: ");
+		for (Physician physician:physicianList.get(0)) {
+			writer.print(physician.getName() + "; ");
+		}
+		writer.print("\nBusy Physicians: ");
+		for (Physician physician:physicianList.get(1)) {
+			writer.print(physician.getName() + "; ");
+		}
+		writer.print("\nOffduty Physicians: ");
+		for (Physician physician:physicianList.get(2)) {
+			writer.print(physician.getName() + "; ");
+		}
+		writer.print("\nIdle Transporters: ");
+		for (Transporter transporter:transporterList.get(0)) {
+			writer.print(transporter.getName() + "; ");
+		}
+		writer.print("\nBusy Transporters: ");
+		for (Transporter transporter:transporterList.get(1)) {
+			writer.print(transporter.getName() + "; ");
+		}
+		writer.print("\nOffduty Transporters: ");
+		for (Transporter transporter:transporterList.get(2)) {
+			writer.print(transporter.getName() + "; ");
+		}
+		writer.print("\nEmpty BoxRooms: ");
+		for (BoxRoom b:boxRoomList.get(0)) {
+			writer.print(b.getName() + "; ");
+		}
+		writer.print("\nBoxRooms with a patient waiting for a Physician: ");
+		for (BoxRoom b:boxRoomList.get(1)) {
+			writer.print(b.getName() + "; ");
+		}
+		writer.print("\nFull BoxRooms: ");
+		for (BoxRoom b:boxRoomList.get(2)) {
+			writer.print(b.getName() + "; ");
+		}
+		writer.print("\nEmpty ShockRooms: ");
+		for (ShockRoom s:shockRoomList.get(0)) {
+			writer.print(s.getName() + "; ");
+		}
+		writer.print("\nShockRooms with a patient waiting for a Physician: ");
+		for (ShockRoom s:shockRoomList.get(1)) {
+			writer.print(s.getName() + "; ");
+		}
+		writer.print("\nFull ShockRooms: ");
+		for (ShockRoom s:shockRoomList.get(2)) {
+			writer.print(s.getName() + "; ");
+		}
+		
+		writer.println("\n------------------------------");
+		writer.close();
+		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+			String sCurrentLine;
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+			
+	}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public ArrayList<Patient> getHistoryOfPatients() {

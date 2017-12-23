@@ -83,29 +83,10 @@ public class PhysicianTest {
 			fail("Physician not added to the offduty physicians");
 	}
 
-	@Test
-	public void testGetUsername() {
-		
-		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri", "Smokoco");
-		
-		if (!phys.getUsername().equalsIgnoreCase("Smokoco"))
-			fail("Wrong username");
-	}
-
-	@Test
-	public void testSetUsername() {
-		
-		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri", "Smokoco");
-		
-		phys.setUsername("T-Lob");
-		if (!phys.getUsername().equalsIgnoreCase("t-lob"))
-			fail("Username not changed");
-	}
-
-	@Test
+	
 	public void testGetCurrentPatients() {
 		
-		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri", "Smokoco");
+		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri");
 		Patient patient = new Patient("Saint-Denis");
 		
 		phys.getCurrentPatients().add(patient);
@@ -116,7 +97,7 @@ public class PhysicianTest {
 	@Test
 	public void testGetHistoryPatients() {
 		
-		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri", "Smokoco");
+		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri");
 		Patient patient = new Patient("Saint-Denis");
 		
 		phys.getHistoryPatients().add(patient);
@@ -127,7 +108,7 @@ public class PhysicianTest {
 	@Test
 	public void testGetMessageBox() {
 		
-		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri", "Smokoco");
+		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri");
 		
 		phys.getMessageBox().add("bonjour");
 		if (!phys.getMessageBox().get(0).equalsIgnoreCase("bonjour"))
@@ -137,7 +118,7 @@ public class PhysicianTest {
 	@Test
 	public void testGetLastMessage() {
 		
-		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri", "Smokoco");
+		Physician phys = new Physician("Saint-Denis", "Hamza", "Kadiri");
 		
 		phys.getMessageBox().add("bonjour");
 		phys.getMessageBox().add("hello");

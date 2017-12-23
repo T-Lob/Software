@@ -14,7 +14,7 @@ import rooms.RoomFactory;
 
 public class ReadFile {
 	
-	private static final String FILENAME = "./scenario.txt";
+	private static final String FILENAME = "./my_symergy.ini";
 
 	public static void Read() {
 
@@ -94,13 +94,16 @@ public class ReadFile {
 					arguments.add(1,currentED);
 					for (int i=0; i<Integer.parseInt(arguments.get(2));i++) {
 						Database.addToGeneratedResources(RoomFactory.createRoom(arguments.get(1), "BoxRoom"));
+						
 					}
+					System.out.println("Created " + arguments.get(2) + " BoxRoom(s)" + " in " + arguments.get(1));
 				} 
 				else if (arguments.get(0).equalsIgnoreCase("ShockRoom")) {
 					arguments.add(1,currentED);
 					for (int i=0; i<Integer.parseInt(arguments.get(2));i++) {
 					Database.addToGeneratedResources(RoomFactory.createRoom(arguments.get(1), "ShockRoom"));
 					}
+					System.out.println("Created " + arguments.get(2) + " ShockRoom(s)" + " in " + arguments.get(1));
 				} 
 
 				else if (arguments.get(0).substring(0,1).equals("-")) {
