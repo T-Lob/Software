@@ -43,7 +43,7 @@ public class ReadFile {
 					arguments.add(1,currentED);
 					System.out.println(arguments);
 					for (int i=0; i<Integer.parseInt(arguments.get(2));i++) {
-						Database.addToGeneratedResources(RoomFactory.createRoom("test", "BoxRoom"));
+						Database.addToGeneratedResources(RoomFactory.createRoom(arguments.get(1), "BoxRoom"));
 					}
 				} 
 				else if (arguments.get(0).equalsIgnoreCase("ShockRoom")) {
