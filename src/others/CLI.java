@@ -1,5 +1,8 @@
 package others;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -15,8 +18,11 @@ import rooms.RoomFactory;
 public class CLI {
 	static String str="";
 	static String [] arguments;
+	private static final String FILENAME = "./help.txt";
+
 	
 	public static void main(String[] args) {
+		ReadFile.Read();
 		Scanner sc = new Scanner(System.in);
 		while(!(str.equalsIgnoreCase("EXIT"))) {
 			System.out.println("Write your command, help to show all commands");
@@ -25,8 +31,17 @@ public class CLI {
 			String [] array =str.split(" ");
 			String command = array[0];
 			System.out.println("Command : " + command);
-			if (str=="help") {
-				System.out.println("create ED ");
+			if (command.equalsIgnoreCase("HELP")) {
+				try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+					String sCurrentLine;
+					while ((sCurrentLine = br.readLine()) != null) {
+						System.out.println(sCurrentLine);
+					}
+					
+			}
+				catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			if (array.length >1) {
 				//String argument=array[1];
