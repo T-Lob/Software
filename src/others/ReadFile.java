@@ -13,6 +13,7 @@ import rooms.RoomFactory;
 
 
 public class ReadFile {
+	private static ArrayList<String> EDnames = new ArrayList<String>();
 	
 	private static final String FILENAME = "./my_symergy.ini";
 
@@ -27,6 +28,7 @@ public class ReadFile {
 				ArrayList<String> arguments = new ArrayList<String>(Arrays.asList(sCurrentLine.replace(" ","").replace(",",":").split(":")));
 				if (arguments.get(0).equalsIgnoreCase("ED")) {
 					currentED=arguments.get(1);
+					EDnames.add(currentED);
 					Database.addToGeneratedResources(new ED(arguments.get(1)));
 					System.out.println("Created ED "+ arguments.get(1));	
 				}
@@ -117,6 +119,14 @@ public class ReadFile {
 			e.printStackTrace();
 		}
 
+	}
+
+	public static ArrayList<String> getEDnames() {
+		return EDnames;
+	}
+
+	public static void setEDnames(ArrayList<String> eDnames) {
+		EDnames = eDnames;
 	}
 
 	

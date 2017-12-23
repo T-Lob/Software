@@ -1,33 +1,66 @@
 ------------------------------
-
-State at time: 0.0:
-
+State at time: 1042.0891876064366:
 Generated Patients
+Patient10 L1 Arrival Time: 423.5183647919823 State: released at Time: 478.3104713000517
+Patient10 LOS: 54.79210650806937 -- DTDT: 2.0
+Patient11 L1 Arrival Time: 367.54043053211325 State: released at Time: 396.63004000312617
+Patient11 LOS: 29.08960947101292 -- DTDT: 2.0
+Patient12 L1 Arrival Time: 720.3730957683292 State: released at Time: 759.3095979853833
+Patient12 LOS: 38.93650221705411 -- DTDT: 2.0
+Patient13 L1 Arrival Time: 350.4251796980762 State: released at Time: 379.72345551439554
+Patient13 LOS: 29.298275816319347 -- DTDT: 2.0
+Patient14 L2 Arrival Time: 468.0537681537081 State: released at Time: 486.316779469807
+Patient14 LOS: 18.26301131609887 -- DTDT: 2.0
+Patient15 L2 Arrival Time: 52.16017384990823 State: released at Time: 131.92748026931292
+Patient15 LOS: 79.76730641940469 -- DTDT: 2.0
+Patient16 L2 Arrival Time: 227.62848646910726 State: released at Time: 262.3930909229207
+Patient16 LOS: 34.76460445381343 -- DTDT: 2.0
+Patient17 L2 Arrival Time: 594.8048585769188 State: released at Time: 679.3476918090007
+Patient17 LOS: 84.54283323208188 -- DTDT: 2.0
+Patient18 L2 Arrival Time: 7.687925206666946 State: released at Time: 22.11778223187748
+Patient18 LOS: 14.429857025210534 -- DTDT: 2.000000000000001
+Patient19 L3 Arrival Time: 967.974099540252 State: released at Time: 1042.0891876064366
+Patient19 LOS: 74.11508806618451 -- DTDT: 2.0
+Patient20 L3 Arrival Time: 861.5760718478438 State: released at Time: 877.4016266303082
+Patient20 LOS: 15.825554782464451 -- DTDT: 2.0
+Patient21 L3 Arrival Time: 623.2865743913839 State: released at Time: 737.5259726589925
+Patient21 LOS: 114.23939826760864 -- DTDT: 2.0
+Patient22 L3 Arrival Time: 949.9248477773748 State: released at Time: 967.0018651767485
+Patient22 LOS: 17.077017399373744 -- DTDT: 2.0
+Patient23 L3 Arrival Time: 913.5220968540084 State: released at Time: 994.2503209709433
+Patient23 LOS: 80.72822411693494 -- DTDT: 2.0
+Patient24 L3 Arrival Time: 258.7429334108562 State: released at Time: 361.21239874378364
+Patient24 LOS: 102.46946533292743 -- DTDT: 2.0
+Patient25 L4 Arrival Time: 94.35893265128537 State: released at Time: 211.3415160959441
+Patient25 LOS: 116.98258344465872 -- DTDT: 2.0
+Patient26 L4 Arrival Time: 157.34215858671763 State: released at Time: 190.47547424873883
+Patient26 LOS: 33.133315662021204 -- DTDT: 2.0
+Patient27 L4 Arrival Time: 880.1649806598472 State: released at Time: 896.5980410675802
+Patient27 LOS: 16.433060407733024 -- DTDT: 2.0
+Patient28 L4 Arrival Time: 844.8357775360521 State: released at Time: 896.5980410675802
+Patient28 LOS: 51.762263531528106 -- DTDT: 2.0
+Patient29 L4 Arrival Time: 217.6345789020051 State: released at Time: 226.29550446871232
+Patient29 LOS: 8.66092556670722 -- DTDT: 2.0
+Patient30 L4 Arrival Time: 659.2078909533009 State: released at Time: 692.00501031956
+Patient30 LOS: 32.79711936625915 -- DTDT: 2.0
+Patient31 L4 Arrival Time: 492.83867601726814 State: released at Time: 504.6221199370724
+Patient31 LOS: 11.783443919804256 -- DTDT: 2.0
+Patient32 L5 Arrival Time: 192.4481625042651 State: released at Time: 279.0358393291982
+Patient32 LOS: 86.58767682493311 -- DTDT: 2.0
 
-Patient0 L1 Arrival Time: 429.9430828495917 State: generated at Time: 0.0
-Patient1 L1 Arrival Time: 425.6414829270103 State: generated at Time: 0.0
-Patient2 L2 Arrival Time: 83.16225929942445 State: generated at Time: 0.0
-Patient3 L2 Arrival Time: 542.4185554956348 State: generated at Time: 0.0
-Patient4 L3 Arrival Time: 888.8883510084388 State: generated at Time: 0.0
-Patient5 L3 Arrival Time: 409.72536157334514 State: generated at Time: 0.0
-Patient6 L4 Arrival Time: 617.609208371754 State: generated at Time: 0.0
-Patient7 L4 Arrival Time: 641.9508859306924 State: generated at Time: 0.0
-Patient8 L5 Arrival Time: 484.5324038244477 State: generated at Time: 0.0
-Patient9 L5 Arrival Time: 145.3965498224884 State: generated at Time: 0.0
-
-Idle Nurses: Nurse0; Nurse1; 
+Idle Nurses: Nurse5; Nurse6; Nurse7; Nurse8; Nurse9; Nurse10; Nurse11; Nurse2; Nurse3; Nurse4; 
 Busy Nurses: 
 Offduty Nurses: 
-Idle Physicians: Physician0; Physician1; 
+Idle Physicians: Physician3; Physician2; 
 Busy Physicians: 
 Offduty Physicians: 
-Idle Transporters: Transporter0; Transporter0; 
+Idle Transporters: Transporter0; Transporter0; Transporter0; Transporter0; Transporter0; Transporter0; Transporter0; Transporter0; Transporter0; Transporter0; 
 Busy Transporters: 
 Offduty Transporters: 
-Empty BoxRooms: BoxRoom0; 
+Empty BoxRooms: BoxRoom1; BoxRoom2; 
 BoxRooms with a patient waiting for a Physician: 
 Full BoxRooms: 
-Empty ShockRooms: ShockRoom0; 
+Empty ShockRooms: ShockRoom1; 
 ShockRooms with a patient waiting for a Physician: 
 Full ShockRooms: 
 ------------------------------

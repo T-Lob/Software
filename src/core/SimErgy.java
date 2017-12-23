@@ -1,46 +1,37 @@
 package core;
 
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import events.Event;
 import human.*;
 import rooms.*;
 import others.Database;
 import others.ED;
+import others.ReadFile;
 
 public class SimErgy {
+	static String str="";
 	
 	@SuppressWarnings("unused")
-	public static void main(String[] args) {
-		ED ed = new ED("ED");
-		
-		System.out.println(ed.getRegisteredPatients().get(4));
-		Patient patient  = new Patient ("ED");
-		Patient patient2  = new Patient ("ED");
-		Patient patient10  = new Patient ("ED");
-		Patient patient21  = new Patient ("ED");
-		Patient patient111  = new Patient ("ED");
-		Patient patient212 = new Patient ("ED");
-		Patient patient5  = new Patient ("ED");
-		Patient patient6  = new Patient ("ED");
-		ArrayList<Patient> L = new ArrayList<Patient>(ed.getGeneratedPatients());
-		System.out.println(ed.getGeneratedPatients());
-		Physician physician = (Physician) HRFactory.createHR("ED", "Physician");
-		Nurse nurse = (Nurse) HRFactory.createHR("ED", "Nurse");
-		Transporter transporter = (Transporter) HRFactory.createHR("ED", "Transporter");
-		BoxRoom boxroom = new BoxRoom("ED");
-		ShockRoom shockroom = new ShockRoom("ED");
-		ShockRoom shockroom2 = new ShockRoom("ED");
-		Physician physician2 = (Physician) HRFactory.createHR("ED", "Physician");
-		Nurse nurse2 = (Nurse) HRFactory.createHR("ED", "Nurse");
-		Transporter transporter2 = (Transporter) HRFactory.createHR("ED", "Transporter");
-		BoxRoom boxroom2 = new BoxRoom("ED");
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+		ReadFile.Read();
+		Scanner sc = new Scanner(System.in);
+			System.out.println("\n\nChoose between the two EDs by typing the associated number");
+			for (int i=1; i<ReadFile.getEDnames().size()+1;i++) {
+				System.out.println(i+"-"+ReadFile.getEDnames().get(i-1));
+			}
+			str = sc.nextLine();
+			str=str.replace(" ", "");
+			ED ed=Database.getGeneratedEDs().get(Integer.valueOf(str)-1);
 		ed.updateState();
 		ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getOldEnabledEvents(), ed));
 		ed.setEventQueue(Database.updateEventQueue(ed));
-		while (Database.getTime()<1000) {
+		while (Database.getTime()<10000) {
 			Event e1=ed.getEventQueue().get(0);
 			Database.setTime(e1.getOccurenceTime());
 			ed=Database.execute(e1, ed);
@@ -50,11 +41,7 @@ public class SimErgy {
 			ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getNewEnabledEvents(), ed));
 			ed.setEventQueue(Database.updateEventQueue(ed));
 			if(ed.getEventQueue().size()==0) {
-				System.out.println("Final State:");
-				for (Patient p: L) {
-					System.out.println(p.getName() +" " + p.getSeverityLevel() + " arrived at: " +p.getArrivalTime() + " "+p.getState()+" at " + p.getReleaseTime());
-					System.out.println(p.getName() +" LOS: " + p.LOS() + " -- DTDT: " +p.DTDT());
-				}
+				ed.displayFinalState();
 				System.out.println("End of simulation, all the patients should be released.");
 				System.out.println("----------------");
 				break;
@@ -62,11 +49,8 @@ public class SimErgy {
 			System.out.println("----------------");
 			
 		 }
-		if(Database.getTime()>=1000) {
-			System.out.println("State at time: " + Database.getTime() + ":");
-			for (Patient p: L) {
-				System.out.println(p.getName() +" "+p.getState()+" ");
-			}
+		if(Database.getTime()>=10000) {
+			ed.display();
 			System.out.println("Time out ! Some patients may not have been released yet.");
 		}
 		
