@@ -1,26 +1,19 @@
 ------------------------------
-State at time: 959.9026268802993:
+
+State at time: 41.47601024637992:
+
 Generated Patients
-Patient0 L1 Arrival Time: 667.5411579927735 State: released at Time: 674.8836958182727
-Patient0 LOS: 7.342537825499221 -- DTDT: 2.0
-Patient1 L1 Arrival Time: 390.0342956390738 State: released at Time: 408.685318727266
-Patient1 LOS: 18.651023088192233 -- DTDT: 2.0
-Patient2 L2 Arrival Time: 880.5624432237946 State: released at Time: 959.9026268802993
-Patient2 LOS: 79.34018365650468 -- DTDT: 2.0
-Patient3 L2 Arrival Time: 92.0866507030581 State: released at Time: 104.99736029506654
-Patient3 LOS: 12.910709592008445 -- DTDT: 2.0
-Patient4 L3 Arrival Time: 938.788560229532 State: released at Time: 952.0565432404987
-Patient4 LOS: 13.26798301096676 -- DTDT: 2.0
-Patient5 L3 Arrival Time: 672.5976389766146 State: released at Time: 777.7175544044387
-Patient5 LOS: 105.11991542782414 -- DTDT: 2.0
-Patient6 L4 Arrival Time: 476.7057205551144 State: released at Time: 515.1524480313351
-Patient6 LOS: 38.4467274762207 -- DTDT: 2.0
-Patient7 L4 Arrival Time: 843.8375979709286 State: released at Time: 923.4617456804697
-Patient7 LOS: 79.62414770954103 -- DTDT: 2.0
-Patient8 L5 Arrival Time: 572.9422603204255 State: released at Time: 611.8819385067268
-Patient8 LOS: 38.93967818630131 -- DTDT: 2.0
-Patient9 L5 Arrival Time: 405.8202141019799 State: released at Time: 425.61901687985176
-Patient9 LOS: 19.798802777871856 -- DTDT: 2.0
+
+Patient0 L1 Arrival Time: 360.28930416820447 State: generated at Time: 0.0
+Patient1 L1 Arrival Time: 41.47601024637992 State: arrived at Time: 41.47601024637992
+Patient2 L2 Arrival Time: 296.306995708104 State: generated at Time: 0.0
+Patient3 L2 Arrival Time: 592.8025366248444 State: generated at Time: 0.0
+Patient4 L3 Arrival Time: 815.7501572279352 State: generated at Time: 0.0
+Patient5 L3 Arrival Time: 508.04689897471525 State: generated at Time: 0.0
+Patient6 L4 Arrival Time: 277.0905730816231 State: generated at Time: 0.0
+Patient7 L4 Arrival Time: 520.6920466845514 State: generated at Time: 0.0
+Patient8 L5 Arrival Time: 209.16399831475064 State: generated at Time: 0.0
+Patient9 L5 Arrival Time: 351.49347525977237 State: generated at Time: 0.0
 
 Idle Nurses: Nurse0; Nurse1; 
 Busy Nurses: 
