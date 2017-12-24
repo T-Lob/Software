@@ -44,6 +44,8 @@ execute <EDname> : to display the final state
 
 display <EDname> : to display the entire status (patients, resources, queues) of an ED with given name
 
+generatedPatients <EDname>: to display the arrival time and the severity of the patients that will be generated with « addPatient » command in a ED with a given name.
+
 simergy : to Load the configuration in simergy.ini
 
-testScenario : to load and continue the test scenario in testScenario.txt
+runTest : to load and continue the test scenario in testScenario.txt

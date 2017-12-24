@@ -455,7 +455,7 @@ public class CLI {
 							}
 						}
 					
-						else if (command.equalsIgnoreCase("testScenario")) {
+						else if (command.equalsIgnoreCase("runTest")) {
 							if(!loadedTestScenario) {
 							testOnGoing=true;
 							try (BufferedReader br = new BufferedReader(new FileReader(FILENAME2))) {
