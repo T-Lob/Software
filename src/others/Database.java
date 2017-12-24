@@ -185,11 +185,6 @@ public class Database {
 			getEDbyName(EDname).getL5().addGeneration(getEDbyName(EDname));
 		}
 		getEDbyName(EDname).sortTBGP();
-		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(0)));
-		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(1)));
-		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(2)));
-		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(3)));
-		System.out.println(Arrays.toString(getEDbyName(EDname).getToBeGeneratedPatients().get(4)));
 	}
 		
 

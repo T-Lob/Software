@@ -15,7 +15,7 @@ import others.Observer;
  */
 public class MRIScan extends HealthServices implements Observable{
 	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
-	private int cost;
+	private int cost=500;
 	
 	/**
 	 * This constructs an MRIScan

@@ -19,15 +19,19 @@ public class SimErgy {
 	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		ReadFile.Read();
-		Scanner sc = new Scanner(System.in);
-			System.out.println("\n\nChoose between the two EDs by typing the associated number");
-			for (int i=1; i<ReadFile.getEDnames().size()+1;i++) {
-				System.out.println(i+"-"+ReadFile.getEDnames().get(i-1));
-			}
-			str = sc.nextLine();
-			str=str.replace(" ", "");
-			ED ed=Database.getGeneratedEDs().get(Integer.valueOf(str)-1);
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println("\n\nType anything to Load the .ini file");
+		if(sc1.hasNext()) {
+			ReadFile.Read();
+			Scanner sc2 = new Scanner(System.in);
+				System.out.println("\n\nChoose between the two EDs by typing the associated number");
+				for (int i=1; i<ReadFile.getEDnames().size()+1;i++) {
+					System.out.println(i+"-"+ReadFile.getEDnames().get(i-1));
+				}
+				str = sc2.nextLine();
+				str=str.replace(" ", "");
+				ED ed=Database.getGeneratedEDs().get(Integer.valueOf(str)-1);
+		
 		ed.updateState();
 		ed.setNewEnabledEvents(Database.updateEnabledEvents(ed.getOldEnabledEvents(), ed));
 		ed.setEventQueue(Database.updateEventQueue(ed));
@@ -55,7 +59,7 @@ public class SimErgy {
 		}
 		
 		
-	
+		}
 	
 	}
 

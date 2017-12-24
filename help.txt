@@ -30,13 +30,20 @@ setL4arrivalDist <EDname, DistType, DistParams> : to allows to set the distribut
 
 setL5arrivalDist <EDname, DistType, DistParams> : to allows to set the distribution of arrival for L5-patient in an ED with given name
 
-addPatient <EDname> <PatientName> <PatientSurname> <HealthInsurance>: to register a patient with given name and surname and healt insurance status to an ED with given name
+addPatient <EDname> : to register a patient with PatientN as name and surname (where N is his ID) and with no Health Insurance to an ED with given name
 
-setPatientInsurance <EDname> <PatientID> <HealthInsurance>: set the health insurance of a patient with given ID to a given status (either no-insurance, silver or gold)
+addPatient <EDname> : <PatientName> <PatientSurname> <HealthInsurance>: to register a patient with given name and surname and health insurance status to an ED with given name
 
-executeEvent <EDname>: to execute the first event in the event-queue of an ED with given name
+setPatientInsurance <EDname> <PatientID> <HealthInsurance> : set the health insurance of a patient with given ID to a given status (either no-insurance, silver or gold)
 
-executeEvent <EDname> <N>: to execute the N first events in the event-queue of an ED with given name, if N is too high displays the final state.
+executeEvent <EDname> : to execute the first event in the event-queue of an ED with given name
 
-display <EDname>: to display the entire status (patients, resources, queues) of an ED with given name
+executeEvent <EDname> <N> : to execute the N first events in the event-queue of an ED with given name, if N is too high displays the final state.
 
+execute <EDname> : to display the final state
+
+display <EDname> : to display the entire status (patients, resources, queues) of an ED with given name
+
+simergy : to Load the configuration in simergy.ini
+
+testScenario : to load and continue the test scenario in testScenario.txt

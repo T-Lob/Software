@@ -15,7 +15,7 @@ import others.Observer;
  */
 public class XRay extends HealthServices implements Observable{
 	private ArrayList<Observer> ObserverList = new ArrayList<Observer>();
-	private int cost;
+	private int cost=50;
 	
 	/**
 	 * This constructs an XRay

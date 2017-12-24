@@ -1,0 +1,23 @@
+createED <Saint-Louis>
+addRoom <Saint-Louis, BoxRoom, Box>
+addRoom <Saint-Louis, ShockRoom, Shock>
+addPatient <Saint-Louis>
+addPatient <Saint-Louis, Hamza, Kadiri, Gold>
+addPatient <Saint-Louis, Wassim, Ouakrim, Silver>
+addPatient <Saint-Louis, Leopold, Malet, None>
+addNurse <Saint-Louis>
+addPhysician <Saint-Louis>
+addTransporter <Saint-Louis>
+display <Saint-Louis>
+setL3arrivalDist Saint-Louis Uniform 100 200
+setPatientInsurance <Saint-Louis> <1> <Silver>
+executeEvent Saint-Louis
+executeEvent Saint-Louis
+executeEvent Saint-Louis
+executeEvent Saint-Louis 5
+executeEvent Saint-Louis 5
+execute Saint-Louis
+bill Saint-Louis 0
+bill Saint-Louis 1
+bill Saint-Louis 2
+bill Saint-Louis 3

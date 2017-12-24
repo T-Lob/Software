@@ -439,7 +439,7 @@ public class ED {
 	}
 	
 	public Patient getPatientbyId(int ID) {
-		for (Patient patient:generatedPatients) {
+		for (Patient patient:historyOfPatients) {
 			if (patient.getID()==ID) {
 				return patient;
 			}
