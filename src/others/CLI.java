@@ -212,6 +212,8 @@ public class CLI {
 						System.out.println("Created Transporter in " + Database.getEDbyName(arguments[0]).getEDname());
 					} 
 					else if (command.equalsIgnoreCase("setL1arrivalDist")) {
+						ED ed =Database.getEDbyName(arguments[0]);
+						String[] L1Patient=null;
 						if (arguments.length==3) {
 							if (arguments[1].equalsIgnoreCase("uniform")) {
 							System.out.println("Uniform Distribution needs another argument");
@@ -225,9 +227,18 @@ public class CLI {
 							Database.getEDbyName(arguments[0]).setL1(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L1"));
 							System.out.println("Setted L1 arrival distribution to " + arguments[1] + " (" +arguments[2] +"," +arguments[3]+") " +  " in " + Database.getEDbyName(arguments[0]).getEDname());
 							} 
-						
+						for (String [] s: ed.getToBeGeneratedPatients()) {
+							if (s[0].equalsIgnoreCase("L1")) {
+								L1Patient=s;
+							}
+						}
+						ed.getToBeGeneratedPatients().remove(L1Patient);
+						ed.getL1().addGeneration(ed);
+						ed.sortTBGP();
 					}
 					else if (command.equalsIgnoreCase("setL2arrivalDist")) {
+						ED ed =Database.getEDbyName(arguments[0]);
+						String[] L2Patient=null;
 						if (arguments.length==3) {
 							if (arguments[1].equalsIgnoreCase("uniform")) {
 							System.out.println("Uniform Distribution needs another argument");
@@ -241,9 +252,19 @@ public class CLI {
 							Database.getEDbyName(arguments[0]).setL2(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L2"));
 							System.out.println("Setted L2 arrival distribution to " + arguments[1] + " (" +arguments[2] +"," +arguments[3]+") " +  "in " + Database.getEDbyName(arguments[0]).getEDname());
 							} 
-						} 
+						for (String [] s: ed.getToBeGeneratedPatients()) {
+							if (s[0].equalsIgnoreCase("L2")) {
+								L2Patient=s;
+							}
+						}
+						ed.getToBeGeneratedPatients().remove(L2Patient);
+						ed.getL2().addGeneration(ed);
+						ed.sortTBGP();
+					}
 						
 					else if (command.equalsIgnoreCase("setL3arrivalDist")) {
+						ED ed =Database.getEDbyName(arguments[0]);
+						String[] L3Patient=null;
 						if (arguments.length==3) {
 							if (arguments[1].equalsIgnoreCase("uniform")) {
 							System.out.println("Uniform Distribution needs another argument");
@@ -258,9 +279,18 @@ public class CLI {
 							System.out.println("Setted L3 arrival distribution to " + arguments[1] + " (" +arguments[2] +"," +arguments[3]+") " +  "in " + Database.getEDbyName(arguments[0]).getEDname());
 							 
 							} 
-						
+						for (String [] s: ed.getToBeGeneratedPatients()) {
+							if (s[0].equalsIgnoreCase("L3")) {
+								L3Patient=s;
+							}
+						}
+						ed.getToBeGeneratedPatients().remove(L3Patient);
+						ed.getL3().addGeneration(ed);
+						ed.sortTBGP();
 					}
 					else if (command.equalsIgnoreCase("setL4arrivalDist")) {
+						ED ed =Database.getEDbyName(arguments[0]);
+						String[] L4Patient=null;
 						if (arguments.length==3) {
 							if (arguments[1].equalsIgnoreCase("uniform")) {
 							System.out.println("Uniform Distribution needs another argument");
@@ -274,9 +304,18 @@ public class CLI {
 							Database.getEDbyName(arguments[0]).setL4(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L4"));
 							System.out.println("Setted L4 arrival distribution to " + arguments[1] + " (" +arguments[2] +"," +arguments[3]+") " +  "in " + Database.getEDbyName(arguments[0]).getEDname());
 							} 
-						
+						for (String [] s: ed.getToBeGeneratedPatients()) {
+							if (s[0].equalsIgnoreCase("L4")) {
+								L4Patient=s;
+							}
+						}
+						ed.getToBeGeneratedPatients().remove(L4Patient);
+						ed.getL4().addGeneration(ed);
+						ed.sortTBGP();
 					}
 					else if (command.equalsIgnoreCase("setL5arrivalDist")) {
+						ED ed =Database.getEDbyName(arguments[0]);
+						String[] L5Patient=null;
 						if (arguments.length==3) {
 							if (arguments[1].equalsIgnoreCase("uniform")) {
 							System.out.println("Uniform Distribution needs another argument");
@@ -288,8 +327,16 @@ public class CLI {
 						}
 							else {
 							Database.getEDbyName(arguments[0]).setL5(new PatientGeneration(arguments[0],ProbabilityDistributionFactory.createPD(arguments[1], Integer.valueOf(arguments[2]),Integer.valueOf(arguments[3])), "L5"));
-							System.out.println("Setted L4 arrival distribution to " + arguments[1] + " (" +arguments[2] +"," +arguments[3]+") " +  "in " + Database.getEDbyName(arguments[0]).getEDname());
+							System.out.println("Setted L5 arrival distribution to " + arguments[1] + " (" +arguments[2] +"," +arguments[3]+") " +  "in " + Database.getEDbyName(arguments[0]).getEDname());
 							} 
+						for (String [] s: ed.getToBeGeneratedPatients()) {
+							if (s[0].equalsIgnoreCase("L5")) {
+								L5Patient=s;
+							}
+						}
+						ed.getToBeGeneratedPatients().remove(L5Patient);
+						ed.getL5().addGeneration(ed);
+						ed.sortTBGP();
 					}
 					else if (command.equalsIgnoreCase("addPatient")) {
 						if (arguments.length==1) {
@@ -382,6 +429,15 @@ public class CLI {
 							ED ed=Database.getEDbyName(arguments[0]);
 							Patient patient =ed.getPatientbyId(Integer.valueOf(arguments[1]));
 							System.out.println("Bill for " + patient.getName() +": "+patient.charges());
+						}
+					
+						else if(command.equalsIgnoreCase("generatedPatients")) {
+							ED ed=Database.getEDbyName(arguments[0]);
+							System.out.println(Arrays.toString(ed.toBeGeneratedPatients.get(0)));
+							System.out.println(Arrays.toString(ed.toBeGeneratedPatients.get(1)));
+							System.out.println(Arrays.toString(ed.toBeGeneratedPatients.get(2)));
+							System.out.println(Arrays.toString(ed.toBeGeneratedPatients.get(3)));
+							System.out.println(Arrays.toString(ed.toBeGeneratedPatients.get(4)));
 						}
 					
 						else if (command.equalsIgnoreCase("display")) {
